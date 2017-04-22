@@ -30,8 +30,8 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-8-8 ÉÏÎç11:21:40
+ * @author æ— èŠ±
+ * @since 2011-8-8 ä¸Šåˆ11:21:40
  */
 
 public class OrderedMessageSenderUnitTest {
@@ -52,7 +52,7 @@ public class OrderedMessageSenderUnitTest {
 
     @Test
     public void testSendMessage_PartitionNumWrong() throws Exception {
-        // ¼ì²âµ½·ÖÇø²»¿ÉÓÃ,±¾´ÎÏûÏ¢´æ´¢µ½±¾µØ
+        // æ£€æµ‹åˆ°åˆ†åŒºä¸å¯ç”¨,æœ¬æ¬¡æ¶ˆæ¯å­˜å‚¨åˆ°æœ¬åœ°
 
         final Message message = this.createDefaultMessage();
         // EasyMock.expect(this.producer.getLocalMessageCount(message.getTopic(),
@@ -70,7 +70,7 @@ public class OrderedMessageSenderUnitTest {
     @Test
     public void testSendMessage_swichToNomal() throws Exception {
         final Message message = this.createDefaultMessage();
-        // ·ÖÇøÒÑ¾­Õı³£,±¾µØ»º´æµÄÏûÏ¢ÌõÊıÎª0£¬ÇĞ»»ÎªÕı³£·¢ËÍÄ£Ê½£¬²¢°Ñ±¾´ÎÏûÏ¢Ğ´µ½·şÎñ¶Ë
+        // åˆ†åŒºå·²ç»æ­£å¸¸,æœ¬åœ°ç¼“å­˜çš„æ¶ˆæ¯æ¡æ•°ä¸º0ï¼Œåˆ‡æ¢ä¸ºæ­£å¸¸å‘é€æ¨¡å¼ï¼Œå¹¶æŠŠæœ¬æ¬¡æ¶ˆæ¯å†™åˆ°æœåŠ¡ç«¯
 
         EasyMock.expect(this.producer.getLocalMessageCount(message.getTopic(), this.partition)).andReturn(0);
         EasyMock.expect(this.producer.selectPartition(message)).andReturn(new Partition("0-0"));
@@ -84,7 +84,7 @@ public class OrderedMessageSenderUnitTest {
 
     @Test
     public void testSendMessage_PartitionNumRight_butHaveFewLocalMessage() throws Exception {
-        // ·ÖÇøÒÑ¾­Õı³£,±¾µØ»¹»º´æÁËÉÙÁ¿ÏûÏ¢£¬Í£¶ÙÒ»ÏÂÔÙ¼ì²â,³¬¹ın´Îºó»¹½øÈëÕâÌõÂ·¾¶µÄ»°,±¾´ÎÏûÏ¢Ğ´±¾µØ
+        // åˆ†åŒºå·²ç»æ­£å¸¸,æœ¬åœ°è¿˜ç¼“å­˜äº†å°‘é‡æ¶ˆæ¯ï¼Œåœé¡¿ä¸€ä¸‹å†æ£€æµ‹,è¶…è¿‡næ¬¡åè¿˜è¿›å…¥è¿™æ¡è·¯å¾„çš„è¯,æœ¬æ¬¡æ¶ˆæ¯å†™æœ¬åœ°
 
         final Message message = this.createDefaultMessage();
         EasyMock.expect(this.producer.getLocalMessageCount(message.getTopic(), this.partition)).andReturn(10).times(3);
@@ -101,7 +101,7 @@ public class OrderedMessageSenderUnitTest {
 
     @Test
     public void testSendMessage_PartitionNumRight_butHaveFewLocalMessage2() throws Exception {
-        // ·ÖÇøÒÑ¾­Õı³£,±¾µØ»¹»º´æÁËÉÙÁ¿ÏûÏ¢£¬Í£¶ÙÒ»ÏÂÔÙ¼ì²â,µÚ¶ş´Î¼ì²âµ½±¾µØÏûÏ¢»Ö¸´Íê±Ï,±¾´ÎÏûÏ¢Ğ´·şÎñÆ÷,ÇĞ»»µ½Õı³£·¢ËÍÄ£Ê½
+        // åˆ†åŒºå·²ç»æ­£å¸¸,æœ¬åœ°è¿˜ç¼“å­˜äº†å°‘é‡æ¶ˆæ¯ï¼Œåœé¡¿ä¸€ä¸‹å†æ£€æµ‹,ç¬¬äºŒæ¬¡æ£€æµ‹åˆ°æœ¬åœ°æ¶ˆæ¯æ¢å¤å®Œæ¯•,æœ¬æ¬¡æ¶ˆæ¯å†™æœåŠ¡å™¨,åˆ‡æ¢åˆ°æ­£å¸¸å‘é€æ¨¡å¼
 
         final Message message = this.createDefaultMessage();
         EasyMock.expect(this.producer.getLocalMessageCount(message.getTopic(), this.partition)).andReturn(10);

@@ -40,7 +40,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * XAÏûÏ¢Éú²úÕßµÄÊµÏÖÀà
+ * XAæ¶ˆæ¯ç”Ÿäº§è€…çš„å®ç°ç±»
  * 
  * @author boyan
  * 
@@ -176,12 +176,12 @@ public class SimpleXAMessageProducer extends SimpleMessageProducer implements XA
         else {
             this.beginTransaction();
             xares = this.transactionContext.get();
-            // ÉèÖÃÆôÓÃÑ¡¶¨µÄbroker
+            // è®¾ç½®å¯ç”¨é€‰å®šçš„broker
             String selectedServer = this.selectTransactionBrokerURL();
             xares.setServerUrl(selectedServer);
             xares.setUniqueQualifier(this.uniqueQualifier);
             xares.setXareresourceURLs(this.urls);
-            // Ö¸¶¨·¢ËÍµÄurl
+            // æŒ‡å®šå‘é€çš„url
             this.logLastSentInfo(selectedServer);
             return xares;
         }

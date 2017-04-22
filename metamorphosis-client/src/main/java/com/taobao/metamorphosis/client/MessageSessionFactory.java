@@ -32,7 +32,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * ÏûÏ¢»á»°¹¤³§£¬meta¿Í»§¶ËµÄÖ÷½Ó¿Ú,ÍÆ¼öÒ»¸öÓ¦ÓÃÖ»Ê¹ÓÃÒ»¸öMessageSessionFactory
+ * æ¶ˆæ¯ä¼šè¯å·¥å‚ï¼Œmetaå®¢æˆ·ç«¯çš„ä¸»æ¥å£,æ¨èä¸€ä¸ªåº”ç”¨åªä½¿ç”¨ä¸€ä¸ªMessageSessionFactory
  * 
  * @author boyan
  * @Date 2011-4-27
@@ -41,7 +41,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 public interface MessageSessionFactory extends Shutdownable {
 
     /**
-     * ¹Ø±Õ¹¤³§
+     * å…³é—­å·¥å‚
      * 
      * @throws MetaClientException
      */
@@ -50,17 +50,17 @@ public interface MessageSessionFactory extends Shutdownable {
 
 
     /**
-     * ´´½¨ÏûÏ¢Éú²úÕß
+     * åˆ›å»ºæ¶ˆæ¯ç”Ÿäº§è€…
      * 
      * @param partitionSelector
-     *            ·ÖÇøÑ¡ÔñÆ÷
+     *            åˆ†åŒºé€‰æ‹©å™¨
      * @return
      */
     public MessageProducer createProducer(PartitionSelector partitionSelector);
 
 
     /**
-     * ´´½¨ÏûÏ¢Éú²úÕß£¬Ä¬ÈÏÊ¹ÓÃÂÖÑ¯·ÖÇøÑ¡ÔñÆ÷
+     * åˆ›å»ºæ¶ˆæ¯ç”Ÿäº§è€…ï¼Œé»˜è®¤ä½¿ç”¨è½®è¯¢åˆ†åŒºé€‰æ‹©å™¨
      * 
      * @return
      */
@@ -68,10 +68,10 @@ public interface MessageSessionFactory extends Shutdownable {
 
 
     /**
-     * ´´½¨ÏûÏ¢Éú²úÕß£¬Ä¬ÈÏÊ¹ÓÃÂÖÑ¯·ÖÇøÑ¡ÔñÆ÷¡£±¾·½·¨ÒÑ¾­·ÏÆú£¬ÇëÎğÊ¹ÓÃ£¬²»ÅÅ³ıÔÚÎ´À´Ä³¸ö°æ±¾É¾³ı¡£
+     * åˆ›å»ºæ¶ˆæ¯ç”Ÿäº§è€…ï¼Œé»˜è®¤ä½¿ç”¨è½®è¯¢åˆ†åŒºé€‰æ‹©å™¨ã€‚æœ¬æ–¹æ³•å·²ç»åºŸå¼ƒï¼Œè¯·å‹¿ä½¿ç”¨ï¼Œä¸æ’é™¤åœ¨æœªæ¥æŸä¸ªç‰ˆæœ¬åˆ é™¤ã€‚
      * 
      * @param ordered
-     *            ÊÇ·ñÓĞĞò£¬trueÎªÓĞĞò£¬Èç¹ûÓĞĞò£¬ÔòÏûÏ¢°´ÕÕ·¢ËÍË³Ğò±£´æÔÚMQ server
+     *            æ˜¯å¦æœ‰åºï¼Œtrueä¸ºæœ‰åºï¼Œå¦‚æœæœ‰åºï¼Œåˆ™æ¶ˆæ¯æŒ‰ç…§å‘é€é¡ºåºä¿å­˜åœ¨MQ server
      * @return
      */
     @Deprecated
@@ -79,12 +79,12 @@ public interface MessageSessionFactory extends Shutdownable {
 
 
     /**
-     * ´´½¨ÏûÏ¢Éú²úÕß,±¾·½·¨ÒÑ¾­·ÏÆú£¬ÇëÎğÊ¹ÓÃ£¬²»ÅÅ³ıÔÚÎ´À´Ä³¸ö°æ±¾É¾³ı¡£
+     * åˆ›å»ºæ¶ˆæ¯ç”Ÿäº§è€…,æœ¬æ–¹æ³•å·²ç»åºŸå¼ƒï¼Œè¯·å‹¿ä½¿ç”¨ï¼Œä¸æ’é™¤åœ¨æœªæ¥æŸä¸ªç‰ˆæœ¬åˆ é™¤ã€‚
      * 
      * @param partitionSelector
-     *            ·ÖÇøÑ¡ÔñÆ÷
+     *            åˆ†åŒºé€‰æ‹©å™¨
      * @param ordered
-     *            ÊÇ·ñÓĞĞò£¬trueÎªÓĞĞò£¬Èç¹ûÓĞĞò£¬ÔòÏûÏ¢°´ÕÕ·¢ËÍË³Ğò±£´æÔÚMQ server
+     *            æ˜¯å¦æœ‰åºï¼Œtrueä¸ºæœ‰åºï¼Œå¦‚æœæœ‰åºï¼Œåˆ™æ¶ˆæ¯æŒ‰ç…§å‘é€é¡ºåºä¿å­˜åœ¨MQ server
      * @return
      */
     @Deprecated
@@ -92,10 +92,10 @@ public interface MessageSessionFactory extends Shutdownable {
 
 
     /**
-     * ´´½¨ÏûÏ¢Ïû·ÑÕß£¬Ä¬ÈÏ½«offset´æ´¢ÔÚzk
+     * åˆ›å»ºæ¶ˆæ¯æ¶ˆè´¹è€…ï¼Œé»˜è®¤å°†offsetå­˜å‚¨åœ¨zk
      * 
      * @param consumerConfig
-     *            Ïû·ÑÕßÅäÖÃ
+     *            æ¶ˆè´¹è€…é…ç½®
      * @return
      */
     public MessageConsumer createConsumer(ConsumerConfig consumerConfig);
@@ -150,12 +150,12 @@ public interface MessageSessionFactory extends Shutdownable {
 
 
     /**
-     * ´´½¨ÏûÏ¢Ïû·ÑÕß£¬Ê¹ÓÃÖ¸¶¨µÄoffset´æ´¢Æ÷
+     * åˆ›å»ºæ¶ˆæ¯æ¶ˆè´¹è€…ï¼Œä½¿ç”¨æŒ‡å®šçš„offsetå­˜å‚¨å™¨
      * 
      * @param consumerConfig
-     *            Ïû·ÑÕßÅäÖÃ
+     *            æ¶ˆè´¹è€…é…ç½®
      * @param offsetStorage
-     *            offset´æ´¢Æ÷
+     *            offsetå­˜å‚¨å™¨
      * @return
      */
     public MessageConsumer createConsumer(ConsumerConfig consumerConfig, OffsetStorage offsetStorage);

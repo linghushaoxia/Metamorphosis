@@ -183,7 +183,7 @@ public class LocalOffsetStorageUnitTest {
         assertEquals(topic, info.getTopic());
         assertEquals(partition1, info.getPartition());
         assertEquals(0, info.getOffset().get());
-        // ÒÔÏÂÕâ¼¸¸öÖµ²»¹ÜÎÄ¼şÖĞÓĞÃ»ÓĞ,¶¼ÊÇ°´ÕÕÄ¬ÈÏµÄ
+        // ä»¥ä¸‹è¿™å‡ ä¸ªå€¼ä¸ç®¡æ–‡ä»¶ä¸­æœ‰æ²¡æœ‰,éƒ½æ˜¯æŒ‰ç…§é»˜è®¤çš„
         assertEquals(true, info.getPartition().isAutoAck());
         assertEquals(true, info.getPartition().isAcked());
         assertEquals(false, info.getPartition().isRollback());

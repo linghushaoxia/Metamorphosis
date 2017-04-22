@@ -22,8 +22,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-11-7 ÏÂÎç3:03:51
+ * @author æ— èŠ±
+ * @since 2011-11-7 ä¸‹åˆ3:03:51
  */
 
 public class SubscribeInfoManagerAccessor {

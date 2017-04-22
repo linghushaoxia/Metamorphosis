@@ -21,7 +21,7 @@ import org.I0Itec.zkclient.ZkClient;
 
 
 /**
- * ZkClient±ä¸ü¼àÌıÆ÷
+ * ZkClientå˜æ›´ç›‘å¬å™¨
  * 
  * @author boyan
  * @Date 2011-4-26
@@ -29,7 +29,7 @@ import org.I0Itec.zkclient.ZkClient;
  */
 public interface ZkClientChangedListener {
     /**
-     * µ±ĞÂµÄzkClient½¨Á¢µÄÊ±ºò
+     * å½“æ–°çš„zkClientå»ºç«‹çš„æ—¶å€™
      * 
      * @param newClient
      */

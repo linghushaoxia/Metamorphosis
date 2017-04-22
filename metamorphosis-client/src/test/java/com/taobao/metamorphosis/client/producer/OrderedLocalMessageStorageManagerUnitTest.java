@@ -37,8 +37,8 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-8-9 ÉÏÎç9:43:16
+ * @author æ— èŠ±
+ * @since 2011-8-9 ä¸Šåˆ9:43:16
  */
 
 public class OrderedLocalMessageStorageManagerUnitTest {
@@ -109,7 +109,7 @@ public class OrderedLocalMessageStorageManagerUnitTest {
         Thread.sleep(200);
         Assert.assertTrue(queue2.size() == 1);
 
-        // »Ö¸´Íê±ÏºóÔÙµ÷ÓÃrecover
+        // æ¢å¤å®Œæ¯•åå†è°ƒç”¨recover
         queue2.clear();
         this.localMessageStorageManager.recover(topic2, this.partition1, recoverer2);
         Thread.sleep(200);
@@ -125,7 +125,7 @@ public class OrderedLocalMessageStorageManagerUnitTest {
             public void handle(final Message msg) throws Exception {
                 Assert.assertEquals(topic, msg.getTopic());
                 Assert.assertEquals("hello", new String(msg.getData()));
-                System.out.println("recover msg£º" + msg);
+                System.out.println("recover msgï¼š" + msg);
                 queue.offer(msg);
             }
         };

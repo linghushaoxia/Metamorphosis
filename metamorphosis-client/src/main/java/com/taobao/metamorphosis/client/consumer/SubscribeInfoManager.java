@@ -24,7 +24,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * ¶©ÔÄĞÅÏ¢¹ÜÀíÆ÷
+ * è®¢é˜…ä¿¡æ¯ç®¡ç†å™¨
  */
 public class SubscribeInfoManager {
     private final ConcurrentHashMap<String/* group */, ConcurrentHashMap<String/* topic */, SubscriberInfo>> groupTopicSubcriberRegistry =

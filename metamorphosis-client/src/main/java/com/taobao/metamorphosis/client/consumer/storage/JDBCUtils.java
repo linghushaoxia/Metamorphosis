@@ -29,7 +29,7 @@ import org.apache.commons.logging.LogFactory;
 
 
 /**
- * JDBC¹¤¾ßÀà
+ * JDBCå·¥å…·ç±»
  * 
  * @author boyan
  * @Date 2011-4-28

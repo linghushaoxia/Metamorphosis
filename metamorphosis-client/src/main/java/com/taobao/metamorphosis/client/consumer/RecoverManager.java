@@ -25,15 +25,15 @@ import com.taobao.metamorphosis.client.Shutdownable;
 
 
 /**
- * Ïû·Ñ¶ËµÄRecover¹ÜÀíÆ÷
+ * æ¶ˆè´¹ç«¯çš„Recoverç®¡ç†å™¨
  * 
- * @author ÎŞ»¨
- * @since 2011-10-31 ÏÂÎç3:40:04
+ * @author æ— èŠ±
+ * @since 2011-10-31 ä¸‹åˆ3:40:04
  */
 
 public interface RecoverManager extends Shutdownable {
     /**
-     * ÊÇ·ñÒÑ¾­Æô¶¯
+     * æ˜¯å¦å·²ç»å¯åŠ¨
      * 
      * @return
      */
@@ -41,7 +41,7 @@ public interface RecoverManager extends Shutdownable {
 
 
     /**
-     * Æô¶¯recover
+     * å¯åŠ¨recover
      * 
      * @param metaClientConfig
      */
@@ -49,7 +49,7 @@ public interface RecoverManager extends Shutdownable {
 
 
     /**
-     * ´æÈëÒ»¸öÏûÏ¢
+     * å­˜å…¥ä¸€ä¸ªæ¶ˆæ¯
      * 
      * @param group
      * @param message

@@ -10,7 +10,7 @@ import com.taobao.metamorphosis.utils.MessageUtils;
 
 
 /**
- * ÏûÏ¢µü´úÆ÷£¬½âÎö´«Êä¹ıÀ´µÄÊı¾İ
+ * æ¶ˆæ¯è¿­ä»£å™¨ï¼Œè§£æä¼ è¾“è¿‡æ¥çš„æ•°æ®
  * 
  * @author boyan
  * @deprecated Please use com.taobao.metamorphosis.consumer.MessageIterator
@@ -57,7 +57,7 @@ public class MessageIterator {
 
 
     /**
-     * ·µ»Øµ±Ç°µü´úµÄÆ«ÒÆÁ¿£¬²»°üÀ¨·¢ÆğÇëÇóµÄÆ«ÒÆÁ¿ÔÚÄÚ
+     * è¿”å›å½“å‰è¿­ä»£çš„åç§»é‡ï¼Œä¸åŒ…æ‹¬å‘èµ·è¯·æ±‚çš„åç§»é‡åœ¨å†…
      * 
      * @return
      */
@@ -67,7 +67,7 @@ public class MessageIterator {
 
 
     /**
-     * µ±»¹ÓĞÏûÏ¢µÄÊ±ºò·µ»Øtrue
+     * å½“è¿˜æœ‰æ¶ˆæ¯çš„æ—¶å€™è¿”å›true
      * 
      * @return
      */
@@ -91,7 +91,7 @@ public class MessageIterator {
 
 
     /**
-     * ·µ»ØÏÂÒ»¸öÏûÏ¢
+     * è¿”å›ä¸‹ä¸€ä¸ªæ¶ˆæ¯
      * 
      * @return
      * @throws InvalidMessageException

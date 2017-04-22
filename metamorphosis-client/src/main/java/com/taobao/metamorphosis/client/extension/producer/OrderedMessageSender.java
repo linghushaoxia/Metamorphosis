@@ -27,8 +27,8 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-8-9 ÏÂÎç6:12:01
+ * @author æ— èŠ±
+ * @since 2011-8-9 ä¸‹åˆ6:12:01
  */
 
 class OrderedMessageSender {
@@ -47,11 +47,11 @@ class OrderedMessageSender {
         for (;;) {
             SelectPartitionResult result = this.trySelectPartition(message);
 
-            // ¿ÉÓÃ·ÖÇø²»Õı³£
+            // å¯ç”¨åˆ†åŒºä¸æ­£å¸¸
             if (!result.isPartitionWritable()) {
                 return this.producer.saveMessageToLocal(message, result.getSelectedPartition(), timeout, unit);
             }
-            // ¿ÉÓÃ·ÖÇøÕı³£
+            // å¯ç”¨åˆ†åŒºæ­£å¸¸
             else {
                 int localMessageCount =
                         this.producer.getLocalMessageCount(message.getTopic(), result.getSelectedPartition());
@@ -60,12 +60,12 @@ class OrderedMessageSender {
                 }
 
                 if (localMessageCount <= 0) {
-                    // ±¾µØ´æµÄÏûÏ¢ÌõÊıÎª¿Õ,±¾´ÎÏûÏ¢·¢ËÍµ½·şÎñ¶Ë
+                    // æœ¬åœ°å­˜çš„æ¶ˆæ¯æ¡æ•°ä¸ºç©º,æœ¬æ¬¡æ¶ˆæ¯å‘é€åˆ°æœåŠ¡ç«¯
                     return this.producer.sendMessageToServer(message, timeout, unit, true);
                 }
                 else if (localMessageCount > 0 && localMessageCount <= 20) {
-                    // ±¾µØ´æµÄÏûÏ¢Ö»ÓĞÉÙÁ¿¼¸Ìõ,Í£¶ÙÒ»ÏÂµÈ´ı±¾µØÏûÏ¢±»»Ö¸´,`ÔÙ¼ÌĞø¼ì²é×´Ì¬,
-                    // ×î¶à¼ì²émaxRecheck´Î ±¾µØÏûÏ¢»¹Ã»±»»Ö¸´Íê,´æ±¾µØ²¢ÍË³ö.
+                    // æœ¬åœ°å­˜çš„æ¶ˆæ¯åªæœ‰å°‘é‡å‡ æ¡,åœé¡¿ä¸€ä¸‹ç­‰å¾…æœ¬åœ°æ¶ˆæ¯è¢«æ¢å¤,`å†ç»§ç»­æ£€æŸ¥çŠ¶æ€,
+                    // æœ€å¤šæ£€æŸ¥maxRecheckæ¬¡ æœ¬åœ°æ¶ˆæ¯è¿˜æ²¡è¢«æ¢å¤å®Œ,å­˜æœ¬åœ°å¹¶é€€å‡º.
                     if (check >= maxRecheck) {
                         return this.producer.saveMessageToLocal(message, result.getSelectedPartition(), timeout, unit);
                     }
@@ -73,7 +73,7 @@ class OrderedMessageSender {
 
                 }
                 else {
-                    // ±¾µØ´æµÄÏûÏ¢»¹ÓĞºÜ¶à,¼ÌĞøĞ´±¾µØ
+                    // æœ¬åœ°å­˜çš„æ¶ˆæ¯è¿˜æœ‰å¾ˆå¤š,ç»§ç»­å†™æœ¬åœ°
                     return this.producer.saveMessageToLocal(message, result.getSelectedPartition(), timeout, unit);
                 }
 

@@ -76,8 +76,8 @@ import com.taobao.metamorphosis.utils.ZkUtils.ZKConfig;
 
 
 /**
- * ÏûÏ¢»á»°¹¤³§£¬ÅäÖÃµÄÓÅÏÈ¼¶£¬ÓÅÏÈÊ¹ÓÃ´«ÈëµÄMetaClientConfigÖĞµÄÅäÖÃÏî£¬
- * Æä´ÎÊ¹ÓÃMetaClientConfigÖĞµÄzkConfigÅäÖÃµÄzkÖĞµÄÑ¡Ïî£¬Èç¹û¶¼Ã»ÓĞ£¬Ôò´Ódiamond»ñÈ¡zkµØÖ·À´»ñÈ¡ÅäÖÃÏî
+ * æ¶ˆæ¯ä¼šè¯å·¥å‚ï¼Œé…ç½®çš„ä¼˜å…ˆçº§ï¼Œä¼˜å…ˆä½¿ç”¨ä¼ å…¥çš„MetaClientConfigä¸­çš„é…ç½®é¡¹ï¼Œ
+ * å…¶æ¬¡ä½¿ç”¨MetaClientConfigä¸­çš„zkConfigé…ç½®çš„zkä¸­çš„é€‰é¡¹ï¼Œå¦‚æœéƒ½æ²¡æœ‰ï¼Œåˆ™ä»diamondè·å–zkåœ°å€æ¥è·å–é…ç½®é¡¹
  * 
  * @author boyan
  * @Date 2011-4-21
@@ -129,7 +129,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
 
 
     /**
-     * ·µ»ØÍ¨Ñ¶¿Í»§¶Ë
+     * è¿”å›é€šè®¯å®¢æˆ·ç«¯
      * 
      * @return
      */
@@ -139,7 +139,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
 
 
     /**
-     * ·µ»Ø¶©ÔÄ¹ØÏµ¹ÜÀíÆ÷
+     * è¿”å›è®¢é˜…å…³ç³»ç®¡ç†å™¨
      * 
      * @return
      */
@@ -149,7 +149,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
 
 
     /**
-     * ·µ»Ø¿Í»§¶ËÅäÖÃ
+     * è¿”å›å®¢æˆ·ç«¯é…ç½®
      * 
      * @return
      */
@@ -159,7 +159,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
 
 
     /**
-     * ·µ»ØÉú²úÕßºÍzk½»»¥¹ÜÀíÆ÷
+     * è¿”å›ç”Ÿäº§è€…å’Œzkäº¤äº’ç®¡ç†å™¨
      * 
      * @return
      */
@@ -169,7 +169,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
 
 
     /**
-     * ·µ»ØÏû·ÑÕßºÍzk½»»¥¹ÜÀíÆ÷
+     * è¿”å›æ¶ˆè´¹è€…å’Œzkäº¤äº’ç®¡ç†å™¨
      * 
      * @return
      */
@@ -179,7 +179,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
 
 
     /**
-     * ·µ»Ø±¾µØ»Ö¸´ÏûÏ¢¹ÜÀíÆ÷
+     * è¿”å›æœ¬åœ°æ¢å¤æ¶ˆæ¯ç®¡ç†å™¨
      * 
      * @return
      */
@@ -189,7 +189,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
 
 
     /**
-     * ·µ»Ø´Ë¹¤³§´´½¨µÄËùÓĞ×Ó¶ÔÏó£¬ÈçÉú²úÕß¡¢Ïû·ÑÕßµÈ
+     * è¿”å›æ­¤å·¥å‚åˆ›å»ºçš„æ‰€æœ‰å­å¯¹è±¡ï¼Œå¦‚ç”Ÿäº§è€…ã€æ¶ˆè´¹è€…ç­‰
      * 
      * @return
      */
@@ -218,7 +218,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
             catch (final NotifyRemotingException e) {
                 throw new NetworkException("Create remoting client failed", e);
             }
-            // Èç¹ûÓĞÉèÖÃ£¬ÔòÊ¹ÓÃÉèÖÃµÄurl²¢Á¬½Ó£¬·ñÔòÊ¹ÓÃzk·¢ÏÖ·şÎñÆ÷
+            // å¦‚æœæœ‰è®¾ç½®ï¼Œåˆ™ä½¿ç”¨è®¾ç½®çš„urlå¹¶è¿æ¥ï¼Œå¦åˆ™ä½¿ç”¨zkå‘ç°æœåŠ¡å™¨
             if (this.metaClientConfig.getServerUrl() != null) {
                 this.connectServer(this.metaClientConfig);
             }
@@ -244,7 +244,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
                         MetaMessageSessionFactory.this.shutdown();
                     }
                     catch (final MetaClientException e) {
-                        log.error("¹Ø±Õsession factoryÊ§°Ü", e);
+                        log.error("å…³é—­session factoryå¤±è´¥", e);
                     }
                 }
 
@@ -291,7 +291,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
 
 
     private void initZooKeeper() throws MetaClientException {
-        // ÓÅÏÈÊ¹ÓÃÉèÖÃµÄzookeepr£¬Æä´Î´Ódiamond»ñÈ¡
+        // ä¼˜å…ˆä½¿ç”¨è®¾ç½®çš„zookeeprï¼Œå…¶æ¬¡ä»diamondè·å–
         this.zkConfig = null;
         if (this.metaClientConfig.getZkConfig() != null) {
             this.zkConfig = this.metaClientConfig.getZkConfig();
@@ -355,11 +355,11 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
 
 
     /**
-     * ÔİÊ±´Ózk.propertiesÀï¼ÓÔØ
+     * æš‚æ—¶ä»zk.propertiesé‡ŒåŠ è½½
      * 
      * @return
      */
-    // µ¥Ôª²âÊÔÒªÊÇÍ¨²»¹ı,ÇëĞŞ¸Äresources/zk.propertiesÀïµÄzkµØÖ·
+    // å•å…ƒæµ‹è¯•è¦æ˜¯é€šä¸è¿‡,è¯·ä¿®æ”¹resources/zk.propertiesé‡Œçš„zkåœ°å€
     private ZKConfig loadZkConfigFromLocalFile() {
         try {
             final Properties properties = Utils.getResourceAsProperties("zk.properties", "GBK");
@@ -384,7 +384,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
             // 10000);
         }
         catch (final IOException e) {
-            log.error("zkÅäÖÃÊ§°Ü", e);
+            log.error("zké…ç½®å¤±è´¥", e);
             return null;
         }
     }
@@ -452,7 +452,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
 
 
     /**
-     * É¾³ı×Ó»á»°
+     * åˆ é™¤å­ä¼šè¯
      * 
      * @param <T>
      * @param child
@@ -470,7 +470,7 @@ public class MetaMessageSessionFactory implements MessageSessionFactory {
         if (offsetStorage == null) {
             throw new InvalidOffsetStorageException("Null offset storage");
         }
-        // ±ØÒªÊ±Æô¶¯recover
+        // å¿…è¦æ—¶å¯åŠ¨recover
         if (!recoverManager0.isStarted()) {
             recoverManager0.start(this.metaClientConfig);
         }

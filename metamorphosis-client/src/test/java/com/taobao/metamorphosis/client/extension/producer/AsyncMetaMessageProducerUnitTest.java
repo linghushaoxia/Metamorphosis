@@ -41,8 +41,8 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-12-29 ÏÂÎç2:31:03
+ * @author æ— èŠ±
+ * @since 2011-12-29 ä¸‹åˆ2:31:03
  */
 
 public class AsyncMetaMessageProducerUnitTest {

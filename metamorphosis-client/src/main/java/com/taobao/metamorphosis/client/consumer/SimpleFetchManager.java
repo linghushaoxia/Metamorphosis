@@ -38,7 +38,7 @@ import com.taobao.metamorphosis.utils.StatConstants;
 
 
 /**
- * ÏûÏ¢×¥È¡¹ÜÀíÆ÷µÄÊµÏÖ
+ * æ¶ˆæ¯æŠ“å–ç®¡ç†å™¨çš„å®ç°
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-9-13
@@ -122,7 +122,7 @@ public class SimpleFetchManager implements FetchManager {
     public void stopFetchRunner() throws InterruptedException {
         this.shutdown = true;
         this.interruptRunners();
-        // µÈ´ıËùÓĞÈÎÎñ½áÊø
+        // ç­‰å¾…æ‰€æœ‰ä»»åŠ¡ç»“æŸ
         if (this.requestQueue != null) {
             while (this.requestQueue.size() < this.fetchRequestCount) {
                 this.interruptRunners();
@@ -133,7 +133,7 @@ public class SimpleFetchManager implements FetchManager {
 
 
     private void interruptRunners() {
-        // ÖĞ¶ÏËùÓĞÈÎÎñ
+        // ä¸­æ–­æ‰€æœ‰ä»»åŠ¡
         if (this.fetchThreads != null) {
             for (int i = 0; i < this.fetchThreads.length; i++) {
                 Thread thread = this.fetchThreads[i];
@@ -172,7 +172,7 @@ public class SimpleFetchManager implements FetchManager {
 
     @Override
     public void startFetchRunner() {
-        // ±£´æÇëÇóÊıÄ¿£¬ÔÚÍ£Ö¹µÄÊ±ºòÒª¼ì²é
+        // ä¿å­˜è¯·æ±‚æ•°ç›®ï¼Œåœ¨åœæ­¢çš„æ—¶å€™è¦æ£€æŸ¥
         this.fetchRequestCount = this.requestQueue.size();
         this.shutdown = false;
         for (final Thread thread : this.fetchThreads) {
@@ -215,7 +215,7 @@ public class SimpleFetchManager implements FetchManager {
                     this.processRequest(request);
                 }
                 catch (final InterruptedException e) {
-                    // takeÏìÓ¦ÖĞ¶Ï£¬ºöÂÔ
+                    // takeå“åº”ä¸­æ–­ï¼Œå¿½ç•¥
                 }
 
             }
@@ -250,16 +250,16 @@ public class SimpleFetchManager implements FetchManager {
 
         private void LogAddRequest(final FetchRequest request, final Throwable e) {
             if (e instanceof MetaClientException && e.getCause() instanceof NotifyRemotingException
-                    && e.getMessage().contains("ÎŞ¿ÉÓÃÁ¬½Ó")) {
-                // ×î¶à30Ãë´òÓ¡Ò»´Î
+                    && e.getMessage().contains("æ— å¯ç”¨è¿æ¥")) {
+                // æœ€å¤š30ç§’æ‰“å°ä¸€æ¬¡
                 final long now = System.currentTimeMillis();
                 if (this.lastLogNoConnectionTime <= 0 || now - this.lastLogNoConnectionTime > 30000) {
-                    log.error("»ñÈ¡ÏûÏ¢Ê§°Ü,topic=" + request.getTopic() + ",partition=" + request.getPartition(), e);
+                    log.error("è·å–æ¶ˆæ¯å¤±è´¥,topic=" + request.getTopic() + ",partition=" + request.getPartition(), e);
                     this.lastLogNoConnectionTime = now;
                 }
             }
             else {
-                log.error("»ñÈ¡ÏûÏ¢Ê§°Ü,topic=" + request.getTopic() + ",partition=" + request.getPartition(), e);
+                log.error("è·å–æ¶ˆæ¯å¤±è´¥,topic=" + request.getTopic() + ",partition=" + request.getPartition(), e);
             }
             this.reAddFetchRequest2Queue(request);
         }
@@ -274,7 +274,7 @@ public class SimpleFetchManager implements FetchManager {
                 }
             }
             catch (final MetaClientException ex) {
-                log.error("²éÑ¯offsetÊ§°Ü,topic=" + request.getTopic() + ",partition=" + request.getPartition(), e);
+                log.error("æŸ¥è¯¢offsetå¤±è´¥,topic=" + request.getTopic() + ",partition=" + request.getPartition(), e);
             }
             finally {
                 this.reAddFetchRequest2Queue(request);
@@ -314,7 +314,7 @@ public class SimpleFetchManager implements FetchManager {
                     }
                     catch (final RejectedExecutionException e) {
                         log.error(
-                            "MessageListenerÏß³Ì³Ø·±Ã¦£¬ÎŞ·¨´¦ÀíÏûÏ¢,topic=" + request.getTopic() + ",partition="
+                            "MessageListenerçº¿ç¨‹æ± ç¹å¿™ï¼Œæ— æ³•å¤„ç†æ¶ˆæ¯,topic=" + request.getTopic() + ",partition="
                                     + request.getPartition(), e);
                         this.reAddFetchRequest2Queue(request);
                     }
@@ -333,17 +333,17 @@ public class SimpleFetchManager implements FetchManager {
 
 
         /**
-         * ´¦ÀíÏûÏ¢µÄÕû¸öÁ÷³Ì£º<br>
+         * å¤„ç†æ¶ˆæ¯çš„æ•´ä¸ªæµç¨‹ï¼š<br>
          * <ul>
-         * <li>1.ÅĞ¶ÏÊÇ·ñÓĞÏûÏ¢¿ÉÒÔ´¦Àí£¬Èç¹ûÃ»ÓĞÏûÏ¢²¢ÇÒÓĞÊı¾İµİÔöÖØÊÔ´ÎÊı£¬²¢ÅĞ¶ÏÊÇ·ñĞèÒªµİÔömaxSize</li>
-         * <li>2.ÅĞ¶ÏÏûÏ¢ÊÇ·ñÖØÊÔ¶à´Î£¬Èç¹û³¬¹ıÉè¶¨´ÎÊı£¬¾ÍÌø¹ı¸ÃÏûÏ¢¼ÌĞøÍùÏÂ×ß¡£Ìø¹ıµÄÏûÏ¢¿ÉÄÜÔÚ±¾µØÖØÊÔ»òÕß½»¸ønotifyÖØÍ¶</li>
-         * <li>3.½øÈëÏûÏ¢´¦ÀíÁ÷³Ì£¬¸ù¾İÊÇ·ñ×Ô¶¯ackµÄÇé¿ö½øĞĞ´¦Àí:
+         * <li>1.åˆ¤æ–­æ˜¯å¦æœ‰æ¶ˆæ¯å¯ä»¥å¤„ç†ï¼Œå¦‚æœæ²¡æœ‰æ¶ˆæ¯å¹¶ä¸”æœ‰æ•°æ®é€’å¢é‡è¯•æ¬¡æ•°ï¼Œå¹¶åˆ¤æ–­æ˜¯å¦éœ€è¦é€’å¢maxSize</li>
+         * <li>2.åˆ¤æ–­æ¶ˆæ¯æ˜¯å¦é‡è¯•å¤šæ¬¡ï¼Œå¦‚æœè¶…è¿‡è®¾å®šæ¬¡æ•°ï¼Œå°±è·³è¿‡è¯¥æ¶ˆæ¯ç»§ç»­å¾€ä¸‹èµ°ã€‚è·³è¿‡çš„æ¶ˆæ¯å¯èƒ½åœ¨æœ¬åœ°é‡è¯•æˆ–è€…äº¤ç»™notifyé‡æŠ•</li>
+         * <li>3.è¿›å…¥æ¶ˆæ¯å¤„ç†æµç¨‹ï¼Œæ ¹æ®æ˜¯å¦è‡ªåŠ¨ackçš„æƒ…å†µè¿›è¡Œå¤„ç†:
          * <ul>
-         * <li>(1)Èç¹ûÏûÏ¢ÊÇ×Ô¶¯ack£¬Èç¹ûÏû·Ñ·¢ÉúÒì³££¬Ôò²»ĞŞ¸Äoffset£¬ÑÓ³ÙÏû·ÑµÈ´ıÖØÊÔ</li>
-         * <li>(2)Èç¹ûÏûÏ¢ÊÇ×Ô¶¯ack£¬Èç¹ûÏû·ÑÕı³££¬µİÔöoffset</li>
-         * <li>(3)Èç¹ûÏûÏ¢·Ç×Ô¶¯ack£¬Èç¹ûÏû·ÑÕı³£²¢ack£¬½«offsetĞŞ¸ÄÎªtmp offset£¬²¢ÖØÉètmp offset</li>
-         * <li>(4)Èç¹ûÏûÏ¢·Ç×Ô¶¯ack£¬Èç¹ûÏû·ÑÕı³£²¢rollback£¬²»µİÔöoffset£¬ÖØÉètmp offset</li>
-         * <li>(5)Èç¹ûÏûÏ¢·Ç×Ô¶¯ack£¬Èç¹ûÏû·ÑÕı³£²»ackÒ²²»rollback£¬²»µİÔöoffset£¬µİÔötmp offset</li>
+         * <li>(1)å¦‚æœæ¶ˆæ¯æ˜¯è‡ªåŠ¨ackï¼Œå¦‚æœæ¶ˆè´¹å‘ç”Ÿå¼‚å¸¸ï¼Œåˆ™ä¸ä¿®æ”¹offsetï¼Œå»¶è¿Ÿæ¶ˆè´¹ç­‰å¾…é‡è¯•</li>
+         * <li>(2)å¦‚æœæ¶ˆæ¯æ˜¯è‡ªåŠ¨ackï¼Œå¦‚æœæ¶ˆè´¹æ­£å¸¸ï¼Œé€’å¢offset</li>
+         * <li>(3)å¦‚æœæ¶ˆæ¯éè‡ªåŠ¨ackï¼Œå¦‚æœæ¶ˆè´¹æ­£å¸¸å¹¶ackï¼Œå°†offsetä¿®æ”¹ä¸ºtmp offsetï¼Œå¹¶é‡è®¾tmp offset</li>
+         * <li>(4)å¦‚æœæ¶ˆæ¯éè‡ªåŠ¨ackï¼Œå¦‚æœæ¶ˆè´¹æ­£å¸¸å¹¶rollbackï¼Œä¸é€’å¢offsetï¼Œé‡è®¾tmp offset</li>
+         * <li>(5)å¦‚æœæ¶ˆæ¯éè‡ªåŠ¨ackï¼Œå¦‚æœæ¶ˆè´¹æ­£å¸¸ä¸ackä¹Ÿä¸rollbackï¼Œä¸é€’å¢offsetï¼Œé€’å¢tmp offset</li>
          * </ul>
          * </li>
          * </ul>
@@ -366,14 +366,14 @@ public class SimpleFetchManager implements FetchManager {
             }
             else {
 
-                // ³¢ÊÔ¶à´ÎÎŞ·¨½âÎö³ö»ñÈ¡µÄÊı¾İ£¬¿ÉÄÜĞèÒªÔö´ómaxSize
+                // å°è¯•å¤šæ¬¡æ— æ³•è§£æå‡ºè·å–çš„æ•°æ®ï¼Œå¯èƒ½éœ€è¦å¢å¤§maxSize
                 if (SimpleFetchManager.this.isRetryTooManyForIncrease(request) && it != null && it.getDataLength() > 0) {
                     request.increaseMaxSize();
-                    log.warn("¾¯¸æ£¬µÚ" + request.getRetries() + "´ÎÎŞ·¨À­È¡topic=" + request.getTopic() + ",partition="
-                            + request.getPartitionObject() + "µÄÏûÏ¢£¬µİÔömaxSize=" + request.getMaxSize() + " Bytes");
+                    log.warn("è­¦å‘Šï¼Œç¬¬" + request.getRetries() + "æ¬¡æ— æ³•æ‹‰å–topic=" + request.getTopic() + ",partition="
+                            + request.getPartitionObject() + "çš„æ¶ˆæ¯ï¼Œé€’å¢maxSize=" + request.getMaxSize() + " Bytes");
                 }
 
-                // Ò»¶¨ÒªÅĞ¶ÏitÊÇ·ñÎªnull,·ñÔòÕı³£µÄÀ­µ½½áÎ²Ê±(·µ»Ønull)Ò²½«½øĞĞRetries¼ÇÊı,»áµ¼ÖÂÒÔºóÔÙÀ­µ½ÏûÏ¢Ê±½øÈërecover
+                // ä¸€å®šè¦åˆ¤æ–­itæ˜¯å¦ä¸ºnull,å¦åˆ™æ­£å¸¸çš„æ‹‰åˆ°ç»“å°¾æ—¶(è¿”å›null)ä¹Ÿå°†è¿›è¡ŒRetriesè®°æ•°,ä¼šå¯¼è‡´ä»¥åå†æ‹‰åˆ°æ¶ˆæ¯æ—¶è¿›å…¥recover
                 if (it != null) {
                     request.incrementRetriesAndGet();
                 }
@@ -385,7 +385,7 @@ public class SimpleFetchManager implements FetchManager {
 
 
         /**
-         * ·µ»ØÊÇ·ñĞèÒªÌø¹ıºóĞøµÄ´¦Àí
+         * è¿”å›æ˜¯å¦éœ€è¦è·³è¿‡åç»­çš„å¤„ç†
          * 
          * @param request
          * @param it
@@ -428,7 +428,7 @@ public class SimpleFetchManager implements FetchManager {
                         this.markProcessed(msg.getId(), group);
                     }
                     else {
-                        // Ìá½»»òÕß»Ø¹ö¶¼±ØĞëÌø³öÑ­»·
+                        // æäº¤æˆ–è€…å›æ»šéƒ½å¿…é¡»è·³å‡ºå¾ªç¯
                         if (partition.isAcked()) {
                             count++;
                             // mark all in transaction messages were processed.
@@ -443,7 +443,7 @@ public class SimpleFetchManager implements FetchManager {
                         }
                         else {
                             inTransactionMsgIds.add(msg.getId());
-                            // ²»ÊÇÌá½»Ò²²»ÊÇ»Ø¹ö£¬½öµİÔö¼ÆÊı
+                            // ä¸æ˜¯æäº¤ä¹Ÿä¸æ˜¯å›æ»šï¼Œä»…é€’å¢è®¡æ•°
                             count++;
                         }
                     }
@@ -457,17 +457,17 @@ public class SimpleFetchManager implements FetchManager {
                 }
                 catch (final InvalidMessageException e) {
                     MetaStatLog.addStat(null, StatConstants.INVALID_MSG_STAT, request.getTopic());
-                    // ÏûÏ¢Ìå·Ç·¨£¬»ñÈ¡ÓĞĞ§offset£¬ÖØĞÂ·¢Æğ²éÑ¯
+                    // æ¶ˆæ¯ä½“éæ³•ï¼Œè·å–æœ‰æ•ˆoffsetï¼Œé‡æ–°å‘èµ·æŸ¥è¯¢
                     this.getOffsetAddRequest(request, e);
                     return true;
                 }
                 catch (final Throwable e) {
-                    // ½«Ö¸ÕëÒÆµ½ÉÏÒ»ÌõÏûÏ¢
+                    // å°†æŒ‡é’ˆç§»åˆ°ä¸Šä¸€æ¡æ¶ˆæ¯
                     it.setOffset(prevOffset);
                     log.error(
                         "Process messages failed,topic=" + request.getTopic() + ",partition=" + request.getPartition(),
                         e);
-                    // Ìø³öÑ­»·£¬´¦ÀíÏûÏ¢Òì³££¬µ½´ËÎªÖ¹
+                    // è·³å‡ºå¾ªç¯ï¼Œå¤„ç†æ¶ˆæ¯å¼‚å¸¸ï¼Œåˆ°æ­¤ä¸ºæ­¢
                     break;
                 }
             }
@@ -528,7 +528,7 @@ public class SimpleFetchManager implements FetchManager {
                 }
                 catch (final InvalidMessageException e) {
                     MetaStatLog.addStat(null, StatConstants.INVALID_MSG_STAT, request.getTopic());
-                    // ÏûÏ¢Ìå·Ç·¨£¬»ñÈ¡ÓĞĞ§offset£¬ÖØĞÂ·¢Æğ²éÑ¯
+                    // æ¶ˆæ¯ä½“éæ³•ï¼Œè·å–æœ‰æ•ˆoffsetï¼Œé‡æ–°å‘èµ·æŸ¥è¯¢
                     this.getOffsetAddRequest(request, e);
                     return true;
                 }
@@ -538,11 +538,11 @@ public class SimpleFetchManager implements FetchManager {
                 }
 
                 request.resetRetries();
-                // Ìø¹ıÕâÌõ²»ÄÜ´¦ÀíµÄÏûÏ¢
+                // è·³è¿‡è¿™æ¡ä¸èƒ½å¤„ç†çš„æ¶ˆæ¯
                 if (!this.stopped) {
                     request.setOffset(request.getOffset() + it.getOffset(), it.getPrevMessage().getId(), true);
                 }
-                // Ç¿ÖÆÉèÖÃÑÓ³ÙÎª0
+                // å¼ºåˆ¶è®¾ç½®å»¶è¿Ÿä¸º0
                 request.setDelay(0);
                 this.reAddFetchRequest2Queue(request);
                 return true;
@@ -554,7 +554,7 @@ public class SimpleFetchManager implements FetchManager {
 
 
         private void postReceiveMessage(final FetchRequest request, final MessageIterator it, final Partition partition) {
-            // Èç¹ûoffsetÈÔÈ»Ã»ÓĞÇ°½ø£¬µİÔöÖØÊÔ´ÎÊı
+            // å¦‚æœoffsetä»ç„¶æ²¡æœ‰å‰è¿›ï¼Œé€’å¢é‡è¯•æ¬¡æ•°
             if (it.getOffset() == 0) {
                 request.incrementRetriesAndGet();
             }
@@ -562,26 +562,26 @@ public class SimpleFetchManager implements FetchManager {
                 request.resetRetries();
             }
 
-            // ·Ç×Ô¶¯ackÄ£Ê½
+            // éè‡ªåŠ¨ackæ¨¡å¼
             if (!partition.isAutoAck()) {
-                // Èç¹ûÊÇ»Ø¹ö,Ôò»Ø¹öoffset£¬ÔÙ´Î·¢ÆğÇëÇó
+                // å¦‚æœæ˜¯å›æ»š,åˆ™å›æ»šoffsetï¼Œå†æ¬¡å‘èµ·è¯·æ±‚
                 if (partition.isRollback()) {
                     request.rollbackOffset();
                     partition.reset();
                     this.addRequst(request);
                 }
-                // Èç¹ûÌá½»£¬Ôò¸üĞÂÁÙÊ±offsetµ½´æ´¢
+                // å¦‚æœæäº¤ï¼Œåˆ™æ›´æ–°ä¸´æ—¶offsetåˆ°å­˜å‚¨
                 else if (partition.isAcked()) {
                     partition.reset();
                     this.ackRequest(request, it, true);
                 }
                 else {
-                    // ¶¼²»ÊÇ£¬µİÔöÁÙÊ±offset
+                    // éƒ½ä¸æ˜¯ï¼Œé€’å¢ä¸´æ—¶offset
                     this.ackRequest(request, it, false);
                 }
             }
             else {
-                // ×Ô¶¯ackÄ£Ê½
+                // è‡ªåŠ¨ackæ¨¡å¼
                 this.ackRequest(request, it, true);
             }
         }
@@ -604,7 +604,7 @@ public class SimpleFetchManager implements FetchManager {
         private long getRetryDelay(final FetchRequest request) {
             final long maxDelayFetchTimeInMills = SimpleFetchManager.this.getMaxDelayFetchTimeInMills();
             final long nPartsDelayTime = maxDelayFetchTimeInMills / DELAY_NPARTS;
-            // ÑÓ³ÙÊ±¼äÎª£º×î´óÑÓ³ÙÊ±¼ä/10*ÖØÊÔ´ÎÊı
+            // å»¶è¿Ÿæ—¶é—´ä¸ºï¼šæœ€å¤§å»¶è¿Ÿæ—¶é—´/10*é‡è¯•æ¬¡æ•°
             long delay = nPartsDelayTime * request.getRetries();
             if (delay > maxDelayFetchTimeInMills) {
                 delay = maxDelayFetchTimeInMills;
@@ -613,7 +613,7 @@ public class SimpleFetchManager implements FetchManager {
         }
 
 
-        // ÑÓÊ±²éÑ¯
+        // å»¶æ—¶æŸ¥è¯¢
         private void updateDelay(final FetchRequest request) {
             final long delay = this.getNextDelay(request);
             request.setDelay(delay);
@@ -622,7 +622,7 @@ public class SimpleFetchManager implements FetchManager {
 
         private long getNextDelay(final FetchRequest request) {
             final long maxDelayFetchTimeInMills = SimpleFetchManager.this.getMaxDelayFetchTimeInMills();
-            // Ã¿´Î1/10µİÔö,×î´óMaxDelayFetchTimeInMills
+            // æ¯æ¬¡1/10é€’å¢,æœ€å¤§MaxDelayFetchTimeInMills
             final long nPartsDelayTime = maxDelayFetchTimeInMills / DELAY_NPARTS;
             long delay = request.getDelay() + nPartsDelayTime;
             if (delay > maxDelayFetchTimeInMills) {

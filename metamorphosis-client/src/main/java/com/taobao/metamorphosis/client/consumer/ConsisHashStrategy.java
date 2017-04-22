@@ -27,11 +27,11 @@ import java.util.TreeMap;
 
 
 /**
- * »ùÓÚÒ»ÖÂĞÔ¹şÏ£µÄ¸ºÔØ¾ùºâ²ßÂÔ£º</br>
+ * åŸºäºä¸€è‡´æ€§å“ˆå¸Œçš„è´Ÿè½½å‡è¡¡ç­–ç•¥ï¼š</br>
  * <ul>
- * <li>½«ËùÓĞconsumer×éÖ¯³ÉÒ»¸ö»·</li>
- * <li>½«ËùÓĞ·ÖÇø¸ù¾İhashÖµ²åÈëµ½»·ÉÏ</li>
- * <li>»ñÈ¡Ö¸¶¨consumerÇ°Ãæ£¬Ç°Ò»¸öconsumerÖ®ºóµÄ·ÖÇøÁĞ±í×÷Îª½á¹û</li>
+ * <li>å°†æ‰€æœ‰consumerç»„ç»‡æˆä¸€ä¸ªç¯</li>
+ * <li>å°†æ‰€æœ‰åˆ†åŒºæ ¹æ®hashå€¼æ’å…¥åˆ°ç¯ä¸Š</li>
+ * <li>è·å–æŒ‡å®šconsumerå‰é¢ï¼Œå‰ä¸€ä¸ªconsumerä¹‹åçš„åˆ†åŒºåˆ—è¡¨ä½œä¸ºç»“æœ</li>
  * </ul>
  * 
  * @author boyan(boyan@taobao.com)
@@ -39,7 +39,7 @@ import java.util.TreeMap;
  * 
  */
 public class ConsisHashStrategy implements LoadBalanceStrategy {
-    // ĞéÄâ½ÚµãÊıÄ¿
+    // è™šæ‹ŸèŠ‚ç‚¹æ•°ç›®
     static final int NUM_REPS = 160;
     HashAlgorithm alg = HashAlgorithm.KETAMA_HASH;
 
@@ -68,10 +68,10 @@ public class ConsisHashStrategy implements LoadBalanceStrategy {
         final TreeMap<Long, String> consumerMap = this.buildConsumerMap(curConsumers);
 
         final Set<String> rt = new HashSet<String>();
-        // ¸ù¾İpartition²éÕÒ¶ÔÓ¦µÄconsumer
+        // æ ¹æ®partitionæŸ¥æ‰¾å¯¹åº”çš„consumer
         for (final String partition : curPartitions) {
             final String targetConsumer = this.findConsumerByPartition(consumerMap, partition);
-            // ±£´æ±¾consumerĞèÒª¹ÒÔØµÄ·ÖÇø
+            // ä¿å­˜æœ¬consumeréœ€è¦æŒ‚è½½çš„åˆ†åŒº
             if (consumerId.equals(targetConsumer)) {
                 rt.add(partition);
             }

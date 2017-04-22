@@ -51,7 +51,7 @@ import com.taobao.metamorphosis.utils.ZkUtils;
 
 
 /**
- * ProducerºÍzkµÄ½»»¥
+ * Producerå’Œzkçš„äº¤äº’
  * 
  * @author boyan
  * @Date 2011-4-26
@@ -70,7 +70,7 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
     private final MetaZookeeper metaZookeeper;
 
     /**
-     * Ä¬ÈÏtopic£¬µ±²éÕÒ·ÖÇøÃ»ÓĞÕÒµ½¿ÉÓÃ·ÖÇøµÄÊ±ºò£¬·¢ËÍµ½´ËtopicÏÂµÄbroker
+     * é»˜è®¤topicï¼Œå½“æŸ¥æ‰¾åˆ†åŒºæ²¡æœ‰æ‰¾åˆ°å¯ç”¨åˆ†åŒºçš„æ—¶å€™ï¼Œå‘é€åˆ°æ­¤topicä¸‹çš„broker
      */
     private String defaultTopic;
 
@@ -169,7 +169,7 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
 
 
         /**
-         * ´¦ÀíbrokerÔö¼õ
+         * å¤„ç†brokerå¢å‡
          */
         @Override
         public void handleChildChange(final String parentPath, final List<String> currentChilds) throws Exception {
@@ -295,7 +295,7 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
         final String partitionPath = this.metaZookeeper.brokerTopicsPubPath + "/" + topic;
         ZkUtils.makeSurePersistentPathExists(ProducerZooKeeper.this.zkClient, partitionPath);
         ProducerZooKeeper.this.zkClient.subscribeChildChanges(partitionPath, listener);
-        // µÚÒ»´ÎÒªÍ¬²½µÈ´ı¾ÍĞ÷
+        // ç¬¬ä¸€æ¬¡è¦åŒæ­¥ç­‰å¾…å°±ç»ª
         listener.syncedUpdateBrokersInfo();
     }
 
@@ -318,7 +318,7 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
 
 
     /**
-     * ¸ù¾İtopic²éÕÒ·şÎñÆ÷urlÁĞ±í
+     * æ ¹æ®topicæŸ¥æ‰¾æœåŠ¡å™¨urlåˆ—è¡¨
      * 
      * @param topic
      * @return
@@ -349,7 +349,7 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
 
 
     /**
-     * ÉèÖÃÄ¬ÈÏtopic²¢·¢²¼
+     * è®¾ç½®é»˜è®¤topicå¹¶å‘å¸ƒ
      * 
      * @param topic
      */
@@ -364,7 +364,7 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
 
     /**
      * 
-     * Ñ¡ÔñÖ¸¶¨brokerÄÚµÄÄ³¸ö·ÖÇø£¬ÓÃÓÚÊÂÎñÄÚ·¢ËÍÏûÏ¢£¬´Ë·½·¨½öÓÃÓÚlocal transaction
+     * é€‰æ‹©æŒ‡å®šbrokerå†…çš„æŸä¸ªåˆ†åŒºï¼Œç”¨äºäº‹åŠ¡å†…å‘é€æ¶ˆæ¯ï¼Œæ­¤æ–¹æ³•ä»…ç”¨äºlocal transaction
      * 
      * @param topic
      * @return
@@ -380,7 +380,7 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
                 final List<Partition> partitions = brokersInfo.oldTopicPartitionMap.get(topic);
                 final Map<Integer/* broker id */, String/* server url */> brokerStringMap =
                         brokersInfo.oldBrokerStringMap;
-                // ¹ıÂËÌØ¶¨brokerµÄ·ÖÇøÁĞ±í
+                // è¿‡æ»¤ç‰¹å®šbrokerçš„åˆ†åŒºåˆ—è¡¨
                 final List<Partition> partitionsForSelect = new ArrayList<Partition>();
                 for (final Partition partition : partitions) {
                     if (serverUrl.equals(brokerStringMap.get(partition.getBrokerId()))) {
@@ -400,11 +400,11 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
 
 
     /**
-     * ¸ù¾İpartitionÑ°ÕÒbroker url
+     * æ ¹æ®partitionå¯»æ‰¾broker url
      * 
      * @param topic
      * @param message
-     * @return Ñ¡ÖĞµÄbrokerµÄurl
+     * @return é€‰ä¸­çš„brokerçš„url
      */
     public String selectBroker(final String topic, final Partition partition) {
         if (this.metaClientConfig.getServerUrl() != null) {
@@ -425,7 +425,7 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
 
 
     /**
-     * ´ÓdefaultTopicÖĞÑ¡Ôñbroker
+     * ä»defaultTopicä¸­é€‰æ‹©broker
      * 
      * @param topic
      * @param partition
@@ -447,11 +447,11 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
 
 
     /**
-     * ¸ù¾İtopicºÍmessageÑ¡Ôñ·ÖÇø
+     * æ ¹æ®topicå’Œmessageé€‰æ‹©åˆ†åŒº
      * 
      * @param topic
      * @param message
-     * @return Ñ¡ÖĞµÄ·ÖÇø
+     * @return é€‰ä¸­çš„åˆ†åŒº
      */
     public Partition selectPartition(final String topic, final Message message,
             final PartitionSelector partitionSelector) throws MetaClientException {
@@ -492,7 +492,7 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
                 final List<Partition> partitions = brokersInfo.oldTopicPartitionMap.get(this.defaultTopic);
                 final Map<Integer/* broker id */, String/* server url */> brokerStringMap =
                         brokersInfo.oldBrokerStringMap;
-                // ¹ıÂËÌØ¶¨brokerµÄ·ÖÇøÁĞ±í
+                // è¿‡æ»¤ç‰¹å®šbrokerçš„åˆ†åŒºåˆ—è¡¨
                 final List<Partition> partitionsForSelect = new ArrayList<Partition>();
                 for (final Partition partition : partitions) {
                     if (serverUrl.equals(brokerStringMap.get(partition.getBrokerId()))) {
@@ -521,7 +521,7 @@ public class ProducerZooKeeper implements ZkClientChangedListener {
             Thread.currentThread().interrupt();
         }
         catch (final Exception e) {
-            log.error("ÖØĞÂÉèÖÃzKClientÊ§°Ü", e);
+            log.error("é‡æ–°è®¾ç½®zKClientå¤±è´¥", e);
         }
     }
 

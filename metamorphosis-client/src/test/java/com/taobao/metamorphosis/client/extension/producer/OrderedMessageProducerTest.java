@@ -45,8 +45,8 @@ import com.taobao.metamorphosis.utils.MessageFlagUtils;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-8-24 ÏÂÎç5:41:23
+ * @author æ— èŠ±
+ * @since 2011-8-24 ä¸‹åˆ5:41:23
  */
 
 public class OrderedMessageProducerTest {

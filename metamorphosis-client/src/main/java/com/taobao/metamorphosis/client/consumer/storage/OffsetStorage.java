@@ -24,7 +24,7 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 
 /**
- * Offset´æ´¢Æ÷½Ó¿Ú
+ * Offsetå­˜å‚¨å™¨æ¥å£
  * 
  * @author boyan
  * @Date 2011-4-28
@@ -32,18 +32,18 @@ import com.taobao.metamorphosis.cluster.Partition;
  */
 public interface OffsetStorage {
     /**
-     * ±£´æoffsetµ½´æ´¢
+     * ä¿å­˜offsetåˆ°å­˜å‚¨
      * 
      * @param group
-     *            Ïû·ÑÕß×éÃû
+     *            æ¶ˆè´¹è€…ç»„å
      * @param infoList
-     *            Ïû·ÑÕß¶©ÔÄµÄÏûÏ¢·ÖÇøĞÅÏ¢ÁĞ±í
+     *            æ¶ˆè´¹è€…è®¢é˜…çš„æ¶ˆæ¯åˆ†åŒºä¿¡æ¯åˆ—è¡¨
      */
     public void commitOffset(String group, Collection<TopicPartitionRegInfo> infoList);
 
 
     /**
-     * ¼ÓÔØÒ»ÌõÏû·ÑÕßµÄ¶©ÔÄĞÅÏ¢£¬Èç¹û²»´æÔÚ·µ»Ønull
+     * åŠ è½½ä¸€æ¡æ¶ˆè´¹è€…çš„è®¢é˜…ä¿¡æ¯ï¼Œå¦‚æœä¸å­˜åœ¨è¿”å›null
      * 
      * @param topic
      * @param group
@@ -54,13 +54,13 @@ public interface OffsetStorage {
 
 
     /**
-     * ÊÍ·Å×ÊÔ´£¬meta¿Í»§¶ËÔÚ¹Ø±ÕµÄÊ±ºò»áÖ÷¶¯µ÷ÓÃ´Ë·½·¨
+     * é‡Šæ”¾èµ„æºï¼Œmetaå®¢æˆ·ç«¯åœ¨å…³é—­çš„æ—¶å€™ä¼šä¸»åŠ¨è°ƒç”¨æ­¤æ–¹æ³•
      */
     public void close();
 
 
     /**
-     * ³õÊ¼»¯offset
+     * åˆå§‹åŒ–offset
      * 
      * @param topic
      * @param group

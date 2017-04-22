@@ -20,7 +20,7 @@ package com.taobao.metamorphosis.client.producer;
 
 
 /**
- * ·¢ËÍÏûÏ¢µÄ»Øµ÷
+ * å‘é€æ¶ˆæ¯çš„å›è°ƒ
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-12-14
@@ -29,16 +29,16 @@ package com.taobao.metamorphosis.client.producer;
 public interface SendMessageCallback {
 
     /**
-     * µ±ÏûÏ¢·¢ËÍ·µ»Øºó»Øµ÷£¬¸æÖª·¢ËÍ½á¹û
+     * å½“æ¶ˆæ¯å‘é€è¿”å›åå›è°ƒï¼Œå‘ŠçŸ¥å‘é€ç»“æœ
      * 
      * @param result
-     *            ·¢ËÍ½á¹û
+     *            å‘é€ç»“æœ
      */
     public void onMessageSent(SendResult result);
 
 
     /**
-     * µ±·¢ÉúÒì³£µÄÊ±ºò»Øµ÷±¾·½·¨
+     * å½“å‘ç”Ÿå¼‚å¸¸çš„æ—¶å€™å›è°ƒæœ¬æ–¹æ³•
      * 
      * @param e
      */

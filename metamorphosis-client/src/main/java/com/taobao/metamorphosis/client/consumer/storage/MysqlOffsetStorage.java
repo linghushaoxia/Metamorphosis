@@ -30,13 +30,13 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 
 /**
- * »ùÓÚmysqlÊı¾İ¿âµÄoffset´æ´¢Æ÷
+ * åŸºäºmysqlæ•°æ®åº“çš„offsetå­˜å‚¨å™¨
  * 
  * @author boyan
  * @Date 2011-4-28
  * 
  */
-// TODO ÊµÏÖ×Ô¶¯½¨±í£¿
+// TODO å®ç°è‡ªåŠ¨å»ºè¡¨ï¼Ÿ
 public class MysqlOffsetStorage implements OffsetStorage {
 
     public static final String DEFAULT_TABLE_NAME = "meta_topic_partition_group_offset";
@@ -47,7 +47,7 @@ public class MysqlOffsetStorage implements OffsetStorage {
 
 
     /**
-     * offset±£´æµÄ±íÃû
+     * offsetä¿å­˜çš„è¡¨å
      * 
      * @return
      */
@@ -57,7 +57,7 @@ public class MysqlOffsetStorage implements OffsetStorage {
 
 
     /**
-     * ÉèÖÃ±íÃû£¬Ä¬ÈÏÎªmeta_topic_partiton_group_offset
+     * è®¾ç½®è¡¨åï¼Œé»˜è®¤ä¸ºmeta_topic_partiton_group_offset
      * 
      * @param tableName
      */
@@ -92,15 +92,15 @@ public class MysqlOffsetStorage implements OffsetStorage {
                         for (final TopicPartitionRegInfo info : infoList) {
                             long newOffset = -1;
                             long msgId = -1;
-                            // ¼ÓËø£¬±£Ö¤msgIdºÍoffsetÒ»ÖÂ
+                            // åŠ é”ï¼Œä¿è¯msgIdå’Œoffsetä¸€è‡´
                             synchronized (info) {
-                                // Ö»¸üĞÂÓĞ±ä¸üµÄ
+                                // åªæ›´æ–°æœ‰å˜æ›´çš„
                                 if (!info.isModified()) {
                                     continue;
                                 }
                                 newOffset = info.getOffset().get();
                                 msgId = info.getMessageId();
-                                // ¸üĞÂÍê±Ï£¬ÉèÖÃÎªfalse
+                                // æ›´æ–°å®Œæ¯•ï¼Œè®¾ç½®ä¸ºfalse
                                 info.setModified(false);
                             }
                             pstmt.setLong(1, newOffset);

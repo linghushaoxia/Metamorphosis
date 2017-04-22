@@ -27,7 +27,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * ²»¶ÔÍâÌá¹©µÄconsumer½Ó¿Ú£¬ÓÃÓÚÌá¹©¸øFetchÊ¹ÓÃ
+ * ä¸å¯¹å¤–æä¾›çš„consumeræ¥å£ï¼Œç”¨äºæä¾›ç»™Fetchä½¿ç”¨
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-9-13
@@ -36,7 +36,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 public interface InnerConsumer {
 
     /**
-     * ×¥È¡ÏûÏ¢
+     * æŠ“å–æ¶ˆæ¯
      * 
      * @param fetchRequest
      * @param timeout
@@ -50,7 +50,7 @@ public interface InnerConsumer {
 
 
     /**
-     * ·µ»Øtopic¶ÔÓ¦µÄÏûÏ¢¼àÌıÆ÷
+     * è¿”å›topicå¯¹åº”çš„æ¶ˆæ¯ç›‘å¬å™¨
      * 
      * @param topic
      * @return
@@ -65,7 +65,7 @@ public interface InnerConsumer {
 
 
     /**
-     * ´¦ÀíÎŞ·¨±»¿Í»§¶ËÏû·ÑµÄÏûÏ¢
+     * å¤„ç†æ— æ³•è¢«å®¢æˆ·ç«¯æ¶ˆè´¹çš„æ¶ˆæ¯
      * 
      * @param message
      * @throws IOException
@@ -74,7 +74,7 @@ public interface InnerConsumer {
 
 
     /**
-     * ²éÑ¯offset
+     * æŸ¥è¯¢offset
      * 
      * @param fetchRequest
      * @return

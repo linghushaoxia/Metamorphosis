@@ -35,12 +35,12 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 /**
  * <pre>
- * ÏûÏ¢»á»°¹¤³§£¬meta¿Í»§¶ËµÄÖ÷½Ó¿Ú,ÍÆ¼öÒ»¸öÓ¦ÓÃÖ»Ê¹ÓÃÒ»¸ö.
- * ĞèÒª°´ÕÕÏûÏ¢ÄÚÈİ(ÀıÈçÄ³¸öid)É¢ÁĞµ½¹Ì¶¨·ÖÇø²¢ÒªÇóÓĞĞòµÄ³¡¾°ÖĞÊ¹ÓÃ.
+ * æ¶ˆæ¯ä¼šè¯å·¥å‚ï¼Œmetaå®¢æˆ·ç«¯çš„ä¸»æ¥å£,æ¨èä¸€ä¸ªåº”ç”¨åªä½¿ç”¨ä¸€ä¸ª.
+ * éœ€è¦æŒ‰ç…§æ¶ˆæ¯å†…å®¹(ä¾‹å¦‚æŸä¸ªid)æ•£åˆ—åˆ°å›ºå®šåˆ†åŒºå¹¶è¦æ±‚æœ‰åºçš„åœºæ™¯ä¸­ä½¿ç”¨.
  * </pre>
  * 
- * @author ÎŞ»¨
- * @since 2011-8-24 ÏÂÎç4:31:45
+ * @author æ— èŠ±
+ * @since 2011-8-24 ä¸‹åˆ4:31:45
  */
 
 public class OrderedMetaMessageSessionFactory extends MetaMessageSessionFactory implements OrderedMessageSessionFactory {
@@ -69,10 +69,10 @@ public class OrderedMetaMessageSessionFactory extends MetaMessageSessionFactory 
 
 
     /**
-     * ´´½¨ÏûÏ¢Éú²úÕß
+     * åˆ›å»ºæ¶ˆæ¯ç”Ÿäº§è€…
      * 
      * @param partitionSelector
-     *            ´«ÈëOrderedMessagePartitionSelectorµÄ¼Ì³ĞÀà¿ÉÖ§³ÖÏûÏ¢É¢ÁĞµ½¹Ì¶¨·ÖÇø¡¢¿É¿¿·¢ËÍºÍË³ĞòÌØĞÔ
+     *            ä¼ å…¥OrderedMessagePartitionSelectorçš„ç»§æ‰¿ç±»å¯æ”¯æŒæ¶ˆæ¯æ•£åˆ—åˆ°å›ºå®šåˆ†åŒºã€å¯é å‘é€å’Œé¡ºåºç‰¹æ€§
      */
     @Override
     public MessageProducer createProducer(final PartitionSelector partitionSelector) {
@@ -107,12 +107,12 @@ public class OrderedMetaMessageSessionFactory extends MetaMessageSessionFactory 
 
 
     /**
-     * ´´½¨ÏûÏ¢Éú²úÕß
+     * åˆ›å»ºæ¶ˆæ¯ç”Ÿäº§è€…
      * 
      * @param partitionSelector
-     *            ´«ÈëOrderedMessagePartitionSelectorµÄ¼Ì³ĞÀà¿ÉÖ§³ÖÏûÏ¢É¢ÁĞµ½¹Ì¶¨·ÖÇø¡¢¿É¿¿·¢ËÍºÍË³ĞòÌØĞÔ
+     *            ä¼ å…¥OrderedMessagePartitionSelectorçš„ç»§æ‰¿ç±»å¯æ”¯æŒæ¶ˆæ¯æ•£åˆ—åˆ°å›ºå®šåˆ†åŒºã€å¯é å‘é€å’Œé¡ºåºç‰¹æ€§
      * @param ordered
-     *            ÊÇ·ñĞèÒª¶àÏß³ÌÓĞĞò
+     *            æ˜¯å¦éœ€è¦å¤šçº¿ç¨‹æœ‰åº
      */
     @Override
     public MessageProducer createProducer(final PartitionSelector partitionSelector, final boolean ordered) {

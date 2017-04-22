@@ -25,7 +25,7 @@ import com.taobao.metamorphosis.consumer.MessageIterator;
 
 
 /**
- * ¶©ÔÄÏûÏ¢µÄ×¢²áĞÅÏ¢
+ * è®¢é˜…æ¶ˆæ¯çš„æ³¨å†Œä¿¡æ¯
  * 
  * @author boyan
  * @Date 2011-4-26
@@ -36,7 +36,7 @@ public class TopicPartitionRegInfo implements Serializable {
     private String topic;
     private Partition partition;
     private final AtomicLong offset;
-    // ´æ´¢ÉÏÒ»´ÎÏû·ÑµÄmessageId,ÎªÁËÍ¬²½¸´ÖÆ¹¦ÄÜÊµÏÖ
+    // å­˜å‚¨ä¸Šä¸€æ¬¡æ¶ˆè´¹çš„messageId,ä¸ºäº†åŒæ­¥å¤åˆ¶åŠŸèƒ½å®ç°
     // added by boyan
     private long messageId = -1L;
 

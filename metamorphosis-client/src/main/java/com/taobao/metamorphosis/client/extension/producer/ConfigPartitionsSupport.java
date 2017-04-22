@@ -26,10 +26,10 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 
 /**
- * 支持获取某topic分区总数的Selector
+ * 鏀寔鑾峰彇鏌恡opic鍒嗗尯鎬绘暟鐨凷elector
  * 
- * @author 无花
- * @since 2011-8-2 下午02:49:27
+ * @author 鏃犺姳
+ * @since 2011-8-2 涓嬪崍02:49:27
  */
 public abstract class ConfigPartitionsSupport implements PartitionSelector, ConfigPartitionsAware {
 

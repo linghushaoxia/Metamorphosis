@@ -21,7 +21,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * �ɹرշ���ӿ�
+ * 可关闭服务接口
  * 
  * @author boyan
  * @Date 2011-6-2

@@ -24,7 +24,7 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 
 /**
- * »ùÓÚTairµÄoffset±£´æÆÚ
+ * åŸºäºTairçš„offsetä¿å­˜æœŸ
  * 
  * @author boyan
  * @Date 2011-4-28

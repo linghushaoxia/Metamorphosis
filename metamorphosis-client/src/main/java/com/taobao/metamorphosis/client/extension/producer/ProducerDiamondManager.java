@@ -31,10 +31,10 @@ import com.taobao.metamorphosis.utils.DiamondUtils;
 
 
 /**
- * ¸ºÔğ´ÓdiamondÈ¡µÃ·ÖÇøµÄÅäÖÃĞÅÏ¢£¨Õë¶ÔË³ĞòÏûÏ¢µÄ·ÖÇøÔ¤ÅäÖÃ£©
+ * è´Ÿè´£ä»diamondå–å¾—åˆ†åŒºçš„é…ç½®ä¿¡æ¯ï¼ˆé’ˆå¯¹é¡ºåºæ¶ˆæ¯çš„åˆ†åŒºé¢„é…ç½®ï¼‰
  * 
- * @author ÎŞ»¨
- * @since 2011-8-17 ÏÂÎç3:32:58
+ * @author æ— èŠ±
+ * @since 2011-8-17 ä¸‹åˆ3:32:58
  */
 
 public class ProducerDiamondManager {
@@ -69,7 +69,7 @@ public class ProducerDiamondManager {
         // ProducerDiamondManager.this.partitionsMap);
         // }
         // catch (Exception e) {
-        // log.error("´Ódiamond¼ÓÔØzkÅäÖÃÊ§°Ü", e);
+        // log.error("ä»diamondåŠ è½½zké…ç½®å¤±è´¥", e);
         // }
         // }
         //

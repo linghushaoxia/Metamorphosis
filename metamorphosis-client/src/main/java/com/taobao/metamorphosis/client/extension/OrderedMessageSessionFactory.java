@@ -22,12 +22,12 @@ import com.taobao.metamorphosis.client.MessageSessionFactory;
 
 /**
  * <pre>
- * ÏûÏ¢»á»°¹¤³§£¬meta¿Í»§¶ËµÄÖ÷½Ó¿Ú,ÍÆ¼öÒ»¸öÓ¦ÓÃÖ»Ê¹ÓÃÒ»¸ö.
- * ĞèÒª°´ÕÕÏûÏ¢ÄÚÈİ(ÀıÈçÄ³¸öid)É¢ÁĞµ½¹Ì¶¨·ÖÇø²¢ÒªÇóÓĞĞòµÄ³¡¾°ÖĞÊ¹ÓÃ.
+ * æ¶ˆæ¯ä¼šè¯å·¥å‚ï¼Œmetaå®¢æˆ·ç«¯çš„ä¸»æ¥å£,æ¨èä¸€ä¸ªåº”ç”¨åªä½¿ç”¨ä¸€ä¸ª.
+ * éœ€è¦æŒ‰ç…§æ¶ˆæ¯å†…å®¹(ä¾‹å¦‚æŸä¸ªid)æ•£åˆ—åˆ°å›ºå®šåˆ†åŒºå¹¶è¦æ±‚æœ‰åºçš„åœºæ™¯ä¸­ä½¿ç”¨.
  * </pre>
  * 
- * @author ÎŞ»¨
- * @since 2011-8-24 ÏÂÎç4:30:36
+ * @author æ— èŠ±
+ * @since 2011-8-24 ä¸‹åˆ4:30:36
  */
 
 public interface OrderedMessageSessionFactory extends MessageSessionFactory {

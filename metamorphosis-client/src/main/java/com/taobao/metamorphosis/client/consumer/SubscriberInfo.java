@@ -21,7 +21,7 @@ import com.taobao.metamorphosis.consumer.ConsumerMessageFilter;
 
 
 /**
- * ¶©ÔÄÕßĞÅÏ¢
+ * è®¢é˜…è€…ä¿¡æ¯
  * 
  * @author boyan
  * @Date 2011-4-26

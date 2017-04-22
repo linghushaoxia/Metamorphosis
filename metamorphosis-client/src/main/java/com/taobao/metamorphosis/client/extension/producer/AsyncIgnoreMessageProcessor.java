@@ -31,8 +31,8 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-10-27 ÉÏÎç11:43:35
+ * @author æ— èŠ±
+ * @since 2011-10-27 ä¸Šåˆ11:43:35
  */
 
 class AsyncIgnoreMessageProcessor implements IgnoreMessageProcessor {
@@ -43,7 +43,7 @@ class AsyncIgnoreMessageProcessor implements IgnoreMessageProcessor {
         System.getProperty("user.home") + File.separator + ".meta_async_storage");
 
     /**
-     * ±¾µØ´ÅÅÌ»º´æµÄÏûÏ¢ÌõÊıÏŞÖÆ
+     * æœ¬åœ°ç£ç›˜ç¼“å­˜çš„æ¶ˆæ¯æ¡æ•°é™åˆ¶
      */
     private final int messageCountLimit = 500000;
 
@@ -56,7 +56,7 @@ class AsyncIgnoreMessageProcessor implements IgnoreMessageProcessor {
 
 
     /**
-     * ÏûÏ¢´æÈë±¾µØ´ÅÅÌ²¢¶¨ÆÚ»Ö¸´
+     * æ¶ˆæ¯å­˜å…¥æœ¬åœ°ç£ç›˜å¹¶å®šæœŸæ¢å¤
      */
     @Override
     public boolean handle(Message message) throws Exception {

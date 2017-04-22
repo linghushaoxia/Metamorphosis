@@ -23,7 +23,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * Ö§³ÖXAÊÂÎñµÄÏûÏ¢Éú²úÕß
+ * æ”¯æŒXAäº‹åŠ¡çš„æ¶ˆæ¯ç”Ÿäº§è€…
  * 
  * @author boyan
  * 
@@ -33,7 +33,7 @@ public interface XAMessageProducer extends MessageProducer {
 
 
     /**
-     * ·µ»ØÒ»¸öXAResource¶ÔÏó¡£ÊÂÎñ¹ÜÀíÆ÷½«Ê¹ÓÃ¸Ã¶ÔÏóÀ´¹ÜÀíXAMessageProducer²ÎÓëµ½Ò»¸ö·Ö²¼Ê½ÊÂÎñÖĞ¡£
+     * è¿”å›ä¸€ä¸ªXAResourceå¯¹è±¡ã€‚äº‹åŠ¡ç®¡ç†å™¨å°†ä½¿ç”¨è¯¥å¯¹è±¡æ¥ç®¡ç†XAMessageProducerå‚ä¸åˆ°ä¸€ä¸ªåˆ†å¸ƒå¼äº‹åŠ¡ä¸­ã€‚
      * 
      * @return
      */

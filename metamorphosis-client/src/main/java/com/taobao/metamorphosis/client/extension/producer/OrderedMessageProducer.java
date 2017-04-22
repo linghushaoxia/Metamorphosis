@@ -39,12 +39,12 @@ import com.taobao.metamorphosis.utils.HexSupport;
 
 /**
  * <pre>
- * ÓĞĞòÏûÏ¢Éú²úÕßµÄÊµÏÖÀà,ĞèÒª°´ÕÕÏûÏ¢ÄÚÈİ(ÀıÈçÄ³¸öid)É¢ÁĞµ½¹Ì¶¨·ÖÇø²¢ÒªÇóÓĞĞòµÄ³¡¾°ÖĞÊ¹ÓÃ.
- * µ±Ô¤ÆÚµÄ·ÖÇø²»¿ÉÓÃÊ±,ÏûÏ¢½«»º´æµ½±¾µØ,·ÖÇø¿ÉÓÃÊ±»Ö¸´.
+ * æœ‰åºæ¶ˆæ¯ç”Ÿäº§è€…çš„å®ç°ç±»,éœ€è¦æŒ‰ç…§æ¶ˆæ¯å†…å®¹(ä¾‹å¦‚æŸä¸ªid)æ•£åˆ—åˆ°å›ºå®šåˆ†åŒºå¹¶è¦æ±‚æœ‰åºçš„åœºæ™¯ä¸­ä½¿ç”¨.
+ * å½“é¢„æœŸçš„åˆ†åŒºä¸å¯ç”¨æ—¶,æ¶ˆæ¯å°†ç¼“å­˜åˆ°æœ¬åœ°,åˆ†åŒºå¯ç”¨æ—¶æ¢å¤.
  * </pre>
  * 
- * @author ÎŞ»¨
- * @since 2011-8-24 ÏÂÎç4:37:48
+ * @author æ— èŠ±
+ * @since 2011-8-24 ä¸‹åˆ4:37:48
  */
 
 public class OrderedMessageProducer extends SimpleMessageProducer {
@@ -143,7 +143,7 @@ public class OrderedMessageProducer extends SimpleMessageProducer {
         public void handle(final Message msg) throws Exception {
             final SendResult sendResult =
                     OrderedMessageProducer.this.sendMessageToServer(msg, DEFAULT_OP_TIMEOUT, TimeUnit.MILLISECONDS);
-            // »Ö¸´Ê±»¹ÊÇÊ§°Ü,Å×³öÒì³£Í£Ö¹ºóĞøÏûÏ¢µÄ»Ö¸´
+            // æ¢å¤æ—¶è¿˜æ˜¯å¤±è´¥,æŠ›å‡ºå¼‚å¸¸åœæ­¢åç»­æ¶ˆæ¯çš„æ¢å¤
             if (!sendResult.isSuccess() /*
                                          * &&
                                          * sendResult.getErrorMessage().equals

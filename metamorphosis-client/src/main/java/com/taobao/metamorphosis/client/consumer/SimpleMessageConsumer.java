@@ -55,7 +55,7 @@ import com.taobao.metamorphosis.utils.StatConstants;
 
 
 /**
- * ÏûÏ¢Ïû·ÑÕß»ùÀà
+ * æ¶ˆæ¯æ¶ˆè´¹è€…åŸºç±»
  * 
  * @author boyan
  * @Date 2011-4-23
@@ -171,7 +171,7 @@ public class SimpleMessageConsumer implements MessageConsumer, InnerConsumer {
         finally {
             this.scheduledExecutorService.shutdownNow();
             this.offsetStorage.close();
-            // É¾³ı±¾×éµÄ¶©ÔÄ¹ØÏµ
+            // åˆ é™¤æœ¬ç»„çš„è®¢é˜…å…³ç³»
             this.subscribeInfoManager.removeGroup(this.consumerConfig.getGroup());
             this.messageSessionFactory.removeChild(this);
         }
@@ -196,9 +196,9 @@ public class SimpleMessageConsumer implements MessageConsumer, InnerConsumer {
         if (messageListener == null) {
             throw new IllegalArgumentException("Null messageListener");
         }
-        // ÏÈÌí¼Óµ½¹«¹²¹ÜÀíÆ÷
+        // å…ˆæ·»åŠ åˆ°å…¬å…±ç®¡ç†å™¨
         this.subscribeInfoManager.subscribe(topic, this.consumerConfig.getGroup(), maxSize, messageListener, filter);
-        // È»ºóÌí¼Óµ½×ÔÉíµÄ¹ÜÀíÆ÷
+        // ç„¶åæ·»åŠ åˆ°è‡ªèº«çš„ç®¡ç†å™¨
         SubscriberInfo info = this.topicSubcriberRegistry.get(topic);
         if (info == null) {
             info = new SubscriberInfo(messageListener, filter, maxSize);
@@ -241,7 +241,7 @@ public class SimpleMessageConsumer implements MessageConsumer, InnerConsumer {
                 this.topicSubcriberRegistry, this.offsetStorage, this.loadBalanceStrategy);
         }
         catch (final Exception e) {
-            throw new MetaClientException("×¢²á¶©ÔÄÕßÊ§°Ü", e);
+            throw new MetaClientException("æ³¨å†Œè®¢é˜…è€…å¤±è´¥", e);
         }
     }
 
@@ -340,7 +340,7 @@ public class SimpleMessageConsumer implements MessageConsumer, InnerConsumer {
             if (response instanceof DataCommand) {
                 final DataCommand dataCmd = (DataCommand) response;
                 final byte[] data = dataCmd.getData();
-                // »ñÈ¡µÄÊı¾İÑÏÖØ²»×ãµÄÊ±ºò£¬Ëõ¼õmaxSize
+                // è·å–çš„æ•°æ®ä¸¥é‡ä¸è¶³çš„æ—¶å€™ï¼Œç¼©å‡maxSize
                 if (data.length < fetchRequest.getMaxSize() / 2) {
                     fetchRequest.decreaseMaxSize();
                 }
@@ -448,7 +448,7 @@ public class SimpleMessageConsumer implements MessageConsumer, InnerConsumer {
 
     /**
      * Created with IntelliJ IDEA. User: dennis (xzhuang@avos.com) Date: 13-2-5
-     * Time: ÉÏÎç11:29
+     * Time: ä¸Šåˆ11:29
      */
     public static class DropPolicy implements RejectConsumptionHandler {
         @Override
@@ -459,7 +459,7 @@ public class SimpleMessageConsumer implements MessageConsumer, InnerConsumer {
 
     /**
      * Created with IntelliJ IDEA. User: dennis (xzhuang@avos.com) Date: 13-2-5
-     * Time: ÉÏÎç11:25
+     * Time: ä¸Šåˆ11:25
      */
     public static class LocalRecoverPolicy implements RejectConsumptionHandler {
         private final RecoverManager recoverManager;

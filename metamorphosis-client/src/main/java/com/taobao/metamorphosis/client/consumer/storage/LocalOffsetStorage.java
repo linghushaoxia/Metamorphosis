@@ -42,7 +42,7 @@ import com.taobao.metamorphosis.utils.JSONUtils;
 
 
 /**
- * ±¾µØoffset´æ´¢£¬´æ´¢ÔÚ´ÅÅÌ£¬Ä¬ÈÏ´æ´¢ÔÚ$HOME/.meta_offsetsÎÄ¼şÖĞ
+ * æœ¬åœ°offsetå­˜å‚¨ï¼Œå­˜å‚¨åœ¨ç£ç›˜ï¼Œé»˜è®¤å­˜å‚¨åœ¨$HOME/.meta_offsetsæ–‡ä»¶ä¸­
  * 
  * @author boyan
  * @Date 2011-5-4
@@ -90,16 +90,16 @@ public class LocalOffsetStorage implements OffsetStorage {
             }
         }
         catch (final IOException e) {
-            log.error("¶ÁÈ¡ÎÄ¼ş" + file + "³ö´í", e);
+            log.error("è¯»å–æ–‡ä»¶" + file + "å‡ºé”™", e);
         }
         finally {
             this.close(reader);
             this.close(fileReader);
         }
         try {
-            // ·ÀÖ¹ÎÄ¼şÄÚÈİÎª¿ÕÊ±½«³öÏÖjson·´ĞòÁĞ»¯Òì³£,add by wuhua
+            // é˜²æ­¢æ–‡ä»¶å†…å®¹ä¸ºç©ºæ—¶å°†å‡ºç°jsonååºåˆ—åŒ–å¼‚å¸¸,add by wuhua
             if (jsonSB.length() <= 0) {
-                log.warn(file.getAbsolutePath() + "ÎÄ¼şÄÚÈİÎª¿Õ,ÔİÊ±Î´¼ÓÔØµ½offsetĞÅÏ¢,Èç¹ûÊÇµÚÒ»´Î·¢²¼ÕâÊÇÕı³£ÏÖÏó");
+                log.warn(file.getAbsolutePath() + "æ–‡ä»¶å†…å®¹ä¸ºç©º,æš‚æ—¶æœªåŠ è½½åˆ°offsetä¿¡æ¯,å¦‚æœæ˜¯ç¬¬ä¸€æ¬¡å‘å¸ƒè¿™æ˜¯æ­£å¸¸ç°è±¡");
                 return;
             }
 
@@ -124,7 +124,7 @@ public class LocalOffsetStorage implements OffsetStorage {
             }
         }
         catch (final Exception e) {
-            log.error("·´ĞòÁĞ»¯jsonÊ§°Ü", e);
+            log.error("ååºåˆ—åŒ–jsonå¤±è´¥", e);
         }
     }
 

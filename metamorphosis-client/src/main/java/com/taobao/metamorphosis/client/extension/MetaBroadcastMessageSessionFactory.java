@@ -33,11 +33,11 @@ import com.taobao.metamorphosis.network.RemotingUtils;
 
 
 /**
- * ¹ã²¥ÏûÏ¢»á»°¹¤³§,Ê¹ÓÃÕâ¸ö´´½¨µÄConsumerÔÚÍ¬Ò»·Ö×éÄÚµÄÃ¿Ì¨»úÆ÷¶¼ÄÜÊÕµ½Í¬Ò»ÌõÏûÏ¢,
- * ÍÆ¼öÒ»¸öÓ¦ÓÃÖ»Ê¹ÓÃÒ»¸öMessageSessionFactory
+ * å¹¿æ’­æ¶ˆæ¯ä¼šè¯å·¥å‚,ä½¿ç”¨è¿™ä¸ªåˆ›å»ºçš„Consumeråœ¨åŒä¸€åˆ†ç»„å†…çš„æ¯å°æœºå™¨éƒ½èƒ½æ”¶åˆ°åŒä¸€æ¡æ¶ˆæ¯,
+ * æ¨èä¸€ä¸ªåº”ç”¨åªä½¿ç”¨ä¸€ä¸ªMessageSessionFactory
  * 
- * @author ÎŞ»¨
- * @since 2011-6-13 ÏÂÎç02:44:24
+ * @author æ— èŠ±
+ * @since 2011-6-13 ä¸‹åˆ02:44:24
  */
 
 public class MetaBroadcastMessageSessionFactory extends MetaMessageSessionFactory implements
@@ -64,7 +64,7 @@ public class MetaBroadcastMessageSessionFactory extends MetaMessageSessionFactor
 
     protected MessageConsumer createBroadcastConsumer(final ConsumerConfig consumerConfig,
             final RecoverManager recoverManager) {
-        // ÏÈ¼ì²éÒ»´ÎÔ­Ê¼µÄgroupÊÇ·ñÎª¿Õ
+        // å…ˆæ£€æŸ¥ä¸€æ¬¡åŸå§‹çš„groupæ˜¯å¦ä¸ºç©º
         if (StringUtils.isBlank(consumerConfig.getGroup())) {
             throw new InvalidConsumerConfigException("Blank group");
         }
@@ -79,7 +79,7 @@ public class MetaBroadcastMessageSessionFactory extends MetaMessageSessionFactor
             return new LocalOffsetStorage();
         }
         catch (final IOException e) {
-            throw new InvalidConsumerConfigException("´´½¨ConsumerÊ§°Ü,Create LocalOffsetStorage failed", e);
+            throw new InvalidConsumerConfigException("åˆ›å»ºConsumerå¤±è´¥,Create LocalOffsetStorage failed", e);
         }
     }
 
@@ -91,7 +91,7 @@ public class MetaBroadcastMessageSessionFactory extends MetaMessageSessionFactor
             return consumerConfig;
         }
         catch (final Exception e) {
-            throw new InvalidConsumerConfigException("»ñÈ¡±¾µØipÊ§°Ü", e);
+            throw new InvalidConsumerConfigException("è·å–æœ¬åœ°ipå¤±è´¥", e);
         }
     }
 

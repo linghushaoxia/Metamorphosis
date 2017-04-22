@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.client.consumer;
 
 /**
- * FetchÇëÇó¹ÜÀíÆ÷½Ó¿Ú
+ * Fetchè¯·æ±‚ç®¡ç†å™¨æ¥å£
  * 
  * @author boyan
  * @Date 2011-5-4
@@ -35,7 +35,7 @@ public interface FetchManager {
 
 
     /**
-     * Í£Ö¹fetch
+     * åœæ­¢fetch
      * 
      * @throws InterruptedException
      */
@@ -43,19 +43,19 @@ public interface FetchManager {
 
 
     /**
-     * ÖØÉè×´Ì¬£¬ÖØÉè×´Ì¬ºó¿ÉÖØÓÃ²¢start
+     * é‡è®¾çŠ¶æ€ï¼Œé‡è®¾çŠ¶æ€åå¯é‡ç”¨å¹¶start
      */
     public void resetFetchState();
 
 
     /**
-     * Æô¶¯¹ÜÀíÆ÷
+     * å¯åŠ¨ç®¡ç†å™¨
      */
     public void startFetchRunner();
 
 
     /**
-     * Ìí¼ÓfetchÇëÇó
+     * æ·»åŠ fetchè¯·æ±‚
      * 
      * @param request
      */
@@ -63,7 +63,7 @@ public interface FetchManager {
 
 
     /**
-     * ÊÇ·ñ¹Ø±Õ
+     * æ˜¯å¦å…³é—­
      * 
      * @return
      */

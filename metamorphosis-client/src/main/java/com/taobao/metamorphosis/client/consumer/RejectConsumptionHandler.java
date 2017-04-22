@@ -6,7 +6,7 @@ import com.taobao.metamorphosis.Message;
  * Created with IntelliJ IDEA.
  * User: dennis (xzhuang@avos.com)
  * Date: 13-2-5
- * Time: ÉÏÎç11:18
+ * Time: ä¸Šåˆ11:18
  */
 public interface RejectConsumptionHandler {
     /**

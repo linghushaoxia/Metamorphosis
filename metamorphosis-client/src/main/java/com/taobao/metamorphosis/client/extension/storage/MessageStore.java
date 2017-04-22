@@ -32,10 +32,10 @@ import com.taobao.common.store.util.BytesKey;
 
 
 /**
- * 保证先进先出顺序的JournalStore
+ * 淇濊瘉鍏堣繘鍏堝嚭椤哄簭鐨凧ournalStore
  * 
- * @author 无花
- * @since 2011-8-12 上午10:30:56
+ * @author 鏃犺姳
+ * @since 2011-8-12 涓婂崍10:30:56
  */
 
 public class MessageStore extends JournalStore {

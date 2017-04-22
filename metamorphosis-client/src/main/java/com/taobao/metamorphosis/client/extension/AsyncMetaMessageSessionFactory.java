@@ -28,10 +28,10 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * 用于创建异步单向发送消息的会话工厂.
+ * 鐢ㄤ簬鍒涘缓寮傛鍗曞悜鍙戦�佹秷鎭殑浼氳瘽宸ュ巶.
  * 
- * @author 无花
- * @since 2011-10-21 下午2:29:55
+ * @author 鏃犺姳
+ * @since 2011-10-21 涓嬪崍2:29:55
  */
 
 public class AsyncMetaMessageSessionFactory extends MetaMessageSessionFactory implements AsyncMessageSessionFactory {

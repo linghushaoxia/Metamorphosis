@@ -25,34 +25,34 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 
 /**
- * ÏûÏ¢Ôİ´æºÍrecover¹ÜÀíÆ÷µÄ³éÏó
+ * æ¶ˆæ¯æš‚å­˜å’Œrecoverç®¡ç†å™¨çš„æŠ½è±¡
  * 
- * @author ÎŞ»¨
- * @since 2011-10-27 ÏÂÎç3:34:12
+ * @author æ— èŠ±
+ * @since 2011-10-27 ä¸‹åˆ3:34:12
  */
 
 public interface MessageRecoverManager extends Shutdownable {
 
     /**
-     * È«²¿»Ö¸´
+     * å…¨éƒ¨æ¢å¤
      */
     public void recover();
 
 
     /**
-     * ´¥·¢»Ö¸´Ò»¸öÖ÷ÌâÒ»¸ö·ÖÇøµÄÏûÏ¢
+     * è§¦å‘æ¢å¤ä¸€ä¸ªä¸»é¢˜ä¸€ä¸ªåˆ†åŒºçš„æ¶ˆæ¯
      * 
      * @param topic
      * @param partition
      * @param recoverer
-     *            »Ö¸´³öÀ´µÄÏûÏ¢µÄ´¦ÀíÆ÷
-     * @return ÊÇ·ñÕæÕıÌá½»ÁË»Ö¸´ÈÎÎñ
+     *            æ¢å¤å‡ºæ¥çš„æ¶ˆæ¯çš„å¤„ç†å™¨
+     * @return æ˜¯å¦çœŸæ­£æäº¤äº†æ¢å¤ä»»åŠ¡
      * */
     public boolean recover(final String topic, final Partition partition, final MessageRecoverer recoverer);
 
 
     /**
-     * ´æÈëÏûÏ¢
+     * å­˜å…¥æ¶ˆæ¯
      * 
      * @param message
      * @param partition
@@ -62,7 +62,7 @@ public interface MessageRecoverManager extends Shutdownable {
 
 
     /**
-     * ÏûÏ¢ÌõÊı
+     * æ¶ˆæ¯æ¡æ•°
      * 
      * @param topic
      * @param partition
@@ -72,21 +72,21 @@ public interface MessageRecoverManager extends Shutdownable {
 
 
     /**
-     * ÉèÖÃÈçºÎ»Ö¸´ÏûÏ¢µÄ´¦ÀíÆ÷
+     * è®¾ç½®å¦‚ä½•æ¢å¤æ¶ˆæ¯çš„å¤„ç†å™¨
      * 
      * @param recoverer
      */
     public void setMessageRecoverer(MessageRecoverer recoverer);
 
     /**
-     * Ö¸¶¨ÏûÏ¢ÈçºÎrecover
+     * æŒ‡å®šæ¶ˆæ¯å¦‚ä½•recover
      * 
      * @author wuhua
      * 
      */
     public static interface MessageRecoverer {
         /**
-         * recover³öÀ´µÄÏûÏ¢ÈçºÎ´¦Àí
+         * recoverå‡ºæ¥çš„æ¶ˆæ¯å¦‚ä½•å¤„ç†
          * 
          * @param msg
          * @throws Exception

@@ -32,7 +32,7 @@ import com.taobao.metamorphosis.utils.ZkUtils;
 
 
 /**
- * »ùÓÚzkµÄoffset´æ´¢Æ÷
+ * åŸºäºzkçš„offsetå­˜å‚¨å™¨
  * 
  * @author boyan
  * @Date 2011-4-28
@@ -69,20 +69,20 @@ public class ZkOffsetStorage implements OffsetStorage, ZkClientChangedListener {
             final ZKGroupTopicDirs topicDirs = this.metaZookeeper.new ZKGroupTopicDirs(topic, group);
             long newOffset = -1;
             long msgId = -1;
-            // ¼ÓËø£¬±£Ö¤msgIdºÍoffsetÒ»ÖÂ
+            // åŠ é”ï¼Œä¿è¯msgIdå’Œoffsetä¸€è‡´
             synchronized (info) {
-                // Ö»¸üĞÂÓĞ±ä¸üµÄ
+                // åªæ›´æ–°æœ‰å˜æ›´çš„
                 if (!info.isModified()) {
                     continue;
                 }
                 newOffset = info.getOffset().get();
                 msgId = info.getMessageId();
-                // ¸üĞÂÍê±Ï£¬ÉèÖÃÎªfalse
+                // æ›´æ–°å®Œæ¯•ï¼Œè®¾ç½®ä¸ºfalse
                 info.setModified(false);
             }
             try {
-                // ´æ´¢µ½zkÀïµÄÊı¾İÎªmsgId-offset
-                // Ô­Ê¼Ö»ÓĞoffset£¬´Ó1.4¿ªÊ¼ĞŞ¸ÄÎªmsgId-offset,ÎªÁËÊµÏÖÍ¬²½¸´ÖÆ
+                // å­˜å‚¨åˆ°zké‡Œçš„æ•°æ®ä¸ºmsgId-offset
+                // åŸå§‹åªæœ‰offsetï¼Œä»1.4å¼€å§‹ä¿®æ”¹ä¸ºmsgId-offset,ä¸ºäº†å®ç°åŒæ­¥å¤åˆ¶
                 ZkUtils.updatePersistentPath(this.zkClient, topicDirs.consumerOffsetDir + "/"
                         + info.getPartition().toString(), msgId + "-" + newOffset);
             }
@@ -106,16 +106,16 @@ public class ZkOffsetStorage implements OffsetStorage, ZkClientChangedListener {
             return null;
         }
         else {
-            // ¼æÈİÀÏ¿Í»§¶Ë
+            // å…¼å®¹è€å®¢æˆ·ç«¯
             final int index = offsetString.lastIndexOf("-");
             if (index > 0) {
-                // 1.4¿ªÊ¼µÄĞÂ¿Í»§¶Ë
+                // 1.4å¼€å§‹çš„æ–°å®¢æˆ·ç«¯
                 final long msgId = Long.parseLong(offsetString.substring(0, index));
                 final long offset = Long.parseLong(offsetString.substring(index + 1));
                 return new TopicPartitionRegInfo(topic, partition, offset, msgId);
             }
             else {
-                // ÀÏ¿Í»§¶Ë
+                // è€å®¢æˆ·ç«¯
                 final long offset = Long.parseLong(offsetString);
                 return new TopicPartitionRegInfo(topic, partition, offset);
             }

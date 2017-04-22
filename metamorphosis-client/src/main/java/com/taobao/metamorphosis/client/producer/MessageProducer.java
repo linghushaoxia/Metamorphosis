@@ -25,7 +25,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * ÏûÏ¢Éú²úÕß£¬Ïß³Ì°²È«£¬ÍÆ¼ö¸´ÓÃ
+ * æ¶ˆæ¯ç”Ÿäº§è€…ï¼Œçº¿ç¨‹å®‰å…¨ï¼Œæ¨èå¤ç”¨
  * 
  * @author boyan
  * @Date 2011-4-21
@@ -34,7 +34,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 public interface MessageProducer extends Shutdownable {
 
     /**
-     * ·¢²¼topic£¬ÒÔ±ãproducer´Ózookeeper»ñÈ¡brokerÁĞ±í²¢Á¬½Ó£¬ÔÚ·¢ËÍÏûÏ¢Ç°±ØĞëÏÈµ÷ÓÃ´Ë·½·¨
+     * å‘å¸ƒtopicï¼Œä»¥ä¾¿producerä»zookeeperè·å–brokeråˆ—è¡¨å¹¶è¿æ¥ï¼Œåœ¨å‘é€æ¶ˆæ¯å‰å¿…é¡»å…ˆè°ƒç”¨æ­¤æ–¹æ³•
      * 
      * @param topic
      */
@@ -42,8 +42,8 @@ public interface MessageProducer extends Shutdownable {
 
 
     /**
-     * ÉèÖÃ·¢ËÍÏûÏ¢µÄÄ¬ÈÏtopic£¬µ±·¢ËÍµÄmessageµÄtopicÃ»ÓĞÕÒµ½¿ÉÓÃbrokerºÍ·ÖÇøµÄÊ±ºò£¬Ñ¡ÔñÕâ¸öÄ¬ÈÏtopicÖ¸¶¨µÄbroker·¢ËÍ
-     * ¡£µ÷ÓÃ±¾·½·¨»á×Ô¶¯publish´Ëtopic¡£
+     * è®¾ç½®å‘é€æ¶ˆæ¯çš„é»˜è®¤topicï¼Œå½“å‘é€çš„messageçš„topicæ²¡æœ‰æ‰¾åˆ°å¯ç”¨brokerå’Œåˆ†åŒºçš„æ—¶å€™ï¼Œé€‰æ‹©è¿™ä¸ªé»˜è®¤topicæŒ‡å®šçš„brokerå‘é€
+     * ã€‚è°ƒç”¨æœ¬æ–¹æ³•ä¼šè‡ªåŠ¨publishæ­¤topicã€‚
      * 
      * @param topic
      */
@@ -51,22 +51,22 @@ public interface MessageProducer extends Shutdownable {
 
 
     /**
-     * ·¢ËÍÏûÏ¢
+     * å‘é€æ¶ˆæ¯
      * 
      * @param message
-     *            ÏûÏ¢¶ÔÏó
+     *            æ¶ˆæ¯å¯¹è±¡
      * 
-     * @return ·¢ËÍ½á¹û
+     * @return å‘é€ç»“æœ
      * @throws MetaClientException
-     *             ¿Í»§¶ËÒì³£
+     *             å®¢æˆ·ç«¯å¼‚å¸¸
      * @throws InterruptedException
-     *             ÏìÓ¦ÖĞ¶Ï
+     *             å“åº”ä¸­æ–­
      */
     public SendResult sendMessage(Message message) throws MetaClientException, InterruptedException;
 
 
     /**
-     * Òì²½·¢ËÍÏûÏ¢£¬ÔÚÖ¸¶¨Ê±¼äÄÚ»Øµ÷callback,´ËÄ£Ê½ÏÂÎŞ·¨Ê¹ÓÃÊÂÎñ
+     * å¼‚æ­¥å‘é€æ¶ˆæ¯ï¼Œåœ¨æŒ‡å®šæ—¶é—´å†…å›è°ƒcallback,æ­¤æ¨¡å¼ä¸‹æ— æ³•ä½¿ç”¨äº‹åŠ¡
      * 
      * @param message
      * @param cb
@@ -78,7 +78,7 @@ public interface MessageProducer extends Shutdownable {
 
 
     /**
-     * Òì²½·¢ËÍÏûÏ¢£¬ÔÚÄ¬ÈÏÊ±¼äÄÚ£¨3Ãë£©»Øµ÷callback£¬´ËÄ£Ê½ÏÂÎŞ·¨Ê¹ÓÃÊÂÎñ
+     * å¼‚æ­¥å‘é€æ¶ˆæ¯ï¼Œåœ¨é»˜è®¤æ—¶é—´å†…ï¼ˆ3ç§’ï¼‰å›è°ƒcallbackï¼Œæ­¤æ¨¡å¼ä¸‹æ— æ³•ä½¿ç”¨äº‹åŠ¡
      * 
      * @param message
      * @param cb
@@ -88,33 +88,33 @@ public interface MessageProducer extends Shutdownable {
 
 
     /**
-     * ·¢ËÍÏûÏ¢,Èç¹û³¬³öÖ¸¶¨µÄÊ±¼äÄÚÃ»ÓĞ·µ»Ø£¬ÔòÅ×³öÒì³£
+     * å‘é€æ¶ˆæ¯,å¦‚æœè¶…å‡ºæŒ‡å®šçš„æ—¶é—´å†…æ²¡æœ‰è¿”å›ï¼Œåˆ™æŠ›å‡ºå¼‚å¸¸
      * 
      * @param message
-     *            ÏûÏ¢¶ÔÏó
+     *            æ¶ˆæ¯å¯¹è±¡
      * @param timeout
-     *            ³¬Ê±Ê±¼ä
+     *            è¶…æ—¶æ—¶é—´
      * @param unit
-     *            ³¬Ê±µÄÊ±¼äµ¥Î»
-     * @return ·¢ËÍ½á¹û
+     *            è¶…æ—¶çš„æ—¶é—´å•ä½
+     * @return å‘é€ç»“æœ
      * @throws MetaClientException
-     *             ¿Í»§¶ËÒì³£
+     *             å®¢æˆ·ç«¯å¼‚å¸¸
      * @throws InterruptedException
-     *             ÏìÓ¦ÖĞ¶Ï
+     *             å“åº”ä¸­æ–­
      */
     public SendResult sendMessage(Message message, long timeout, TimeUnit unit) throws MetaClientException,
     InterruptedException;
 
 
     /**
-     * ¹Ø±ÕÉú²úÕß£¬ÊÍ·Å×ÊÔ´
+     * å…³é—­ç”Ÿäº§è€…ï¼Œé‡Šæ”¾èµ„æº
      */
     @Override
     public void shutdown() throws MetaClientException;
 
 
     /**
-     * ·µ»Ø±¾Éú²úÕßµÄ·ÖÇøÑ¡ÔñÆ÷
+     * è¿”å›æœ¬ç”Ÿäº§è€…çš„åˆ†åŒºé€‰æ‹©å™¨
      * 
      * @return
      */
@@ -122,28 +122,28 @@ public interface MessageProducer extends Shutdownable {
 
 
     /**
-     * ·µ»Ø±¾Éú²úÕß·¢ËÍÏûÏ¢ÊÇ·ñÓĞĞò,ÕâÀïµÄÓĞĞòÊÇÖ¸·¢ÍùÍ¬Ò»¸öpartitionµÄÏûÏ¢ÓĞĞò¡£´Ë·½·¨ÒÑ¾­·ÏÆú£¬×ÜÊÇ·µ»Øfalse
+     * è¿”å›æœ¬ç”Ÿäº§è€…å‘é€æ¶ˆæ¯æ˜¯å¦æœ‰åº,è¿™é‡Œçš„æœ‰åºæ˜¯æŒ‡å‘å¾€åŒä¸€ä¸ªpartitionçš„æ¶ˆæ¯æœ‰åºã€‚æ­¤æ–¹æ³•å·²ç»åºŸå¼ƒï¼Œæ€»æ˜¯è¿”å›false
      * 
-     * @return true±íÊ¾ÓĞĞò
+     * @return trueè¡¨ç¤ºæœ‰åº
      */
     @Deprecated
     public boolean isOrdered();
 
 
     /**
-     * ¿ªÆôÒ»¸öÊÂÎñ²¢¹ØÁªµ½µ±Ç°Ïß³Ì£¬ÔÚÊÂÎñÄÚ·¢ËÍµÄÏûÏ¢½«×÷ÎªÒ»¸öµ¥ÔªÌá½»¸ø·şÎñÆ÷£¬ÒªÃ´È«²¿·¢ËÍ³É¹¦£¬ÒªÃ´È«²¿Ê§°Ü
+     * å¼€å¯ä¸€ä¸ªäº‹åŠ¡å¹¶å…³è”åˆ°å½“å‰çº¿ç¨‹ï¼Œåœ¨äº‹åŠ¡å†…å‘é€çš„æ¶ˆæ¯å°†ä½œä¸ºä¸€ä¸ªå•å…ƒæäº¤ç»™æœåŠ¡å™¨ï¼Œè¦ä¹ˆå…¨éƒ¨å‘é€æˆåŠŸï¼Œè¦ä¹ˆå…¨éƒ¨å¤±è´¥
      * 
      * @throws MetaClientException
-     *             Èç¹ûÒÑ¾­´¦ÓÚÊÂÎñÖĞ£¬ÔòÅ×³öTransactionInProgressExceptionÒì³£
+     *             å¦‚æœå·²ç»å¤„äºäº‹åŠ¡ä¸­ï¼Œåˆ™æŠ›å‡ºTransactionInProgressExceptionå¼‚å¸¸
      */
     public void beginTransaction() throws MetaClientException;
 
 
     /**
-     * ÉèÖÃÊÂÎñ³¬Ê±Ê±¼ä£¬´ÓÊÂÎñ¿ªÊ¼¼ÆÊ±£¬Èç¹û³¬¹ıÉè¶¨Ê±¼ä»¹Ã»ÓĞÌá½»»òÕß»Ø¹ö£¬Ôò·şÎñ¶Ë½«ÎŞÌõ¼ş»Ø¹ö¸ÃÊÂÎñ¡£
+     * è®¾ç½®äº‹åŠ¡è¶…æ—¶æ—¶é—´ï¼Œä»äº‹åŠ¡å¼€å§‹è®¡æ—¶ï¼Œå¦‚æœè¶…è¿‡è®¾å®šæ—¶é—´è¿˜æ²¡æœ‰æäº¤æˆ–è€…å›æ»šï¼Œåˆ™æœåŠ¡ç«¯å°†æ— æ¡ä»¶å›æ»šè¯¥äº‹åŠ¡ã€‚
      * 
      * @param seconds
-     *            ÊÂÎñ³¬Ê±Ê±¼ä£¬µ¥Î»£ºÃë
+     *            äº‹åŠ¡è¶…æ—¶æ—¶é—´ï¼Œå•ä½ï¼šç§’
      * @throws MetaClientException
      * @see #beginTransaction()
      * @see #rollback()
@@ -162,16 +162,16 @@ public interface MessageProducer extends Shutdownable {
 
 
     /**
-     * ·µ»Øµ±Ç°ÉèÖÃµÄÊÂÎñ³¬Ê±Ê±¼ä£¬Ä¬ÈÏÎª0,±íÊ¾ÓÀ²»³¬Ê±
+     * è¿”å›å½“å‰è®¾ç½®çš„äº‹åŠ¡è¶…æ—¶æ—¶é—´ï¼Œé»˜è®¤ä¸º0,è¡¨ç¤ºæ°¸ä¸è¶…æ—¶
      * 
-     * @return ÊÂÎñ³¬Ê±Ê±¼ä£¬µ¥Î»£ºÃë
+     * @return äº‹åŠ¡è¶…æ—¶æ—¶é—´ï¼Œå•ä½ï¼šç§’
      * @throws MetaClientException
      */
     public int getTransactionTimeout() throws MetaClientException;
 
 
     /**
-     * »Ø¹öµ±Ç°ÊÂÎñÄÚËù·¢ËÍµÄÈÎºÎÏûÏ¢£¬´Ë·½·¨½öÄÜÔÚbeginTransactionÖ®ºóµ÷ÓÃ
+     * å›æ»šå½“å‰äº‹åŠ¡å†…æ‰€å‘é€çš„ä»»ä½•æ¶ˆæ¯ï¼Œæ­¤æ–¹æ³•ä»…èƒ½åœ¨beginTransactionä¹‹åè°ƒç”¨
      * 
      * @throws MetaClientException
      * @see #beginTransaction()
@@ -180,7 +180,7 @@ public interface MessageProducer extends Shutdownable {
 
 
     /**
-     * Ìá½»µ±Ç°ÊÂÎñ£¬½«ÊÂÎñÄÚ·¢ËÍµÄÏûÏ¢³Ö¾Ã»¯£¬´Ë·½·¨½öÄÜÔÚbeginTransactionÖ®ºóµ÷ÓÃ
+     * æäº¤å½“å‰äº‹åŠ¡ï¼Œå°†äº‹åŠ¡å†…å‘é€çš„æ¶ˆæ¯æŒä¹…åŒ–ï¼Œæ­¤æ–¹æ³•ä»…èƒ½åœ¨beginTransactionä¹‹åè°ƒç”¨
      * 
      * @see #beginTransaction()
      * @throws MetaClientException

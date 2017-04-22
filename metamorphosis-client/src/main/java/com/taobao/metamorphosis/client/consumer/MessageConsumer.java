@@ -29,7 +29,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * ÏûÏ¢Ïû·ÑÕß£¬Ïß³Ì°²È«£¬ÍÆ¼ö¸´ÓÃ
+ * æ¶ˆæ¯æ¶ˆè´¹è€…ï¼Œçº¿ç¨‹å®‰å…¨ï¼Œæ¨èå¤ç”¨
  * 
  * @author boyan
  * @Date 2011-4-21
@@ -38,24 +38,24 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 public interface MessageConsumer extends Shutdownable {
 
     /**
-     * »ñÈ¡Ö¸¶¨topicºÍ·ÖÇøÏÂÃæµÄÏûÏ¢£¬Ä¬ÈÏ³¬Ê±10Ãë
+     * è·å–æŒ‡å®štopicå’Œåˆ†åŒºä¸‹é¢çš„æ¶ˆæ¯ï¼Œé»˜è®¤è¶…æ—¶10ç§’
      * 
      * @param topic
      * @param partition
-     * @return ÏûÏ¢µü´úÆ÷£¬¿ÉÄÜÎªnull
+     * @return æ¶ˆæ¯è¿­ä»£å™¨ï¼Œå¯èƒ½ä¸ºnull
      */
     public MessageIterator get(String topic, Partition partition, long offset, int maxSize) throws MetaClientException,
     InterruptedException;
 
 
     /**
-     * »ñÈ¡Ö¸¶¨topicºÍ·ÖÇøÏÂÃæµÄÏûÏ¢£¬ÔÚÖ¸¶¨Ê±¼äÄÚÃ»ÓĞ·µ»ØÔòÅ×³öÒì³£
+     * è·å–æŒ‡å®štopicå’Œåˆ†åŒºä¸‹é¢çš„æ¶ˆæ¯ï¼Œåœ¨æŒ‡å®šæ—¶é—´å†…æ²¡æœ‰è¿”å›åˆ™æŠ›å‡ºå¼‚å¸¸
      * 
      * @param topic
      * @param partition
      * @param timeout
      * @param timeUnit
-     * @return ÏûÏ¢µü´úÆ÷£¬¿ÉÄÜÎªnull
+     * @return æ¶ˆæ¯è¿­ä»£å™¨ï¼Œå¯èƒ½ä¸ºnull
      * @throws TimeoutException
      */
     public MessageIterator get(String topic, Partition partition, long offset, int maxSize, long timeout,
@@ -63,40 +63,40 @@ public interface MessageConsumer extends Shutdownable {
 
 
     /**
-     * ¶©ÔÄÖ¸¶¨µÄÏûÏ¢£¬´«ÈëMessageListener£¬µ±ÓĞÏûÏ¢´ïµ½µÄÊ±ºòÖ÷¶¯Í¨ÖªMessageListener£¬Çë×¢Òâ£¬
-     * µ÷ÓÃ´Ë·½·¨²¢²»»áÊ¹¶©ÔÄ¹ØÏµÁ¢¼´ÉúĞ§£¬ Ö»ÓĞÔÚµ÷ÓÃcomplete·½·¨ºó²ÅÉúĞ§£¬´Ë·½·¨¿É×öÁ´Ê½µ÷ÓÃ
+     * è®¢é˜…æŒ‡å®šçš„æ¶ˆæ¯ï¼Œä¼ å…¥MessageListenerï¼Œå½“æœ‰æ¶ˆæ¯è¾¾åˆ°çš„æ—¶å€™ä¸»åŠ¨é€šçŸ¥MessageListenerï¼Œè¯·æ³¨æ„ï¼Œ
+     * è°ƒç”¨æ­¤æ–¹æ³•å¹¶ä¸ä¼šä½¿è®¢é˜…å…³ç³»ç«‹å³ç”Ÿæ•ˆï¼Œ åªæœ‰åœ¨è°ƒç”¨completeæ–¹æ³•åæ‰ç”Ÿæ•ˆï¼Œæ­¤æ–¹æ³•å¯åšé“¾å¼è°ƒç”¨
      * 
      * @param topic
-     *            ¶©ÔÄµÄtopic
+     *            è®¢é˜…çš„topic
      * @param maxSize
-     *            ¶©ÔÄÃ¿´Î½ÓÊÕµÄ×î´óÊı¾İ´óĞ¡
+     *            è®¢é˜…æ¯æ¬¡æ¥æ”¶çš„æœ€å¤§æ•°æ®å¤§å°
      * @param messageListener
-     *            ÏûÏ¢¼àÌıÆ÷
+     *            æ¶ˆæ¯ç›‘å¬å™¨
      */
     public MessageConsumer subscribe(String topic, int maxSize, MessageListener messageListener)
             throws MetaClientException;
 
 
     /**
-     * ¶©ÔÄÖ¸¶¨µÄÏûÏ¢£¬´«ÈëMessageListenerºÍConsumerMessageFilter£¬
-     * µ±ÓĞÏûÏ¢µ½´ï²¢ÇÒConsumerMessageFilter
-     * #accept·µ»ØtrueµÄÊ±ºò,Ö÷¶¯Í¨ÖªMessageListener¸ÃÌõÏûÏ¢£¬Çë×¢Òâ£¬ µ÷ÓÃ´Ë·½·¨²¢²»»áÊ¹¶©ÔÄ¹ØÏµÁ¢¼´ÉúĞ§£¬
-     * Ö»ÓĞÔÚµ÷ÓÃcomplete·½·¨ºó²ÅÉúĞ§£¬´Ë·½·¨¿É×öÁ´Ê½µ÷ÓÃ
+     * è®¢é˜…æŒ‡å®šçš„æ¶ˆæ¯ï¼Œä¼ å…¥MessageListenerå’ŒConsumerMessageFilterï¼Œ
+     * å½“æœ‰æ¶ˆæ¯åˆ°è¾¾å¹¶ä¸”ConsumerMessageFilter
+     * #acceptè¿”å›trueçš„æ—¶å€™,ä¸»åŠ¨é€šçŸ¥MessageListenerè¯¥æ¡æ¶ˆæ¯ï¼Œè¯·æ³¨æ„ï¼Œ è°ƒç”¨æ­¤æ–¹æ³•å¹¶ä¸ä¼šä½¿è®¢é˜…å…³ç³»ç«‹å³ç”Ÿæ•ˆï¼Œ
+     * åªæœ‰åœ¨è°ƒç”¨completeæ–¹æ³•åæ‰ç”Ÿæ•ˆï¼Œæ­¤æ–¹æ³•å¯åšé“¾å¼è°ƒç”¨
      * 
      * @param topic
-     *            ¶©ÔÄµÄtopic
+     *            è®¢é˜…çš„topic
      * @param maxSize
-     *            ¶©ÔÄÃ¿´Î½ÓÊÕµÄ×î´óÊı¾İ´óĞ¡
+     *            è®¢é˜…æ¯æ¬¡æ¥æ”¶çš„æœ€å¤§æ•°æ®å¤§å°
      * @param messageListener
      * @param ConsumerMessageFilter
-     *            message filter ÏûÏ¢¼àÌıÆ÷
+     *            message filter æ¶ˆæ¯ç›‘å¬å™¨
      */
     public MessageConsumer subscribe(String topic, int maxSize, MessageListener messageListener,
             ConsumerMessageFilter consumerMessageFilter) throws MetaClientException;
 
 
     /**
-     * ÅúÁ¿¶©ÔÄÏûÏ¢,Çë×¢Òâ£¬µ÷ÓÃ´Ë·½·¨²¢²»»áÊ¹¶©ÔÄ¹ØÏµÁ¢¼´ÉúĞ§£¬Ö»ÓĞÔÚµ÷ÓÃcomplete·½·¨ºó²ÅÉúĞ§¡£
+     * æ‰¹é‡è®¢é˜…æ¶ˆæ¯,è¯·æ³¨æ„ï¼Œè°ƒç”¨æ­¤æ–¹æ³•å¹¶ä¸ä¼šä½¿è®¢é˜…å…³ç³»ç«‹å³ç”Ÿæ•ˆï¼Œåªæœ‰åœ¨è°ƒç”¨completeæ–¹æ³•åæ‰ç”Ÿæ•ˆã€‚
      * 
      * @param subscriptions
      */
@@ -104,13 +104,13 @@ public interface MessageConsumer extends Shutdownable {
 
 
     /**
-     * Ê¹µÃÒÑ¾­¶©ÔÄµÄtopicÉúĞ§,´Ë·½·¨½öÄÜµ÷ÓÃÒ»´Î,ÔÙ´Îµ÷ÓÃÎŞĞ§²¢½«Å×³öÒì³£
+     * ä½¿å¾—å·²ç»è®¢é˜…çš„topicç”Ÿæ•ˆ,æ­¤æ–¹æ³•ä»…èƒ½è°ƒç”¨ä¸€æ¬¡,å†æ¬¡è°ƒç”¨æ— æ•ˆå¹¶å°†æŠ›å‡ºå¼‚å¸¸
      */
     public void completeSubscribe() throws MetaClientException;
 
 
     /**
-     * ·µ»Ø´ËÏû·ÑÕßÊ¹ÓÃµÄoffset´æ´¢Æ÷£¬¿É¹²Ïí¸øÆäËûÏû·ÑÕß
+     * è¿”å›æ­¤æ¶ˆè´¹è€…ä½¿ç”¨çš„offsetå­˜å‚¨å™¨ï¼Œå¯å…±äº«ç»™å…¶ä»–æ¶ˆè´¹è€…
      * 
      * @return
      */
@@ -118,14 +118,14 @@ public interface MessageConsumer extends Shutdownable {
 
 
     /**
-     * Í£Ö¹Ïû·ÑÕß
+     * åœæ­¢æ¶ˆè´¹è€…
      */
     @Override
     public void shutdown() throws MetaClientException;
 
 
     /**
-     * ·µ»ØÏû·ÑÕßÅäÖÃ
+     * è¿”å›æ¶ˆè´¹è€…é…ç½®
      * 
      * @return
      */

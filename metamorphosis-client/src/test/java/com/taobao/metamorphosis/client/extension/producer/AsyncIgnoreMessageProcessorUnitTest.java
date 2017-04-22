@@ -33,8 +33,8 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-12-29 ÏÂÎç2:00:59
+ * @author æ— èŠ±
+ * @since 2011-12-29 ä¸‹åˆ2:00:59
  */
 
 public class AsyncIgnoreMessageProcessorUnitTest {

@@ -22,10 +22,10 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * »¬¶¯´°¿Ú,ÓÃÀ´¿ØÖÆÁ÷Á¿
+ * æ»‘åŠ¨çª—å£,ç”¨æ¥æŽ§åˆ¶æµé‡
  * 
- * @author ÎÞ»¨
- * @since 2011-10-26 ÉÏÎç10:48:46
+ * @author æ— èŠ±
+ * @since 2011-10-26 ä¸Šåˆ10:48:46
  */
 
 class SlidingWindow {
@@ -79,7 +79,7 @@ class SlidingWindow {
 
         @Override
         public int covertToItemLength(int length) {
-            // 4kÁ÷Á¿Õ¼´°¿ÚµÄÒ»¸öµ¥Î»
+            // 4kæµé‡å çª—å£çš„ä¸€ä¸ªå•ä½
             int i = length / 4096;
             return i > 0 ? i : 1;
         }

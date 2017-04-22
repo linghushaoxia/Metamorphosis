@@ -55,7 +55,7 @@ import com.taobao.metamorphosis.utils.StatConstants;
 
 
 /**
- * ÊÂÎñÉÏÏÂÎÄ£¬Í¬Ê±Ö§³Ö±¾µØÊÂÎñºÍXAÊÂÎñ
+ * äº‹åŠ¡ä¸Šä¸‹æ–‡ï¼ŒåŒæ—¶æ”¯æŒæœ¬åœ°äº‹åŠ¡å’ŒXAäº‹åŠ¡
  * 
  * @author boyan
  * 
@@ -322,7 +322,7 @@ public class TransactionContext implements XAResource {
 
         XATransactionId x;
 
-        // ÀíÂÛÉÏ²»Ó¦¸Ã³öÏÖÕâÖÖÇé¿ö£¬ÒòÎªend×ÜÊÇÔÚprepareÖ®Ç°µ÷ÓÃ£¬associatedXidÒÑ¾­ÉèÖÃÎªnull£¬Ô¤·À
+        // ç†è®ºä¸Šä¸åº”è¯¥å‡ºç°è¿™ç§æƒ…å†µï¼Œå› ä¸ºendæ€»æ˜¯åœ¨prepareä¹‹å‰è°ƒç”¨ï¼ŒassociatedXidå·²ç»è®¾ç½®ä¸ºnullï¼Œé¢„é˜²
         if (xid == null || this.equals(this.associatedXid, xid)) {
             throw new XAException(XAException.XAER_PROTO);
         }
@@ -496,7 +496,7 @@ public class TransactionContext implements XAResource {
 
 
     /**
-     * ½«Òì³£×ª»¯ÎªXAÒì³£
+     * å°†å¼‚å¸¸è½¬åŒ–ä¸ºXAå¼‚å¸¸
      * 
      * @param e
      * @return
@@ -582,7 +582,7 @@ public class TransactionContext implements XAResource {
         }
 
         if ((flags & TMJOIN) == TMJOIN || (flags & TMRESUME) == TMRESUME) {
-            // ¼ÓÈë»òÕßresumeµÄxid£¬±ØĞëÓëµ±Ç°xidÒ»Ñù¡£
+            // åŠ å…¥æˆ–è€…resumeçš„xidï¼Œå¿…é¡»ä¸å½“å‰xidä¸€æ ·ã€‚
             if (!this.equals(this.associatedXid, xid)) {
                 throw new XAException(XAException.XAER_NOTA);
             }
@@ -599,7 +599,7 @@ public class TransactionContext implements XAResource {
 
 
     /**
-     * ÏÂÁĞ·½·¨Îª±¾µØÊÂÎñÊµÏÖ£¬begin,commitºÍrollback
+     * ä¸‹åˆ—æ–¹æ³•ä¸ºæœ¬åœ°äº‹åŠ¡å®ç°ï¼Œbegin,commitå’Œrollback
      */
 
     public void begin() throws MetaClientException {

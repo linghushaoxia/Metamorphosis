@@ -25,7 +25,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * 支持事务的XA消息工厂
+ * 鏀寔浜嬪姟鐨刋A娑堟伅宸ュ巶
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-17

@@ -21,7 +21,7 @@ import java.util.List;
 
 
 /**
- * ConsumerµÄbalance²ßÂÔ
+ * Consumerçš„balanceç­–ç•¥
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-11-29
@@ -36,16 +36,16 @@ public interface LoadBalanceStrategy {
 
 
     /**
-     * ¸ù¾İconsumer id²éÕÒ¶ÔÓ¦µÄ·ÖÇøÁĞ±í
+     * æ ¹æ®consumer idæŸ¥æ‰¾å¯¹åº”çš„åˆ†åŒºåˆ—è¡¨
      * 
      * @param topic
-     *            ·ÖÇøtopic
+     *            åˆ†åŒºtopic
      * @param consumerId
      *            consumerId
      * @param curConsumers
-     *            µ±Ç°ËùÓĞµÄconsumerÁĞ±í
+     *            å½“å‰æ‰€æœ‰çš„consumeråˆ—è¡¨
      * @param curPartitions
-     *            µ±Ç°µÄ·ÖÇøÁĞ±í
+     *            å½“å‰çš„åˆ†åŒºåˆ—è¡¨
      * 
      * @return
      */

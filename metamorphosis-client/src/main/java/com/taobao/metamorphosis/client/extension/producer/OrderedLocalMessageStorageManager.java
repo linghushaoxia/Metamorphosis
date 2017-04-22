@@ -32,10 +32,10 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 
 /**
- * Õë¶ÔË³ĞòÏûÏ¢×öÁËÌØÊâ´¦ÀíµÄLocalMessageStorageManager
+ * é’ˆå¯¹é¡ºåºæ¶ˆæ¯åšäº†ç‰¹æ®Šå¤„ç†çš„LocalMessageStorageManager
  * 
- * @author ÎŞ»¨
- * @since 2011-10-27 ÏÂÎç3:21:32
+ * @author æ— èŠ±
+ * @since 2011-10-27 ä¸‹åˆ3:21:32
  */
 
 public class OrderedLocalMessageStorageManager extends LocalMessageStorageManager {
@@ -49,7 +49,7 @@ public class OrderedLocalMessageStorageManager extends LocalMessageStorageManage
     public void recover() {
         Set<String> names = this.topicStoreMap.keySet();
         if (names == null || names.size() == 0) {
-            log.info("SendRecoverÃ»ÓĞĞèÒª»Ö¸´µÄÏûÏ¢");
+            log.info("SendRecoveræ²¡æœ‰éœ€è¦æ¢å¤çš„æ¶ˆæ¯");
             return;
         }
 
@@ -59,25 +59,25 @@ public class OrderedLocalMessageStorageManager extends LocalMessageStorageManage
                 String topic = tmps[0];
                 Partition partition = new Partition(tmps[1]);
                 if (!partition.equals(Partition.RandomPartiton) && this.getMessageCount(topic, partition) > 0) {
-                    // RandomPartiton»áÔÚÀïÃærecover
+                    // RandomPartitonä¼šåœ¨é‡Œé¢recover
                     this.recover(topic, partition, this.messageRecoverer);
                 }
             }
         }
         else {
-            log.warn("messageRecoverer»¹Î´ÉèÖÃ");
+            log.warn("messageRecovererè¿˜æœªè®¾ç½®");
         }
     }
 
 
     /**
-     * ´¥·¢»Ö¸´Ò»¸öÖ÷ÌâÒ»¸ö·ÖÇøµÄÏûÏ¢,¿É¶à´Îµ÷ÓÃ(±£Ö¤¶ÔÄ³Ö÷ÌâµÄ»Ö¸´ÈÎÎñ×î¶àÖ»ÓĞÒ»¸öÔÚÔËĞĞ)
+     * è§¦å‘æ¢å¤ä¸€ä¸ªä¸»é¢˜ä¸€ä¸ªåˆ†åŒºçš„æ¶ˆæ¯,å¯å¤šæ¬¡è°ƒç”¨(ä¿è¯å¯¹æŸä¸»é¢˜çš„æ¢å¤ä»»åŠ¡æœ€å¤šåªæœ‰ä¸€ä¸ªåœ¨è¿è¡Œ)
      * 
      * @param topic
      * @param partition
      * @param recoverer
-     *            »Ö¸´³öÀ´µÄÏûÏ¢µÄ´¦ÀíÆ÷
-     * @return ÊÇ·ñÕæÕıÌá½»ÁË»Ö¸´ÈÎÎñ
+     *            æ¢å¤å‡ºæ¥çš„æ¶ˆæ¯çš„å¤„ç†å™¨
+     * @return æ˜¯å¦çœŸæ­£æäº¤äº†æ¢å¤ä»»åŠ¡
      * */
     @Override
     public boolean recover(final String topic, final Partition partition, final MessageRecoverer recoverer) {
@@ -92,15 +92,15 @@ public class OrderedLocalMessageStorageManager extends LocalMessageStorageManage
                     Store randomPartitonStore =
                             OrderedLocalMessageStorageManager.this.getOrCreateStore(topic, Partition.RandomPartiton);
 
-                    // ²»¹Ü»Ö¸´ÄÄ¸ö·ÖÇø¶¼ÓÅÏÈ»Ö¸´Ò»ÏÂÎ´Öª·ÖÇøµÄÊı¾İ(Ô­ÔòÊÇ,Õâ¸ö·ÖÇøÊı¾İµÄ²úÉúÊ±¼ä×ÜÊÇÏÈÓÚ¾ßÌå·ÖÇø)
-                    // ²»ÄÜÈÃÍ¬Ò»¸ötopicµÄÎ´Öª·ÖÇø²¢ĞĞ»Ö¸´£¬·ñÔò»áµ¼ÖÂÊı¾İÖØ¸´·¢ËÍ
+                    // ä¸ç®¡æ¢å¤å“ªä¸ªåˆ†åŒºéƒ½ä¼˜å…ˆæ¢å¤ä¸€ä¸‹æœªçŸ¥åˆ†åŒºçš„æ•°æ®(åŸåˆ™æ˜¯,è¿™ä¸ªåˆ†åŒºæ•°æ®çš„äº§ç”Ÿæ—¶é—´æ€»æ˜¯å…ˆäºå…·ä½“åˆ†åŒº)
+                    // ä¸èƒ½è®©åŒä¸€ä¸ªtopicçš„æœªçŸ¥åˆ†åŒºå¹¶è¡Œæ¢å¤ï¼Œå¦åˆ™ä¼šå¯¼è‡´æ•°æ®é‡å¤å‘é€
                     if (randomPartitonStore.size() > 0) {
-                        // ÓĞÊı¾İÊ±²Å¶ÔrandomPartitonStoreÍ¬²½¾ºÕù
+                        // æœ‰æ•°æ®æ—¶æ‰å¯¹randomPartitonStoreåŒæ­¥ç«äº‰
                         synchronized (randomPartitonStore) {
-                            // Ë«ÖØ¼ì²â
+                            // åŒé‡æ£€æµ‹
                             if (randomPartitonStore.size() > 0) {
                                 count = this.innerRecover(randomPartitonStore, recoverer);
-                                log.info("SendRecover topic=" + topic + "@-1--1»Ö¸´ÏûÏ¢" + count + "Ìõ");
+                                log.info("SendRecover topic=" + topic + "@-1--1æ¢å¤æ¶ˆæ¯" + count + "æ¡");
                             }
                         }
                     }
@@ -108,13 +108,13 @@ public class OrderedLocalMessageStorageManager extends LocalMessageStorageManage
                     Store store = OrderedLocalMessageStorageManager.this.getOrCreateStore(topic, partition);
 
                     count = this.innerRecover(store, recoverer);
-                    log.info("SendRecover topic=" + name + "»Ö¸´ÏûÏ¢" + count + "Ìõ");
+                    log.info("SendRecover topic=" + name + "æ¢å¤æ¶ˆæ¯" + count + "æ¡");
                 }
                 catch (Throwable e) {
-                    log.error("SendRecover·¢ËÍÏûÏ¢»Ö¸´Ê§°Ü,topic=" + name, e);
+                    log.error("SendRecoverå‘é€æ¶ˆæ¯æ¢å¤å¤±è´¥,topic=" + name, e);
                 }
                 finally {
-                    log.info("SendRecoverÖ´ĞĞÍê±ÏÒÆ³ı·¢ËÍ»Ö¸´ÈÎÎñ,topic=" + name);
+                    log.info("SendRecoveræ‰§è¡Œå®Œæ¯•ç§»é™¤å‘é€æ¢å¤ä»»åŠ¡,topic=" + name);
                     OrderedLocalMessageStorageManager.this.topicRecoverTaskMap.remove(name);
                 }
                 return true;
@@ -148,7 +148,7 @@ public class OrderedLocalMessageStorageManager extends LocalMessageStorageManage
         }
         else {
             if (log.isDebugEnabled()) {
-                log.debug("SendRecover·¢ËÍ»Ö¸´ÈÎÎñÕıÔÚÔËĞĞ,²»ĞèÒªÖØĞÂÆô¶¯,topic=" + topic);
+                log.debug("SendRecoverå‘é€æ¢å¤ä»»åŠ¡æ­£åœ¨è¿è¡Œ,ä¸éœ€è¦é‡æ–°å¯åŠ¨,topic=" + topic);
             }
             return false;
         }

@@ -26,7 +26,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 /**
- * ÎÈ¶¨ÅÅĞòµÄdelay queue£¬Ïß³Ì°²È«
+ * ç¨³å®šæ’åºçš„delay queueï¼Œçº¿ç¨‹å®‰å…¨
  * 
  * @author boyan
  * @Date 2011-4-27

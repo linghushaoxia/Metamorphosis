@@ -25,7 +25,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * ·ÖÇøÑ¡ÔñÆ÷
+ * åˆ†åŒºé€‰æ‹©å™¨
  * 
  * @author boyan
  * @Date 2011-4-26
@@ -34,17 +34,17 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 public interface PartitionSelector {
 
     /**
-     * ¸ù¾İtopic¡¢message´ÓpartitionsÁĞ±íÖĞÑ¡Ôñ·ÖÇø
+     * æ ¹æ®topicã€messageä»partitionsåˆ—è¡¨ä¸­é€‰æ‹©åˆ†åŒº
      * 
      * @param topic
      *            topic
      * @param partitions
-     *            ·ÖÇøÁĞ±í
+     *            åˆ†åŒºåˆ—è¡¨
      * @param message
-     *            ÏûÏ¢
+     *            æ¶ˆæ¯
      * @return
      * @throws MetaClientException
-     *             ´Ë·½·¨Å×³öµÄÈÎºÎÒì³£¶¼Ó¦µ±°ü×°ÎªMetaClientException
+     *             æ­¤æ–¹æ³•æŠ›å‡ºçš„ä»»ä½•å¼‚å¸¸éƒ½åº”å½“åŒ…è£…ä¸ºMetaClientException
      */
     public Partition getPartition(String topic, List<Partition> partitions, Message message) throws MetaClientException;
 }

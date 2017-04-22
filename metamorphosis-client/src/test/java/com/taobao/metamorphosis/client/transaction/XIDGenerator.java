@@ -23,7 +23,7 @@ import com.taobao.metamorphosis.transaction.XATransactionId;
 
 
 /**
- * 产生xid的工具类，仅用于测试
+ * 浜х敓xid鐨勫伐鍏风被锛屼粎鐢ㄤ簬娴嬭瘯
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-24

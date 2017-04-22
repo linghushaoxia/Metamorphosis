@@ -28,8 +28,8 @@ import com.taobao.metamorphosis.utils.codec.impl.JavaSerializer;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-10-31 ÏÂÎç5:42:50
+ * @author æ— èŠ±
+ * @since 2011-10-31 ä¸‹åˆ5:42:50
  */
 
 public abstract class AbstractRecoverManager implements RecoverManager {

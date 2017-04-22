@@ -26,8 +26,8 @@ import org.junit.Test;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-12-29 ÏÂÎç5:18:13
+ * @author æ— èŠ±
+ * @since 2011-12-29 ä¸‹åˆ5:18:13
  */
 
 public class SlidingWindowUnitTest {

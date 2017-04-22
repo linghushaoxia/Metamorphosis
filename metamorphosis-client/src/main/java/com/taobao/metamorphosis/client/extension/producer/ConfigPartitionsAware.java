@@ -24,21 +24,21 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 
 /**
- * 支持获取某topic预配置的分区分布情况
+ * 鏀寔鑾峰彇鏌恡opic棰勯厤缃殑鍒嗗尯鍒嗗竷鎯呭喌
  * 
- * @author 无花
- * @since 2011-8-2 下午02:49:27
+ * @author 鏃犺姳
+ * @since 2011-8-2 涓嬪崍02:49:27
  */
 public interface ConfigPartitionsAware {
 
     /**
-     * 设置顺序消息配置的总体分区信息
+     * 璁剧疆椤哄簭娑堟伅閰嶇疆鐨勬�讳綋鍒嗗尯淇℃伅
      * */
     public void setConfigPartitions(Map<String/* topic */, List<Partition>/* partitions */> map);
 
 
     /**
-     * 获取某个topic消息的总体分区信息
+     * 鑾峰彇鏌愪釜topic娑堟伅鐨勬�讳綋鍒嗗尯淇℃伅
      * */
     public List<Partition> getConfigPartitions(String topic);
 }

@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.client.transaction;
 
 /**
- * ÊÂÎñĞÔ»á»°
+ * äº‹åŠ¡æ€§ä¼šè¯
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-25

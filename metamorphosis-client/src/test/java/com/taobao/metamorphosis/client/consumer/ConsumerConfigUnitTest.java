@@ -27,8 +27,8 @@ import org.junit.Test;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-11-14 ÏÂÎç2:29:14
+ * @author æ— èŠ±
+ * @since 2011-11-14 ä¸‹åˆ2:29:14
  */
 
 public class ConsumerConfigUnitTest {

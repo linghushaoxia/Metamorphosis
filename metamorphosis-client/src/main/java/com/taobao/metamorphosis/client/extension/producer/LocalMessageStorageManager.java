@@ -55,10 +55,10 @@ import com.taobao.metamorphosis.utils.codec.impl.JavaSerializer;
 
 
 /**
- * ÏûÏ¢»º´æÔÚ±¾µØ´ÅÅÌ,²¢¶¨ÆÚ»òÊÖ¶¯recover
+ * æ¶ˆæ¯ç¼“å­˜åœ¨æœ¬åœ°ç£ç›˜,å¹¶å®šæœŸæˆ–æ‰‹åŠ¨recover
  * 
- * @author ÎŞ»¨
- * @since 2011-8-8 ÉÏÎç10:40:56
+ * @author æ— èŠ±
+ * @since 2011-8-8 ä¸Šåˆ10:40:56
  */
 
 public class LocalMessageStorageManager implements MessageRecoverManager {
@@ -66,13 +66,13 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
     protected static final String SPLIT = "@";
 
     /**
-     * ±íÊ¾ÒÔtopic@partitionÎªµ¥Î»µÄstore map
+     * è¡¨ç¤ºä»¥topic@partitionä¸ºå•ä½çš„store map
      */
     protected final ConcurrentHashMap<String/* topic@partition */, FutureTask<Store>> topicStoreMap =
             new ConcurrentHashMap<String, FutureTask<Store>>();
 
     /**
-     * ±íÊ¾ÕıÔÚÖ´ĞĞµÄ»Ö¸´ÈÎÎñµÄmap
+     * è¡¨ç¤ºæ­£åœ¨æ‰§è¡Œçš„æ¢å¤ä»»åŠ¡çš„map
      */
     protected final ConcurrentHashMap<String/* topic@partition */, FutureTask<Boolean>> topicRecoverTaskMap =
             new ConcurrentHashMap<String, FutureTask<Boolean>>();
@@ -89,7 +89,7 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
 
     private final String META_LOCALMESSAGE_CODEC_TYPE = System.getProperty("meta.localmessage.codec", "java");
 
-    // »Ö¸´ÏûÏ¢µÄÏß³Ì³Ø
+    // æ¢å¤æ¶ˆæ¯çš„çº¿ç¨‹æ± 
     protected final ThreadPoolExecutor threadPoolExecutor;
 
     private final ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
@@ -118,7 +118,7 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
             throw new UnknowCodecTypeException(this.META_LOCALMESSAGE_CODEC_TYPE);
         }
 
-        // ¸ú½ÓÊÕÏûÏ¢µÄRecoverThreadCountÒ»Ñù
+        // è·Ÿæ¥æ”¶æ¶ˆæ¯çš„RecoverThreadCountä¸€æ ·
         this.threadPoolExecutor =
                 new ThreadPoolExecutor(metaClientConfig.getRecoverThreadCount(),
                     metaClientConfig.getRecoverThreadCount(), 60, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(
@@ -127,11 +127,11 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
         this.makeDataDir();
         this.loadStores();
 
-        // ¶¨Ê±È¥³¢ÊÔ»Ö¸´Ò»ÏÂÊı¾İ,ÒÔÃâÄ³¸ötopic³¤Ê±¼äÃ»·¢ÏûÏ¢Ê±±¾µØ»º´æµÄÏûÏ¢Ò»Ö±±»»ıÑ¹ÔÚ±¾µØ
+        // å®šæ—¶å»å°è¯•æ¢å¤ä¸€ä¸‹æ•°æ®,ä»¥å…æŸä¸ªtopicé•¿æ—¶é—´æ²¡å‘æ¶ˆæ¯æ—¶æœ¬åœ°ç¼“å­˜çš„æ¶ˆæ¯ä¸€ç›´è¢«ç§¯å‹åœ¨æœ¬åœ°
         this.scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                log.info("¿ªÊ¼³¢ÊÔ·¢ËÍ±¾µØ»º´æµÄÏûÏ¢...");
+                log.info("å¼€å§‹å°è¯•å‘é€æœ¬åœ°ç¼“å­˜çš„æ¶ˆæ¯...");
                 LocalMessageStorageManager.this.recover();
             }
         }, 0, metaClientConfig.getRecoverMessageIntervalInMills(), TimeUnit.MILLISECONDS);
@@ -150,7 +150,7 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
                     continue;
                 }
 
-                log.info("¼ÓÔØlocal message storage " + name + " ...");
+                log.info("åŠ è½½local message storage " + name + " ...");
                 this.getOrCreateStore(tmps[0], new Partition(tmps[1]));
             }
         }
@@ -161,7 +161,7 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
     public void recover() {
         final Set<String> names = this.topicStoreMap.keySet();
         if (names == null || names.size() == 0) {
-            log.info("SendRecoverÃ»ÓĞĞèÒª»Ö¸´µÄÏûÏ¢");
+            log.info("SendRecoveræ²¡æœ‰éœ€è¦æ¢å¤çš„æ¶ˆæ¯");
             return;
         }
 
@@ -171,28 +171,28 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
                 final String topic = tmps[0];
                 final Partition partition = new Partition(tmps[1]);
                 final int count = this.getMessageCount(topic, partition);
-                log.info(name + "ĞèÒª»Ö¸´µÄÌõÊı:" + count);
+                log.info(name + "éœ€è¦æ¢å¤çš„æ¡æ•°:" + count);
                 if (count > 0) {
                     if (!this.recover(topic, partition, this.messageRecoverer)) {
-                        log.info("SendRecover·¢ËÍ»Ö¸´ÈÎÎñÕıÔÚÔËĞĞ,²»ĞèÒªÖØĞÂÆô¶¯,name=" + name);
+                        log.info("SendRecoverå‘é€æ¢å¤ä»»åŠ¡æ­£åœ¨è¿è¡Œ,ä¸éœ€è¦é‡æ–°å¯åŠ¨,name=" + name);
                     }
                 }
             }
         }
         else {
-            log.warn("messageRecoverer»¹Î´ÉèÖÃ");
+            log.warn("messageRecovererè¿˜æœªè®¾ç½®");
         }
     }
 
 
     /**
-     * ´¥·¢»Ö¸´Ò»¸öÖ÷ÌâÒ»¸ö·ÖÇøµÄÏûÏ¢,¿É¶à´Îµ÷ÓÃ(±£Ö¤¶ÔÄ³Ö÷ÌâµÄ»Ö¸´ÈÎÎñ×î¶àÖ»ÓĞÒ»¸öÔÚÔËĞĞ)
+     * è§¦å‘æ¢å¤ä¸€ä¸ªä¸»é¢˜ä¸€ä¸ªåˆ†åŒºçš„æ¶ˆæ¯,å¯å¤šæ¬¡è°ƒç”¨(ä¿è¯å¯¹æŸä¸»é¢˜çš„æ¢å¤ä»»åŠ¡æœ€å¤šåªæœ‰ä¸€ä¸ªåœ¨è¿è¡Œ)
      * 
      * @param topic
      * @param partition
      * @param recoverer
-     *            »Ö¸´³öÀ´µÄÏûÏ¢µÄ´¦ÀíÆ÷
-     * @return ÊÇ·ñÕæÕıÌá½»ÁË»Ö¸´ÈÎÎñ
+     *            æ¢å¤å‡ºæ¥çš„æ¶ˆæ¯çš„å¤„ç†å™¨
+     * @return æ˜¯å¦çœŸæ­£æäº¤äº†æ¢å¤ä»»åŠ¡
      * */
     @Override
     public boolean recover(final String topic, final Partition partition, final MessageRecoverer recoverer) {
@@ -210,10 +210,10 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
                     this.innerRecover(store, recoverer, count, name);
                 }
                 catch (final Throwable e) {
-                    log.error("SendRecover·¢ËÍÏûÏ¢»Ö¸´Ê§°Ü,name=" + name, e);
+                    log.error("SendRecoverå‘é€æ¶ˆæ¯æ¢å¤å¤±è´¥,name=" + name, e);
                 }
                 finally {
-                    log.info("SendRecoverÖ´ĞĞÍê±ÏÒÆ³ı·¢ËÍ»Ö¸´ÈÎÎñ,name=" + name + ",»Ö¸´ÏûÏ¢" + count.get() + "Ìõ");
+                    log.info("SendRecoveræ‰§è¡Œå®Œæ¯•ç§»é™¤å‘é€æ¢å¤ä»»åŠ¡,name=" + name + ",æ¢å¤æ¶ˆæ¯" + count.get() + "æ¡");
                     LocalMessageStorageManager.this.topicRecoverTaskMap.remove(name);
                 }
                 return true;
@@ -232,7 +232,7 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
                         store.remove(key);
                         count.incrementAndGet();
                         if (count.get() % 20000 == 0) {
-                            log.info("SendRecover " + name + "ÒÑ»Ö¸´ÏûÏ¢ÌõÊı:" + count.get());
+                            log.info("SendRecover " + name + "å·²æ¢å¤æ¶ˆæ¯æ¡æ•°:" + count.get());
                         }
                     }
                     catch (final IOException e) {
@@ -249,7 +249,7 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
         }
         else {
             if (log.isDebugEnabled()) {
-                log.debug("SendRecover·¢ËÍ»Ö¸´ÈÎÎñÕıÔÚÔËĞĞ,²»ĞèÒªÖØĞÂÆô¶¯,name=" + name);
+                log.debug("SendRecoverå‘é€æ¢å¤ä»»åŠ¡æ­£åœ¨è¿è¡Œ,ä¸éœ€è¦é‡æ–°å¯åŠ¨,name=" + name);
             }
             return false;
         }
@@ -258,7 +258,7 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
 
 
     protected Store getOrCreateStore(final String topic, final Partition partition) {
-        // ÎªtopicÏÈ´´½¨Ò»¸öRandomPartiton·ÖÇøµÄstore
+        // ä¸ºtopicå…ˆåˆ›å»ºä¸€ä¸ªRandomPartitonåˆ†åŒºçš„store
         this.getOrCreateStore0(topic, Partition.RandomPartiton);
         return this.getOrCreateStore0(topic, partition);
     }
@@ -304,8 +304,8 @@ public class LocalMessageStorageManager implements MessageRecoverManager {
             return task.get();
         }
         catch (final Throwable t) {
-            log.error("»ñÈ¡topic=" + topic + "¶ÔÓ¦µÄstoreÊ§°Ü", t);
-            throw new GetRecoverStorageErrorException("»ñÈ¡topic=" + topic + "¶ÔÓ¦µÄstoreÊ§°Ü", t);
+            log.error("è·å–topic=" + topic + "å¯¹åº”çš„storeå¤±è´¥", t);
+            throw new GetRecoverStorageErrorException("è·å–topic=" + topic + "å¯¹åº”çš„storeå¤±è´¥", t);
         }
 
     }

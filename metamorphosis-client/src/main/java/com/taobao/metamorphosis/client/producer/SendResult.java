@@ -21,7 +21,7 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 
 /**
- * ÏûÏ¢·¢ËÍ½á¹û¶ÔÏó
+ * æ¶ˆæ¯å‘é€ç»“æœå¯¹è±¡
  * 
  * @author boyan
  * @Date 2011-4-27
@@ -44,7 +44,7 @@ public class SendResult {
 
 
     /**
-     * µ±ÏûÏ¢·¢ËÍ³É¹¦ºó£¬ÏûÏ¢ÔÚ·şÎñ¶ËĞ´ÈëµÄoffset£¬Èç¹û·¢ËÍÊ§°Ü£¬·µ»Ø-1
+     * å½“æ¶ˆæ¯å‘é€æˆåŠŸåï¼Œæ¶ˆæ¯åœ¨æœåŠ¡ç«¯å†™å…¥çš„offsetï¼Œå¦‚æœå‘é€å¤±è´¥ï¼Œè¿”å›-1
      * 
      * @return
      */
@@ -54,9 +54,9 @@ public class SendResult {
 
 
     /**
-     * ÏûÏ¢ÊÇ·ñ·¢ËÍ³É¹¦
+     * æ¶ˆæ¯æ˜¯å¦å‘é€æˆåŠŸ
      * 
-     * @return trueÎª³É¹¦
+     * @return trueä¸ºæˆåŠŸ
      */
     public boolean isSuccess() {
         return this.success;
@@ -64,9 +64,9 @@ public class SendResult {
 
 
     /**
-     * ÏûÏ¢·¢ËÍËùµ½´ïµÄ·ÖÇø
+     * æ¶ˆæ¯å‘é€æ‰€åˆ°è¾¾çš„åˆ†åŒº
      * 
-     * @return ÏûÏ¢·¢ËÍËùµ½´ïµÄ·ÖÇø£¬Èç¹û·¢ËÍÊ§°ÜÔòÎªnull
+     * @return æ¶ˆæ¯å‘é€æ‰€åˆ°è¾¾çš„åˆ†åŒºï¼Œå¦‚æœå‘é€å¤±è´¥åˆ™ä¸ºnull
      */
     public Partition getPartition() {
         return this.partition;
@@ -74,9 +74,9 @@ public class SendResult {
 
 
     /**
-     * ÏûÏ¢·¢ËÍ½á¹ûµÄ¸½´øĞÅÏ¢£¬Èç¹û·¢ËÍÊ§°Ü¿ÉÄÜ°üº¬´íÎóĞÅÏ¢
+     * æ¶ˆæ¯å‘é€ç»“æœçš„é™„å¸¦ä¿¡æ¯ï¼Œå¦‚æœå‘é€å¤±è´¥å¯èƒ½åŒ…å«é”™è¯¯ä¿¡æ¯
      * 
-     * @return ÏûÏ¢·¢ËÍ½á¹ûµÄ¸½´øĞÅÏ¢£¬Èç¹û·¢ËÍÊ§°Ü¿ÉÄÜ°üº¬´íÎóĞÅÏ¢
+     * @return æ¶ˆæ¯å‘é€ç»“æœçš„é™„å¸¦ä¿¡æ¯ï¼Œå¦‚æœå‘é€å¤±è´¥å¯èƒ½åŒ…å«é”™è¯¯ä¿¡æ¯
      */
     public String getErrorMessage() {
         return this.errorMessage;

@@ -21,7 +21,7 @@ import java.io.Serializable;
 
 
 /**
- * 订阅关系对象
+ * 璁㈤槄鍏崇郴瀵硅薄
  * 
  * @author boyan
  * @Date 2011-5-18

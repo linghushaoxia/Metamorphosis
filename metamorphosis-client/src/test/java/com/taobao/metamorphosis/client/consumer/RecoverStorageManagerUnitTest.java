@@ -87,7 +87,7 @@ public class RecoverStorageManagerUnitTest {
         }
         this.recoverStorageManager.shutdown();
 
-        // ÖØĞÂÆô¶¯£¬ÉèÖÃrecover¼ä¸ôÎª1Ãë
+        // é‡æ–°å¯åŠ¨ï¼Œè®¾ç½®recoveré—´éš”ä¸º1ç§’
         metaClientConfig.setRecoverMessageIntervalInMills(1000);
         this.recoverStorageManager = new RecoverStorageManager(metaClientConfig, this.subscribeInfoManager);
         this.recoverStorageManager.start(metaClientConfig);

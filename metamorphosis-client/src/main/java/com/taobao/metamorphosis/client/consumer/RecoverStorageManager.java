@@ -46,7 +46,7 @@ import com.taobao.metamorphosis.utils.NamedThreadFactory;
 
 
 /**
- * Recover´æ´¢¹ÜÀíÆ÷
+ * Recoverå­˜å‚¨ç®¡ç†å™¨
  * 
  * @author boyan
  * @Date 2011-5-12
@@ -75,7 +75,7 @@ public class RecoverStorageManager extends AbstractRecoverManager {
             final SubscribeInfoManager subscribeInfoManager) {
         super();
 
-        // Ç¿ÖÆÊ¹ÓÃcaller run²ßÂÔ
+        // å¼ºåˆ¶ä½¿ç”¨caller runç­–ç•¥
         this.threadPoolExecutor =
                 new ThreadPoolExecutor(metaClientConfig.getRecoverThreadCount(),
                     metaClientConfig.getRecoverThreadCount(), 60, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(
@@ -120,7 +120,7 @@ public class RecoverStorageManager extends AbstractRecoverManager {
                 if (tmps.length != 2) {
                     continue;
                 }
-                log.info("¼ÓÔØrecover storage " + name + " ...");
+                log.info("åŠ è½½recover storage " + name + " ...");
                 this.getOrCreateStore(tmps[0], tmps[1]);
             }
         }
@@ -166,7 +166,7 @@ public class RecoverStorageManager extends AbstractRecoverManager {
                                 log.error("Recover message failed,topic=" + topic+",skip it.", e);
                             }
                         }
-                        log.info("Recover topic=" + topic + "»Ö¸´ÏûÏ¢" + count + "Ìõ");
+                        log.info("Recover topic=" + topic + "æ¢å¤æ¶ˆæ¯" + count + "æ¡");
                     }
                     catch (InterruptedException e) {
                         // receive messages is interrupted,we have to interrupt
@@ -195,9 +195,9 @@ public class RecoverStorageManager extends AbstractRecoverManager {
             final MessageListener messageListener) throws InterruptedException {
         if (messageListener == null) {
             // throw new
-            // IllegalStateException("messageListenerÎªnull,¿ÉÄÜÊÇÏû·ÑÕß»¹Î´´´½¨,Èç¹ûÊÇµÚÒ»´Î±¨´í£¬ºóĞøÃ»±¨´íÁËÇëºöÂÔ");
+            // IllegalStateException("messageListenerä¸ºnull,å¯èƒ½æ˜¯æ¶ˆè´¹è€…è¿˜æœªåˆ›å»º,å¦‚æœæ˜¯ç¬¬ä¸€æ¬¡æŠ¥é”™ï¼Œåç»­æ²¡æŠ¥é”™äº†è¯·å¿½ç•¥");
             if (this.wasFirst) {
-                log.warn("messageListenerÎªnull,¿ÉÄÜÊÇÏû·ÑÕß»¹Î´´´½¨");
+                log.warn("messageListenerä¸ºnull,å¯èƒ½æ˜¯æ¶ˆè´¹è€…è¿˜æœªåˆ›å»º");
                 this.wasFirst = false;
             }
             return;
@@ -284,10 +284,10 @@ public class RecoverStorageManager extends AbstractRecoverManager {
             }
             catch (final IOException e) {
                 final String msg = e.getMessage();
-                // keyÖØ¸´
-                if (msg.contains("ÖØ¸´")) {
+                // keyé‡å¤
+                if (msg.contains("é‡å¤")) {
                     error = e;
-                    log.warn("Ğ´Èërecover store³ö´í,key=" + key + "," + e.getMessage() + ",retry...");
+                    log.warn("å†™å…¥recover storeå‡ºé”™,key=" + key + "," + e.getMessage() + ",retry...");
                     key += this.count.incrementAndGet();
                 }
                 else {
@@ -343,8 +343,8 @@ public class RecoverStorageManager extends AbstractRecoverManager {
             return task.get();
         }
         catch (final Throwable t) {
-            log.error("»ñÈ¡name=" + name + "¶ÔÓ¦µÄstoreÊ§°Ü", t);
-            throw new GetRecoverStorageErrorException("»ñÈ¡topic=" + name + "¶ÔÓ¦µÄstoreÊ§°Ü", t);
+            log.error("è·å–name=" + name + "å¯¹åº”çš„storeå¤±è´¥", t);
+            throw new GetRecoverStorageErrorException("è·å–topic=" + name + "å¯¹åº”çš„storeå¤±è´¥", t);
         }
 
     }

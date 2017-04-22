@@ -31,19 +31,19 @@ public class MetaClientConfig implements Serializable {
     protected String serverUrl;
 
     /**
-     * ´Ódiamond»ñÈ¡partitionsÅäÖÃµÄdataId£¬Ä¬ÈÏÎª"metamorphosis.partitions"
+     * ä»diamondè·å–partitionsé…ç½®çš„dataIdï¼Œé»˜è®¤ä¸º"metamorphosis.partitions"
      * */
     private final String diamondPartitionsDataId = DiamondUtils.DEFAULT_PARTITIONS_DATAID;
 
     /**
-     * ´Ódiamond»ñÈ¡partitionsÅäÖÃµÄgroup£¬Ä¬ÈÏÎªDEFAULT_GROUP
+     * ä»diamondè·å–partitionsé…ç½®çš„groupï¼Œé»˜è®¤ä¸ºDEFAULT_GROUP
      */
     private final String diamondPartitionsGroup = "DEFAULT_GROUP";// Constants.DEFAULT_GROUP;
 
     protected ZKConfig zkConfig;
 
     /**
-     * recover±¾µØÏûÏ¢µÄÊ±¼ä¼ä¸ô
+     * recoveræœ¬åœ°æ¶ˆæ¯çš„æ—¶é—´é—´éš”
      */
     private long recoverMessageIntervalInMills = 5 * 60 * 1000L;
 
@@ -169,12 +169,12 @@ public class MetaClientConfig implements Serializable {
 
 
     /**
-     * ÉèÖÃtopicµÄ·Ö²¼Çé¿ö.
-     * ¶ÔÓÚÊ¹ÓÃÑÏ¸ñË³Ğò·¢ËÍÏûÏ¢ÓĞĞ§(OrderedMessageProducer),Ä¿Ç°°æ±¾Ã»ÓĞdiamondËùÒÔ´ÓÕâÀïÉèÖÃºÍ»ñÈ¡¡£ <br>
+     * è®¾ç½®topicçš„åˆ†å¸ƒæƒ…å†µ.
+     * å¯¹äºä½¿ç”¨ä¸¥æ ¼é¡ºåºå‘é€æ¶ˆæ¯æœ‰æ•ˆ(OrderedMessageProducer),ç›®å‰ç‰ˆæœ¬æ²¡æœ‰diamondæ‰€ä»¥ä»è¿™é‡Œè®¾ç½®å’Œè·å–ã€‚ <br>
      * partitionsInfo
-     * .put("topic.num.exampleTopic1","brokerId1:·ÖÇø¸öÊı;brokerId2:·ÖÇø¸öÊı...")<br>
+     * .put("topic.num.exampleTopic1","brokerId1:åˆ†åŒºä¸ªæ•°;brokerId2:åˆ†åŒºä¸ªæ•°...")<br>
      * partitionsInfo
-     * .put("topic.num.exampleTopic2","brokerId1:·ÖÇø¸öÊı;brokerId2:·ÖÇø¸öÊı...")
+     * .put("topic.num.exampleTopic2","brokerId1:åˆ†åŒºä¸ªæ•°;brokerId2:åˆ†åŒºä¸ªæ•°...")
      * 
      * @param partitionsInfo
      */

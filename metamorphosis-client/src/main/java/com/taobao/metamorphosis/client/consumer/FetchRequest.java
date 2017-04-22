@@ -29,14 +29,14 @@ import com.taobao.metamorphosis.utils.MessageUtils;
 
 
 /**
- * Ò»´Î»ñÈ¡ÇëÇó
+ * ä¸€æ¬¡è·å–è¯·æ±‚
  * 
  * @author boyan
  * @Date 2011-4-25
  * 
  */
 public class FetchRequest implements Delayed {
-    // ÑÓºóµÄÊ±¼ä´Á
+    // å»¶åçš„æ—¶é—´æˆ³
     private long delayTimeStamp;
     private long delay;
     private TopicPartitionRegInfo topicPartitionRegInfo;
@@ -84,8 +84,8 @@ public class FetchRequest implements Delayed {
 
     public void increaseMaxSize() {
         if (this.maxSize > MessageUtils.MAX_READ_BUFFER_SIZE) {
-            log.warn("¾¯¸æ£ºmaxSize³¬¹ı×î´óÏŞÖÆ" + MessageUtils.MAX_READ_BUFFER_SIZE
-                + "Bytes£¬ÇëÉèÖÃ»·¾³±äÁ¿-Dnotify.remoting.max_read_buffer_size³¬¹ı´ËÏŞÖÆ");
+            log.warn("è­¦å‘Šï¼šmaxSizeè¶…è¿‡æœ€å¤§é™åˆ¶" + MessageUtils.MAX_READ_BUFFER_SIZE
+                + "Bytesï¼Œè¯·è®¾ç½®ç¯å¢ƒå˜é‡-Dnotify.remoting.max_read_buffer_sizeè¶…è¿‡æ­¤é™åˆ¶");
             return;
         }
         this.maxSize = 2 * this.maxSize;
@@ -197,7 +197,7 @@ public class FetchRequest implements Delayed {
 
 
     /**
-     * ÉèÖÃÑÓºóµÄÊ±¼ä£¬µ¥Î»ºÁÃë
+     * è®¾ç½®å»¶åçš„æ—¶é—´ï¼Œå•ä½æ¯«ç§’
      * 
      * @param delay
      */
@@ -240,20 +240,20 @@ public class FetchRequest implements Delayed {
 
 
     /**
-     * ¸üĞÂoffset£¬µ±ackÎªtrueÔò¸üĞÂ´æ´¢ÖĞµÄoffset£¬²¢½«ÁÙÊ±offsetÉèÖÃÎª£­1,·ñÔò½ö¸üĞÂÁÙÊ±offset
+     * æ›´æ–°offsetï¼Œå½“ackä¸ºtrueåˆ™æ›´æ–°å­˜å‚¨ä¸­çš„offsetï¼Œå¹¶å°†ä¸´æ—¶offsetè®¾ç½®ä¸ºï¼1,å¦åˆ™ä»…æ›´æ–°ä¸´æ—¶offset
      * 
      * @param offset
      * @param ack
      */
     public void setOffset(final long offset, final long msgId, final boolean ack) {
         if (ack) {
-            // ¶ÔtopicPartitionRegInfo¼ÓËø£¬·ÀÖ¹Ìá½»µ½zk²»Ò»ÖÂ
+            // å¯¹topicPartitionRegInfoåŠ é”ï¼Œé˜²æ­¢æäº¤åˆ°zkä¸ä¸€è‡´
             synchronized (this.topicPartitionRegInfo) {
                 this.topicPartitionRegInfo.getOffset().set(offset);
                 if (msgId != -1) {
                     this.topicPartitionRegInfo.setMessageId(msgId);
                 }
-                // ÓĞ±ä¸ü£¬ĞèÒª¸üĞÂµ½storage
+                // æœ‰å˜æ›´ï¼Œéœ€è¦æ›´æ–°åˆ°storage
                 this.topicPartitionRegInfo.setModified(true);
             }
             this.rollbackOffset();
@@ -291,7 +291,7 @@ public class FetchRequest implements Delayed {
 
 
     /**
-     * ·µ»Ø½«ÒªÊ¹ÓÃµÄoffset£¬Èç¹ûÓĞÁÙÊ±offset£¬ÔòÓÅÏÈÊ¹ÓÃÁÙÊ±offset
+     * è¿”å›å°†è¦ä½¿ç”¨çš„offsetï¼Œå¦‚æœæœ‰ä¸´æ—¶offsetï¼Œåˆ™ä¼˜å…ˆä½¿ç”¨ä¸´æ—¶offset
      * 
      * @return
      */

@@ -21,10 +21,10 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * 表示某topic当前可用的分区个数不正确,比如跟期望的总数不一致等
+ * 琛ㄧず鏌恡opic褰撳墠鍙敤鐨勫垎鍖轰釜鏁颁笉姝ｇ‘,姣斿璺熸湡鏈涚殑鎬绘暟涓嶄竴鑷寸瓑
  * 
- * @author 无花
- * @since 2011-8-2 下午02:49:27
+ * @author 鏃犺姳
+ * @since 2011-8-2 涓嬪崍02:49:27
  */
 
 public class AvailablePartitionNumException extends MetaClientException {

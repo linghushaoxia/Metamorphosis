@@ -153,7 +153,7 @@ public class SimpleMessageProducerUnitTest {
         final Message message = new Message(topic, data);
         final String url = "meta://localhost:0";
         final Partition partition = new Partition("0-0");
-        // ≥¢ ‘÷ÿ∏¥3¥Œ
+        // Â∞ùËØïÈáçÂ§ç3Ê¨°
         EasyMock.expect(this.producerZooKeeper.selectPartition(topic, message, this.partitionSelector)).andReturn(
             partition);// .times(3);
         EasyMock.expect(this.producerZooKeeper.selectBroker(topic, partition)).andReturn(url);// .times(3);

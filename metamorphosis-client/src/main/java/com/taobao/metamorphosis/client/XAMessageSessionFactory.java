@@ -22,7 +22,7 @@ import com.taobao.metamorphosis.client.producer.XAMessageProducer;
 
 
 /**
- * ÓÃÓÚ´´½¨XAÏûÏ¢»á»°µÄ¹¤³§
+ * ç”¨äºåˆ›å»ºXAæ¶ˆæ¯ä¼šè¯çš„å·¥å‚
  * 
  * @author boyan
  * 
@@ -30,17 +30,17 @@ import com.taobao.metamorphosis.client.producer.XAMessageProducer;
 public interface XAMessageSessionFactory extends MessageSessionFactory {
 
     /**
-     * ´´½¨XAÏûÏ¢Éú²úÕß
+     * åˆ›å»ºXAæ¶ˆæ¯ç”Ÿäº§è€…
      * 
      * @param partitionSelector
-     *            ·ÖÇøÑ¡ÔñÆ÷
+     *            åˆ†åŒºé€‰æ‹©å™¨
      * @return
      */
     public XAMessageProducer createXAProducer(PartitionSelector partitionSelector);
 
 
     /**
-     * ´´½¨XAÏûÏ¢Éú²úÕß£¬Ä¬ÈÏÊ¹ÓÃÂÖÑ¯·ÖÇøÑ¡ÔñÆ÷
+     * åˆ›å»ºXAæ¶ˆæ¯ç”Ÿäº§è€…ï¼Œé»˜è®¤ä½¿ç”¨è½®è¯¢åˆ†åŒºé€‰æ‹©å™¨
      * 
      * @return
      */

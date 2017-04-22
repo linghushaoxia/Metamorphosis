@@ -27,8 +27,8 @@ import com.taobao.metamorphosis.client.consumer.ConsumerConfig;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-6-13 ÏÂÎç06:41:33
+ * @author æ— èŠ±
+ * @since 2011-6-13 ä¸‹åˆ06:41:33
  */
 
 public class MetaBroadcastMessageSessionFactoryTest {

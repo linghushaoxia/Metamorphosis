@@ -26,17 +26,17 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 /**
  * <pre>
- * Ö§³Ö»ñÈ¡Ä³topic·ÖÇø×ÜÊı,µ±Ç°¿ÉÓÃ·ÖÇøÊı¸úÅäÖÃ·ÖÇø²»¶ÔÓ¦Ê± ½«Å×³öÒ»¸öÌØÊâµÄÒì³£
- * <code>AvailablePartitionNumException</code>, ÒÔ±ã·¢ËÍÏûÏ¢Ê±¿ÉÊ¶±ğÕâ¸öÊ§°ÜÔ­Òò,´Ó¶ø×öÏàÓ¦´¦Àí.
+ * æ”¯æŒè·å–æŸtopicåˆ†åŒºæ€»æ•°,å½“å‰å¯ç”¨åˆ†åŒºæ•°è·Ÿé…ç½®åˆ†åŒºä¸å¯¹åº”æ—¶ å°†æŠ›å‡ºä¸€ä¸ªç‰¹æ®Šçš„å¼‚å¸¸
+ * <code>AvailablePartitionNumException</code>, ä»¥ä¾¿å‘é€æ¶ˆæ¯æ—¶å¯è¯†åˆ«è¿™ä¸ªå¤±è´¥åŸå› ,ä»è€Œåšç›¸åº”å¤„ç†.
  * 
- * ĞèÒª°´ÕÕÏûÏ¢ÄÚÈİ(ÀıÈçÄ³¸öid)É¢ÁĞµ½¹Ì¶¨·ÖÇø²¢ÒªÇóÓĞĞòµÄ³¡¾°ÖĞÊ¹ÓÃ
+ * éœ€è¦æŒ‰ç…§æ¶ˆæ¯å†…å®¹(ä¾‹å¦‚æŸä¸ªid)æ•£åˆ—åˆ°å›ºå®šåˆ†åŒºå¹¶è¦æ±‚æœ‰åºçš„åœºæ™¯ä¸­ä½¿ç”¨
  * </pre>
  * 
- * @author ÎŞ»¨
- * @since 2011-8-2 ÏÂÎç4:41:35
+ * @author æ— èŠ±
+ * @since 2011-8-2 ä¸‹åˆ4:41:35
  */
-// ²»·ÅÔÚNumAwarePartitionSelectorÖĞ×öÊÇÒòÎª,µ±¿ÉÓÃ·ÖÇø¸úÓûÅäÖÃµÄ·ÖÇøĞÅÏ¢²»Ò»ÖÂÊ±,²»Ò»¶¨¶¼Òª°´ÕÕÕâÒ»ÖÖ·½Ê½´¦Àí,
-// Áô³öÀ©Õ¹ÓàµØ
+// ä¸æ”¾åœ¨NumAwarePartitionSelectorä¸­åšæ˜¯å› ä¸º,å½“å¯ç”¨åˆ†åŒºè·Ÿæ¬²é…ç½®çš„åˆ†åŒºä¿¡æ¯ä¸ä¸€è‡´æ—¶,ä¸ä¸€å®šéƒ½è¦æŒ‰ç…§è¿™ä¸€ç§æ–¹å¼å¤„ç†,
+// ç•™å‡ºæ‰©å±•ä½™åœ°
 public abstract class OrderedMessagePartitionSelector extends ConfigPartitionsSupport {
 
     @Override
@@ -45,7 +45,7 @@ public abstract class OrderedMessagePartitionSelector extends ConfigPartitionsSu
         List<Partition> configPartitions = this.getConfigPartitions(topic);
         int configPartitionsNum = configPartitions.size();
 
-        // Ë³ĞòÏûÏ¢Ã»ÓĞÅäÖÃ¹ı·ÖÇø×ÜÊıĞÅÏ¢,²»ÈÃ·¢ÏûÏ¢
+        // é¡ºåºæ¶ˆæ¯æ²¡æœ‰é…ç½®è¿‡åˆ†åŒºæ€»æ•°ä¿¡æ¯,ä¸è®©å‘æ¶ˆæ¯
         if (configPartitionsNum == 0) {
             throw new MetaClientException("There is no config partitions for topic " + topic
                     + ",maybe you don't config it at first?");
@@ -56,27 +56,27 @@ public abstract class OrderedMessagePartitionSelector extends ConfigPartitionsSu
             throw new MetaClientException("selected null partition");
         }
 
-        // ¿ÉÓÃ·ÖÇøÊıÎª0,¶ÔÓÚË³ĞòÏûÏ¢ÈÏÎªÊÇÁÙÊ±Ã»ÓĞ¿ÉÓÃ·ÖÇø(±ÈÈçÖ»ÓĞÒ»Ì¨·şÎñÆ÷,¶øËüÕıÔÚÖØÆô),²»ÈÏÎªÊÇÃ»·¢²¼topic,
-        // ½øÈëÏûÏ¢Ğ´±¾µØ»úÖÆ
+        // å¯ç”¨åˆ†åŒºæ•°ä¸º0,å¯¹äºé¡ºåºæ¶ˆæ¯è®¤ä¸ºæ˜¯ä¸´æ—¶æ²¡æœ‰å¯ç”¨åˆ†åŒº(æ¯”å¦‚åªæœ‰ä¸€å°æœåŠ¡å™¨,è€Œå®ƒæ­£åœ¨é‡å¯),ä¸è®¤ä¸ºæ˜¯æ²¡å‘å¸ƒtopic,
+        // è¿›å…¥æ¶ˆæ¯å†™æœ¬åœ°æœºåˆ¶
         if (availablePartitionNum == 0) {
             throw new AvailablePartitionNumException("selected partition[" + selectedPartition + "]for topic[" + topic
                     + "]can not write now");
         }
 
-        // ¿ÉÓÃ·ÖÇøºÍÅäÖÃ·ÖÇø¾ù²»°üº¬Ñ¡³öÀ´µÄ·ÖÇø,(¿ÉÄÜÊÇÓÃ»§ÂÒÌîµÄ,Å×³öÒì³£ÓÃ»§×Ô¼º¸ºÔğ)
+        // å¯ç”¨åˆ†åŒºå’Œé…ç½®åˆ†åŒºå‡ä¸åŒ…å«é€‰å‡ºæ¥çš„åˆ†åŒº,(å¯èƒ½æ˜¯ç”¨æˆ·ä¹±å¡«çš„,æŠ›å‡ºå¼‚å¸¸ç”¨æˆ·è‡ªå·±è´Ÿè´£)
         if (!configPartitions.contains(selectedPartition) && !partitions.contains(selectedPartition)) {
             throw new MetaClientException("invalid selected partition:" + selectedPartition
                     + ",config and availabe paritions not contains it");
         }
 
-        // ¿ÉÓÃ·ÖÇøºÍÅäÖÃ·ÖÇø¾ù°üº¬Ñ¡³öÀ´µÄ·ÖÇøÊ±²Å¿ÉĞ´
+        // å¯ç”¨åˆ†åŒºå’Œé…ç½®åˆ†åŒºå‡åŒ…å«é€‰å‡ºæ¥çš„åˆ†åŒºæ—¶æ‰å¯å†™
         if (configPartitions.contains(selectedPartition) && partitions.contains(selectedPartition)) {
             return selectedPartition;
         }
         else {
-            // Ñ¡Ôñ³öÀ´µÄÆÚÍû·ÖÇø²»¿ÉĞ´.
-            // 1.ÅäÖÃ·ÖÇøĞÅÏ¢±äÁË
-            // 2.¿ÉÓÃ·ÖÇø±äÁË(»úÆ÷ÔİÍ£»òÖØÆô)
+            // é€‰æ‹©å‡ºæ¥çš„æœŸæœ›åˆ†åŒºä¸å¯å†™.
+            // 1.é…ç½®åˆ†åŒºä¿¡æ¯å˜äº†
+            // 2.å¯ç”¨åˆ†åŒºå˜äº†(æœºå™¨æš‚åœæˆ–é‡å¯)
             throw new AvailablePartitionNumException("selected partition[" + selectedPartition + "]for topic[" + topic
                     + "]can not write now");
         }

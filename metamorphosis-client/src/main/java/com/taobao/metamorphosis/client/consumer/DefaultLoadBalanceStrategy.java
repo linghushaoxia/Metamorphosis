@@ -26,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
 
 
 /**
- * Ä¬ÈÏµÄ¸ºÔØ¾ùºâ²ßÂÔ£¬¾¡Á¿Ê¹µÃ¸ºÔØÔÚËùÓĞconsumerÖ®¼äÆ½¾ù·ÖÅä£¬consumerÖ®¼ä·ÖÅäµÄ·ÖÇøÊı²î¾à²»´óÓÚ1
+ * é»˜è®¤çš„è´Ÿè½½å‡è¡¡ç­–ç•¥ï¼Œå°½é‡ä½¿å¾—è´Ÿè½½åœ¨æ‰€æœ‰consumerä¹‹é—´å¹³å‡åˆ†é…ï¼Œconsumerä¹‹é—´åˆ†é…çš„åˆ†åŒºæ•°å·®è·ä¸å¤§äº1
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-11-29
@@ -40,9 +40,9 @@ public class DefaultLoadBalanceStrategy implements LoadBalanceStrategy {
     @Override
     public List<String> getPartitions(final String topic, final String consumerId, final List<String> curConsumers,
             final List<String> curPartitions) {
-        // Ã¿¸ö¶©ÔÄÕßÆ½¾ù¹ÒÔØµÄpartitionÊıÄ¿
+        // æ¯ä¸ªè®¢é˜…è€…å¹³å‡æŒ‚è½½çš„partitionæ•°ç›®
         final int nPartsPerConsumer = curPartitions.size() / curConsumers.size();
-        // ¹ÒÔØµ½¶îÍâpartitionµÄconsumerÊıÄ¿
+        // æŒ‚è½½åˆ°é¢å¤–partitionçš„consumeræ•°ç›®
         final int nConsumersWithExtraPart = curPartitions.size() % curConsumers.size();
 
         log.info("Consumer " + consumerId + " rebalancing the following partitions: " + curPartitions + " for topic "
@@ -53,7 +53,7 @@ public class DefaultLoadBalanceStrategy implements LoadBalanceStrategy {
             return Collections.emptyList();
         }
         assert myConsumerPosition >= 0;
-        // ¼ÆËãÆğµã
+        // è®¡ç®—èµ·ç‚¹
         final int startPart =
                 nPartsPerConsumer * myConsumerPosition + Math.min(myConsumerPosition, nConsumersWithExtraPart);
         final int nParts = nPartsPerConsumer + (myConsumerPosition + 1 > nConsumersWithExtraPart ? 0 : 1);

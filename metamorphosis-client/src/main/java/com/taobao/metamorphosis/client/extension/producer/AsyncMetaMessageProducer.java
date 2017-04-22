@@ -48,16 +48,16 @@ import com.taobao.metamorphosis.network.PutCommand;
 
 /**
  * <pre>
- * Òì²½µ¥Ïò·¢ËÍÏûÏ¢¸ø·şÎñÆ÷µÄÉú²úÕßÊµÏÖ.
+ * å¼‚æ­¥å•å‘å‘é€æ¶ˆæ¯ç»™æœåŠ¡å™¨çš„ç”Ÿäº§è€…å®ç°.
  * 
- * Ê¹ÓÃ³¡¾°:
- *      ¶ÔÓÚ·¢ËÍ¿É¿¿ĞÔÒªÇó²»ÄÇÃ´¸ß,µ«ÒªÇóÌá¸ß·¢ËÍĞ§ÂÊºÍ½µµÍ¶ÔËŞÖ÷Ó¦ÓÃµÄÓ°Ïì£¬Ìá¸ßËŞÖ÷Ó¦ÓÃµÄÎÈ¶¨ĞÔ.
- *      ÀıÈç,ÊÕ¼¯ÈÕÖ¾»òÓÃ»§ĞĞÎªĞÅÏ¢µÈ³¡¾°.
- * ×¢Òâ:
- *      ·¢ËÍÏûÏ¢ºó·µ»ØµÄ½á¹ûÖĞ²»°üº¬×¼È·µÄmessageIdºÍoffset,ÕâĞ©Öµ¶¼ÊÇ-1
+ * ä½¿ç”¨åœºæ™¯:
+ *      å¯¹äºå‘é€å¯é æ€§è¦æ±‚ä¸é‚£ä¹ˆé«˜,ä½†è¦æ±‚æé«˜å‘é€æ•ˆç‡å’Œé™ä½å¯¹å®¿ä¸»åº”ç”¨çš„å½±å“ï¼Œæé«˜å®¿ä¸»åº”ç”¨çš„ç¨³å®šæ€§.
+ *      ä¾‹å¦‚,æ”¶é›†æ—¥å¿—æˆ–ç”¨æˆ·è¡Œä¸ºä¿¡æ¯ç­‰åœºæ™¯.
+ * æ³¨æ„:
+ *      å‘é€æ¶ˆæ¯åè¿”å›çš„ç»“æœä¸­ä¸åŒ…å«å‡†ç¡®çš„messageIdå’Œoffset,è¿™äº›å€¼éƒ½æ˜¯-1
  * 
- * @author ÎŞ»¨
- * @since 2011-10-21 ÏÂÎç1:42:55
+ * @author æ— èŠ±
+ * @since 2011-10-21 ä¸‹åˆ1:42:55
  * </pre>
  */
 
@@ -110,15 +110,15 @@ public class AsyncMetaMessageProducer extends SimpleMessageProducer implements A
             super.sendMessage(message, timeout, unit);
         }
         catch (final IllegalStateException e) {
-            // ¿ÉÄÜÊÇproducerÒÑ¹Ø±Õ
+            // å¯èƒ½æ˜¯producerå·²å…³é—­
             log.warn(e);
         }
         catch (final InvalidMessageException e) {
-            // ·Ç·¨µÄÏûÏ¢,ÕâÖÖÏûÏ¢Ö±½ÓÈÓµô,·ÅÔÚ±¾µØ»áÓÀÔ¶¶¼recover²»³öÈ¥
+            // éæ³•çš„æ¶ˆæ¯,è¿™ç§æ¶ˆæ¯ç›´æ¥æ‰”æ‰,æ”¾åœ¨æœ¬åœ°ä¼šæ°¸è¿œéƒ½recoverä¸å‡ºå»
             log.warn(e);
         }
         catch (final MetaClientException e) {
-            // ´¦Àí·¢ËÍÊ§°ÜµÄÏûÏ¢
+            // å¤„ç†å‘é€å¤±è´¥çš„æ¶ˆæ¯
             if (log.isDebugEnabled()) {
                 log.debug("save to local strage,and waitting for recover. cause:" + e.getMessage());
             }
@@ -128,7 +128,7 @@ public class AsyncMetaMessageProducer extends SimpleMessageProducer implements A
             Thread.currentThread().interrupt();
         }
         catch (final Throwable e) {
-            // ÆäËûÃ»ÓĞÔ¤ÁÏµ½µÄÇé¿ö
+            // å…¶ä»–æ²¡æœ‰é¢„æ–™åˆ°çš„æƒ…å†µ
             if (log.isDebugEnabled()) {
                 log.debug("save to local strage,and waitting for recover. cause:", e);
             }
@@ -170,7 +170,7 @@ public class AsyncMetaMessageProducer extends SimpleMessageProducer implements A
     }
 
 
-    // ÔÚÉÏ²ã×öÁ÷Á¿ÏŞÖÆ,±ÜÃâ´óÁ¿Êı¾İ°ü³å»÷remotingºóÔì³ÉOOM
+    // åœ¨ä¸Šå±‚åšæµé‡é™åˆ¶,é¿å…å¤§é‡æ•°æ®åŒ…å†²å‡»remotingåé€ æˆOOM
     private BooleanCommand trySend(final String serverUrl, final PutCommand putCommand, final long timeout,
             final TimeUnit unit) throws NotifyRemotingException, InterruptedException {
         final int dataLength = putCommand.getData() != null ? putCommand.getData().length : 0;
@@ -184,7 +184,7 @@ public class AsyncMetaMessageProducer extends SimpleMessageProducer implements A
             }
             catch (final NotifyRemotingException e) {
                 this.slidingWindow.releaseByLenth(dataLength);
-                if (e.getMessage().contains("³¬¹ıÁ÷Á¿ÏŞÖÆ") || e.getMessage().contains("³¬¹ıÔÊĞíµÄ×î´óCallBack¸öÊı")) {
+                if (e.getMessage().contains("è¶…è¿‡æµé‡é™åˆ¶") || e.getMessage().contains("è¶…è¿‡å…è®¸çš„æœ€å¤§CallBackä¸ªæ•°")) {
                     throw new MetaMessageOverflowException(e);
                 }
                 else {
@@ -193,7 +193,7 @@ public class AsyncMetaMessageProducer extends SimpleMessageProducer implements A
             }
         }
         else {
-            throw new MetaMessageOverflowException("·¢ËÍÏûÏ¢Á÷Á¿³¬¹ı»¬¶¯´°¿Úµ¥Î»×ÜÊı£º" + this.slidingWindow.getWindowsSize());
+            throw new MetaMessageOverflowException("å‘é€æ¶ˆæ¯æµé‡è¶…è¿‡æ»‘åŠ¨çª—å£å•ä½æ€»æ•°ï¼š" + this.slidingWindow.getWindowsSize());
         }
     }
 
@@ -201,7 +201,7 @@ public class AsyncMetaMessageProducer extends SimpleMessageProducer implements A
     private BooleanCommand processOverMessage(final Partition partition, final PutCommand putCommand,
             final Message message, final MetaMessageOverflowException e2) throws MetaMessageOverflowException {
         if (this.ignoreMessageProcessor != null) {
-            // ²»¹Ü´¦Àí½á¹ûÔõÑù¶¼·µ»Ø³É¹¦
+            // ä¸ç®¡å¤„ç†ç»“æœæ€æ ·éƒ½è¿”å›æˆåŠŸ
             this.handleSendFailMessage(message);
             return new BooleanCommand(HttpStatus.Success, "-1 " + putCommand.getPartition()
                     + " -1", putCommand.getOpaque());
@@ -222,7 +222,7 @@ public class AsyncMetaMessageProducer extends SimpleMessageProducer implements A
     }
 
     /**
-     * ±íÊ¾ÏûÏ¢Á÷Á¿¹ıÔØµÄÒì³£
+     * è¡¨ç¤ºæ¶ˆæ¯æµé‡è¿‡è½½çš„å¼‚å¸¸
      * 
      * @author wuhua
      * 

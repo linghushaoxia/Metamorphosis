@@ -290,7 +290,7 @@ public class TransactionContextUnitTest {
         this.replay();
         this.context.start(id, XAResource.TMNOFLAGS);
         assertTrue(this.context.isInXATransaction());
-        // Ã»ÓĞµ÷ÓÃend£¬Ö±½Óprepare
+        // æ²¡æœ‰è°ƒç”¨endï¼Œç›´æ¥prepare
         this.context.prepare(id);
         fail();
     }
@@ -309,7 +309,7 @@ public class TransactionContextUnitTest {
         this.replay();
         this.context.start(id, XAResource.TMNOFLAGS);
         assertTrue(this.context.isInXATransaction());
-        // Ã»ÓĞµ÷ÓÃend£¬Ö±½Ócommit
+        // æ²¡æœ‰è°ƒç”¨endï¼Œç›´æ¥commit
         this.context.commit(id, false);
         fail();
     }
@@ -361,7 +361,7 @@ public class TransactionContextUnitTest {
 
     @Test
     public void testCommitUnBeginXA() throws Exception {
-        // ÕâÊÇÔÊĞíµÄ£¬¿ÉÄÜÊÇrecover³öÀ´µÄÊÂÎñ
+        // è¿™æ˜¯å…è®¸çš„ï¼Œå¯èƒ½æ˜¯recoverå‡ºæ¥çš„äº‹åŠ¡
         final String serverUrl = "meta://localhost:8123";
         this.mockIsConnected(serverUrl, true);
         this.context.setServerUrl(serverUrl);
@@ -377,7 +377,7 @@ public class TransactionContextUnitTest {
 
     @Test
     public void testPrepareUnBeginXA() throws Exception {
-        // ÕâÊÇÔÊĞíµÄ£¬¿ÉÄÜÊÇrecover³öÀ´µÄÊÂÎñ
+        // è¿™æ˜¯å…è®¸çš„ï¼Œå¯èƒ½æ˜¯recoverå‡ºæ¥çš„äº‹åŠ¡
         final String serverUrl = "meta://localhost:8123";
         this.mockIsConnected(serverUrl, true);
         this.context.setServerUrl(serverUrl);

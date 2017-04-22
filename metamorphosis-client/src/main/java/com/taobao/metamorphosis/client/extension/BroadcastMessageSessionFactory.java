@@ -23,20 +23,20 @@ import com.taobao.metamorphosis.client.consumer.MessageConsumer;
 
 
 /**
- * ¹ã²¥ÏûÏ¢»á»°¹¤³§,Ê¹ÓÃÕâ¸ö´´½¨µÄConsumerÔÚÍ¬Ò»·Ö×éÄÚµÄÃ¿Ì¨»úÆ÷¶¼ÄÜÊÕµ½Í¬Ò»ÌõÏûÏ¢,
- * ÍÆ¼öÒ»¸öÓ¦ÓÃÖ»Ê¹ÓÃÒ»¸öMessageSessionFactory
+ * å¹¿æ’­æ¶ˆæ¯ä¼šè¯å·¥å‚,ä½¿ç”¨è¿™ä¸ªåˆ›å»ºçš„Consumeråœ¨åŒä¸€åˆ†ç»„å†…çš„æ¯å°æœºå™¨éƒ½èƒ½æ”¶åˆ°åŒä¸€æ¡æ¶ˆæ¯,
+ * æ¨èä¸€ä¸ªåº”ç”¨åªä½¿ç”¨ä¸€ä¸ªMessageSessionFactory
  * 
- * @author ÎŞ»¨
- * @since 2011-6-13 ÏÂÎç02:49:27
+ * @author æ— èŠ±
+ * @since 2011-6-13 ä¸‹åˆ02:49:27
  */
 
 public interface BroadcastMessageSessionFactory extends MessageSessionFactory {
 
     /**
-     * ´´½¨¹ã²¥·½Ê½½ÓÊÕµÄÏûÏ¢Ïû·ÑÕß£¬offset½«´æ´¢ÔÚ±¾µØ
+     * åˆ›å»ºå¹¿æ’­æ–¹å¼æ¥æ”¶çš„æ¶ˆæ¯æ¶ˆè´¹è€…ï¼Œoffsetå°†å­˜å‚¨åœ¨æœ¬åœ°
      * 
      * @param consumerConfig
-     *            Ïû·ÑÕßÅäÖÃ
+     *            æ¶ˆè´¹è€…é…ç½®
      * 
      * @return
      * */

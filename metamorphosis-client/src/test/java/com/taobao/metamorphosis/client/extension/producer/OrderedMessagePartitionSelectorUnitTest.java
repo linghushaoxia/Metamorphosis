@@ -36,8 +36,8 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-8-8 ÏÂÎç1:38:02
+ * @author æ— èŠ±
+ * @since 2011-8-8 ä¸‹åˆ1:38:02
  */
 
 public class OrderedMessagePartitionSelectorUnitTest {
@@ -63,7 +63,7 @@ public class OrderedMessagePartitionSelectorUnitTest {
 
     @Test
     public void testGetPartition_normal() throws MetaClientException {
-        // Õı³£Çé¿ö
+        // æ­£å¸¸æƒ…å†µ
 
         Message message = this.createDefaultMessage();
         Partition partition =
@@ -75,7 +75,7 @@ public class OrderedMessagePartitionSelectorUnitTest {
 
     @Test(expected = MetaClientException.class)
     public void testGetPartition_configPartitionsNull() throws MetaClientException {
-        // ·ÖÇøµÄÅäÖÃÎªnull
+        // åˆ†åŒºçš„é…ç½®ä¸ºnull
         this.selector.setConfigPartitions(null);
         Message message = this.createDefaultMessage();
         this.selector.getPartition(message.getTopic(),
@@ -85,7 +85,7 @@ public class OrderedMessagePartitionSelectorUnitTest {
 
     @Test(expected = MetaClientException.class)
     public void testGetPartition_configPartitionsEmpty() throws MetaClientException {
-        // ·ÖÇøµÄÅäÖÃÎª¿Õ
+        // åˆ†åŒºçš„é…ç½®ä¸ºç©º
         Map<String, List<Partition>> map = new HashMap<String, List<Partition>>();
         map.put(testTopic, new ArrayList<Partition>());
         this.selector.setConfigPartitions(map);
@@ -97,7 +97,7 @@ public class OrderedMessagePartitionSelectorUnitTest {
 
     @Test(expected = AvailablePartitionNumException.class)
     public void testGetPartition_availablePartitionsNull() throws MetaClientException {
-        // ¿ÉÓÃ·ÖÇøsÎªnull
+        // å¯ç”¨åˆ†åŒºsä¸ºnull
         Message message = this.createDefaultMessage();
         this.selector.getPartition(message.getTopic(), null, message);
     }
@@ -105,7 +105,7 @@ public class OrderedMessagePartitionSelectorUnitTest {
 
     @Test(expected = AvailablePartitionNumException.class)
     public void testGetPartition_availablePartitionsEmpty() throws MetaClientException {
-        // ¿ÉÓÃ·ÖÇøsÎª¿Õ
+        // å¯ç”¨åˆ†åŒºsä¸ºç©º
         Message message = this.createDefaultMessage();
         this.selector.getPartition(message.getTopic(), new ArrayList<Partition>(), message);
     }
@@ -113,7 +113,7 @@ public class OrderedMessagePartitionSelectorUnitTest {
 
     @Test
     public void testGetPartition_availablePartitionsChanged_butSelectedPartitionAvailable() throws MetaClientException {
-        // ¿ÉÓÃ·ÖÇø·¢ÉúÁË±ä»¯µ«×ÜÊıÃ»±ä(0-1 -> 1-0),Ñ¡Ôñ³öÀ´µÄ·ÖÇøÊÇ0-0£¬·µ»ØÕâ¸ö·ÖÇø£¨Õâ¸ö·ÖÇø¼ÌĞø¿ÉĞ´£©
+        // å¯ç”¨åˆ†åŒºå‘ç”Ÿäº†å˜åŒ–ä½†æ€»æ•°æ²¡å˜(0-1 -> 1-0),é€‰æ‹©å‡ºæ¥çš„åˆ†åŒºæ˜¯0-0ï¼Œè¿”å›è¿™ä¸ªåˆ†åŒºï¼ˆè¿™ä¸ªåˆ†åŒºç»§ç»­å¯å†™ï¼‰
         Message message = this.createDefaultMessage();
         Partition partition =
                 this.selector.getPartition(message.getTopic(),
@@ -124,7 +124,7 @@ public class OrderedMessagePartitionSelectorUnitTest {
 
     @Test(expected = AvailablePartitionNumException.class)
     public void testGetPartition_availablePartitionsChanged_andSelectedPartitionInvalid() throws MetaClientException {
-        // ¿ÉÓÃ·ÖÇøÊıÁ¿²»±ä,µ«ÊÇÑ¡³öÀ´µÄ·ÖÇø£¨0-0£©£¬²»°üº¬ÔÚ¿ÉÓÃ·ÖÇøÀï£¨¿ÉÄÜÊÇÓÃ»§ÂÒĞ´ÁË²»´æÔÚµÄÒ»¸ö·ÖÇø£©
+        // å¯ç”¨åˆ†åŒºæ•°é‡ä¸å˜,ä½†æ˜¯é€‰å‡ºæ¥çš„åˆ†åŒºï¼ˆ0-0ï¼‰ï¼Œä¸åŒ…å«åœ¨å¯ç”¨åˆ†åŒºé‡Œï¼ˆå¯èƒ½æ˜¯ç”¨æˆ·ä¹±å†™äº†ä¸å­˜åœ¨çš„ä¸€ä¸ªåˆ†åŒºï¼‰
         Message message = this.createDefaultMessage();
         this.selector.getPartition(message.getTopic(),
             Arrays.asList(new Partition("1-0"), new Partition("2-0"), new Partition("3-0")), message);
@@ -133,7 +133,7 @@ public class OrderedMessagePartitionSelectorUnitTest {
 
     @Test(expected = AvailablePartitionNumException.class)
     public void testGetPartition_configPartitionsChanged() throws MetaClientException {
-        // ·ÖÇøÅäÖÃ·¢ÉúÁË±ä»¯,¿ÉÓÃ·ÖÇø²»±ä,Ñ¡Ôñ³öÀ´µÄ·ÖÇøÊÇ0-0£¬²»¿ÉĞ´
+        // åˆ†åŒºé…ç½®å‘ç”Ÿäº†å˜åŒ–,å¯ç”¨åˆ†åŒºä¸å˜,é€‰æ‹©å‡ºæ¥çš„åˆ†åŒºæ˜¯0-0ï¼Œä¸å¯å†™
         Map<String, List<Partition>> map = new HashMap<String, List<Partition>>();
         map.put(testTopic, Arrays.asList(new Partition("1-0"), new Partition("1-1"), new Partition("2-0")));
         this.selector.setConfigPartitions(map);
@@ -148,7 +148,7 @@ public class OrderedMessagePartitionSelectorUnitTest {
 
     @Test
     public void testGetPartition_availablePartitionsChanged_butSelectedPartitionAvailable2() throws MetaClientException {
-        // ¿ÉÓÃ·ÖÇøÊıÉÙÁË(1-0),°´ÕÕÅäÖÃµÄ·ÖÇøÑ¡Ôñ,Ñ¡³öÀ´µÄ·ÖÇø(0-0)°üº¬ÔÚ¿ÉÓÃ·ÖÇøÀï,·µ»ØÕâ¸ö·ÖÇø£¨Õâ¸ö·ÖÇø¼ÌĞø¿ÉĞ´£©
+        // å¯ç”¨åˆ†åŒºæ•°å°‘äº†(1-0),æŒ‰ç…§é…ç½®çš„åˆ†åŒºé€‰æ‹©,é€‰å‡ºæ¥çš„åˆ†åŒº(0-0)åŒ…å«åœ¨å¯ç”¨åˆ†åŒºé‡Œ,è¿”å›è¿™ä¸ªåˆ†åŒºï¼ˆè¿™ä¸ªåˆ†åŒºç»§ç»­å¯å†™ï¼‰
 
         Message message = this.createDefaultMessage();
         Partition partition =
@@ -161,7 +161,7 @@ public class OrderedMessagePartitionSelectorUnitTest {
     @Test(expected = AvailablePartitionNumException.class)
     public void testGetPartition_availablePartitionsChanged_butSelectedPartitionAvailable_expception()
             throws MetaClientException {
-        // ¿ÉÓÃ·ÖÇøÊıÉÙÁË£¨0-0£©,°´ÕÕÅäÖÃµÄ·ÖÇøÑ¡Ôñ,Ñ¡³öÀ´µÄ·ÖÇø£¨0-0£©²»°üº¬ÔÚ¿ÉÓÃ·ÖÇøÀï
+        // å¯ç”¨åˆ†åŒºæ•°å°‘äº†ï¼ˆ0-0ï¼‰,æŒ‰ç…§é…ç½®çš„åˆ†åŒºé€‰æ‹©,é€‰å‡ºæ¥çš„åˆ†åŒºï¼ˆ0-0ï¼‰ä¸åŒ…å«åœ¨å¯ç”¨åˆ†åŒºé‡Œ
 
         Message message = this.createDefaultMessage();
         this.selector.getPartition(message.getTopic(), Arrays.asList(new Partition("0-1"), new Partition("1-0")),

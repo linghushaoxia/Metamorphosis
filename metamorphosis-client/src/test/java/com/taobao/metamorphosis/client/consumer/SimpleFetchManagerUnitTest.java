@@ -330,7 +330,7 @@ public class SimpleFetchManagerUnitTest {
     @Test
     public void testProcessRequestRetryTooMany() throws Exception {
 
-        // ×î´ó³¢ÊÔÒ»´Î£¬Ôò±ØÈ»³¬¹ı
+        // æœ€å¤§å°è¯•ä¸€æ¬¡ï¼Œåˆ™å¿…ç„¶è¶…è¿‡
         this.consumerConfig.setMaxFetchRetries(0);
 
         final String topic = "topic1";
@@ -367,7 +367,7 @@ public class SimpleFetchManagerUnitTest {
         this.consumer.appendCouldNotProcessMessage(message);
         EasyMock.expectLastCall();
 
-        // offsetµİÔö£¬ÒòÎªÌø¹ıµ±Ç°ÏûÏ¢
+        // offseté€’å¢ï¼Œå› ä¸ºè·³è¿‡å½“å‰æ¶ˆæ¯
         final FetchRequest newRequest =
                 new FetchRequest(broker, 0, new TopicPartitionRegInfo(topic, partition, offset + data.length, 1111),
                     maxSize);
@@ -375,7 +375,7 @@ public class SimpleFetchManagerUnitTest {
         EasyMock.replay(this.consumer);
         runner.processRequest(request);
         EasyMock.verify(this.consumer);
-        // retry±»ÖØÉè
+        // retryè¢«é‡è®¾
         assertEquals(0, request.getRetries());
         assertEquals(newRequest, this.fetchManager.takeFetchRequest());
     }
@@ -512,7 +512,7 @@ public class SimpleFetchManagerUnitTest {
     @Test
     public void testProcessRequestDelayed_IncreaseMaxSize() throws Exception {
         // this.mockConsumerReInitializeFetchManager();
-        // ±£Ö¤³¬¹ı³¢ÊÔ´ÎÊı
+        // ä¿è¯è¶…è¿‡å°è¯•æ¬¡æ•°
         this.consumerConfig.setMaxIncreaseFetchDataRetries(0);
         final String topic = "topic1";
         final int maxSize = 1024;
@@ -521,7 +521,7 @@ public class SimpleFetchManagerUnitTest {
         final Broker broker = new Broker(0, "meta://localhost:0");
         final FetchRequest request =
                 new FetchRequest(broker, 0, new TopicPartitionRegInfo(topic, partition, offset), maxSize);
-        // µİÔö´ÎÊı£¬³¬¹ı0´Î
+        // é€’å¢æ¬¡æ•°ï¼Œè¶…è¿‡0æ¬¡
         request.incrementRetriesAndGet();
 
         final FetchRequestRunner runner = this.fetchManager.new FetchRequestRunner();

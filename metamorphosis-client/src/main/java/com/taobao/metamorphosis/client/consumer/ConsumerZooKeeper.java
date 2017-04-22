@@ -67,7 +67,7 @@ import com.taobao.metamorphosis.utils.ZkUtils.ZKConfig;
 
 
 /**
- * ConsumerÓëZookeeper½»»¥
+ * Consumerä¸Zookeeperäº¤äº’
  * 
  * @author boyan
  * @Date 2011-4-26
@@ -119,7 +119,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
     /**
-     * È¡Ïû×¢²áconsumer
+     * å–æ¶ˆæ³¨å†Œconsumer
      * 
      * @param fetchManager
      */
@@ -131,21 +131,21 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                 final ZKLoadRebalanceListener listener = futureTask.get();
                 if (listener != null) {
                     listener.stop();
-                    // Ìá½»offsets
+                    // æäº¤offsets
                     listener.commitOffsets();
                     this.zkClient.unsubscribeStateChanges(new ZKSessionExpireListenner(listener));
                     final ZKGroupDirs dirs = this.metaZookeeper.new ZKGroupDirs(listener.consumerConfig.getGroup());
                     this.zkClient.unsubscribeChildChanges(dirs.consumerRegistryDir, listener);
                     log.info("unsubscribeChildChanges:" + dirs.consumerRegistryDir);
-                    // ÒÆ³ı¼àÊÓ¶©ÔÄtopicµÄ·ÖÇø±ä»¯
+                    // ç§»é™¤ç›‘è§†è®¢é˜…topicçš„åˆ†åŒºå˜åŒ–
                     for (final String topic : listener.topicSubcriberRegistry.keySet()) {
                         final String partitionPath = this.metaZookeeper.brokerTopicsSubPath + "/" + topic;
                         this.zkClient.unsubscribeChildChanges(partitionPath, listener);
                         log.info("unsubscribeChildChanges:" + partitionPath);
                     }
-                    // É¾³ıownership
+                    // åˆ é™¤ownership
                     listener.releaseAllPartitionOwnership();
-                    // É¾³ıÁÙÊ±½Úµã
+                    // åˆ é™¤ä¸´æ—¶èŠ‚ç‚¹
                     ZkUtils.deletePath(this.zkClient, listener.dirs.consumerRegistryDir + "/"
                             + listener.consumerIdString);
 
@@ -163,7 +163,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
     /**
-     * ×¢²á¶©ÔÄÕß
+     * æ³¨å†Œè®¢é˜…è€…
      * 
      * @throws Exception
      */
@@ -207,10 +207,10 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
         final String topicString = this.getTopicsString(loadBalanceListener.topicSubcriberRegistry);
 
         if (this.zkClient == null) {
-            // Ö±Á¬Ä£Ê½
+            // ç›´è¿æ¨¡å¼
             loadBalanceListener.fetchManager.stopFetchRunner();
             loadBalanceListener.fetchManager.resetFetchState();
-            // zkClientÎªnull£¬Ê¹ÓÃÅäÖÃÏî²¢·¢ÆğfetchÇëÇó
+            // zkClientä¸ºnullï¼Œä½¿ç”¨é…ç½®é¡¹å¹¶å‘èµ·fetchè¯·æ±‚
             for (final String topic : loadBalanceListener.topicSubcriberRegistry.keySet()) {
                 final SubscriberInfo subInfo = loadBalanceListener.topicSubcriberRegistry.get(topic);
                 ConcurrentHashMap<Partition, TopicPartitionRegInfo> topicPartRegInfoMap =
@@ -233,24 +233,24 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
         }
         else {
             for (int i = 0; i < MAX_N_RETRIES; i++) {
-                // ×¢²áconsumer id
+                // æ³¨å†Œconsumer id
                 ZkUtils.makeSurePersistentPathExists(this.zkClient, dirs.consumerRegistryDir);
                 ZkUtils.createEphemeralPathExpectConflict(this.zkClient, dirs.consumerRegistryDir + "/"
                         + loadBalanceListener.consumerIdString, topicString);
-                // ¼àÊÓÍ¬Ò»¸ö·Ö×éµÄconsumerÁĞ±íÊÇ·ñÓĞ±ä»¯
+                // ç›‘è§†åŒä¸€ä¸ªåˆ†ç»„çš„consumeråˆ—è¡¨æ˜¯å¦æœ‰å˜åŒ–
                 this.zkClient.subscribeChildChanges(dirs.consumerRegistryDir, loadBalanceListener);
 
-                // ¼àÊÓ¶©ÔÄtopicµÄ·ÖÇøÊÇ·ñÓĞ±ä»¯
+                // ç›‘è§†è®¢é˜…topicçš„åˆ†åŒºæ˜¯å¦æœ‰å˜åŒ–
                 for (final String topic : loadBalanceListener.topicSubcriberRegistry.keySet()) {
                     final String partitionPath = this.metaZookeeper.brokerTopicsSubPath + "/" + topic;
                     ZkUtils.makeSurePersistentPathExists(this.zkClient, partitionPath);
                     this.zkClient.subscribeChildChanges(partitionPath, loadBalanceListener);
                 }
 
-                // ¼àÊÓzk client×´Ì¬£¬ÔÚÁ¬½ÓÖØÁ¬µÄÊ±ºòÖØĞÂ×¢²á
+                // ç›‘è§†zk clientçŠ¶æ€ï¼Œåœ¨è¿æ¥é‡è¿çš„æ—¶å€™é‡æ–°æ³¨å†Œ
                 this.zkClient.subscribeStateChanges(new ZKSessionExpireListenner(loadBalanceListener));
 
-                // µÚÒ»´Î£¬ĞèÒªÃ÷È·´¥·¢balance
+                // ç¬¬ä¸€æ¬¡ï¼Œéœ€è¦æ˜ç¡®è§¦å‘balance
                 if (loadBalanceListener.syncedRebalance()) {
                     break;
                 }
@@ -301,11 +301,11 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
     @Override
     public void onZkClientChanged(final ZkClient newClient) {
         this.zkClient = newClient;
-        // ÖØĞÂ×¢²áconsumer
+        // é‡æ–°æ³¨å†Œconsumer
         for (final FutureTask<ZKLoadRebalanceListener> task : this.consumerLoadBalanceListeners.values()) {
             try {
                 final ZKLoadRebalanceListener listener = task.get();
-                // ÒªÇå¿ÕÒÑÓĞµÄ×¢²áĞÅÏ¢£¬·ÀÖ¹ÔÚ×¢²áconsumerÊ§°ÜµÄÊ±ºò»¹Ìá½»offset£¬µ¼ÖÂ¸²¸Ç¸üĞÂµÄoffset
+                // è¦æ¸…ç©ºå·²æœ‰çš„æ³¨å†Œä¿¡æ¯ï¼Œé˜²æ­¢åœ¨æ³¨å†Œconsumerå¤±è´¥çš„æ—¶å€™è¿˜æäº¤offsetï¼Œå¯¼è‡´è¦†ç›–æ›´æ–°çš„offset
                 listener.topicRegistry.clear();
                 log.info("re-register consumer to zk,group=" + listener.consumerConfig.getGroup());
                 this.registerConsumerInternal(listener);
@@ -395,13 +395,13 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
         private final Lock rebalanceLock = new ReentrantLock();
 
         /**
-         * ¶©ÔÄµÄtopic¶ÔÓ¦µÄbroker,offsetµÈĞÅÏ¢
+         * è®¢é˜…çš„topicå¯¹åº”çš„broker,offsetç­‰ä¿¡æ¯
          */
         final ConcurrentHashMap<String/* topic */, ConcurrentHashMap<Partition, TopicPartitionRegInfo>> topicRegistry =
                 new ConcurrentHashMap<String, ConcurrentHashMap<Partition, TopicPartitionRegInfo>>();
 
         /**
-         * ¶©ÔÄĞÅÏ¢£¬Èç×î´ó´«Êä´óĞ¡£¬ÏûÏ¢¼àÌıÆ÷µÈ
+         * è®¢é˜…ä¿¡æ¯ï¼Œå¦‚æœ€å¤§ä¼ è¾“å¤§å°ï¼Œæ¶ˆæ¯ç›‘å¬å™¨ç­‰
          */
         private final ConcurrentHashMap<String/* topic */, SubscriberInfo> topicSubcriberRegistry;
 
@@ -454,7 +454,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
         /**
-         * ¸üĞÂoffsetµ½zk
+         * æ›´æ–°offsetåˆ°zk
          */
         private void commitOffsets() {
             this.offsetStorage.commitOffset(this.consumerConfig.getGroup(), this.getTopicPartitionRegInfos());
@@ -497,7 +497,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
         /**
-         * ¼ÓÔØoffsetĞÅÏ¢
+         * åŠ è½½offsetä¿¡æ¯
          * 
          * @param topic
          * @param partition
@@ -565,8 +565,8 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                         throw e;
                     }
                     catch (final Throwable e) {
-                        // ·¢ÉúÁËÔ¤ÁÏÖ®ÍâµÄÒì³£,¶¼ÖØÊÔÒ»ÏÂ,
-                        // ÓĞ¿ÉÄÜÊÇ¶à¸ö»úÆ÷consumerÔÚÍ¬Ê±rebalanceÔì³ÉµÄ¶ÁÈ¡zkÊı¾İ²»Ò»ÖÂ,-- wuhua
+                        // å‘ç”Ÿäº†é¢„æ–™ä¹‹å¤–çš„å¼‚å¸¸,éƒ½é‡è¯•ä¸€ä¸‹,
+                        // æœ‰å¯èƒ½æ˜¯å¤šä¸ªæœºå™¨consumeråœ¨åŒæ—¶rebalanceé€ æˆçš„è¯»å–zkæ•°æ®ä¸ä¸€è‡´,-- wuhua
                         log.warn("unexpected exception occured while try rebalancing", e);
                         done = false;
                     }
@@ -583,7 +583,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                     // release all partitions, reset state and retry
                     this.releaseAllPartitionOwnership();
                     this.resetState();
-                    // µÈ´ızkÊı¾İÍ¬²½
+                    // ç­‰å¾…zkæ•°æ®åŒæ­¥
                     Thread.sleep(ConsumerZooKeeper.this.zkConfig.zkSyncTimeMs);
                 }
                 log.error("rebalance failed,finally");
@@ -603,7 +603,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
         /**
-         * ¸üĞÂfetchÏß³Ì
+         * æ›´æ–°fetchçº¿ç¨‹
          * 
          * @param cluster
          */
@@ -616,12 +616,12 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                 for (final Map.Entry<Partition, TopicPartitionRegInfo> partEntry : entry.getValue().entrySet()) {
                     final Partition partition = partEntry.getKey();
                     final TopicPartitionRegInfo info = partEntry.getValue();
-                    // Ëæ»úÈ¡master»òslaveµÄÒ»¸ö¶Á,wuhua
+                    // éšæœºå–masteræˆ–slaveçš„ä¸€ä¸ªè¯»,wuhua
                     final Broker broker = cluster.getBrokerRandom(partition.getBrokerId());
                     if (broker != null) {
                         newBrokers.add(broker);
                         final SubscriberInfo subscriberInfo = this.topicSubcriberRegistry.get(topic);
-                        // Ìí¼ÓfetchÇëÇó
+                        // æ·»åŠ fetchè¯·æ±‚
                         this.fetchManager.addFetchRequest(new FetchRequest(broker, 0L, info, subscriberInfo
                             .getMaxSize()));
                     }
@@ -657,7 +657,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                     throw ne;
                 }
             }
-            // ÖØĞÂÆô¶¯fetchÏß³Ì
+            // é‡æ–°å¯åŠ¨fetchçº¿ç¨‹
             log.warn("Starting fetch runners");
             this.oldBrokerSet = newBrokers;
             this.fetchManager.startFetchRunner();
@@ -674,12 +674,12 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                 consumersPerTopicMap = this.getConsumersPerTopic(this.group);
             }
             catch (final NoNodeException e) {
-                // ¶à¸öconsumerÍ¬Ê±ÔÚ¸ºÔØ¾ùºâÊ±,¿ÉÄÜ»áµ½´ïÕâÀï -- wuhua
+                // å¤šä¸ªconsumeråŒæ—¶åœ¨è´Ÿè½½å‡è¡¡æ—¶,å¯èƒ½ä¼šåˆ°è¾¾è¿™é‡Œ -- wuhua
                 log.warn("maybe other consumer is rebalancing now," + e.getMessage());
                 return false;
             }
             catch (final ZkNoNodeException e) {
-                // ¶à¸öconsumerÍ¬Ê±ÔÚ¸ºÔØ¾ùºâÊ±,¿ÉÄÜ»áµ½´ïÕâÀï -- wuhua
+                // å¤šä¸ªconsumeråŒæ—¶åœ¨è´Ÿè½½å‡è¡¡æ—¶,å¯èƒ½ä¼šåˆ°è¾¾è¿™é‡Œ -- wuhua
                 log.warn("maybe other consumer is rebalancing now," + e.getMessage());
                 return false;
             }
@@ -690,11 +690,11 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
             final Map<String/* topic */, String/* consumer id */> relevantTopicConsumerIdMap =
                     this.getRelevantTopicMap(myConsumerPerTopicMap, partitionsPerTopicMap,
                         this.oldPartitionsPerTopicMap, consumersPerTopicMap, this.oldConsumersPerTopicMap);
-            // Ã»ÓĞ±ä¸ü£¬ÎŞĞèÆ½ºâ
+            // æ²¡æœ‰å˜æ›´ï¼Œæ— éœ€å¹³è¡¡
             if (relevantTopicConsumerIdMap.size() <= 0) {
-                // ´¦ÀíÖ÷±¸Çé¿ö,topic·ÖÇøºÍÏû·ÑÕßÃ»ÓĞ±ä»¯,µ«Ö÷±¸µÄÆäÖĞÒ»Ì¨¹ÒÁË,
-                // µ¼ÖÂpartitionsPerTopicMap¿ÉÄÜÊÇÃ»ÓĞ±ä»¯µÄ,
-                // ËùÒÔÒª¼ì²é¼¯ÈºµÄ±ä»¯²¢ÖØĞÂÁ¬½Ó
+                // å¤„ç†ä¸»å¤‡æƒ…å†µ,topicåˆ†åŒºå’Œæ¶ˆè´¹è€…æ²¡æœ‰å˜åŒ–,ä½†ä¸»å¤‡çš„å…¶ä¸­ä¸€å°æŒ‚äº†,
+                // å¯¼è‡´partitionsPerTopicMapå¯èƒ½æ˜¯æ²¡æœ‰å˜åŒ–çš„,
+                // æ‰€ä»¥è¦æ£€æŸ¥é›†ç¾¤çš„å˜åŒ–å¹¶é‡æ–°è¿æ¥
                 if (this.checkClusterChange(cluster)) {
                     log.warn("Stopping fetch runners,maybe master or slave changed");
                     this.fetchManager.stopFetchRunner();
@@ -723,9 +723,9 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
                 final ZKGroupTopicDirs topicDirs =
                         ConsumerZooKeeper.this.metaZookeeper.new ZKGroupTopicDirs(topic, this.group);
-                // µ±Ç°¸ÃtopicµÄ¶©ÔÄÕß
+                // å½“å‰è¯¥topicçš„è®¢é˜…è€…
                 final List<String> curConsumers = consumersPerTopicMap.get(topic);
-                // µ±Ç°¸ÃtopicµÄ·ÖÇø
+                // å½“å‰è¯¥topicçš„åˆ†åŒº
                 final List<String> curPartitions = partitionsPerTopicMap.get(topic);
 
                 if (curConsumers == null) {
@@ -743,11 +743,11 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                     continue;
                 }
 
-                // ¸ù¾İ¸ºÔØ¾ùºâ²ßÂÔ»ñÈ¡Õâ¸öconsumer¶ÔÓ¦µÄpartitionÁĞ±í
+                // æ ¹æ®è´Ÿè½½å‡è¡¡ç­–ç•¥è·å–è¿™ä¸ªconsumerå¯¹åº”çš„partitionåˆ—è¡¨
                 final List<String> newParts =
                         this.loadBalanceStrategy.getPartitions(topic, consumerId, curConsumers, curPartitions);
 
-                // ²é¿´µ±Ç°Õâ¸ötopicµÄ·ÖÇøÁĞ±í£¬²é¿´ÊÇ·ñÓĞ±ä¸ü
+                // æŸ¥çœ‹å½“å‰è¿™ä¸ªtopicçš„åˆ†åŒºåˆ—è¡¨ï¼ŒæŸ¥çœ‹æ˜¯å¦æœ‰å˜æ›´
                 ConcurrentHashMap<Partition, TopicPartitionRegInfo> partRegInfos = this.topicRegistry.get(topic);
                 if (partRegInfos == null) {
                     partRegInfos = new ConcurrentHashMap<Partition, TopicPartitionRegInfo>();
@@ -756,7 +756,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                 final Set<Partition> currentParts = partRegInfos.keySet();
 
                 for (final Partition partition : currentParts) {
-                    // ĞÂµÄ·ÖÇøÁĞ±íÖĞ²»´æÔÚµÄ·ÖÇø£¬ĞèÒªÊÍ·ÅownerShip£¬Ò²¾ÍÊÇÀÏµÄÓĞ£¬ĞÂµÄÃ»ÓĞ
+                    // æ–°çš„åˆ†åŒºåˆ—è¡¨ä¸­ä¸å­˜åœ¨çš„åˆ†åŒºï¼Œéœ€è¦é‡Šæ”¾ownerShipï¼Œä¹Ÿå°±æ˜¯è€çš„æœ‰ï¼Œæ–°çš„æ²¡æœ‰
                     if (!newParts.contains(partition.toString())) {
                         log.warn("Releasing partition ownerships for partition:" + partition);
                         this.releasePartitionOwnership(topic, partition);
@@ -765,10 +765,10 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                 }
 
                 for (final String partition : newParts) {
-                    // µ±Ç°Ã»ÓĞµÄ·ÖÇø£¬¹ÒÔØÉÏÈ¥£¬Ò²¾ÍÊÇĞÂµÄÓĞ£¬ÀÏµÄÃ»ÓĞ
+                    // å½“å‰æ²¡æœ‰çš„åˆ†åŒºï¼ŒæŒ‚è½½ä¸Šå»ï¼Œä¹Ÿå°±æ˜¯æ–°çš„æœ‰ï¼Œè€çš„æ²¡æœ‰
                     if (!currentParts.contains(new Partition(partition))) {
                         log.warn(consumerId + " attempting to claim partition " + partition);
-                        // ×¢²á·ÖÇøowner¹ØÏµ
+                        // æ³¨å†Œåˆ†åŒºownerå…³ç³»
                         if (!this.ownPartition(topicDirs, partition, topic, consumerId)) {
                             log.warn("Claim partition " + partition + " failed,retry...");
                             return false;
@@ -805,7 +805,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
         /**
-         * Ìí¼Ó·ÖÇøµÄowner¹ØÏµ
+         * æ·»åŠ åˆ†åŒºçš„ownerå…³ç³»
          * 
          * @param topicDirs
          * @param partition
@@ -821,7 +821,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                     consumerThreadId);
             }
             catch (final ZkNodeExistsException e) {
-                // Ô­Ê¼µÄ¹ØÏµÓ¦¸ÃÒÑ¾­É¾³ı£¬ËùÒÔÉÔºòÔÙÖØÊÔ
+                // åŸå§‹çš„å…³ç³»åº”è¯¥å·²ç»åˆ é™¤ï¼Œæ‰€ä»¥ç¨å€™å†é‡è¯•
                 log.info("waiting for the partition ownership to be deleted: " + partition);
                 return false;
 
@@ -834,7 +834,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
         }
 
 
-        // »ñÈ¡offsetĞÅÏ¢²¢±£´æµ½±¾µØ
+        // è·å–offsetä¿¡æ¯å¹¶ä¿å­˜åˆ°æœ¬åœ°
         protected void addPartitionTopicInfo(final ZKGroupTopicDirs topicDirs, final String partitionString,
                 final String topic, final String consumerThreadId) {
             final Partition partition = new Partition(partitionString);
@@ -842,7 +842,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                     this.topicRegistry.get(topic);
             TopicPartitionRegInfo existsTopicPartitionRegInfo = this.loadTopicPartitionRegInfo(topic, partition);
             if (existsTopicPartitionRegInfo == null) {
-                // ³õÊ¼»¯µÄÊ±ºòÄ¬ÈÏÊ¹ÓÃ0,TODO ¿ÉÄÜ²ÉÓÃÆäËû
+                // åˆå§‹åŒ–çš„æ—¶å€™é»˜è®¤ä½¿ç”¨0,TODO å¯èƒ½é‡‡ç”¨å…¶ä»–
                 existsTopicPartitionRegInfo =
                         this.initTopicPartitionRegInfo(topic, consumerThreadId, partition,
                             this.consumerConfig.getOffset());// Long.MAX_VALUE
@@ -857,7 +857,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
         /**
-         * ÊÍ·Å·ÖÇøËùÓĞÈ¨
+         * é‡Šæ”¾åˆ†åŒºæ‰€æœ‰æƒ
          */
         private void releaseAllPartitionOwnership() {
             for (final Map.Entry<String, ConcurrentHashMap<Partition, TopicPartitionRegInfo>> entry : this.topicRegistry
@@ -874,7 +874,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
         /**
-         * ÊÍ·ÅÖ¸¶¨·ÖÇøµÄownership
+         * é‡Šæ”¾æŒ‡å®šåˆ†åŒºçš„ownership
          * 
          * @param topic
          * @param partition
@@ -901,7 +901,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
         /**
-         * ÊÍ·ÅÖ¸¶¨topic¹ØÁª·ÖÇøµÄownership
+         * é‡Šæ”¾æŒ‡å®štopicå…³è”åˆ†åŒºçš„ownership
          * 
          * @param topic
          * @param partition
@@ -920,7 +920,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
         /**
-         * ·µ»ØÓĞ±ä¸üµÄtopic¸úconsumer¼¯ºÏ
+         * è¿”å›æœ‰å˜æ›´çš„topicè·Ÿconsumeré›†åˆ
          * 
          * @param myConsumerPerTopicMap
          * @param newPartMap
@@ -936,7 +936,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
             for (final Map.Entry<String, String> entry : myConsumerPerTopicMap.entrySet()) {
                 final String topic = entry.getKey();
                 final String consumerId = entry.getValue();
-                // ÅĞ¶Ï·ÖÇø±ä¸ü»òÕß¶©ÔÄÕßÁĞ±íÊÇ·ñ±ä¸ü
+                // åˆ¤æ–­åˆ†åŒºå˜æ›´æˆ–è€…è®¢é˜…è€…åˆ—è¡¨æ˜¯å¦å˜æ›´
                 if (!this.listEquals(oldPartMap.get(topic), newPartMap.get(topic))
                         || !this.listEquals(oldConsumerMap.get(topic), newConsumerMap.get(topic))) {
                     relevantTopicThreadIdsMap.put(topic, consumerId);
@@ -961,13 +961,13 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
         /**
-         * »ñÈ¡Ä³¸ö·Ö×é¶©ÔÄµÄtopicµ½¶©ÔÄÕßÖ®¼äµÄÓ³Éämap
+         * è·å–æŸä¸ªåˆ†ç»„è®¢é˜…çš„topicåˆ°è®¢é˜…è€…ä¹‹é—´çš„æ˜ å°„map
          * 
          * @param group
          * @return
          * @throws Exception
          * @throws NoNodeException
-         *             ¶à¸öconsumerÍ¬Ê±ÔÚ¸ºÔØ¾ùºâÊ±,¿ÉÄÜ»áÅ×³öNoNodeException
+         *             å¤šä¸ªconsumeråŒæ—¶åœ¨è´Ÿè½½å‡è¡¡æ—¶,å¯èƒ½ä¼šæŠ›å‡ºNoNodeException
          */
         protected Map<String, List<String>> getConsumersPerTopic(final String group) throws Exception, NoNodeException {
             final List<String> consumers =
@@ -977,7 +977,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
             }
             final Map<String, List<String>> consumersPerTopicMap = new HashMap<String, List<String>>();
             for (final String consumer : consumers) {
-                final List<String> topics = this.getTopics(consumer);// ¶à¸öconsumerÍ¬Ê±ÔÚ¸ºÔØ¾ùºâÊ±,ÕâÀï¿ÉÄÜ»áÅ×³öNoNodeException£¬--wuhua
+                final List<String> topics = this.getTopics(consumer);// å¤šä¸ªconsumeråŒæ—¶åœ¨è´Ÿè½½å‡è¡¡æ—¶,è¿™é‡Œå¯èƒ½ä¼šæŠ›å‡ºNoNodeExceptionï¼Œ--wuhua
                 for (final String topic : topics) {
                     if (consumersPerTopicMap.get(topic) == null) {
                         final List<String> list = new ArrayList<String>();
@@ -990,7 +990,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
                 }
 
             }
-            // ¶©ÔÄÕßÅÅĞò
+            // è®¢é˜…è€…æ’åº
             for (final Map.Entry<String, List<String>> entry : consumersPerTopicMap.entrySet()) {
                 Collections.sort(entry.getValue());
             }
@@ -1009,7 +1009,7 @@ public class ConsumerZooKeeper implements ZkClientChangedListener {
 
 
         /**
-         * ¸ù¾İconsumerId»ñÈ¡¶©ÔÄµÄtopicÁĞ±í
+         * æ ¹æ®consumerIdè·å–è®¢é˜…çš„topicåˆ—è¡¨
          * 
          * @param consumerId
          * @return

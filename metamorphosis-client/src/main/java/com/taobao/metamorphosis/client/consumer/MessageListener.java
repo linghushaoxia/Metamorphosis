@@ -23,7 +23,7 @@ import com.taobao.metamorphosis.Message;
 
 
 /**
- * Òì²½ÏûÏ¢¼àÌıÆ÷
+ * å¼‚æ­¥æ¶ˆæ¯ç›‘å¬å™¨
  * 
  * @author boyan
  * @Date 2011-4-23
@@ -31,16 +31,16 @@ import com.taobao.metamorphosis.Message;
  */
 public interface MessageListener {
     /**
-     * ½ÓÊÕµ½ÏûÏ¢£¬Ö»ÓĞmessages²»Îª¿Õ²¢ÇÒ²»ÎªnullµÄÇé¿öÏÂ»á´¥·¢´Ë·½·¨
+     * æ¥æ”¶åˆ°æ¶ˆæ¯ï¼Œåªæœ‰messagesä¸ä¸ºç©ºå¹¶ä¸”ä¸ä¸ºnullçš„æƒ…å†µä¸‹ä¼šè§¦å‘æ­¤æ–¹æ³•
      * 
      * @param messages
-     *            TODO Æ´Ğ´´íÎó£¬Ó¦¸ÃÊÇµ¥Êı£¬ÔİÊ±½«´í¾Í´í°É
+     *            TODO æ‹¼å†™é”™è¯¯ï¼Œåº”è¯¥æ˜¯å•æ•°ï¼Œæš‚æ—¶å°†é”™å°±é”™å§
      */
     public void recieveMessages(Message message) throws InterruptedException;
 
 
     /**
-     * ´¦ÀíÏûÏ¢µÄÏß³Ì³Ø
+     * å¤„ç†æ¶ˆæ¯çš„çº¿ç¨‹æ± 
      * 
      * @return
      */

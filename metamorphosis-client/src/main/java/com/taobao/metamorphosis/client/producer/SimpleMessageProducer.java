@@ -58,7 +58,7 @@ import com.taobao.metamorphosis.utils.StatConstants;
 
 
 /**
- * Ïû·ÑÉú²úÕßÊµÏÖ
+ * æ¶ˆè´¹ç”Ÿäº§è€…å®ç°
  * 
  * @author boyan
  * @Date 2011-4-21
@@ -75,7 +75,7 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
     protected final PartitionSelector partitionSelector;
     protected final ProducerZooKeeper producerZooKeeper;
     protected final String sessionId;
-    // Ä¬ÈÏÊÂÎñ³¬Ê±Ê±¼äÎª10Ãë
+    // é»˜è®¤äº‹åŠ¡è¶…æ—¶æ—¶é—´ä¸º10ç§’
     protected volatile int transactionTimeout = 0;
     // private final boolean ordered;
     private volatile boolean shutdown;
@@ -172,14 +172,14 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
     }
 
 
-    /** Õı³£µÄÏûÏ¢·¢ËÍµ½·şÎñÆ÷ */
+    /** æ­£å¸¸çš„æ¶ˆæ¯å‘é€åˆ°æœåŠ¡å™¨ */
     protected SendResult sendMessageToServer(final Message message, final long timeout, final TimeUnit unit)
             throws MetaClientException, InterruptedException, MetaOpeartionTimeoutException {
         /**
-         * Òì³£ĞÅÏ¢´¦ÀíµÄÔ­Ôò£º
+         * å¼‚å¸¸ä¿¡æ¯å¤„ç†çš„åŸåˆ™ï¼š
          * <ul>
-         * <li>¿Í»§¶Ë´íÎóĞÅÏ¢¶¼ÒÔÒì³£µÄĞÎÊ½Å×³ö£¬È«²¿×ª»¯ÎªMetaClientExceptionµÄcheckÒì³£</li>
-         * <li>·şÎñÆ÷·µ»ØÊ§°ÜµÄÒì³£ĞÅÏ¢£¬×÷ÎªSendResultµÄ½á¹û·µ»Ø¸ø¿Í»§¶Ë£¬²»×÷ÎªÒì³£Å×³ö</li>
+         * <li>å®¢æˆ·ç«¯é”™è¯¯ä¿¡æ¯éƒ½ä»¥å¼‚å¸¸çš„å½¢å¼æŠ›å‡ºï¼Œå…¨éƒ¨è½¬åŒ–ä¸ºMetaClientExceptionçš„checkå¼‚å¸¸</li>
+         * <li>æœåŠ¡å™¨è¿”å›å¤±è´¥çš„å¼‚å¸¸ä¿¡æ¯ï¼Œä½œä¸ºSendResultçš„ç»“æœè¿”å›ç»™å®¢æˆ·ç«¯ï¼Œä¸ä½œä¸ºå¼‚å¸¸æŠ›å‡º</li>
          * </ul>
          */
         // this.checkState();
@@ -220,7 +220,7 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
     }
 
     /**
-     * ÊÂÎñÏà¹Ø´úÂë
+     * äº‹åŠ¡ç›¸å…³ä»£ç 
      * 
      * @author boyan
      * @date 2011-08-17
@@ -228,11 +228,11 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
     protected final ThreadLocal<LastSentInfo> lastSentInfo = new ThreadLocal<LastSentInfo>();
 
     /**
-     * ÓëÏß³Ì¹ØÁªµÄÊÂÎñÉÏÏÂÎÄ
+     * ä¸çº¿ç¨‹å…³è”çš„äº‹åŠ¡ä¸Šä¸‹æ–‡
      */
     final protected ThreadLocal<TransactionContext> transactionContext = new ThreadLocal<TransactionContext>();
 
-    // ¼ÇÂ¼ÊÂÎñÄÚÉÏÒ»´Î·¢ËÍÏûÏ¢µÄĞÅÏ¢£¬Ö÷ÒªÊÇÎªÁË¼ÇÂ¼µÚÒ»´Î·¢ËÍÏûÏ¢µÄserverUrl
+    // è®°å½•äº‹åŠ¡å†…ä¸Šä¸€æ¬¡å‘é€æ¶ˆæ¯çš„ä¿¡æ¯ï¼Œä¸»è¦æ˜¯ä¸ºäº†è®°å½•ç¬¬ä¸€æ¬¡å‘é€æ¶ˆæ¯çš„serverUrl
     static class LastSentInfo {
         final String serverUrl;
 
@@ -285,14 +285,14 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
 
 
     /**
-     * ¿ªÆôÒ»¸öÊÂÎñ²¢¹ØÁªµ½µ±Ç°Ïß³Ì
+     * å¼€å¯ä¸€ä¸ªäº‹åŠ¡å¹¶å…³è”åˆ°å½“å‰çº¿ç¨‹
      * 
      * @throws MetaClientException
-     *             Èç¹ûÒÑ¾­´¦ÓÚÊÂÎñÖĞ£¬ÔòÅ×³öTransactionInProgressExceptionÒì³£
+     *             å¦‚æœå·²ç»å¤„äºäº‹åŠ¡ä¸­ï¼Œåˆ™æŠ›å‡ºTransactionInProgressExceptionå¼‚å¸¸
      */
     @Override
     public void beginTransaction() throws MetaClientException {
-        // Ã»ÓĞÔÚ´Ë·½·¨Àïµ÷ÓÃbegin£¬¶øÊÇµÈµ½µÚÒ»´Î·¢ËÍÏûÏ¢Ç°²Åµ÷ÓÃ
+        // æ²¡æœ‰åœ¨æ­¤æ–¹æ³•é‡Œè°ƒç”¨beginï¼Œè€Œæ˜¯ç­‰åˆ°ç¬¬ä¸€æ¬¡å‘é€æ¶ˆæ¯å‰æ‰è°ƒç”¨
         TransactionContext ctx = this.transactionContext.get();
         if (ctx == null) {
             ctx =
@@ -308,14 +308,14 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
 
 
     /**
-     * ÔÚµÚÒ»´Î·¢ËÍÇ°¿ªÊ¼ÊÂÎñ
+     * åœ¨ç¬¬ä¸€æ¬¡å‘é€å‰å¼€å§‹äº‹åŠ¡
      * 
      * @param serverUrl
      * @throws MetaClientException
      */
     protected void beforeSendMessageFirstTime(final String serverUrl) throws MetaClientException, XAException {
         final TransactionContext tx = this.getTx();
-        // ±¾µØÊÂÎñ£¬ÔòĞèÒªÉèÖÃserverUrl²¢begin
+        // æœ¬åœ°äº‹åŠ¡ï¼Œåˆ™éœ€è¦è®¾ç½®serverUrlå¹¶begin
         if (tx.getTransactionId() == null) {
             tx.setServerUrl(serverUrl);
             tx.begin();
@@ -324,7 +324,7 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
 
 
     /**
-     * ¼ÇÂ¼ÉÏÒ»´ÎÍ¶µİĞÅÏ¢
+     * è®°å½•ä¸Šä¸€æ¬¡æŠ•é€’ä¿¡æ¯
      * 
      * @param serverUrl
      */
@@ -336,7 +336,7 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
 
 
     /**
-     * ·µ»ØÊÂÎñid
+     * è¿”å›äº‹åŠ¡id
      * 
      * @return
      * @throws MetaClientException
@@ -352,7 +352,7 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
 
 
     /**
-     * ÅĞ¶ÏÊÇ·ñ´¦ÓÚÊÂÎñÖĞ
+     * åˆ¤æ–­æ˜¯å¦å¤„äºäº‹åŠ¡ä¸­
      * 
      * @return
      */
@@ -362,7 +362,7 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
 
 
     /**
-     * Ìá½»ÊÂÎñ£¬½«ÊÂÎñÄÚ·¢ËÍµÄÏûÏ¢³Ö¾Ã»¯£¬´Ë·½·¨½öÄÜÔÚbeginTransactionÖ®ºóµ÷ÓÃ
+     * æäº¤äº‹åŠ¡ï¼Œå°†äº‹åŠ¡å†…å‘é€çš„æ¶ˆæ¯æŒä¹…åŒ–ï¼Œæ­¤æ–¹æ³•ä»…èƒ½åœ¨beginTransactionä¹‹åè°ƒç”¨
      * 
      * @see #beginTransaction()
      * @throws MetaClientException
@@ -381,7 +381,7 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
 
 
     /**
-     * »Ø¹öÊÂÎñÄÚËù·¢ËÍµÄÈÎºÎÏûÏ¢£¬´Ë·½·¨½öÄÜÔÚbeginTransactionÖ®ºóµ÷ÓÃ
+     * å›æ»šäº‹åŠ¡å†…æ‰€å‘é€çš„ä»»ä½•æ¶ˆæ¯ï¼Œæ­¤æ–¹æ³•ä»…èƒ½åœ¨beginTransactionä¹‹åè°ƒç”¨
      * 
      * @throws MetaClientException
      * @see #beginTransaction()
@@ -410,16 +410,16 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
             final String topic = message.getTopic();
             Partition partition = null;
             String serverUrl = null;
-            // Èç¹ûÔÚÊÂÎñÄÚ£¬ÔòÊ¹ÓÃÉÏÒ»´Î·¢ËÍÏûÏ¢Ê±Ñ¡ÔñµÄbroker
+            // å¦‚æœåœ¨äº‹åŠ¡å†…ï¼Œåˆ™ä½¿ç”¨ä¸Šä¸€æ¬¡å‘é€æ¶ˆæ¯æ—¶é€‰æ‹©çš„broker
             if (this.isInTransaction()) {
                 final LastSentInfo info = this.lastSentInfo.get();
                 if (info != null) {
                     serverUrl = info.serverUrl;
-                    // Ñ¡Ôñ¸ÃbrokerÄÚµÄÄ³¸ö·ÖÇø
+                    // é€‰æ‹©è¯¥brokerå†…çš„æŸä¸ªåˆ†åŒº
                     partition =
                             this.producerZooKeeper.selectPartition(topic, message, this.partitionSelector, serverUrl);
                     if (partition == null) {
-                        // Ã»ÓĞ¿ÉÓÃ·ÖÇø£¬Å×³öÒì³£
+                        // æ²¡æœ‰å¯ç”¨åˆ†åŒºï¼ŒæŠ›å‡ºå¼‚å¸¸
                         throw new MetaClientException("There is no partitions in `" + serverUrl
                             + "` to send message with topic `" + topic + "` in a transaction");
                     }
@@ -441,7 +441,7 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
             }
 
             if (this.isInTransaction() && this.lastSentInfo.get() == null) {
-                // µÚÒ»´Î·¢ËÍ£¬ĞèÒªÆô¶¯ÊÂÎñ
+                // ç¬¬ä¸€æ¬¡å‘é€ï¼Œéœ€è¦å¯åŠ¨äº‹åŠ¡
                 this.beforeSendMessageFirstTime(serverUrl);
             }
 
@@ -476,11 +476,11 @@ public class SimpleMessageProducer implements MessageProducer, TransactionSessio
         case HttpStatus.Success: {
             // messageId partition offset
             final String[] tmps = RESULT_SPLITER.split(resultStr);
-            // ³É¹¦£¬ÉèÖÃÏûÏ¢id£¬ÏûÏ¢idÓÉ·şÎñÆ÷²úÉú
+            // æˆåŠŸï¼Œè®¾ç½®æ¶ˆæ¯idï¼Œæ¶ˆæ¯idç”±æœåŠ¡å™¨äº§ç”Ÿ
             MessageAccessor.setId(message, Long.parseLong(tmps[0]));
             final Partition serverPart = new Partition(partition.getBrokerId(), Integer.parseInt(tmps[1]));
             MessageAccessor.setPartition(message, serverPart);
-            // ¼ÇÂ¼±¾´Î·¢ËÍĞÅÏ¢£¬½öÓÃÓÚÊÂÎñÏûÏ¢
+            // è®°å½•æœ¬æ¬¡å‘é€ä¿¡æ¯ï¼Œä»…ç”¨äºäº‹åŠ¡æ¶ˆæ¯
             this.logLastSentInfo(serverUrl);
             return new SendResult(true, serverPart, Long.parseLong(tmps[2]), null);
         }

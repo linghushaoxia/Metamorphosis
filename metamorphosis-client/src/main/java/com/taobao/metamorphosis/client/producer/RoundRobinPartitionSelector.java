@@ -26,7 +26,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * ÂÖÑ¯µÄ·ÖÇøÑ¡ÔñÆ÷£¬Ä¬ÈÏÊ¹ÓÃ´ËÑ¡ÔñÆ÷
+ * è½®è¯¢çš„åˆ†åŒºé€‰æ‹©å™¨ï¼Œé»˜è®¤ä½¿ç”¨æ­¤é€‰æ‹©å™¨
  * 
  * @author boyan
  * @Date 2011-4-26

@@ -48,7 +48,7 @@ import com.taobao.metamorphosis.network.RemotingUtils;
 
 
 /**
- * RemotingClient°ü×°£¬Ìí¼ÓÁ¬½ÓµÄ½¨Á¢ºÍ¹Ø±ÕµÄ¼ÆÊı
+ * RemotingClientåŒ…è£…ï¼Œæ·»åŠ è¿æ¥çš„å»ºç«‹å’Œå…³é—­çš„è®¡æ•°
  * 
  * @author boyan
  * @Date 2011-4-27
@@ -270,7 +270,7 @@ public class RemotingClientWrapper implements RemotingClient {
         if (resp.getResponseStatus() == ResponseStatus.ERROR_COMM) {
             BooleanCommand booleanCommand = (BooleanCommand) resp;
             // It's ugly,but it work right now.
-            if (booleanCommand.getErrorMsg().contains("ÎŞ¿ÉÓÃÁ¬½Ó")) {
+            if (booleanCommand.getErrorMsg().contains("æ— å¯ç”¨è¿æ¥")) {
                 // try to connect it.
                 this.connectWithRef(group, this);
             }
