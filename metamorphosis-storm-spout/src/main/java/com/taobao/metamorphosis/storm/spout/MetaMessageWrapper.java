@@ -23,7 +23,7 @@ import com.taobao.metamorphosis.Message;
 
 
 /**
- * Meta消息的包装类，关联一个CountDownLatch
+ * Meta娑堟伅鐨勫寘瑁呯被锛屽叧鑱斾竴涓狢ountDownLatch
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-11-8

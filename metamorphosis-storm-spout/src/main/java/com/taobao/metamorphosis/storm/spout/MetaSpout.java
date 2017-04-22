@@ -43,7 +43,7 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * 支持metamorphosis消息消费的storm spout
+ * 鏀寔metamorphosis娑堟伅娑堣垂鐨剆torm spout
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-11-8
@@ -129,7 +129,7 @@ public class MetaSpout extends BaseRichSpout {
                 catch (final InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
-                // 消费失败，抛出运行时异常
+                // 娑堣垂澶辫触锛屾姏鍑鸿繍琛屾椂寮傚父
                 if (!wrapper.success) {
                     message.setRollbackOnly();
                 }
