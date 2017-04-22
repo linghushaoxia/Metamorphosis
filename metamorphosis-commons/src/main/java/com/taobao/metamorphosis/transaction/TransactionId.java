@@ -21,7 +21,7 @@ import java.io.Serializable;
 
 
 /**
- * ÊÂÎñid°ü×°Àà
+ * äº‹åŠ¡idåŒ…è£…ç±»
  * 
  * @author boyan
  * 

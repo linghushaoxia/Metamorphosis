@@ -22,14 +22,14 @@ import java.io.IOException;
 /**
  * 
  * @author wuxin
- * @since 1.0, 2009-10-20 ÉÏÎç09:41:40
+ * @since 1.0, 2009-10-20 ä¸Šåˆ09:41:40
  */
 public interface Serializer {
 	/**
-	 * ½«Ö¸¶¨µÄ¶ÔÏó½øĞĞĞòÁĞ»¯.
+	 * å°†æŒ‡å®šçš„å¯¹è±¡è¿›è¡Œåºåˆ—åŒ–.
 	 * 
-	 * @param obj - ĞèÒªĞòÁĞ»¯µÄ¶ÔÏó
-	 * @return    - ·µ»Ø¶ÔÏóĞòÁĞ»¯ºóµÄ×Ö½ÚÂë
+	 * @param obj - éœ€è¦åºåˆ—åŒ–çš„å¯¹è±¡
+	 * @return    - è¿”å›å¯¹è±¡åºåˆ—åŒ–åçš„å­—èŠ‚ç 
 	 */
 	public byte[] encodeObject(Object obj)throws IOException;
 }

@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 
 /**
- * ÃèÊö£ºÏß³ÌµÄFactoryÀà£¬ÒÔ±ã×Ô¶¨ÒåÏß³ÌÃû
+ * æè¿°ï¼šçº¿ç¨‹çš„Factoryç±»ï¼Œä»¥ä¾¿è‡ªå®šä¹‰çº¿ç¨‹å
  * 
  * @author <a href="mailto:bixuan@taobao.com">bixuan</a>
  */
@@ -59,7 +59,7 @@ public class NamedThreadFactory implements ThreadFactory {
      */
     @Override
     public Thread newThread(final Runnable r) {
-        // ? Ç±ÔÚµÄÎÊÌâÊÇ×îºó´´½¨µÄÕâ¸öÏß³ÌµÄ¼ÆÊı»á²»»á³¬¹ıintegerµÄ×î´óÖµ
+        // ? æ½œåœ¨çš„é—®é¢˜æ˜¯æœ€ååˆ›å»ºçš„è¿™ä¸ªçº¿ç¨‹çš„è®¡æ•°ä¼šä¸ä¼šè¶…è¿‡integerçš„æœ€å¤§å€¼
         final Thread t = new Thread(this.group, r, this.namePrefix + this.threadNumber.getAndIncrement(), 0);
         if (t.isDaemon()) {
             t.setDaemon(false);

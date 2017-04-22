@@ -23,7 +23,7 @@ import com.taobao.gecko.core.buffer.IoBuffer;
 
 
 /**
- * Í¬²½¸´ÖÆ£¬master/slave¸´ÖÆÏûÏ¢µÄĞ­Òé,Ğ­Òé¸ñÊ½ÈçÏÂ£º</br> sync topic partition value-length flag
+ * åŒæ­¥å¤åˆ¶ï¼Œmaster/slaveå¤åˆ¶æ¶ˆæ¯çš„åè®®,åè®®æ ¼å¼å¦‚ä¸‹ï¼š</br> sync topic partition value-length flag
  * msgId checksum opaque\r\ndata
  * 
  * @author boyan(boyan@taobao.com)

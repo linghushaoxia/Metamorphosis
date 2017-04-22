@@ -31,7 +31,7 @@ import com.taobao.metamorphosis.utils.codec.Serializer;
 /**
  * 
  * @author wuxin
- * @since 1.0, 2009-10-20 …œŒÁ10:03:24
+ * @since 1.0, 2009-10-20 ‰∏äÂçà10:03:24
  */
 public class Hessian1Serializer implements Serializer {
 

@@ -33,7 +33,7 @@ import com.taobao.metamorphosis.utils.ZkUtils.ZKConfig;
 
 
 /**
- * Óëdiamond½»»¥¹¤¾ßÀà
+ * ä¸diamondäº¤äº’å·¥å…·ç±»
  * 
  * @author boyan
  * @Date 2011-4-25
@@ -46,7 +46,7 @@ public class DiamondUtils {
 
 
     /**
-     * »ñÈ¡zkÅäÖÃ£¬Èç¹ûÃ»ÓĞÅ×³öÔËĞĞÊ±NPE
+     * è·å–zké…ç½®ï¼Œå¦‚æœæ²¡æœ‰æŠ›å‡ºè¿è¡Œæ—¶NPE
      * 
      * @param diamondManager
      * @param timeout
@@ -57,7 +57,7 @@ public class DiamondUtils {
     // final Properties props =
     // diamondManager.getAvailablePropertiesConfigureInfomation(timeout);
     // if (props != null) {
-    // log.info("´Ódiamond¼ÓÔØzkÅäÖÃ£º" + props);
+    // log.info("ä»diamondåŠ è½½zké…ç½®ï¼š" + props);
     // return getZkConfig(props);
     // }
     // return null;
@@ -99,22 +99,22 @@ public class DiamondUtils {
     // log.warn(e.getMessage());
     // }
     //
-    // log.info("´Ódiamond¼ÓÔØpartitionsÅäÖÃ£º" + props);
+    // log.info("ä»diamondåŠ è½½partitionsé…ç½®ï¼š" + props);
     // getPartitions(props, partitionsMap);
     // }
 
-    /** »ñÈ¡Ä³Ğ©topic·ÖÇø×ÜÊıµÄĞÅÏ¢(Ä³topic¹²ÓĞÄÄĞ©·ÖÇø) */
+    /** è·å–æŸäº›topicåˆ†åŒºæ€»æ•°çš„ä¿¡æ¯(æŸtopicå…±æœ‰å“ªäº›åˆ†åŒº) */
     public static void getPartitions(final Properties properties, final Map<String, List<Partition>> ret) {
-        log.info("¿ªÊ¼½âÎö·ÖÇø×ÜÊıĞÅÏ¢");
+        log.info("å¼€å§‹è§£æåˆ†åŒºæ€»æ•°ä¿¡æ¯");
         final Map<String, List<Partition>> map = new HashMap<String, List<Partition>>();
         if (properties != null) {
             for (final Map.Entry<Object, Object> entry : properties.entrySet()) {
                 final String key = (String) entry.getKey();
 
                 if (key != null && key.startsWith("topic.num.")) {
-                    // keyÈ¡topic
+                    // keyå–topic
                     final String topic = key.substring("topic.num.".length());
-                    // value¸ñÊ½ÎªbrokerId0:num0;brokerId1:num1;...
+                    // valueæ ¼å¼ä¸ºbrokerId0:num0;brokerId1:num1;...
                     final String value = (String) entry.getValue();
                     final List<Partition> partitions = parsePartitions(value);
                     if (partitions != null && !partitions.isEmpty()) {
@@ -125,7 +125,7 @@ public class DiamondUtils {
             ret.clear();
             ret.putAll(map);
             if (!ret.isEmpty()) {
-                log.info("·ÖÇø×ÜÊıĞÅÏ¢: " + map);
+                log.info("åˆ†åŒºæ€»æ•°ä¿¡æ¯: " + map);
             }
             else {
                 log.info("empty partitionsNum info");
@@ -147,7 +147,7 @@ public class DiamondUtils {
         int start = 0;
         int end = length;
 
-        // É¨Ãè×Ö·û´®Í·²¿
+        // æ‰«æå­—ç¬¦ä¸²å¤´éƒ¨
         if (mode <= 0) {
             if (stripChars == null) {
                 while (start < end && Character.isWhitespace(str.charAt(start))) {
@@ -164,7 +164,7 @@ public class DiamondUtils {
             }
         }
 
-        // É¨Ãè×Ö·û´®Î²²¿
+        // æ‰«æå­—ç¬¦ä¸²å°¾éƒ¨
         if (mode >= 0) {
             if (stripChars == null) {
                 while (start < end && Character.isWhitespace(str.charAt(end - 1))) {
@@ -190,7 +190,7 @@ public class DiamondUtils {
 
 
     /**
-     * ½âÎöbrokerId0:num0;brokerId1:num1;...¸ñÊ½µÄ×Ö·û´®Îªpartition list
+     * è§£æbrokerId0:num0;brokerId1:num1;...æ ¼å¼çš„å­—ç¬¦ä¸²ä¸ºpartition list
      * */
     static List<Partition> parsePartitions(final String value) {
         final String[] brokerNums = StringUtils.split(value, ";");
@@ -204,12 +204,12 @@ public class DiamondUtils {
             brokerNum = trim(brokerNum, ";", 0);
             final int index = brokerNum.indexOf(":");
             if (index < 0) {
-                throw new NumberFormatException("Ö¸¶¨µÄ·ÖÇø¸öÊı¸ñÊ½ÓĞÎó,config string=" + value);
+                throw new NumberFormatException("æŒ‡å®šçš„åˆ†åŒºä¸ªæ•°æ ¼å¼æœ‰è¯¯,config string=" + value);
             }
             final int brokerId = Integer.parseInt(brokerNum.substring(0, index));
             final int num = Integer.parseInt(brokerNum.substring(index + 1));
             if (num <= 0) {
-                throw new NumberFormatException("·ÖÇø¸öÊı±ØĞë´óÓÚ0,config string=" + value);
+                throw new NumberFormatException("åˆ†åŒºä¸ªæ•°å¿…é¡»å¤§äº0,config string=" + value);
             }
             for (int i = 0; i < num; i++) {
                 ret.add(new Partition(brokerId, i));

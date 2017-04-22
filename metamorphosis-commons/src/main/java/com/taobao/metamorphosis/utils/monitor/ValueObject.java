@@ -71,7 +71,7 @@ public class ValueObject {
 
 
     /**
-     * Ô­×Ó»¯¶ÁÈ¡ËùÓĞÖµ
+     * åŸå­åŒ–è¯»å–æ‰€æœ‰å€¼
      */
     public long[] getValues() {
         return values.get();

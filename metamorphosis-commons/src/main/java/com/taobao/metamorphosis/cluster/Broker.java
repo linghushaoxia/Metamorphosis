@@ -26,7 +26,7 @@ import com.taobao.metamorphosis.utils.URIUtils;
 
 
 /**
- * ±íÊ¾Ò»Ì¨meta·şÎñÆ÷
+ * è¡¨ç¤ºä¸€å°metaæœåŠ¡å™¨
  * 
  * @author boyan
  * @Date 2011-4-25
@@ -55,7 +55,7 @@ public class Broker {
 
 
     /**
-     * ·µ»Øbroker½ÚµãÊı¾İ×Ö·û´® meta://host:port
+     * è¿”å›brokerèŠ‚ç‚¹æ•°æ®å­—ç¬¦ä¸² meta://host:port
      * 
      * @return
      */

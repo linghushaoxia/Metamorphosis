@@ -28,11 +28,11 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * 
  * 
- * StatLog的包装类
+ * StatLog鐨勫寘瑁呯被
  * 
  * @author boyan
  * 
- * @since 1.0, 2009-6-2 下午03:15:37
+ * @since 1.0, 2009-6-2 涓嬪崍03:15:37
  */
 
 public final class MetaStatLog {
@@ -44,7 +44,7 @@ public final class MetaStatLog {
 
     }
 
-    // 没有任何作用，仅是为了注册监听器
+    // 娌℃湁浠讳綍浣滅敤锛屼粎鏄负浜嗘敞鍐岀洃鍚櫒
     static MetaStatLog ME = new MetaStatLog();
 
     static ConcurrentHashMap<String/* key1 */, ConcurrentHashMap<String, ConcurrentHashMap<String, StatCounter>>> realTimeStatMap =

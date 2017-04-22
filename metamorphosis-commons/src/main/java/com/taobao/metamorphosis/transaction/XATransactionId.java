@@ -30,7 +30,7 @@ import com.taobao.metamorphosis.utils.PatternUtils;
 
 
 /**
- * XAÊÂÎñid
+ * XAäº‹åŠ¡id
  * 
  * @author boyan
  * 

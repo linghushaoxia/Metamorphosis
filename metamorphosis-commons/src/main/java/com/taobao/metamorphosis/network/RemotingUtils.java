@@ -44,7 +44,7 @@ public class RemotingUtils {
             conn.response(response);
         }
         catch (final NotifyRemotingException e) {
-            log.error("·¢ËÍÏìÓ¦Ê§°Ü", e);
+            log.error("å‘é€å“åº”å¤±è´¥", e);
         }
     }
 
@@ -71,7 +71,7 @@ public class RemotingUtils {
 
 
     private static String findLocalHost() throws SocketException, UnknownHostException {
-        // ±éÀúÍø¿¨£¬²éÕÒÒ»¸ö·Ç»ØÂ·ipµØÖ·²¢·µ»Ø
+        // éå†ç½‘å¡ï¼ŒæŸ¥æ‰¾ä¸€ä¸ªéå›è·¯ipåœ°å€å¹¶è¿”å›
         final Enumeration<NetworkInterface> enumeration = NetworkInterface.getNetworkInterfaces();
         InetAddress ipv6Address = null;
         while (enumeration.hasMoreElements()) {
@@ -84,7 +84,7 @@ public class RemotingUtils {
                         ipv6Address = address;
                     }
                     else {
-                        // ÓÅÏÈÊ¹ÓÃipv4
+                        // ä¼˜å…ˆä½¿ç”¨ipv4
                         return normalizeHostAddress(address);
                     }
                 }
@@ -92,7 +92,7 @@ public class RemotingUtils {
             }
 
         }
-        // Ã»ÓĞipv4£¬ÔÙÊ¹ÓÃipv6
+        // æ²¡æœ‰ipv4ï¼Œå†ä½¿ç”¨ipv6
         if (ipv6Address != null) {
             return normalizeHostAddress(ipv6Address);
         }

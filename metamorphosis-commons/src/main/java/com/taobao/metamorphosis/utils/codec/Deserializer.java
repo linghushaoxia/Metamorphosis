@@ -22,14 +22,14 @@ import java.io.IOException;
 /**
  * 
  * @author wuxin
- * @since 1.0, 2009-10-20 ÉÏÎç09:42:35
+ * @since 1.0, 2009-10-20 ä¸Šåˆ09:42:35
  */
 public interface Deserializer {
 	/**
-	 * ½«Ö¸¶¨µÄ×Ö½ÚÂë·´ĞòÁĞ»¯.
+	 * å°†æŒ‡å®šçš„å­—èŠ‚ç ååºåˆ—åŒ–.
 	 * 
-	 * @param in - Ö¸¶¨µÄ×Ö½ÚÂëÄÚÈİ
-	 * @return   - ·µ»Ø·´ĞòÁĞ»¯ºóµÄ¶ÔÏó
+	 * @param in - æŒ‡å®šçš„å­—èŠ‚ç å†…å®¹
+	 * @return   - è¿”å›ååºåˆ—åŒ–åçš„å¯¹è±¡
 	 */
 	public Object decodeObject(byte[] in)throws IOException;
 }

@@ -21,7 +21,7 @@ import javax.transaction.xa.XAException;
 
 
 /**
- * ÊÂÎñĞÅÏ¢
+ * äº‹åŠ¡ä¿¡æ¯
  * 
  * @author boyan
  * 
@@ -45,7 +45,7 @@ public class TransactionInfo {
     }
 
     /**
-     * ÊÂÎñ×´Ì¬
+     * äº‹åŠ¡çŠ¶æ€
      * 
      * @author boyan
      * 
@@ -68,7 +68,7 @@ public class TransactionInfo {
 
 
     /**
-     * ÉèÖÃÊÂÎñ³¬Ê±
+     * è®¾ç½®äº‹åŠ¡è¶…æ—¶
      * 
      * @param timeout
      * @throws XAException

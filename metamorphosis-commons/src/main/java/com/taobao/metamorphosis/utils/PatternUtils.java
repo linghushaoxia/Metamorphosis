@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 
 public class PatternUtils {
     /**
-     * 与pattern.split类似，但是不消除结果中的空字符串
+     * 涓巔attern.split绫讳技锛屼絾鏄笉娑堥櫎缁撴灉涓殑绌哄瓧绗︿覆
      * 
      * @param pattern
      * @param input
@@ -36,7 +36,7 @@ public class PatternUtils {
 
 
     /**
-     * 与pattern.split类似，但是不消除结果中的空字符串
+     * 涓巔attern.split绫讳技锛屼絾鏄笉娑堥櫎缁撴灉涓殑绌哄瓧绗︿覆
      * 
      * @param pattern
      * @param input

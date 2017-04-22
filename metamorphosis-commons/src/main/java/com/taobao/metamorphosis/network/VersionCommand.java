@@ -22,7 +22,7 @@ import com.taobao.gecko.core.command.kernel.HeartBeatRequestCommand;
 
 
 /**
- * 查询服务器版本，也用于心跳检测，协议：version opaque\r\n
+ * 鏌ヨ鏈嶅姟鍣ㄧ増鏈紝涔熺敤浜庡績璺虫娴嬶紝鍗忚锛歷ersion opaque\r\n
  * 
  * @author boyan
  * @Date 2011-4-22

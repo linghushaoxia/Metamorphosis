@@ -31,8 +31,8 @@ import org.junit.Test;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-7-22 ÏÂÎç04:30:28
+ * @author æ— èŠ±
+ * @since 2011-7-22 ä¸‹åˆ04:30:28
  */
 
 public class PartitionTest {

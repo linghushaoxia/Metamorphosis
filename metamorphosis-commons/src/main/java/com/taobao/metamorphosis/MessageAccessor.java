@@ -21,7 +21,7 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 
 /**
- * ÎªÁË·ÃÎÊmessageÖĞ°ü¼¶±ğµÄ·½·¨Ìá¹©µÄ¸¨ÖúÀà
+ * ä¸ºäº†è®¿é—®messageä¸­åŒ…çº§åˆ«çš„æ–¹æ³•æä¾›çš„è¾…åŠ©ç±»
  * 
  * @author boyan
  * @Date 2011-4-27

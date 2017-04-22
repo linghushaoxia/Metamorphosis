@@ -39,7 +39,7 @@ import com.taobao.metamorphosis.cluster.json.TopicBroker;
 
 
 /**
- * MetaÓëzookeeper½»»¥µÄ¸¨ÖúÀà
+ * Metaä¸Žzookeeperäº¤äº’çš„è¾…åŠ©ç±»
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-12-15
@@ -135,7 +135,7 @@ public class MetaZookeeper {
 
 
     /**
-     * ·µ»Øbroker¼¯Èº,°üº¬slaveºÍmaster
+     * è¿”å›žbrokeré›†ç¾¤,åŒ…å«slaveå’Œmaster
      * 
      * @param zkClient
      * @return
@@ -157,7 +157,7 @@ public class MetaZookeeper {
 
 
     /**
-     * ´Ózk²éÑ¯Ò»¸öidÏÂµÄbrokers,°üº¬masterºÍÒ»¸ö»ò¶à¸öslave
+     * ä»ŽzkæŸ¥è¯¢ä¸€ä¸ªidä¸‹çš„brokers,åŒ…å«masterå’Œä¸€ä¸ªæˆ–å¤šä¸ªslave
      * */
     public Set<Broker> getBrokersById(final int brokerId) {
         final Set<Broker> set = new HashSet<Broker>();
@@ -174,7 +174,7 @@ public class MetaZookeeper {
 
 
     /**
-     * ´Ózk²éÑ¯master broker,²»´æÔÚÔò·µ»Ønull
+     * ä»ŽzkæŸ¥è¯¢master broker,ä¸å­˜åœ¨åˆ™è¿”å›žnull
      * */
     public Broker getMasterBrokerById(final int brokerId) {
         final String brokersString = ZkUtils.readDataMaybeNull(this.zkClient, this.brokerIdsPathOf(brokerId, -1));
@@ -186,7 +186,7 @@ public class MetaZookeeper {
 
 
     /**
-     * ´Ózk²éÑ¯slave broker,²»´æÔÚÔò·µ»Ønull
+     * ä»ŽzkæŸ¥è¯¢slave broker,ä¸å­˜åœ¨åˆ™è¿”å›žnull
      * */
     private Set<Broker> getSlaveBrokersById(final int brokerId) {
         final Set<Broker> ret = new HashSet<Broker>();
@@ -220,7 +220,7 @@ public class MetaZookeeper {
 
 
     /**
-     * ·µ»Ø·¢²¼ÁËÖ¸¶¨µÄtopicµÄËùÓÐmaster brokers
+     * è¿”å›žå‘å¸ƒäº†æŒ‡å®šçš„topicçš„æ‰€æœ‰master brokers
      * */
     public Map<Integer, String> getMasterBrokersByTopic(final String topic) {
         final Map<Integer, String> ret = new TreeMap<Integer, String>();
@@ -244,7 +244,7 @@ public class MetaZookeeper {
 
 
     /**
-     * ·µ»ØmasterµÄtopicµ½partitionÓ³ÉäµÄmap
+     * è¿”å›žmasterçš„topicåˆ°partitionæ˜ å°„çš„map
      * 
      * @param zkClient
      * @param topics
@@ -297,7 +297,7 @@ public class MetaZookeeper {
 
 
     /**
-     * ·µ»ØÒ»¸öbroker·¢²¼µÄËùÓÐtopics
+     * è¿”å›žä¸€ä¸ªbrokerå‘å¸ƒçš„æ‰€æœ‰topics
      * 
      * */
     public Set<String> getTopicsByBrokerIdFromMaster(final int brokerId) {
@@ -318,7 +318,7 @@ public class MetaZookeeper {
 
 
     /**
-     * ·µ»ØÒ»¸ömaster ÏÂµÄtopicµ½partitionÓ³ÉäµÄmap
+     * è¿”å›žä¸€ä¸ªmaster ä¸‹çš„topicåˆ°partitionæ˜ å°„çš„map
      * 
      * @param zkClient
      * @param topics
@@ -361,7 +361,7 @@ public class MetaZookeeper {
 
 
     /**
-     * ·µ»ØÒ»¸ömasterÏÂµÄtopicµ½partitionÓ³ÉäµÄmap
+     * è¿”å›žä¸€ä¸ªmasterä¸‹çš„topicåˆ°partitionæ˜ å°„çš„map
      * 
      * @param zkClient
      * @param topics
@@ -392,7 +392,7 @@ public class MetaZookeeper {
 
 
     /**
-     * ·µ»Øtopicµ½partitionÓ³ÉäµÄmap. °üÀ¨masterºÍslaveµÄËùÓÐpartitions
+     * è¿”å›žtopicåˆ°partitionæ˜ å°„çš„map. åŒ…æ‹¬masterå’Œslaveçš„æ‰€æœ‰partitions
      * 
      * @param zkClient
      * @param topics
@@ -444,11 +444,11 @@ public class MetaZookeeper {
 
 
     /**
-     * brokerId ÔÚzkÉÏ×¢²áµÄpath
+     * brokerId åœ¨zkä¸Šæ³¨å†Œçš„path
      * 
      * @param brokerId
      * @param slaveId
-     *            slave±àºÅ, Ð¡ÓÚ0±íÊ¾master
+     *            slaveç¼–å·, å°äºŽ0è¡¨ç¤ºmaster
      * 
      * */
     public String brokerIdsPathOf(final int brokerId, final int slaveId) {
@@ -468,12 +468,12 @@ public class MetaZookeeper {
 
 
     /**
-     * topic ÔÚzkÉÏ×¢²áµÄpath
+     * topic åœ¨zkä¸Šæ³¨å†Œçš„path
      * 
      * @param topic
      * @param brokerId
      * @param slaveId
-     *            slave±àºÅ, Ð¡ÓÚ0±íÊ¾master
+     *            slaveç¼–å·, å°äºŽ0è¡¨ç¤ºmaster
      * */
     @Deprecated
     public String brokerTopicsPathOf(final String topic, final int brokerId, final int slaveId) {
@@ -489,7 +489,7 @@ public class MetaZookeeper {
      * @param topic
      * @param brokerId
      * @param slaveId
-     *            slave±àºÅ, Ð¡ÓÚ0±íÊ¾master
+     *            slaveç¼–å·, å°äºŽ0è¡¨ç¤ºmaster
      * */
     public String brokerTopicsPathOf(final String topic, boolean publish, final int brokerId, final int slaveId) {
         String parent = publish ? this.brokerTopicsPubPath : this.brokerTopicsSubPath;

@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.exception;
 
 /**
- * ÊÂÎñ½øĞĞÖĞÒì³£
+ * äº‹åŠ¡è¿›è¡Œä¸­å¼‚å¸¸
  * 
  * @author boyan
  * 

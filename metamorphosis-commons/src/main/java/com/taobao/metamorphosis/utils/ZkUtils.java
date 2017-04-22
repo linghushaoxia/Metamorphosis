@@ -31,7 +31,7 @@ import org.apache.commons.logging.LogFactory;
 
 
 /**
- * 与zk交互的工具类
+ * 涓巣k浜や簰鐨勫伐鍏风被
  * 
  * @author boyan
  * @Date 2011-4-25

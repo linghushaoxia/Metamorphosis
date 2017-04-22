@@ -4,7 +4,7 @@ package com.taobao.metamorphosis.utils;
  * Created with IntelliJ IDEA.
  * User: dennis (xzhuang@avos.com)
  * Date: 13-3-3
- * Time: …œŒÁ11:26
+ * Time: ‰∏äÂçà11:26
  */
 public class ThreadUtils {
     public static RuntimeException launderThrowable(Throwable t) {

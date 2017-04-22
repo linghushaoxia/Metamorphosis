@@ -23,7 +23,7 @@ package com.taobao.common.store.util;
  * 
  * @author boyan
  * 
- * @since 1.0, 2009-10-16 下午02:06:08
+ * @since 1.0, 2009-10-16 涓嬪崍02:06:08
  */
 
 public enum SerializationType {

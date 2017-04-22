@@ -29,8 +29,8 @@ import org.junit.Test;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-6-23 ÏÂÎç06:48:32
+ * @author æ— èŠ±
+ * @since 2011-6-23 ä¸‹åˆ06:48:32
  */
 
 public class ClusterUnitTest {
@@ -70,7 +70,7 @@ public class ClusterUnitTest {
         for (int i = 0; i < 10; i++) {
             list.add(cluster1.getBrokerRandom(1).getZKString());
         }
-        // 10´Î×ÜÄÜÈ¡µ½Á½¸ö²»Í¬µÄ°É
+        // 10æ¬¡æ€»èƒ½å–åˆ°ä¸¤ä¸ªä¸åŒçš„å§
         Assert.assertTrue(list.contains("meta://host:8123"));
         Assert.assertTrue(list.contains("meta://host1:8123"));
 
@@ -93,7 +93,7 @@ public class ClusterUnitTest {
         Set<Broker> brokers = new HashSet<Broker>();
         cluster1.addBroker(4, brokers);
         Assert.assertEquals(1, cluster1.size());
-        //Á½¸öbrokerÊÇÏàÍ¬µÄ,Ïàµ±ÓÚÒ»¸ö
+        //ä¸¤ä¸ªbrokeræ˜¯ç›¸åŒçš„,ç›¸å½“äºä¸€ä¸ª
         brokers.add(new Broker(4, "meta://host4:8123"));
         brokers.add(new Broker(4, "meta://host4:8123"));
         cluster1.addBroker(4, brokers);

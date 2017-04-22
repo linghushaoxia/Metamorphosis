@@ -129,7 +129,7 @@ public class MetamorphosisWireFormatType extends WireFormatType {
                     if (index >= 0) {
                         final byte[] bytes = new byte[index - buff.position()];
                         buff.get(bytes);
-                        // 跳过\r\n
+                        // 璺宠繃\r\n
                         buff.position(buff.position() + 2);
                         final String line = ByteUtils.getString(bytes);
                         if (log.isDebugEnabled()) {
@@ -201,7 +201,7 @@ public class MetamorphosisWireFormatType extends WireFormatType {
 
 
                 // stats item opaque\r\n
-                // opaque可以为空
+                // opaque鍙互涓虹┖
                 private Object decodeStats(final String[] sa) {
                     this.assertCommand(sa[0], "stats");
                     int opaque = Integer.MAX_VALUE;

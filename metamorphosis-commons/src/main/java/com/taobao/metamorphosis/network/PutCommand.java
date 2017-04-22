@@ -25,9 +25,9 @@ import com.taobao.metamorphosis.transaction.TransactionId;
 
 
 /**
- * ·¢ËÍÏûÏ¢ÃüÁî£¬Ğ­Òé¸ñÊ½£º </br></br> put topic partition value-length flag checksum
- * [transactionkey] opaque\r\n data </br></br> dataµÄ½á¹¹ÈçÏÂ£º</br> </br>
- * attribute(0¸ö»òÕß1¸ö£¬¹Ì¶¨³¤¶È×Ö·û´®£¬È¡¾öÓÚflag×Ö¶Î) + binary data
+ * å‘é€æ¶ˆæ¯å‘½ä»¤ï¼Œåè®®æ ¼å¼ï¼š </br></br> put topic partition value-length flag checksum
+ * [transactionkey] opaque\r\n data </br></br> dataçš„ç»“æ„å¦‚ä¸‹ï¼š</br> </br>
+ * attribute(0ä¸ªæˆ–è€…1ä¸ªï¼Œå›ºå®šé•¿åº¦å­—ç¬¦ä¸²ï¼Œå–å†³äºflagå­—æ®µ) + binary data
  * 
  * @author boyan
  * @Date 2011-4-19

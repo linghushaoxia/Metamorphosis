@@ -21,7 +21,7 @@ import com.taobao.gecko.core.buffer.IoBuffer;
 
 
 /**
- * ²éÑ¯×î½üÓĞĞ§µÄoffset ¸ñÊ½£º offset topic group partition offset opaque\r\n
+ * æŸ¥è¯¢æœ€è¿‘æœ‰æ•ˆçš„offset æ ¼å¼ï¼š offset topic group partition offset opaque\r\n
  * 
  * @author boyan
  * @Date 2011-4-21

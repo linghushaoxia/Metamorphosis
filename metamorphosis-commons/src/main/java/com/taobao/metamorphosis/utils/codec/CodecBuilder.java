@@ -29,7 +29,7 @@ import com.taobao.metamorphosis.utils.codec.impl.JavaSerializer;
 /**
  * 
  * @author wuxin
- * @since 1.0, 2009-10-20 上午10:07:42
+ * @since 1.0, 2009-10-20 涓婂崍10:07:42
  */
 public final class CodecBuilder {
     public static final Map<Codec_Type, Deserializer> decoderMap;
@@ -66,7 +66,7 @@ public final class CodecBuilder {
             case 1:
                 return HESSIAN1;
             }
-            throw new IllegalArgumentException("Invalid Codec type: " + "现在只支持JAVA, HESSIAN及其SIMPLE.");
+            throw new IllegalArgumentException("Invalid Codec type: " + "鐜板湪鍙敮鎸丣AVA, HESSIAN鍙婂叾SIMPLE.");
         }
 
 
@@ -77,7 +77,7 @@ public final class CodecBuilder {
             case HESSIAN1:
                 return 1;
             }
-            throw new IllegalArgumentException("Invalid Codec type: " + "现在只支持JAVA, HESSIAN及其SIMPLE.");
+            throw new IllegalArgumentException("Invalid Codec type: " + "鐜板湪鍙敮鎸丣AVA, HESSIAN鍙婂叾SIMPLE.");
         }
     }
 

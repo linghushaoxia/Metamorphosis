@@ -28,9 +28,9 @@ import org.apache.log4j.Logger;
 
 
 /**
- * 便于注册MBean的工具类
+ * 渚夸簬娉ㄥ唽MBean鐨勫伐鍏风被
  * 
- * 只提供注册MBean，不对外暴露JMXConnectorServer
+ * 鍙彁渚涙敞鍐孧Bean锛屼笉瀵瑰鏆撮湶JMXConnectorServer
  * 
  * @author dogun (yuexuqiang at gmail.com)
  * 
@@ -56,7 +56,7 @@ public final class MyMBeanServer {
 
 
     /**
-     * 获得MBeanServer
+     * 鑾峰緱MBeanServer
      * 
      * @return MyMBeanServer
      */
@@ -66,13 +66,13 @@ public final class MyMBeanServer {
 
 
     /**
-     * 注册一个MBean
+     * 娉ㄥ唽涓�涓狹Bean
      * 
      * @param o
      * @param name
      */
     public void registMBean(final Object o, final String name) {
-        // 注册MBean
+        // 娉ㄥ唽MBean
         if (null != mbs) {
             try {
                 mbs.registerMBean(o, new ObjectName(o.getClass().getPackage().getName() + ":type="

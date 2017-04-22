@@ -31,7 +31,7 @@ import com.taobao.metamorphosis.utils.codec.Deserializer;
 /**
  * 
  * @author wuxin
- * @since 1.0, 2009-10-20 …œŒÁ10:03:15
+ * @since 1.0, 2009-10-20 ‰∏äÂçà10:03:15
  */
 public class Hessian1Deserializer implements Deserializer {
 

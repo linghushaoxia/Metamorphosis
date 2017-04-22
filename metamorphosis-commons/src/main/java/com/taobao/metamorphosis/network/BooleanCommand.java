@@ -23,7 +23,7 @@ import com.taobao.gecko.core.command.kernel.BooleanAckCommand;
 
 
 /**
- * Ó¦´ğÃüÁî,Ğ­Òé¸ñÊ½ÈçÏÂ£º</br> result code length opaque\r\n message
+ * åº”ç­”å‘½ä»¤,åè®®æ ¼å¼å¦‚ä¸‹ï¼š</br> result code length opaque\r\n message
  * 
  * @author boyan
  * @Date 2011-4-19

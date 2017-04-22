@@ -27,8 +27,8 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-8-3 ÉÏÎç11:30:37
+ * @author æ— èŠ±
+ * @since 2011-8-3 ä¸Šåˆ11:30:37
  */
 
 public class DiamondUtilsUnitTest {

@@ -21,7 +21,7 @@ import com.taobao.gecko.core.buffer.IoBuffer;
 
 
 /**
- * 退出命令，客户端发送此命令后，服务器将主动关闭连接
+ * 閫�鍑哄懡浠わ紝瀹㈡埛绔彂閫佹鍛戒护鍚庯紝鏈嶅姟鍣ㄥ皢涓诲姩鍏抽棴杩炴帴
  * 
  * @author boyan
  * @Date 2011-4-22

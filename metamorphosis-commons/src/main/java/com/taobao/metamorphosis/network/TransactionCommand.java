@@ -26,7 +26,7 @@ import com.taobao.metamorphosis.transaction.TransactionInfo;
 
 
 /**
- * ÊÂÎñÃüÁî,Ğ­Òé¸ñÊ½ÈçÏÂ£º</br> transaction transactionKey sessionId type [timeout]
+ * äº‹åŠ¡å‘½ä»¤,åè®®æ ¼å¼å¦‚ä¸‹ï¼š</br> transaction transactionKey sessionId type [timeout]
  * [uniqueQualifier] opaque\r\n
  * 
  * 

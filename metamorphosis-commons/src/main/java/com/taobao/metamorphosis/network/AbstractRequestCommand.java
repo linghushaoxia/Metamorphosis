@@ -22,7 +22,7 @@ import com.taobao.gecko.core.command.RequestCommand;
 
 
 /**
- * 请求命令基类
+ * 璇锋眰鍛戒护鍩虹被
  * 
  * @author boyan
  * 

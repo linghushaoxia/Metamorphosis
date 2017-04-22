@@ -27,8 +27,8 @@ import org.junit.Test;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-6-22 ÏÂÎç04:11:30
+ * @author æ— èŠ±
+ * @since 2011-6-22 ä¸‹åˆ04:11:30
  */
 
 public class URIUtilsTest {

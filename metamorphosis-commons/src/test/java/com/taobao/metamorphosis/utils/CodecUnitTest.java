@@ -33,7 +33,7 @@ import com.taobao.metamorphosis.utils.codec.Serializer;
 /**
  * 
  * @author boyan
- * @since 1.0, 2009-10-20 …œŒÁ10:28:18
+ * @since 1.0, 2009-10-20 ‰∏äÂçà10:28:18
  */
 public class CodecUnitTest {
     private Message msg = null;

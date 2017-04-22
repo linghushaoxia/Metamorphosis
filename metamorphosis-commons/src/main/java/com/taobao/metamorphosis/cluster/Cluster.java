@@ -25,7 +25,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 /**
- * Broker集群
+ * Broker闆嗙兢
  * 
  * @author boyan
  * @Date 2011-4-25
@@ -45,7 +45,7 @@ public class Cluster {
     }
 
 
-    /** 返回broker总数,包括master和slave */
+    /** 杩斿洖broker鎬绘暟,鍖呮嫭master鍜宻lave */
     public int size() {
         int size = 0;
         for (Map.Entry<Integer/* broker id */, Set<Broker>> entry : this.brokers.entrySet()) {

@@ -21,7 +21,7 @@ import java.io.File;
 
 
 /**
- * Ó¦ÓÃÂñµã³£Á¿Àà
+ * åº”ç”¨åŸ‹ç‚¹å¸¸é‡ç±»
  * 
  * @author fangliang
  * @since 2010-02-24

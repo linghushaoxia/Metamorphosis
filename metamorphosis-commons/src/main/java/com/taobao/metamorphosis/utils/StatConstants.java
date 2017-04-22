@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.utils;
 
 /**
- * Í³¼ÆÃû³Æ³£Á¿
+ * ç»Ÿè®¡åç§°å¸¸é‡
  * 
  * @author boyan
  * @Date 2011-5-8
@@ -26,115 +26,115 @@ package com.taobao.metamorphosis.utils;
  */
 public class StatConstants {
     /**
-     * ·¢ËÍÏûÏ¢Ê±¼äÍ³¼Æ
+     * å‘é€æ¶ˆæ¯æ—¶é—´ç»Ÿè®¡
      */
     public static final String PUT_TIME_STAT = "cli_put_time";
     /**
-     * ·¢ËÍÏûÏ¢²é¹ıÒ»¶¨ÖµµÄÍ³¼Æ
+     * å‘é€æ¶ˆæ¯æŸ¥è¿‡ä¸€å®šå€¼çš„ç»Ÿè®¡
      */
     public static final String PUT_TIMEOUT_STAT = "cli_put_timeout";
 
     /**
-     * ½ÓÊÕÏûÏ¢Ìø¹ı´¦ÀíµÄÏûÏ¢Êı
+     * æ¥æ”¶æ¶ˆæ¯è·³è¿‡å¤„ç†çš„æ¶ˆæ¯æ•°
      */
     public static final String SKIP_MSG_COUNT = "cli_skip_msg_count";
 
     /**
-     * ·¢ËÍÏûÏ¢ÖØÊÔ´ÎÊıÍ³¼Æ
+     * å‘é€æ¶ˆæ¯é‡è¯•æ¬¡æ•°ç»Ÿè®¡
      */
     public static final String PUT_RETRY_STAT = "cli_put_retry";
 
     /**
-     * »ñÈ¡ÏûÏ¢Ê±¼äÍ³¼Æ
+     * è·å–æ¶ˆæ¯æ—¶é—´ç»Ÿè®¡
      */
     public static final String GET_TIME_STAT = "cli_get_timeout";
 
     /**
-     * »ñÈ¡ÏûÏ¢Ê§°ÜÍ³¼Æ
+     * è·å–æ¶ˆæ¯å¤±è´¥ç»Ÿè®¡
      */
     public static final String GET_FAILED_STAT = "cli_get_failed";
 
     /**
-     * Offset²éÑ¯Í³¼Æ
+     * OffsetæŸ¥è¯¢ç»Ÿè®¡
      */
     public static final String OFFSET_TIME_STAT = "cli_offset_timeout";
     /**
-     * Offset²éÑ¯Ê§°ÜÍ³¼Æ
+     * OffsetæŸ¥è¯¢å¤±è´¥ç»Ÿè®¡
      */
     public static final String OFFSET_FAILED_STAT = "cli_offset_failed";
 
     /**
-     * »ñÈ¡ÏûÏ¢ÊıÁ¿Í³¼Æ
+     * è·å–æ¶ˆæ¯æ•°é‡ç»Ÿè®¡
      */
     public static final String GET_MSG_COUNT_STAT = "cli_get_msg_count";
 
     /**
-     * ·Ç·¨ÏûÏ¢Í³¼Æ
+     * éæ³•æ¶ˆæ¯ç»Ÿè®¡
      */
     public static final String INVALID_MSG_STAT = "cli_invalid_message";
 
     /**
-     * ·şÎñ¶ËputÏûÏ¢Ê§°Ü
+     * æœåŠ¡ç«¯putæ¶ˆæ¯å¤±è´¥
      */
     public static final String PUT_FAILED = "put_failed";
 
     /**
-     * ·şÎñ¶ËputÏûÏ¢Ê§°Ü
+     * æœåŠ¡ç«¯putæ¶ˆæ¯å¤±è´¥
      */
     public static final String GET_FAILED = "get_failed";
 
     /**
-     * ·şÎñ¶Ë½ÓÊÕµ½µÄÏûÏ¢´óĞ¡
+     * æœåŠ¡ç«¯æ¥æ”¶åˆ°çš„æ¶ˆæ¯å¤§å°
      */
     public static final String MESSAGE_SIZE = "message_size";
 
     /**
-     * ·şÎñ¶Ëget miss
+     * æœåŠ¡ç«¯get miss
      */
     public static final String GET_MISS = "get_miss";
 
     /**
-     * ·şÎñ¶Ë´¦ÀígetÇëÇó
+     * æœåŠ¡ç«¯å¤„ç†getè¯·æ±‚
      */
     public static final String CMD_GET = "get";
 
     /**
-     * ·şÎñ¶Ë´¦Àíoffset
+     * æœåŠ¡ç«¯å¤„ç†offset
      */
     public static final String CMD_OFFSET = "offset";
 
     /**
-     * ·şÎñ¶Ë´¦Àíput
+     * æœåŠ¡ç«¯å¤„ç†put
      */
     public static final String CMD_PUT = "put";
 
     /**
-     * ¿ªÊ¼ÊÂÎñÊı
+     * å¼€å§‹äº‹åŠ¡æ•°
      */
     public static final String TX_BEGIN = "txBegin";
 
     /**
-     * endÊÂÎñÊı
+     * endäº‹åŠ¡æ•°
      */
     public static final String TX_END = "txEnd";
 
     /**
-     * prepareÊÂÎñÊı
+     * prepareäº‹åŠ¡æ•°
      */
     public static final String TX_PREPARE = "txPrepare";
 
     /**
-     * Ìá½»ÊÂÎñÊı
+     * æäº¤äº‹åŠ¡æ•°
      */
     public static final String TX_COMMIT = "txCommit";
 
     /**
-     * »Ø¹öÊÂÎñÊı
+     * å›æ»šäº‹åŠ¡æ•°
      */
     public static final String TX_ROLLBACK = "txRollback";
 
     /**
-     * ÊÂÎñÆ½¾ùÖ´ĞĞÊ±¼ä
+     * äº‹åŠ¡å¹³å‡æ‰§è¡Œæ—¶é—´
      */
     public static final String TX_TIME = "txExecTime";
 

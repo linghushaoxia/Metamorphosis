@@ -20,20 +20,20 @@ package com.taobao.metamorphosis.utils.test;
 /**
  * 
  * 
- * ²¢·¢²âÊÔÈÎÎñ½Ó¿Ú
+ * å¹¶å‘æµ‹è¯•ä»»åŠ¡æ¥å£
  * 
  * @author boyan
  * 
- * @since 1.0, 2010-1-11 ÏÂÎç03:11:58
+ * @since 1.0, 2010-1-11 ä¸‹åˆ03:11:58
  */
 
 public interface ConcurrentTestTask {
     /**
      * 
      * @param index
-     *            Ïß³ÌË÷ÒıºÅ
+     *            çº¿ç¨‹ç´¢å¼•å·
      * @param times
-     *            ´ÎÊı
+     *            æ¬¡æ•°
      * @throws Exception TODO
      */
     public void run(int index, int times) throws Exception;

@@ -47,7 +47,7 @@ public final class MessageUtils {
 
 
     /**
-     * ´´½¨ÏûÏ¢buffer£¬Êµ¼Ê´æ´¢ÔÚ·şÎñÆ÷µÄ½á¹¹ÈçÏÂ£º
+     * åˆ›å»ºæ¶ˆæ¯bufferï¼Œå®é™…å­˜å‚¨åœ¨æœåŠ¡å™¨çš„ç»“æ„å¦‚ä¸‹ï¼š
      * <ul>
      * <li>message length(4 bytes),including attribute and payload</li>
      * <li>checksum(4 bytes)</li>
@@ -108,7 +108,7 @@ public final class MessageUtils {
 
 
     /**
-     * ´ÓbinaryÊı¾İÖĞ½â³öÏûÏ¢
+     * ä»binaryæ•°æ®ä¸­è§£å‡ºæ¶ˆæ¯
      * 
      * @param topic
      * @param data
@@ -123,7 +123,7 @@ public final class MessageUtils {
         final int checksum = buf.getInt();
         vailidateMessage(offset + HEADER_LEN, msgLen, checksum, data);
         final long id = buf.getLong();
-        // È¡flag
+        // å–flag
         final int flag = buf.getInt();
         String attribute = null;
         int payLoadOffset = offset + HEADER_LEN;
@@ -131,20 +131,20 @@ public final class MessageUtils {
         if (payLoadLen > MAX_READ_BUFFER_SIZE) {
             throw new InvalidMessageException("Too much long payload length:" + payLoadLen);
         }
-        // Èç¹ûÓĞÊôĞÔ£¬ĞèÒª½âÎöÊôĞÔ
+        // å¦‚æœæœ‰å±æ€§ï¼Œéœ€è¦è§£æå±æ€§
         if (MessageFlagUtils.hasAttribute(flag)) {
-            // È¡4¸ö×Ö½ÚµÄÊôĞÔ³¤¶È
+            // å–4ä¸ªå­—èŠ‚çš„å±æ€§é•¿åº¦
             final int attrLen = getInt(offset + HEADER_LEN, data);
-            // È¡ÏûÏ¢ÊôĞÔ
+            // å–æ¶ˆæ¯å±æ€§
             final byte[] attrData = new byte[attrLen];
             System.arraycopy(data, offset + HEADER_LEN + 4, attrData, 0, attrLen);
             attribute = ByteUtils.getString(attrData);
-            // µİÔöpayloadOffset£¬¼ÓÉÏ4¸ö×Ö½ÚµÄÏûÏ¢³¤¶ÈºÍÏûÏ¢³¤¶È±¾Éí
+            // é€’å¢payloadOffsetï¼ŒåŠ ä¸Š4ä¸ªå­—èŠ‚çš„æ¶ˆæ¯é•¿åº¦å’Œæ¶ˆæ¯é•¿åº¦æœ¬èº«
             payLoadOffset = offset + HEADER_LEN + 4 + attrLen;
-            // payload³¤¶Èµİ¼õ£¬¼õÈ¥4¸ö×Ö½ÚµÄÏûÏ¢³¤¶ÈºÍÏûÏ¢³¤¶È±¾Éí
+            // payloadé•¿åº¦é€’å‡ï¼Œå‡å»4ä¸ªå­—èŠ‚çš„æ¶ˆæ¯é•¿åº¦å’Œæ¶ˆæ¯é•¿åº¦æœ¬èº«
             payLoadLen = msgLen - 4 - attrLen;
         }
-        // »ñÈ¡payload
+        // è·å–payload
         final byte[] payload = new byte[payLoadLen];
         System.arraycopy(data, payLoadOffset, payload, 0, payLoadLen);
         final Message msg = new Message(topic, payload);
@@ -157,7 +157,7 @@ public final class MessageUtils {
 
 
     /**
-     * Ğ£Ñéchecksum
+     * æ ¡éªŒchecksum
      * 
      * @param msg
      * @param checksum
@@ -175,7 +175,7 @@ public final class MessageUtils {
     }
 
     /**
-     * 20¸ö×Ö½ÚµÄÍ·²¿ *
+     * 20ä¸ªå­—èŠ‚çš„å¤´éƒ¨ *
      * <ul>
      * <li>message length(4 bytes),including attribute and payload</li>
      * <li>checksum(4 bytes)</li>
@@ -189,7 +189,7 @@ public final class MessageUtils {
 
 
     /**
-     * ½«ÏûÏ¢ÊôĞÔºÍÏûÏ¢payload´ò°ü£¬½á¹¹ÈçÏÂ£º</br></br> 0»òÕß1¸ö¶¨³¤attribute + payload
+     * å°†æ¶ˆæ¯å±æ€§å’Œæ¶ˆæ¯payloadæ‰“åŒ…ï¼Œç»“æ„å¦‚ä¸‹ï¼š</br></br> 0æˆ–è€…1ä¸ªå®šé•¿attribute + payload
      * 
      * @param message
      * @return

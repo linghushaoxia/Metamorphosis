@@ -21,7 +21,7 @@ import com.taobao.gecko.core.buffer.IoBuffer;
 
 
 /**
- * 获取消息协议，协议格式如下： get topic group partition offset maxSize opaque\r\n
+ * 鑾峰彇娑堟伅鍗忚锛屽崗璁牸寮忓涓嬶細 get topic group partition offset maxSize opaque\r\n
  * 
  * @author boyan
  * @Date 2011-4-19

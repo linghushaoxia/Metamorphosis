@@ -29,8 +29,8 @@ import java.util.Properties;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-5-27 ÏÂÎç05:07:00
+ * @author æ— èŠ±
+ * @since 2011-5-27 ä¸‹åˆ05:07:00
  */
 
 public class Utils {

@@ -31,7 +31,7 @@ import com.taobao.metamorphosis.utils.codec.Deserializer;
 /**
  * 
  * @author wuxin
- * @since 1.0, 2009-10-20 …œŒÁ09:47:11
+ * @since 1.0, 2009-10-20 ‰∏äÂçà09:47:11
  */
 public class JavaDeserializer implements Deserializer {
 

@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 
 /**
- * 本地事务id
+ * 鏈湴浜嬪姟id
  * 
  * @author boyan
  * 

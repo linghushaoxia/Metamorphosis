@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.network;
 
 /**
- * ÏìÓ¦×´Ì¬Âë£¬×ñÑ­httpÓïÒå
+ * å“åº”çŠ¶æ€ç ï¼Œéµå¾ªhttpè¯­ä¹‰
  * 
  * @author boyan
  * @Date 2011-4-21

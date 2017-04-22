@@ -28,7 +28,7 @@ import java.util.Iterator;
  * 
  * @author boyan
  * 
- * @since 1.0, 2009-12-11 ÉÏÎç11:17:22
+ * @since 1.0, 2009-12-11 ä¸Šåˆ11:17:22
  */
 public interface Store {
 

@@ -25,7 +25,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 
 /**
- * ±íÊ¾Ò»¸ö·ÖÇø
+ * è¡¨ç¤ºä¸€ä¸ªåˆ†åŒº
  * 
  * @author boyan
  * @Date 2011-4-26
@@ -58,7 +58,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * ·µ»ØÊÇ·ñ×Ô¶¯ack£¬Ä¬ÈÏÎªtrue
+     * è¿”å›æ˜¯å¦è‡ªåŠ¨ackï¼Œé»˜è®¤ä¸ºtrue
      * 
      * @return
      */
@@ -69,10 +69,10 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * ÉèÖÃÊÇ·ñ×Ô¶¯ack
+     * è®¾ç½®æ˜¯å¦è‡ªåŠ¨ack
      * 
      * @param autoAck
-     *            true±íÊ¾×Ô¶¯ack
+     *            trueè¡¨ç¤ºè‡ªåŠ¨ack
      */
     public void setAutoAck(final boolean autoAck) {
         this.autoAck = autoAck;
@@ -80,7 +80,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * ÉèÖÃÊôĞÔ£¬¸²¸ÇÒÑÓĞµÄÈÎºÎ¹ØÁªÖµ
+     * è®¾ç½®å±æ€§ï¼Œè¦†ç›–å·²æœ‰çš„ä»»ä½•å…³è”å€¼
      * 
      * @param key
      * @param value
@@ -91,7 +91,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * µ±keyµÄvalue²»´æÔÚµÄÊ±ºò£¬¹ØÁªkeyµ½´«ÈëµÄvalue£¬´Ë²Ù×÷ÊÇÔ­×ÓµÄ
+     * å½“keyçš„valueä¸å­˜åœ¨çš„æ—¶å€™ï¼Œå…³è”keyåˆ°ä¼ å…¥çš„valueï¼Œæ­¤æ“ä½œæ˜¯åŸå­çš„
      * 
      * @see java.util.concurrent.ConcurrentHashMap#putIfAbsent(Object, Object)
      * @param key
@@ -103,7 +103,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * »ñÈ¡keyÖ¸¶¨µÄÊôĞÔ
+     * è·å–keyæŒ‡å®šçš„å±æ€§
      * 
      * @param key
      * @return
@@ -114,7 +114,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * ·µ»ØÊôĞÔµÄkey¼¯ºÏ£¬ÈõÒ»ÖÂĞÔ
+     * è¿”å›å±æ€§çš„keyé›†åˆï¼Œå¼±ä¸€è‡´æ€§
      * 
      * @return
      */
@@ -124,7 +124,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * ÒÆ³ıkeyÖ¸¶¨µÄÊôĞÔ
+     * ç§»é™¤keyæŒ‡å®šçš„å±æ€§
      * 
      * @param key
      * @return
@@ -135,7 +135,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * Çå¿ÕËùÓĞÊôĞÔ
+     * æ¸…ç©ºæ‰€æœ‰å±æ€§
      */
     public void clearAttributes() {
         this.attributes.clear();
@@ -143,7 +143,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * ·µ»Ø´Ëpartition¶ÔÏóµÄ¸´ÖÆÆ·
+     * è¿”å›æ­¤partitionå¯¹è±¡çš„å¤åˆ¶å“
      * 
      * @return
      */
@@ -179,7 +179,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * ·µ»Øbroker id
+     * è¿”å›broker id
      * 
      * @return
      */
@@ -189,7 +189,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * ·µ»Ø·ÖÇøid
+     * è¿”å›åˆ†åŒºid
      * 
      * @return
      */
@@ -243,7 +243,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * Ó¦´ğ±¾·ÖÇø×ÔÉÏ´ÎÓ¦´ğÒÔÀ´ÊÕµ½µÄÏûÏ¢£¬meta¿Í»§¶Ë½«µİÔöoffset£¬½öÔÚÉèÖÃautoAckÎªfalseµÄÊ±ºòÓĞĞ§
+     * åº”ç­”æœ¬åˆ†åŒºè‡ªä¸Šæ¬¡åº”ç­”ä»¥æ¥æ”¶åˆ°çš„æ¶ˆæ¯ï¼Œmetaå®¢æˆ·ç«¯å°†é€’å¢offsetï¼Œä»…åœ¨è®¾ç½®autoAckä¸ºfalseçš„æ—¶å€™æœ‰æ•ˆ
      */
     public void ack() {
         if (this.isAutoAck()) {
@@ -257,7 +257,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * ·µ»Ø±¾·ÖÇøÊÇ·ñµ÷ÓÃÁËack£¬Èç¹ûÊÇ×Ô¶¯ackÄ£Ê½£¬ÔòÓÀÔ¶·µ»Øtrue
+     * è¿”å›æœ¬åˆ†åŒºæ˜¯å¦è°ƒç”¨äº†ackï¼Œå¦‚æœæ˜¯è‡ªåŠ¨ackæ¨¡å¼ï¼Œåˆ™æ°¸è¿œè¿”å›true
      * 
      * @return
      */
@@ -268,7 +268,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * ·µ»Ø±¾·ÖÇøÊÇ·ñµ÷ÓÃÁËrollback£¬Èç¹ûÊÇ×Ô¶¯ackÄ£Ê½ÔòÓÀÔ¶·µ»Øfalse
+     * è¿”å›æœ¬åˆ†åŒºæ˜¯å¦è°ƒç”¨äº†rollbackï¼Œå¦‚æœæ˜¯è‡ªåŠ¨ackæ¨¡å¼åˆ™æ°¸è¿œè¿”å›false
      * 
      * @return
      */
@@ -279,7 +279,7 @@ public class Partition implements Comparable<Partition>, Serializable {
 
 
     /**
-     * »Ø¹ö×ÔÉÏ´ÎÓ¦´ğÒÔÀ´ÊÕµ½µÄÏûÏ¢,meta½«ÖØÊÔÍ¶µİÕâĞ©ÏûÏ¢,½öÔÚÉèÖÃautoAckÎªfalseµÄÊ±ºòÓĞĞ§
+     * å›æ»šè‡ªä¸Šæ¬¡åº”ç­”ä»¥æ¥æ”¶åˆ°çš„æ¶ˆæ¯,metaå°†é‡è¯•æŠ•é€’è¿™äº›æ¶ˆæ¯,ä»…åœ¨è®¾ç½®autoAckä¸ºfalseçš„æ—¶å€™æœ‰æ•ˆ
      */
     public void rollback() {
         if (this.isAutoAck()) {

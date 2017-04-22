@@ -23,7 +23,7 @@ import com.taobao.gecko.core.buffer.IoBuffer;
 
 
 /**
- * Í³¼ÆĞÅÏ¢²éÑ¯ ¸ñÊ½£º</br> stats item opaque\r\n
+ * ç»Ÿè®¡ä¿¡æ¯æŸ¥è¯¢ æ ¼å¼ï¼š</br> stats item opaque\r\n
  * 
  * @author boyan
  * @Date 2011-4-21
@@ -31,7 +31,7 @@ import com.taobao.gecko.core.buffer.IoBuffer;
  */
 public class StatsCommand extends AbstractRequestCommand {
     static final long serialVersionUID = -1L;
-    // Í³¼ÆÏîÄ¿Ãû³Æ£¬¿ÉÒÔÎª¿Õ
+    // ç»Ÿè®¡é¡¹ç›®åç§°ï¼Œå¯ä»¥ä¸ºç©º
     private final String item;
 
 

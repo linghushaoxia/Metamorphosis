@@ -23,8 +23,8 @@ import org.junit.Test;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-6-22 ÏÂÎç04:28:58
+ * @author æ— èŠ±
+ * @since 2011-6-22 ä¸‹åˆ04:28:58
  */
 
 public class BrokerUnitTest {

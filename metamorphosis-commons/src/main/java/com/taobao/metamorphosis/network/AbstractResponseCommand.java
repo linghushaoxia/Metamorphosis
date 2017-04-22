@@ -24,7 +24,7 @@ import com.taobao.gecko.core.command.ResponseStatus;
 
 
 /**
- * 应答命令基类
+ * 搴旂瓟鍛戒护鍩虹被
  * 
  * @author boyan
  * @Date 2011-6-2

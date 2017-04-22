@@ -21,7 +21,7 @@ import com.taobao.gecko.core.buffer.IoBuffer;
 
 
 /**
- * Ğ­Òé±àÂë½Ó¿ÚºÍ³£Á¿
+ * åè®®ç¼–ç æ¥å£å’Œå¸¸é‡
  * 
  * @author boyan
  * @Date 2011-6-2
@@ -29,9 +29,9 @@ import com.taobao.gecko.core.buffer.IoBuffer;
  */
 public interface MetaEncodeCommand {
     /**
-     * ±àÂëĞ­Òé
+     * ç¼–ç åè®®
      * 
-     * @return ±àÂëºóµÄbuffer
+     * @return ç¼–ç åçš„buffer
      */
     public IoBuffer encode();
 

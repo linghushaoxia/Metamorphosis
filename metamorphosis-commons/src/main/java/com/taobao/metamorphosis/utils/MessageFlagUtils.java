@@ -21,10 +21,10 @@ import com.taobao.metamorphosis.Message;
 
 
 /**
- * ÏûÏ¢flag¹¤¾ßÀà flagÊÇ32Î»ÕûÊı£¬ËüµÄ½á¹¹ÈçÏÂ£º</br></br>
+ * æ¶ˆæ¯flagå·¥å…·ç±» flagæ˜¯32ä½æ•´æ•°ï¼Œå®ƒçš„ç»“æ„å¦‚ä¸‹ï¼š</br></br>
  * <ul>
- * <li>µÍÒ»Î»£¬1±íÊ¾ÓĞÏûÏ¢ÊôĞÔ£¬·ñÔòÃ»ÓĞ</li>
- * <li>ÆäËûÔİÊ±±£Áô</li>
+ * <li>ä½ä¸€ä½ï¼Œ1è¡¨ç¤ºæœ‰æ¶ˆæ¯å±æ€§ï¼Œå¦åˆ™æ²¡æœ‰</li>
+ * <li>å…¶ä»–æš‚æ—¶ä¿ç•™</li>
  * </ul>
  * 
  * @author boyan
@@ -36,7 +36,7 @@ public class MessageFlagUtils {
     public static int getFlag(final Message message) {
         int flag = 0;
         if (message != null && message.getAttribute() != null) {
-            // µÍÒ»Î»ÉèÖÃÎª1
+            // ä½ä¸€ä½è®¾ç½®ä¸º1
             flag = flag & 0xFFFFFFFE | 1;
         }
         return flag;

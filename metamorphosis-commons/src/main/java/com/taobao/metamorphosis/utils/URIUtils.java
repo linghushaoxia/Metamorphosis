@@ -28,8 +28,8 @@ import java.util.Scanner;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-6-22 ÏÂÎç04:04:00
+ * @author æ— èŠ±
+ * @since 2011-6-22 ä¸‹åˆ04:04:00
  */
 
 public class URIUtils {

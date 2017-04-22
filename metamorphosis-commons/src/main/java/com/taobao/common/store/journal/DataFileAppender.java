@@ -54,7 +54,7 @@ public class DataFileAppender {
 
     public OpItem remove(final OpItem opItem, final BytesKey bytesKey, final boolean sync) throws IOException {
         if (this.shutdown) {
-            throw new RuntimeException("DataFileAppenderÒÑ¾­¹Ø±Õ");
+            throw new RuntimeException("DataFileAppenderå·²ç»å…³é—­");
         }
         // sync = true;
         final WriteCommand writeCommand = new WriteCommand(bytesKey, opItem, null, sync);
@@ -65,7 +65,7 @@ public class DataFileAppender {
     public OpItem store(final OpItem opItem, final BytesKey bytesKey, final byte[] data, final boolean sync)
             throws IOException {
         if (this.shutdown) {
-            throw new RuntimeException("DataFileAppenderÒÑ¾­¹Ø±Õ");
+            throw new RuntimeException("DataFileAppenderå·²ç»å…³é—­");
         }
         opItem.key = bytesKey.getData();
         opItem.length = data.length;
@@ -168,7 +168,7 @@ public class DataFileAppender {
             this.enqueueLock.lock();
             try {
                 if (df.getLength() >= JournalStore.FILE_SIZE && df.isUnUsed()) {
-                    if (this.journal.dataFile == df) { // ÅĞ¶ÏÈç¹ûÊÇµ±Ç°ÎÄ¼ş£¬Éú³ÉĞÂµÄ
+                    if (this.journal.dataFile == df) { // åˆ¤æ–­å¦‚æœæ˜¯å½“å‰æ–‡ä»¶ï¼Œç”Ÿæˆæ–°çš„
                         this.journal.newDataFile();
                     }
                     this.journal.dataFiles.remove(Integer.valueOf(df.getNumber()));
@@ -235,7 +235,7 @@ public class DataFileAppender {
         }
         this.enqueueLock.lock();
         try {
-            // ·ÇÍ¬²½£¬´ÓinflyWrites»º´æÖĞÒÆ³ı
+            // éåŒæ­¥ï¼Œä»inflyWritesç¼“å­˜ä¸­ç§»é™¤
             for (final WriteCommand cmd : dataList) {
                 if (!cmd.sync && cmd.opItem.op == OpItem.OP_ADD) {
                     final InflyWriteData inflyWriteData = this.inflyWrites.get(cmd.bytesKey);
@@ -289,7 +289,7 @@ public class DataFileAppender {
         WriteBatch result = null;
         this.enqueueLock.lock();
         try {
-            // Èç¹ûÃ»ÓĞÆô¶¯£¬ÔòÏÈÆô¶¯appenderÏß³Ì
+            // å¦‚æœæ²¡æœ‰å¯åŠ¨ï¼Œåˆ™å…ˆå¯åŠ¨appenderçº¿ç¨‹
             this.startAppendThreadIfNessary();
             if (this.nextWriteBatch == null) {
                 result = this.newWriteBatch(writeCommand);
@@ -327,7 +327,7 @@ public class DataFileAppender {
                     }
                     break;
                 case OpItem.OP_DEL:
-                    // ÎŞÌõ¼şÉ¾³ı
+                    // æ— æ¡ä»¶åˆ é™¤
                     if (inflyWriteData != null) {
                         this.inflyWrites.remove(writeCommand.bytesKey);
                     }
@@ -345,16 +345,16 @@ public class DataFileAppender {
 
     private WriteBatch newWriteBatch(final WriteCommand writeCommand) throws IOException {
         WriteBatch result = null;
-        // ÉèÖÃoffsetºÍnumber
+        // è®¾ç½®offsetå’Œnumber
         if (writeCommand.opItem.op == OpItem.OP_ADD) {
-            // Ô¤ÏÈÅĞ¶ÏÒ»´Î
+            // é¢„å…ˆåˆ¤æ–­ä¸€æ¬¡
             if (this.journal.indices.containsKey(writeCommand.bytesKey)) {
-                throw new IOException("·¢ÏÖÖØ¸´µÄkey");
+                throw new IOException("å‘ç°é‡å¤çš„key");
             }
             final DataFile dataFile = this.getDataFile();
             writeCommand.opItem.offset = dataFile.position();
             writeCommand.opItem.number = dataFile.getNumber();
-            // ÒÆ¶¯dataFileÖ¸Õë
+            // ç§»åŠ¨dataFileæŒ‡é’ˆ
             dataFile.forward(writeCommand.data.length);
             this.nextWriteBatch = new WriteBatch(writeCommand, dataFile, this.journal.logFile);
             result = this.nextWriteBatch;
@@ -368,7 +368,7 @@ public class DataFileAppender {
             }
             else {
                 // System.out.println(this.journal.dataFiles);
-                throw new IOException("ÈÕÖ¾ÎÄ¼şÒÑ¾­±»É¾³ı£¬±àºÅÎª" + writeCommand.opItem.number);
+                throw new IOException("æ—¥å¿—æ–‡ä»¶å·²ç»è¢«åˆ é™¤ï¼Œç¼–å·ä¸º" + writeCommand.opItem.number);
             }
         }
         return result;
@@ -394,7 +394,7 @@ public class DataFileAppender {
 
     private DataFile getDataFile() throws IOException {
         DataFile dataFile = this.journal.dataFile;
-        if (dataFile.getLength() >= JournalStore.FILE_SIZE) { // ÂúÁË
+        if (dataFile.getLength() >= JournalStore.FILE_SIZE) { // æ»¡äº†
             dataFile = this.journal.newDataFile();
         }
         return dataFile;
@@ -423,7 +423,7 @@ public class DataFileAppender {
     }
 
     /**
-     * Ò»´ÎÅúÁ¿Ğ´Èë¼ÇÂ¼
+     * ä¸€æ¬¡æ‰¹é‡å†™å…¥è®°å½•
      * 
      * @author dennis
      * 
@@ -431,16 +431,16 @@ public class DataFileAppender {
     private class WriteBatch {
         final CountDownLatch latch = new CountDownLatch(1);
         final List<WriteCommand> cmdList = new ArrayList<WriteCommand>();
-        // É¾³ı²Ù×÷µÄ¸öÊı
+        // åˆ é™¤æ“ä½œçš„ä¸ªæ•°
         int removeOPCount;
         final DataFile dataFile;
         final LogFile logFile;
-        // Ğ´ÈëµÄdata´óĞ¡
+        // å†™å…¥çš„dataå¤§å°
         int dataSize;
-        // DataFileĞ´ÈëµÄÆğµã
+        // DataFileå†™å…¥çš„èµ·ç‚¹
         long offset = -1;
         volatile IOException exception;
-        // Ğ´ÈëÎÄ¼şµÄ±àºÅ
+        // å†™å…¥æ–‡ä»¶çš„ç¼–å·
         final int number;
 
 
@@ -469,17 +469,17 @@ public class DataFileAppender {
         public boolean canAppend(final WriteCommand command) throws IOException {
             switch (command.opItem.op) {
             case OpItem.OP_DEL:
-                // É¾³ı²»ÔÚ±¾´ÎbatchµÄÎÄ¼şÉÏ£¬²»¿ÉºÏ²¢
+                // åˆ é™¤ä¸åœ¨æœ¬æ¬¡batchçš„æ–‡ä»¶ä¸Šï¼Œä¸å¯åˆå¹¶
                 if (command.opItem.number != this.number) {
                     return false;
                 }
                 break;
             case OpItem.OP_ADD:
-                // ÎÄ¼ş²»ÄÜÌ«´ó
+                // æ–‡ä»¶ä¸èƒ½å¤ªå¤§
                 if (this.dataFile.getLength() + command.data.length >= JournalStore.FILE_SIZE) {
                     return false;
                 }
-                // Ò»´Îbatch²»ÄÜÌ«´ó
+                // ä¸€æ¬¡batchä¸èƒ½å¤ªå¤§
                 if (this.dataSize + command.data.length >= DataFileAppender.this.maxWriteBatchSize) {
                     return false;
                 }
@@ -495,8 +495,8 @@ public class DataFileAppender {
         public void append(final WriteCommand writeCommand) throws IOException {
             switch (writeCommand.opItem.op) {
             case OpItem.OP_ADD:
-                // Ìí¼Ó²Ù×÷ĞèÒªÉè¶¨offset
-                // 1¡¢µÚÒ»¸öopÊÇremoveµÄÇé¿ö
+                // æ·»åŠ æ“ä½œéœ€è¦è®¾å®šoffset
+                // 1ã€ç¬¬ä¸€ä¸ªopæ˜¯removeçš„æƒ…å†µ
                 if (this.offset == -1) {
                     this.offset = this.dataFile.position();
                     writeCommand.opItem.offset = this.dataFile.position();

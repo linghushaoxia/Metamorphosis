@@ -21,7 +21,7 @@ import java.util.zip.CRC32;
 
 
 /**
- * Checksum¼ÆËãÆ÷
+ * Checksumè®¡ç®—å™¨
  * 
  * @author boyan
  * @Date 2011-4-21

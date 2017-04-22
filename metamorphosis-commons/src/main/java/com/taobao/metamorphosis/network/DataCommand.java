@@ -23,17 +23,17 @@ import com.taobao.gecko.core.buffer.IoBuffer;
 
 
 /**
- * Ӧ�����Э���ʽ���£� value total-length opaque\r\n data,����data�Ľṹ���£�
+ * 应答命令，协议格式如下： value total-length opaque\r\n data,其中data的结构如下：
  * <ul>
- * <li>4���ֽڵ���Ϣ���ݳ��ȣ����ܰ������ԣ�</li>
- * <li>4���ֽڵ�check sum</li>
- * <li>8���ֽڵ���Ϣid</li>
- * <li>4���ֽڵ�flag</li>
- * <li>��Ϣ���ݣ���������ԣ���Ϊ��
+ * <li>4个字节的消息数据长度（可能包括属性）</li>
+ * <li>4个字节的check sum</li>
+ * <li>8个字节的消息id</li>
+ * <li>4个字节的flag</li>
+ * <li>消息数据，如果有属性，则为：
  * <ul>
- * <li>4���ֽڵ����Գ���+ ��Ϣ���� + payload</li>
+ * <li>4个字节的属性长度+ 消息属性 + payload</li>
  * </ul>
- * </li> ����Ϊ��
+ * </li> 否则为：
  * <ul>
  * <li>payload</li>
  * <ul>

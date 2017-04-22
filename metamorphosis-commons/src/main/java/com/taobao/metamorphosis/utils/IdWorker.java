@@ -21,8 +21,8 @@ import com.taobao.metamorphosis.exception.InvalidSystemClock;
 
 
 /**
- * À´×ÔÓÚtwitterÏîÄ¿<a
- * href="https://github.com/twitter/snowflake">snowflake</a>µÄid²úÉú·½°¸£¬È«¾ÖÎ¨Ò»£¬Ê±¼äÓĞĞò
+ * æ¥è‡ªäºtwitteré¡¹ç›®<a
+ * href="https://github.com/twitter/snowflake">snowflake</a>çš„idäº§ç”Ÿæ–¹æ¡ˆï¼Œå…¨å±€å”¯ä¸€ï¼Œæ—¶é—´æœ‰åº
  * 
  * 
  * @see https://github.com/twitter/snowflake
