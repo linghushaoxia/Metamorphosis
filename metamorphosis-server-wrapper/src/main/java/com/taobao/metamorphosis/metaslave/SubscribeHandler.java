@@ -54,10 +54,10 @@ import com.taobao.metamorphosis.server.utils.MetaMBeanServer;
 
 
 /**
- * ¸ºÔğ´Ómaster½ÓÊÕÏûÏ¢²¢´æ´¢µ½slaver
+ * è´Ÿè´£ä»masteræ¥æ”¶æ¶ˆæ¯å¹¶å­˜å‚¨åˆ°slaver
  * 
- * @author ÎŞ»¨,dennis
- * @since 2011-6-24 ÏÂÎç06:03:29
+ * @author æ— èŠ±,dennis
+ * @since 2011-6-24 ä¸‹åˆ06:03:29
  */
 
 public class SubscribeHandler implements SubscribeHandlerMBean {
@@ -155,7 +155,7 @@ public class SubscribeHandler implements SubscribeHandlerMBean {
     }
 
 
-    // ·¢ÉúÔÚslave brokerÆô¶¯Ö®ºó
+    // å‘ç”Ÿåœ¨slave brokerå¯åŠ¨ä¹‹å
     synchronized public void start() {
         if (this.isStarted.get()) {
             log.info("Subscriber has been started");
@@ -169,7 +169,7 @@ public class SubscribeHandler implements SubscribeHandlerMBean {
             if (partitionsForTopics == null || partitionsForTopics.isEmpty()) {
                 throw new SubscribeMasterMessageException("topics in master is empty");
             }
-            // Éú³ÉÏûÏ¢ÎÄ¼ş,Èç¹ûÓĞ±ØÒªµÄ»°
+            // ç”Ÿæˆæ¶ˆæ¯æ–‡ä»¶,å¦‚æœæœ‰å¿…è¦çš„è¯
             this.handleMassageFiles(partitionsForTopics);
             this.initMessageConsumer();
             this.subscribeMetaMaster(partitionsForTopics.keySet());
@@ -177,8 +177,8 @@ public class SubscribeHandler implements SubscribeHandlerMBean {
             log.info("start subscribe message from master success");
         }
         catch (final Throwable e) {
-            // ÓÉÓÚmasterÃ»Æô¶¯»òÆäËûÔ­Òòµ¼ÖÂÆô¶¯Êı¾İ¸´ÖÆÊ§°ÜµÄ,¼ÇÂ¼Ò»ÏÂ,
-            // ²¢¼ÌĞø¼àÌızk,·¢ÏÖmasterÊ±Æô¶¯Êı¾İ¸´ÖÆ
+            // ç”±äºmasteræ²¡å¯åŠ¨æˆ–å…¶ä»–åŸå› å¯¼è‡´å¯åŠ¨æ•°æ®å¤åˆ¶å¤±è´¥çš„,è®°å½•ä¸€ä¸‹,
+            // å¹¶ç»§ç»­ç›‘å¬zk,å‘ç°masteræ—¶å¯åŠ¨æ•°æ®å¤åˆ¶
             log.warn("problem occured in start subscribe message from master,maybe master not started or other errers",
                 e);
             log.info("waiting for master start next time...");
@@ -187,7 +187,7 @@ public class SubscribeHandler implements SubscribeHandlerMBean {
     }
 
 
-    /** µ±Ò»¸ötopicÏÂÄ³¸öpatition²»´æÔÚÏûÏ¢ÎÄ¼şÊ±,´Ómaster²éÑ¯offset²¢¸ù¾İÕâ¸öoffset´´½¨storeºÍÎÄ¼ş **/
+    /** å½“ä¸€ä¸ªtopicä¸‹æŸä¸ªpatitionä¸å­˜åœ¨æ¶ˆæ¯æ–‡ä»¶æ—¶,ä»masteræŸ¥è¯¢offsetå¹¶æ ¹æ®è¿™ä¸ªoffsetåˆ›å»ºstoreå’Œæ–‡ä»¶ **/
     private void handleMassageFiles(final Map<String, List<Partition>> partitionsForTopics) {
         try {
             this.masterServerUrl = this.slaveZooKeeper.getMasterServerUrl();
@@ -196,7 +196,7 @@ public class SubscribeHandler implements SubscribeHandlerMBean {
                     final String topic = each.getKey();
                     final MessageStore messageStore =
                             this.broker.getStoreManager().getMessageStore(topic, partition.getPartition());
-                    // ±¾µØ²»´æÔÚÏûÏ¢ÎÄ¼ş
+                    // æœ¬åœ°ä¸å­˜åœ¨æ¶ˆæ¯æ–‡ä»¶
                     final StringBuilder logStr = new StringBuilder();
                     if (messageStore == null) {
                         logStr.append("Local file for topic=").append(topic).append(" is not exist,partition=")
@@ -204,7 +204,7 @@ public class SubscribeHandler implements SubscribeHandlerMBean {
                         final long offsetInMaster =
                                 this.slaveOffsetStorage.queryOffsetInMaster(this.masterServerUrl, partition, topic);
                         logStr.append("query offset from master,offset=").append(offsetInMaster).append("\n");
-                        // ´´½¨Ò»¸ö´ÓÖ¸¶¨offset¿ªÊ¼µÄstoreºÍÎÄ¼ş
+                        // åˆ›å»ºä¸€ä¸ªä»æŒ‡å®šoffsetå¼€å§‹çš„storeå’Œæ–‡ä»¶
                         if (offsetInMaster > 0) {
                             this.broker.getStoreManager().getOrCreateMessageStore(topic, partition.getPartition(),
                                 offsetInMaster);
@@ -275,7 +275,7 @@ public class SubscribeHandler implements SubscribeHandlerMBean {
                     new ConsumerConfig(this.broker.getMetaConfig().getSlaveConfig().getSlaveGroup());
             consumerConfig.setMaxDelayFetchTimeInMills(this.broker.getMetaConfig().getSlaveConfig()
                 .getSlaveMaxDelayInMills());
-            consumerConfig.setMaxFetchRetries(Integer.MAX_VALUE);// ÏûÏ¢´¦ÀíÊ§°Ü¿¨ÔÚÄÇÒ»ÌõÉÏ,²»½øÈërecover
+            consumerConfig.setMaxFetchRetries(Integer.MAX_VALUE);// æ¶ˆæ¯å¤„ç†å¤±è´¥å¡åœ¨é‚£ä¸€æ¡ä¸Š,ä¸è¿›å…¥recover
             this.consumer = this.sessionFactory.createConsumer(consumerConfig, this.slaveOffsetStorage);
         }
         else {

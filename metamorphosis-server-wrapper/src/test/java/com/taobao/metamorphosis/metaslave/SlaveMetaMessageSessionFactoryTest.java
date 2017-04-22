@@ -24,8 +24,8 @@ import com.taobao.metamorphosis.client.MetaClientConfig;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-7-1 ÏÂÎç04:20:01
+ * @author æ— èŠ±
+ * @since 2011-7-1 ä¸‹åˆ04:20:01
  */
 
 public class SlaveMetaMessageSessionFactoryTest {

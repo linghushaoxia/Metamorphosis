@@ -29,8 +29,8 @@ import com.taobao.metamorphosis.server.utils.MetaConfig;
 
 
 /**
- * @author 无花
- * @since 2011-6-9 下午01:27:12
+ * @author 鏃犺姳
+ * @since 2011-6-9 涓嬪崍01:27:12
  */
 
 public class EnhancedBroker {
@@ -45,7 +45,7 @@ public class EnhancedBroker {
 
 
     public void start() {
-        // 先启动meta,然后启动Plugins
+        // 鍏堝惎鍔╩eta,鐒跺悗鍚姩Plugins
         this.broker.start();
         this.brokerPlugins.start();
         Server dashboradHttpServer = new Server();

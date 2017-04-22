@@ -41,7 +41,7 @@ import com.taobao.gecko.service.Connection;
 
 
 /**
- * Ô´×ÔminaµÄOrderedThreadPoolExecutor£¬ÎªÊÊÓ¦notify remoting×öÁËÊÊµ±¸ÄÔì
+ * æºè‡ªminaçš„OrderedThreadPoolExecutorï¼Œä¸ºé€‚åº”notify remotingåšäº†é€‚å½“æ”¹é€ 
  * 
  * @author boyan
  * @Date 2011-4-27

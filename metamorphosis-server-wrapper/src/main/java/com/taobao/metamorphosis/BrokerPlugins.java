@@ -31,19 +31,19 @@ import com.taobao.metamorphosis.server.exception.MetamorphosisServerStartupExcep
 
 
 /**
- * @author 无花
- * @since 2011-6-9 下午01:36:39
+ * @author 鏃犺姳
+ * @since 2011-6-9 涓嬪崍01:36:39
  */
 
 public class BrokerPlugins extends AbstractBrokerPlugin {
 
     /**
-     * 已注册的plugins
+     * 宸叉敞鍐岀殑plugins
      */
     private final Map<String/* plugin name */, BrokerPlugin> plugins = new HashMap<String, BrokerPlugin>();
 
     /**
-     * 需要启动的plugins
+     * 闇�瑕佸惎鍔ㄧ殑plugins
      */
     private final Map<String/* plugin name */, Properties> pluginsInfo = new HashMap<String, Properties>();
 
@@ -74,7 +74,7 @@ public class BrokerPlugins extends AbstractBrokerPlugin {
             return;
         }
 
-        // 作为异步复制Slave启动时特殊处理，不启动其他plugin
+        // 浣滀负寮傛澶嶅埗Slave鍚姩鏃剁壒娈婂鐞嗭紝涓嶅惎鍔ㄥ叾浠杙lugin
         if (pluginsInfo.containsKey("metaslave")) {
             log.info("start as meta slaver,unstart other plugins");
             final Properties slaveProperties = pluginsInfo.get("metaslave");

@@ -21,7 +21,7 @@ package com.taobao.metamorphosis.gregor.slave;
 
 /**
  * 
- * 分类有序任务
+ * 鍒嗙被鏈夊簭浠诲姟
  * 
  * @see OrderedThreadPoolExecutor
  */

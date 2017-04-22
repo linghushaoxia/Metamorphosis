@@ -29,12 +29,12 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 
 /**
- * Ğ­ÖúÆäËû°üÏÂµÄ²âÊÔÀà »ñÈ¡ConsumerZooKeeper°üË½ÓĞµÄÄÚ²¿×´Ì¬
+ * ååŠ©å…¶ä»–åŒ…ä¸‹çš„æµ‹è¯•ç±» è·å–ConsumerZooKeeperåŒ…ç§æœ‰çš„å†…éƒ¨çŠ¶æ€
  * 
- * @author ÎŞ»¨
- * @since 2011-6-29 ÏÂÎç06:09:33
+ * @author æ— èŠ±
+ * @since 2011-6-29 ä¸‹åˆ06:09:33
  */
-@Ignore("²»²ÎÓëµ¥Ôª²âÊÔ")
+@Ignore("ä¸å‚ä¸å•å…ƒæµ‹è¯•")
 public class ConsumerZooKeeperAccessor {
 
     public static ZKLoadRebalanceListener getBrokerConnectionListenerForTest(ConsumerZooKeeper consumerZooKeeper,

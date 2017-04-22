@@ -21,7 +21,7 @@ import com.taobao.gecko.service.Connection;
 
 
 /**
- * IO·ÖÀà
+ * IOåˆ†ç±»
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-18

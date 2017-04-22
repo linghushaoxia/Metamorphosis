@@ -36,8 +36,8 @@ import com.taobao.metamorphosis.server.utils.MetaConfig;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-6-9 ÏÂÎç07:57:46
+ * @author æ— èŠ±
+ * @since 2011-6-9 ä¸‹åˆ07:57:46
  */
 
 public class ServerStartupTest {

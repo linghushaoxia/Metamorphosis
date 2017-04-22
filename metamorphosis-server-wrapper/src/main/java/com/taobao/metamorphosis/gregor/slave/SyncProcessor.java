@@ -37,7 +37,7 @@ import com.taobao.metamorphosis.transaction.TransactionId;
 
 
 /**
- * sync命令的网络处理器
+ * sync鍛戒护鐨勭綉缁滃鐞嗗櫒
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-12-14

@@ -25,8 +25,8 @@ import org.junit.Test;
 import com.taobao.metamorphosis.server.assembly.MetaMorphosisBroker;
 
 /**
- * @author ÎŞ»¨
- * @since 2011-6-9 ÏÂÎç03:09:39
+ * @author æ— èŠ±
+ * @since 2011-6-9 ä¸‹åˆ03:09:39
  */
 
 public class AbstractBrokerPluginTest {

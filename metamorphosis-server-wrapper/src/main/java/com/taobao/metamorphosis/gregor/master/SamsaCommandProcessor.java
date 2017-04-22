@@ -58,7 +58,7 @@ import com.taobao.metamorphosis.utils.MessageUtils;
 
 
 /**
- * MasterµÄbroker command processor£¬Ôİ²»Ö§³ÖËùÓĞÊÂÎñ²Ù×÷
+ * Masterçš„broker command processorï¼Œæš‚ä¸æ”¯æŒæ‰€æœ‰äº‹åŠ¡æ“ä½œ
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-12-14
@@ -135,7 +135,7 @@ public class SamsaCommandProcessor extends BrokerCommandProcessor {
                     try {
                         final String testTopic = Constants.TEST_SLAVE_TOPIC;
                         Message msg = new Message(testTopic, "test".getBytes());
-                        // ·¢Íùslave
+                        // å‘å¾€slave
                         byte[] encodePayload = MessageUtils.encodePayload(msg);
                         int flag = 0;
                         int partition = 0;
@@ -185,7 +185,7 @@ public class SamsaCommandProcessor extends BrokerCommandProcessor {
     }
 
     /**
-     * appendµ½message storeµÄcallback
+     * appendåˆ°message storeçš„callback
      * 
      * @author boyan(boyan@taobao.com)
      * @date 2011-12-7
@@ -197,10 +197,10 @@ public class SamsaCommandProcessor extends BrokerCommandProcessor {
         private final PutCommand request;
         private final long messageId;
         private final PutCallback cb;
-        private int respCount; // Ó¦´ğ´ÎÊı
-        private boolean masterSuccess; // masterÊÇ·ñ³É¹¦
-        private boolean slaveSuccess; // slaveÊÇ·ñ³É¹¦
-        private long appendOffset = -1L;; // Ìí¼Óµ½masterµÄoffset
+        private int respCount; // åº”ç­”æ¬¡æ•°
+        private boolean masterSuccess; // masteræ˜¯å¦æˆåŠŸ
+        private boolean slaveSuccess; // slaveæ˜¯å¦æˆåŠŸ
+        private long appendOffset = -1L;; // æ·»åŠ åˆ°masterçš„offset
 
 
         @Override
@@ -282,7 +282,7 @@ public class SamsaCommandProcessor extends BrokerCommandProcessor {
 
 
         /**
-         * Master appendÓ¦´ğ
+         * Master appendåº”ç­”
          */
         @Override
         public void appendComplete(final Location location) {
@@ -301,9 +301,9 @@ public class SamsaCommandProcessor extends BrokerCommandProcessor {
                 return;
             }
             this.respCount++;
-            // Á½Õß¶¼Ó¦´ğÁË£¬¿ÉÒÔ¸øproducer»ØÀ¡
+            // ä¸¤è€…éƒ½åº”ç­”äº†ï¼Œå¯ä»¥ç»™producerå›é¦ˆ
             if (this.respCount == 2) {
-                // ½öÔÚÁ½Õß¶¼³É¹¦µÄÇé¿öÏÂ£¬ÈÏÎª·¢ËÍ³É¹¦
+                // ä»…åœ¨ä¸¤è€…éƒ½æˆåŠŸçš„æƒ…å†µä¸‹ï¼Œè®¤ä¸ºå‘é€æˆåŠŸ
                 if (this.masterSuccess && this.slaveSuccess) {
                     final String resultStr =
                             SamsaCommandProcessor.this.genPutResultString(this.partition, this.messageId,
@@ -338,7 +338,7 @@ public class SamsaCommandProcessor extends BrokerCommandProcessor {
 
         @Override
         public void onResponse(final ResponseCommand responseCommand, final Connection conn) {
-            // SlaveÏìÓ¦³É¹¦
+            // Slaveå“åº”æˆåŠŸ
             if (responseCommand.getResponseStatus() == ResponseStatus.NO_ERROR) {
                 SamsaCommandProcessor.this.slaveContinuousFailures.set(0);
                 synchronized (this) {
@@ -380,7 +380,7 @@ public class SamsaCommandProcessor extends BrokerCommandProcessor {
 
     private String slaveUrl;
 
-    // ÓÃÓÚÓ¦´ğ»Øµ÷µÄÏß³Ì³Ø,caller run²ßÂÔ
+    // ç”¨äºåº”ç­”å›è°ƒçš„çº¿ç¨‹æ± ,caller runç­–ç•¥
     private ThreadPoolExecutor callBackExecutor;
 
 
@@ -437,7 +437,7 @@ public class SamsaCommandProcessor extends BrokerCommandProcessor {
 
 
     /**
-     * ´¦ÀíputÇëÇó£¬Ö»ÓĞµ±master/slaveÈ«²¿Ğ´Èë³É¹¦µÄÊ±ºò²ÅÈÏÎªĞ´Èë³É¹¦
+     * å¤„ç†putè¯·æ±‚ï¼Œåªæœ‰å½“master/slaveå…¨éƒ¨å†™å…¥æˆåŠŸçš„æ—¶å€™æ‰è®¤ä¸ºå†™å…¥æˆåŠŸ
      */
     @Override
     public void processPutCommand(final PutCommand request, final SessionContext sessionContext, final PutCallback cb) {
@@ -454,10 +454,10 @@ public class SamsaCommandProcessor extends BrokerCommandProcessor {
                 }
                 return;
             }
-            // Èç¹ûÊÇ¶¯Ì¬Ìí¼ÓµÄtopic£¬ĞèÒª×¢²áµ½zk
+            // å¦‚æœæ˜¯åŠ¨æ€æ·»åŠ çš„topicï¼Œéœ€è¦æ³¨å†Œåˆ°zk
             this.brokerZooKeeper.registerTopicInZk(request.getTopic(), false);
 
-            // Èç¹ûslaveÃ»ÓĞÁ´½Ó£¬ÂíÉÏ·µ»ØÊ§°Ü£¬·ÀÖ¹masterÖØ¸´ÏûÏ¢¹ı¶à
+            // å¦‚æœslaveæ²¡æœ‰é“¾æ¥ï¼Œé©¬ä¸Šè¿”å›å¤±è´¥ï¼Œé˜²æ­¢masteré‡å¤æ¶ˆæ¯è¿‡å¤š
             if (!this.remotingClient.isConnected(this.slaveUrl)) {
                 this.statsManager.statsPutFailed(request.getTopic(), partitionString, 1);
                 cb.putComplete(new BooleanCommand(HttpStatus.InternalServerError, "Slave is disconnected ", request
@@ -468,19 +468,19 @@ public class SamsaCommandProcessor extends BrokerCommandProcessor {
             final int partition = this.getPartition(request);
             final MessageStore store = this.storeManager.getOrCreateMessageStore(request.getTopic(), partition);
 
-            // ±ØĞë¶Ôstore×öÍ¬²½£¬±£Ö¤Í¬Ò»¸ö·ÖÇøÄÚµÄÏûÏ¢ÓĞĞò
+            // å¿…é¡»å¯¹storeåšåŒæ­¥ï¼Œä¿è¯åŒä¸€ä¸ªåˆ†åŒºå†…çš„æ¶ˆæ¯æœ‰åº
             synchronized (store) {
-                // idÒ²±ØĞëÓĞĞò
+                // idä¹Ÿå¿…é¡»æœ‰åº
                 final long messageId = this.idWorker.nextId();
-                // ¹¹½¨callback
+                // æ„å»ºcallback
                 final SyncAppendCallback syncCB =
                         new SyncAppendCallback(partition, partitionString, request, messageId, cb);
-                // ·¢Íùslave
+                // å‘å¾€slave
                 this.remotingClient.sendToGroup(this.slaveUrl,
                     new SyncCommand(request.getTopic(), partition, request.getData(), request.getFlag(), messageId,
                         request.getCheckSum(), OpaqueGenerator.getNextOpaque()), syncCB,
                         this.sendToSlaveTimeoutInMills, TimeUnit.MILLISECONDS);
-                // Ğ´Èëmaster
+                // å†™å…¥master
                 store.append(messageId, request, syncCB);
             }
         }

@@ -34,8 +34,8 @@ import com.taobao.metamorphosis.server.utils.MetaConfig;
 
 
 /**
- * @author ÎŞ»¨,dennis<killme2008@gmail.com>
- * @since 2011-6-9 ÏÂÎç03:28:28
+ * @author æ— èŠ±,dennis<killme2008@gmail.com>
+ * @since 2011-6-9 ä¸‹åˆ03:28:28
  */
 
 public class ServerStartup {
@@ -81,8 +81,8 @@ public class ServerStartup {
         final MetaConfig metaConfig = new MetaConfig();
         metaConfig.loadFromFile(configFilePath);
         metaConfig.verify();
-        log.warn("·şÎñÆ÷ÅäÖÃÎª£º" + metaConfig);
-        System.out.println("×¼±¸Æô¶¯·şÎñÆ÷£¬ÅäÖÃÎª£º" + metaConfig);
+        log.warn("æœåŠ¡å™¨é…ç½®ä¸ºï¼š" + metaConfig);
+        System.out.println("å‡†å¤‡å¯åŠ¨æœåŠ¡å™¨ï¼Œé…ç½®ä¸ºï¼š" + metaConfig);
         return metaConfig;
     }
 

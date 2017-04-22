@@ -23,7 +23,7 @@ import com.taobao.metamorphosis.server.network.SessionContext;
 
 
 /**
- * 同步命令处理接口
+ * 鍚屾鍛戒护澶勭悊鎺ュ彛
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-12-14
@@ -31,7 +31,7 @@ import com.taobao.metamorphosis.server.network.SessionContext;
  */
 public interface SyncCommandProcessor {
     /**
-     * 处理同步命令
+     * 澶勭悊鍚屾鍛戒护
      * 
      * @param request
      * @param sessionContext

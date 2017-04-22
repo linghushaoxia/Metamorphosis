@@ -94,7 +94,7 @@ public class OrderedThreadPoolExecutorUnitTest {
     public void testExecuteInOrder() throws Exception {
         final LinkedList<Integer> numbers = new LinkedList<Integer>();
         final CountDownLatch latch = new CountDownLatch(2);
-        // µÚÒ»¸öÈÎÎñsleep 3ÃëºóÌí¼ÓÔªËØ1
+        // ç¬¬ä¸€ä¸ªä»»åŠ¡sleep 3ç§’åæ·»åŠ å…ƒç´ 1
         this.executor.execute(new IoEvent() {
 
             @Override
@@ -116,7 +116,7 @@ public class OrderedThreadPoolExecutorUnitTest {
             }
 
         });
-        // µÚ¶ş¸öÈÎÎñÁ¢¼´Ìí¼ÓÔªËØ2
+        // ç¬¬äºŒä¸ªä»»åŠ¡ç«‹å³æ·»åŠ å…ƒç´ 2
         this.executor.execute(new IoEvent() {
 
             @Override
@@ -133,7 +133,7 @@ public class OrderedThreadPoolExecutorUnitTest {
 
         });
         latch.await();
-        // È·±£1ÏÈ¼ÓÈë
+        // ç¡®ä¿1å…ˆåŠ å…¥
         assertEquals(1, (int) numbers.poll());
         assertEquals(2, (int) numbers.poll());
         assertNull(numbers.poll());

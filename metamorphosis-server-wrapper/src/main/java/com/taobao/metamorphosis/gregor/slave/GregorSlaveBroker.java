@@ -30,7 +30,7 @@ import com.taobao.metamorphosis.utils.NamedThreadFactory;
 
 
 /**
- * Slave broker£¬¿ÉÁ¯µÄ¸ñÀû¸ß¶û
+ * Slave brokerï¼Œå¯æ€œçš„æ ¼åˆ©é«˜å°”
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-12-14
@@ -62,7 +62,7 @@ public class GregorSlaveBroker extends AbstractBrokerPlugin {
         TopicConfig topicConfig = new TopicConfig(Constants.TEST_SLAVE_TOPIC, metaConfig);
         topicConfig.setNumPartitions(1);
         metaConfig.addTopic(Constants.TEST_SLAVE_TOPIC, topicConfig);
-        // slave²»×¢²áµ½zk,Ç¿ÖÆ
+        // slaveä¸æ³¨å†Œåˆ°zk,å¼ºåˆ¶
         metaMorphosisBroker.getBrokerZooKeeper().getZkConfig().zkEnable = false;
         this.orderedPutExecutor =
                 new OrderedThreadPoolExecutor(metaConfig.getPutProcessThreadCount(),
@@ -73,10 +73,10 @@ public class GregorSlaveBroker extends AbstractBrokerPlugin {
                     metaMorphosisBroker.getRemotingServer(), metaMorphosisBroker.getMetaConfig(),
                     metaMorphosisBroker.getIdWorker(), metaMorphosisBroker.getBrokerZooKeeper(),
                     metaMorphosisBroker.getConsumerFilterManager());
-        // Ç¿ÖÆÉèÖÃprocessor
+        // å¼ºåˆ¶è®¾ç½®processor
         metaMorphosisBroker.setBrokerProcessor(processor);
         final SyncProcessor syncProcessor = new SyncProcessor(processor, this.orderedPutExecutor);
-        // ×¢²áÍøÂç´¦ÀíÆ÷
+        // æ³¨å†Œç½‘ç»œå¤„ç†å™¨
         metaMorphosisBroker.getRemotingServer().registerProcessor(SyncCommand.class, syncProcessor);
     }
 

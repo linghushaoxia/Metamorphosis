@@ -32,7 +32,7 @@ import com.taobao.metamorphosis.server.assembly.MetaMorphosisBroker;
 
 
 /**
- * 代表一个基于Jetty支持Http的Metamorphosis Server
+ * 浠ｈ〃涓�涓熀浜嶫etty鏀寔Http鐨凪etamorphosis Server
  */
 
 public class MetamorphosisOnJettyBroker extends AbstractBrokerPlugin {

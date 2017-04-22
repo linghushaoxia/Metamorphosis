@@ -56,8 +56,8 @@ import com.taobao.metamorphosis.utils.ZkUtils.ZKConfig;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-6-29 ÏÂÎç05:00:22
+ * @author æ— èŠ±
+ * @since 2011-6-29 ä¸‹åˆ05:00:22
  */
 
 public class SlaveConsumerZooKeeperUnitTest {
@@ -109,8 +109,8 @@ public class SlaveConsumerZooKeeperUnitTest {
         topicSubcriberRegistry.put("topic1", new SubscriberInfo(null, null, 1024 * 1024));
         topicSubcriberRegistry.put("topic2", new SubscriberInfo(null, null, 1024 * 1024));
 
-        // ¼ÙÉè¼¯ÈºÀïÓĞÁ½Ì¨master,topic1ÔÚmasterÀïÓĞ3¸ö·ÖÇø;
-        // topic2ÔÚmasterÀïÓĞ1¸ö·ÖÇø,ÔÚÁíÒ»¸ö²»Ïà¹ØµÄmasterÀïÓĞ1¸ö·ÖÇø
+        // å‡è®¾é›†ç¾¤é‡Œæœ‰ä¸¤å°master,topic1åœ¨masteré‡Œæœ‰3ä¸ªåˆ†åŒº;
+        // topic2åœ¨masteré‡Œæœ‰1ä¸ªåˆ†åŒº,åœ¨å¦ä¸€ä¸ªä¸ç›¸å…³çš„masteré‡Œæœ‰1ä¸ªåˆ†åŒº
         ZkUtils.createEphemeralPath(this.client, this.metaZookeeper.brokerIdsPath + "/0/master", "meta://localhost:0");
         ZkUtils.createEphemeralPath(this.client, this.metaZookeeper.brokerIdsPath + "/1/master", "meta://localhost:1");
         this.client.createEphemeral(this.metaZookeeper.brokerTopicsSubPath + "/topic1/0-m",
@@ -121,14 +121,14 @@ public class SlaveConsumerZooKeeperUnitTest {
             new TopicBroker(1, "1-m").toJson());
 
         this.mockConnect("meta://localhost:0");
-        // this.mockConnect("meta://localhost:1");²»Á¬½Óµ½ÁíÍâÒ»¸ömaster
+        // this.mockConnect("meta://localhost:1");ä¸è¿æ¥åˆ°å¦å¤–ä¸€ä¸ªmaster
         this.mockCommitOffsets(GROUP, new ArrayList<TopicPartitionRegInfo>());
         this.mockLoadNullInitOffset("topic1", GROUP, new Partition("0-0"));
         this.mockLoadNullInitOffset("topic1", GROUP, new Partition("0-1"));
         this.mockLoadNullInitOffset("topic1", GROUP, new Partition("0-2"));
         this.mockLoadNullInitOffset("topic2", GROUP, new Partition("0-0"));
         // this.mockLoadNullInitOffset("topic2", GROUP, new
-        // Partition("1-0"));²»loadÁíÍâÒ»¸ömasterµÄ·ÖÇø
+        // Partition("1-0"));ä¸loadå¦å¤–ä¸€ä¸ªmasterçš„åˆ†åŒº
         this.mockFetchManagerRestart();
         this.mockAddFetchRequest(new FetchRequest(new Broker(0, "meta://localhost:0"), 0, new TopicPartitionRegInfo(
             "topic1", new Partition("0-0"), 0), 1024 * 1024));
@@ -140,7 +140,7 @@ public class SlaveConsumerZooKeeperUnitTest {
             "topic2", new Partition("0-0"), 0), 1024 * 1024));
         // this.mockAddFetchRequest(new FetchRequest(new Broker(1,
         // "meta://localhost:1"), 0, new TopicPartitionRegInfo(
-        // "topic2", new Partition("1-0"), 0), 1024 * 1024));²»ÏòÁíÍâÒ»¸ömaster×¥È¡ÏûÏ¢
+        // "topic2", new Partition("1-0"), 0), 1024 * 1024));ä¸å‘å¦å¤–ä¸€ä¸ªmasteræŠ“å–æ¶ˆæ¯
 
         this.mocksControl.replay();
 
@@ -148,7 +148,7 @@ public class SlaveConsumerZooKeeperUnitTest {
             this.offsetStorage, this.loadBalanceStrategy);
         this.mocksControl.verify();
 
-        // ÑéÖ¤¶©ÔÄÕß·ÖÅä,Ö»¶©ÔÄ×Ô¼ºmasterÏÂµÄËùÓĞ·ÖÇøÏÂ
+        // éªŒè¯è®¢é˜…è€…åˆ†é…,åªè®¢é˜…è‡ªå·±masterä¸‹çš„æ‰€æœ‰åˆ†åŒºä¸‹
         final SlaveZKLoadRebalanceListener listener = this.checkTopic();
 
         final Set<Broker> brokerSet = ConsumerZooKeeperAccessor.getOldBrokerSet(listener);
@@ -190,13 +190,13 @@ public class SlaveConsumerZooKeeperUnitTest {
         this.mocksControl.replay();
         // master down
         ZkUtils.deletePath(this.client, this.metaZookeeper.brokerIdsPath + "/0/master");
-        // ÕâÀïtopicµÄÁ½´ÎÉ¾³ı(¹Òµô»òÈË¹¤Í£µô),¿ÉÄÜ»áÒıÆğÁ½´Î¸ºÔØ¾ùºâ
+        // è¿™é‡Œtopicçš„ä¸¤æ¬¡åˆ é™¤(æŒ‚æ‰æˆ–äººå·¥åœæ‰),å¯èƒ½ä¼šå¼•èµ·ä¸¤æ¬¡è´Ÿè½½å‡è¡¡
         ZkUtils.deletePath(this.client, this.metaZookeeper.brokerTopicsSubPath + "/topic1/0-m");
         ZkUtils.deletePath(this.client, this.metaZookeeper.brokerTopicsSubPath + "/topic2/0-m");
         Thread.sleep(5000);
         this.mocksControl.verify();
 
-        // master ¹Òµô»òÈË¹¤Í£µô,TopicPartitionRegInfoÇå¿ÕÁË
+        // master æŒ‚æ‰æˆ–äººå·¥åœæ‰,TopicPartitionRegInfoæ¸…ç©ºäº†
         final SlaveZKLoadRebalanceListener listener =
                 (SlaveZKLoadRebalanceListener) ConsumerZooKeeperAccessor.getBrokerConnectionListenerForTest(
                     this.slaveConsumerZooKeeper, this.fetchManager);
@@ -242,7 +242,7 @@ public class SlaveConsumerZooKeeperUnitTest {
         Thread.sleep(5000);
         this.mocksControl.verify();
 
-        // »Ö¸´µ½testReigsterSlaveConsumerÊ±µÄ×´Ì¬
+        // æ¢å¤åˆ°testReigsterSlaveConsumeræ—¶çš„çŠ¶æ€
         final SlaveZKLoadRebalanceListener listener = this.checkTopic();
         final Set<Broker> brokerSet = ConsumerZooKeeperAccessor.getOldBrokerSet(listener);
         assertEquals(1, brokerSet.size());

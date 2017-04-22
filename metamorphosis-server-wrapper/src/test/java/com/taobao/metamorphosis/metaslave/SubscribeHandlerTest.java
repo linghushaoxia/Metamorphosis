@@ -33,8 +33,8 @@ import com.taobao.metamorphosis.utils.ZkUtils.ZKConfig;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-7-1 ÏÂÎç05:08:33
+ * @author æ— èŠ±
+ * @since 2011-7-1 ä¸‹åˆ05:08:33
  */
 
 public class SubscribeHandlerTest {

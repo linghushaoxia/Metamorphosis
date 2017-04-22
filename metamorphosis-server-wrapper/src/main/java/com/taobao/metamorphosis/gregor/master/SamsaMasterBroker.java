@@ -70,16 +70,16 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
     boolean recoverOffset;
 
     /**
-     * ĞèÒªrecoverµÄoffsetĞÅÏ¢
+     * éœ€è¦recoverçš„offsetä¿¡æ¯
      * 
      * @author boyan(boyan@taobao.com)
      * @date 2011-12-15
      * 
      */
     static class OffsetInfo implements Comparable<OffsetInfo> {
-        public final String offsetPath; // ÔÚzkÉÏµÄÂ·¾¶
-        public long msgId; // ÏûÏ¢id
-        public long offset; // ¾ø¶ÔÆ«ÒÆÁ¿
+        public final String offsetPath; // åœ¨zkä¸Šçš„è·¯å¾„
+        public long msgId; // æ¶ˆæ¯id
+        public long offset; // ç»å¯¹åç§»é‡
         public final long oldMsgId;
         private final long oldOffset;
 
@@ -120,8 +120,8 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
     }
 
     static class DecodeMessage {
-        public final long msgId; // ½â³öÀ´µÄÏûÏ¢id
-        public final long offset; // ÏûÏ¢µÄ¾ø¶ÔÆ«ÒÆÁ¿
+        public final long msgId; // è§£å‡ºæ¥çš„æ¶ˆæ¯id
+        public final long offset; // æ¶ˆæ¯çš„ç»å¯¹åç§»é‡
 
 
         public DecodeMessage(final long msgId, final long offset) {
@@ -133,7 +133,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
     }
 
     /**
-     * ĞèÒªrecoverµÄ·ÖÇø
+     * éœ€è¦recoverçš„åˆ†åŒº
      * 
      * @author boyan(boyan@taobao.com)
      * @date 2011-12-15
@@ -172,7 +172,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
 
 
     /**
-     * ¾¡Á¿¾ùÔÈµØ¸ù¾İfactorÒò×Ó»®·Ö·ÖÇø×ö²¢ĞĞ
+     * å°½é‡å‡åŒ€åœ°æ ¹æ®factorå› å­åˆ’åˆ†åˆ†åŒºåšå¹¶è¡Œ
      * 
      * @param list
      * @param factor
@@ -209,15 +209,15 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
         final Set<String> topics = this.broker.getBrokerZooKeeper().getTopics();
         final int brokerId = this.broker.getMetaConfig().getBrokerId();
         final List<String> consumers = ZkUtils.getChildrenMaybeNull(zkClient, consumersPath);
-        // Ã»ÓĞ¶©ÔÄÕß£¬ÎŞĞèrecover
+        // æ²¡æœ‰è®¢é˜…è€…ï¼Œæ— éœ€recover
         if (consumers == null || consumers.isEmpty()) {
             this.registerToZk();
             return;
         }
 
-        // ¸ù¾İcpusºÍ·ÖÇøÊıÄ¿²ğ·ÖÈÎÎñ£¬²¢ĞĞrecover,fork/join
+        // æ ¹æ®cpuså’Œåˆ†åŒºæ•°ç›®æ‹†åˆ†ä»»åŠ¡ï¼Œå¹¶è¡Œrecover,fork/join
 
-        // ËùÓĞĞèÒªrecoverµÄ·ÖÇø
+        // æ‰€æœ‰éœ€è¦recoverçš„åˆ†åŒº
         final List<RecoverPartition> allRecoverParts = new ArrayList<SamsaMasterBroker.RecoverPartition>();
         for (final String topic : topics) {
             final int partitions = this.broker.getStoreManager().getNumPartitions(topic);
@@ -225,9 +225,9 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
                 allRecoverParts.add(new RecoverPartition(topic, partition));
             }
         }
-        // ÊÇ·ñ²¢ĞĞrecover
+        // æ˜¯å¦å¹¶è¡Œrecover
         final boolean parallelRecover = Boolean.valueOf(this.props.getProperty("recoverParallel", "true"));
-        // ²¢ĞĞÏß³ÌÊı
+        // å¹¶è¡Œçº¿ç¨‹æ•°
         final int parallelHint =
                 Integer.valueOf(this.props.getProperty("recoverParallelHint",
                     String.valueOf(Runtime.getRuntime().availableProcessors())));
@@ -246,7 +246,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
             }
         }
 
-        // ÔÚrecoverÖ®ºó£¬´ò¿ªzk×¢²á
+        // åœ¨recoverä¹‹åï¼Œæ‰“å¼€zkæ³¨å†Œ
         this.registerToZk();
     }
 
@@ -295,7 +295,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
     private CyclicBarrier startNRecoverThreads(final MessageStoreManager storeManager, final ZkClient zkClient,
             final String consumersPath, final int brokerId, final List<String> consumers, final int parallelHint,
             final List<List<RecoverPartition>> forks, final ClockWatch watch) {
-        // Æô¶¯parallelHint¸öÏß³Ì
+        // å¯åŠ¨parallelHintä¸ªçº¿ç¨‹
         final CyclicBarrier barrier = new CyclicBarrier(parallelHint + 1, watch);
         for (int i = 0; i < parallelHint; i++) {
             final List<RecoverPartition> recoverParts = forks.get(i);
@@ -324,7 +324,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
     private void recoverPartitions(final MessageStoreManager storeManager, final ZkClient zkClient,
             final String consumersPath, final int brokerId, final List<String> consumers,
             final List<RecoverPartition> recoverParts) throws IOException {
-        // ±éÀútopic,partition,consumer
+        // éå†topic,partition,consumer
         for (final RecoverPartition recoverPartition : recoverParts) {
             try {
                 final MessageStore store =
@@ -338,17 +338,17 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
                     log.warn("Partition:" + recoverPartition + " is empty");
                     continue;
                 }
-                // offsetĞÅÏ¢¼¯ºÏ£¬°´ÕÕmsgId´óĞ¡ÅÅĞò
+                // offsetä¿¡æ¯é›†åˆï¼ŒæŒ‰ç…§msgIdå¤§å°æ’åº
                 final TreeMap<Long, List<OffsetInfo>> offsetInfos =
                         this.getOffsetInfosFromZk(zkClient, consumersPath, brokerId, consumers, recoverPartition);
 
-                // ±éÀú·ÖÇø×örecover
-                // ±éÀú·ÖÇøÄÚµÄÎÄ¼ş£¬´ÓºóÍùÇ°±éÀú
+                // éå†åˆ†åŒºåšrecover
+                // éå†åˆ†åŒºå†…çš„æ–‡ä»¶ï¼Œä»åå¾€å‰éå†
                 Collections.reverse(segmentInfos);
-                // recover³É¹¦µÄoffsetÁĞ±í
+                // recoveræˆåŠŸçš„offsetåˆ—è¡¨
                 final List<OffsetInfo> recoveredOffsetInfos = new ArrayList<SamsaMasterBroker.OffsetInfo>();
                 this.recoverSegments(recoverPartition, store, segmentInfos, offsetInfos, recoveredOffsetInfos);
-                // ¸üĞÂµ½zookeeper
+                // æ›´æ–°åˆ°zookeeper
                 this.update2zk(zkClient, offsetInfos, recoveredOffsetInfos);
             }
             catch (final IOException e) {
@@ -363,19 +363,19 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
         final int brokerId, final List<String> consumers, final RecoverPartition recoverPartition) {
         final TreeMap<Long, List<OffsetInfo>> offsetInfos = new TreeMap<Long, List<OffsetInfo>>();
 
-        // ´ÓzkÉÏ»ñÈ¡ĞèÒªrecoverµÄoffsetĞÅÏ¢
+        // ä»zkä¸Šè·å–éœ€è¦recoverçš„offsetä¿¡æ¯
         for (final String consumer : consumers) {
             final String offsetPath =
                     consumersPath + "/" + consumer + "/offsets/" + recoverPartition.topic + "/" + brokerId + "-"
                             + recoverPartition.partition;
-            // ´æÔÚoffsetPath£¬Ôò½øĞĞĞŞÕı
+            // å­˜åœ¨offsetPathï¼Œåˆ™è¿›è¡Œä¿®æ­£
             if (ZkUtils.pathExists(zkClient, offsetPath)) {
                 final String value = ZkUtils.readData(zkClient, offsetPath);
                 if (StringUtils.isBlank(value)) {
                     continue;
                 }
                 final OffsetInfo info = this.readOffsetInfo(offsetPath, value);
-                // Ö»ĞèÒªrecoverÓĞĞ§µÄinfo
+                // åªéœ€è¦recoveræœ‰æ•ˆçš„info
                 if (info != null && info.msgId > 0) {
                     List<OffsetInfo> list = offsetInfos.get(info.msgId);
                     if (list == null) {
@@ -394,7 +394,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
             final List<SegmentInfo> segmentInfos, final TreeMap<Long, List<OffsetInfo>> offsetInfos,
             final List<OffsetInfo> recoveredOffsetInfos) throws IOException {
         for (final SegmentInfo segInfo : segmentInfos) {
-            // Ã»ÓĞĞèÒª¾ÀÆ«µÄoffsetÁË£¬ÖĞ¶Ï
+            // æ²¡æœ‰éœ€è¦çº åçš„offsetäº†ï¼Œä¸­æ–­
             if (offsetInfos.isEmpty()) {
                 break;
             }
@@ -407,7 +407,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
             final List<OffsetInfo> recoveredOffsetInfos) {
         if (!recoveredOffsetInfos.isEmpty()) {
             for (final OffsetInfo recoverOffsetInfo : recoveredOffsetInfos) {
-                // ÓĞ±ä¸üµÄ²ÅĞèÒª¸üĞÂ£¬¼õÉÙ¶ÔzkÑ¹Á¦
+                // æœ‰å˜æ›´çš„æ‰éœ€è¦æ›´æ–°ï¼Œå‡å°‘å¯¹zkå‹åŠ›
                 if (recoverOffsetInfo.oldOffset != recoverOffsetInfo.offset
                         || recoverOffsetInfo.oldMsgId != recoverOffsetInfo.msgId) {
                     final String newInfo = recoverOffsetInfo.msgId + "-" + recoverOffsetInfo.offset;
@@ -421,7 +421,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
                 }
             }
 
-            // Ã»ÓĞrecoverµÄoffsetĞÅÏ¢£¬Ö»×öÈÕÖ¾£¬ÀíÂÛÉÏ²»Ó¦¸Ã³öÏÖÕâÖÖÇé¿ö
+            // æ²¡æœ‰recoverçš„offsetä¿¡æ¯ï¼Œåªåšæ—¥å¿—ï¼Œç†è®ºä¸Šä¸åº”è¯¥å‡ºç°è¿™ç§æƒ…å†µ
             for (final List<OffsetInfo> list : offsetInfos.values()) {
                 for (final OffsetInfo recoverOffsetInfo : list) {
                     log.warn("We don't recover " + recoverOffsetInfo.offsetPath + ":msgId="
@@ -430,9 +430,9 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
             }
         }
         else {
-            // ÕâÖÖÇé¿öÏÂÓ¦¸ÃÊÇslave·ÖÇøÃ»ÓĞÏûÏ¢£¬È«²¿¶¼Òª¾ÀÆ«µ½0
+            // è¿™ç§æƒ…å†µä¸‹åº”è¯¥æ˜¯slaveåˆ†åŒºæ²¡æœ‰æ¶ˆæ¯ï¼Œå…¨éƒ¨éƒ½è¦çº ååˆ°0
             for (final List<OffsetInfo> list : offsetInfos.values()) {
-                // msgId²»Îª-1µÄ²Å¾ÀÆ«£¬¼õÉÙ¶ÔzkÑ¹Á¦
+                // msgIdä¸ä¸º-1çš„æ‰çº åï¼Œå‡å°‘å¯¹zkå‹åŠ›
                 for (final OffsetInfo recoverOffsetInfo : list) {
                     if (recoverOffsetInfo.oldMsgId != -1L) {
                         final String newInfo = "-1-0";
@@ -458,16 +458,16 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
         final long maxOffset = minOffset + size;
         long startOffset = minOffset;
         FileMessageSet msgSet = null;
-        // ±¾segment¾ÀÆ«µÄoffset¼¯ºÏ
+        // æœ¬segmentçº åçš„offseté›†åˆ
         final Set<OffsetInfo> segRecoverOffsetInfos = new HashSet<SamsaMasterBroker.OffsetInfo>();
-        // ´ÓÇ°Ïòºó¶ÁÎÄ¼ş
+        // ä»å‰å‘åè¯»æ–‡ä»¶
         while (startOffset < maxOffset && (msgSet = (FileMessageSet) store.slice(startOffset, MAX_SIZE)) != null) {
             final int sizeInBytes = (int) msgSet.getSizeInBytes();
             final ByteBuffer buffer = ByteBuffer.allocate(sizeInBytes);
             msgSet.read(buffer);
             final MessageIterator it = new MessageIterator(topic, buffer.array());
             final List<DecodeMessage> msgList = new ArrayList<DecodeMessage>();
-            // ±éÀúÏûÏ¢
+            // éå†æ¶ˆæ¯
             long msgOffset = 0;
             while (it.hasNext()) {
                 try {
@@ -476,17 +476,17 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
                     msgOffset = it.getOffset();
                 }
                 catch (final InvalidMessageException e) {
-                    // ÀíÂÛÉÏ²»»áÓöµ½ÕâÖÖÇé¿ö£¬Ô¤·ÀÍòÒ»»¹ÊÇ´òÓ¡ÈÕÖ¾
+                    // ç†è®ºä¸Šä¸ä¼šé‡åˆ°è¿™ç§æƒ…å†µï¼Œé¢„é˜²ä¸‡ä¸€è¿˜æ˜¯æ‰“å°æ—¥å¿—
                     log.error("Message was corrupted,partition=" + store.getDescription() + ",offset=" + msgOffset);
                 }
             }
-            // recoverÕâÒ»ÅúÏûÏ¢
+            // recoverè¿™ä¸€æ‰¹æ¶ˆæ¯
             this.recoverOffset(offsetInfos, segRecoverOffsetInfos, msgList);
-            // ÍùÇ°ÒÆ¶¯startOffset
+            // å¾€å‰ç§»åŠ¨startOffset
             startOffset = startOffset + it.getOffset();
         }
 
-        // ÒÆ³ı±¾segmentÄÜ¹»¾ÀÆ«µÄoffset
+        // ç§»é™¤æœ¬segmentèƒ½å¤Ÿçº åçš„offset
         for (final OffsetInfo info : segRecoverOffsetInfos) {
             offsetInfos.remove(info.oldMsgId);
         }
@@ -500,7 +500,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
         // it.remove();
         // }
         // }
-        // Ìí¼Óµ½¹«¹²¼¯ºÏ£¬×ö¼¯ÖĞ¸üĞÂµ½zk
+        // æ·»åŠ åˆ°å…¬å…±é›†åˆï¼Œåšé›†ä¸­æ›´æ–°åˆ°zk
         recoveredOffsetInfos.addAll(segRecoverOffsetInfos);
     }
 
@@ -509,17 +509,17 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
             final Set<OffsetInfo> segRecoverOffsetInfos, final List<DecodeMessage> msgList) {
 
         for (final DecodeMessage decodeMsg : msgList) {
-            // ·µ»Ø´óÓÚ»òÕßµÈÓÚµ±Ç°messageIdµÄ×Ó¼¯ºÏ£¬Õâ¸ö¼¯ºÏĞèÒª¾ÀÆ«,Õâ¸ö¹ı³Ì»áÔÚ±¾segment³ÖĞø¶à´Î
+            // è¿”å›å¤§äºæˆ–è€…ç­‰äºå½“å‰messageIdçš„å­é›†åˆï¼Œè¿™ä¸ªé›†åˆéœ€è¦çº å,è¿™ä¸ªè¿‡ç¨‹ä¼šåœ¨æœ¬segmentæŒç»­å¤šæ¬¡
             final SortedMap<Long, List<OffsetInfo>> subMap = offsetInfos.tailMap(decodeMsg.msgId);
-            // Õâ¸ö×Ó¼¯ºÏµÄoffset¾Í¾ÀÆ«µ½ÕâÀï
+            // è¿™ä¸ªå­é›†åˆçš„offsetå°±çº ååˆ°è¿™é‡Œ
             if (!subMap.isEmpty()) {
                 for (final List<OffsetInfo> offsetInfoList : subMap.values()) {
                     for (final OffsetInfo offsetInfo : offsetInfoList) {
                         if (offsetInfo.offset != decodeMsg.offset) {
-                            // ¾ÀÆ«offsetºÍmsgId
+                            // çº åoffsetå’ŒmsgId
                             offsetInfo.offset = decodeMsg.offset;
                             offsetInfo.msgId = decodeMsg.msgId;
-                            // ¼ÓÈëĞŞ¸Ä¼¯ºÏ
+                            // åŠ å…¥ä¿®æ”¹é›†åˆ
                             segRecoverOffsetInfos.add(offsetInfo);
                         }
                     }
@@ -533,7 +533,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
     static OffsetInfo readOffsetInfo(final String path, final String offsetString) {
         final int index = offsetString.lastIndexOf("-");
         if (index > 0) {
-            // ½öÖ§³Ö1.4¿ªÊ¼µÄĞÂ¿Í»§¶Ë
+            // ä»…æ”¯æŒ1.4å¼€å§‹çš„æ–°å®¢æˆ·ç«¯
             final long msgId = Long.parseLong(offsetString.substring(0, index));
             final long offset = Long.parseLong(offsetString.substring(index + 1));
             return new OffsetInfo(path, msgId, offset);
@@ -573,7 +573,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
             throw new MetamorphosisServerStartupException("Null samsa_master properties");
         }
         this.recoverOffset = Boolean.valueOf(this.props.getProperty("recoverOffset", "false"));
-        // ĞèÒªrecover offset£¬ÔİÊ±ÏÈ²»·¢²¼µ½zookeeperÉÏ£¬ÔÚrecoverÖ®ºó»á×¢²áÉÏÈ¥
+        // éœ€è¦recover offsetï¼Œæš‚æ—¶å…ˆä¸å‘å¸ƒåˆ°zookeeperä¸Šï¼Œåœ¨recoverä¹‹åä¼šæ³¨å†Œä¸Šå»
         if (this.recoverOffset) {
             this.broker.getBrokerZooKeeper().getZkConfig().zkEnable = false;
         }
@@ -585,7 +585,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
         }
         this.setConfigs(props);
         final ClientConfig clientConfig = new ClientConfig();
-        // Ö»Ê¹ÓÃ1¸öreactor
+        // åªä½¿ç”¨1ä¸ªreactor
         clientConfig.setSelectorPoolSize(1);
         clientConfig.setWireFormatType(new MetamorphosisWireFormatType());
         try {
@@ -599,7 +599,7 @@ public class SamsaMasterBroker extends AbstractBrokerPlugin {
                         this.remotingClient, metaMorphosisBroker.getConsumerFilterManager(), slave,
                         callbackThreadCount, this.sendToSlaveTimeoutInMills, this.checkSlaveIntervalInMills,
                         this.slaveContinuousFailureThreshold);
-            // Ìæ»»´¦ÀíÆ÷
+            // æ›¿æ¢å¤„ç†å™¨
             this.broker.setBrokerProcessor(this.masterProcessor);
             log.info("Init samsa mater successfully with config:" + props);
         }

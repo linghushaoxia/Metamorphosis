@@ -33,10 +33,10 @@ import com.taobao.metamorphosis.utils.MetaZookeeper;
 
 
 /**
- * ¸ºÔğ¸úzk½»»¥,²¢¼à¿ØmasterÔÚzkÉÏµÄ×¢²á
+ * è´Ÿè´£è·Ÿzkäº¤äº’,å¹¶ç›‘æ§masteråœ¨zkä¸Šçš„æ³¨å†Œ
  * 
- * @author ÎŞ»¨,dennis
- * @since 2011-6-24 ÏÂÎç05:46:36
+ * @author æ— èŠ±,dennis
+ * @since 2011-6-24 ä¸‹åˆ05:46:36
  */
 
 class SlaveZooKeeper {
@@ -61,7 +61,7 @@ class SlaveZooKeeper {
 
 
     public void start() {
-        // ¶©ÔÄzkĞÅÏ¢±ä»¯
+        // è®¢é˜…zkä¿¡æ¯å˜åŒ–
         this.getZkClient().subscribeDataChanges(this.masterBrokerIdsPath, this.masterBrokerIdListener);
         this.getZkClient().subscribeDataChanges(this.masterConfigFileChecksumPath, this.masterBrokerIdListener);
     }
@@ -106,10 +106,10 @@ class SlaveZooKeeper {
                 zkSyncTimeMs = 5000;
                 // ignore
             }
-            // µÈ´ızkÊı¾İÍ¬²½Íê±ÏÔÙÆô¶¯¶©ÔÄ
+            // ç­‰å¾…zkæ•°æ®åŒæ­¥å®Œæ¯•å†å¯åŠ¨è®¢é˜…
             Thread.sleep(zkSyncTimeMs);
             if (dataPath.equals(SlaveZooKeeper.this.masterBrokerIdsPath)) {
-                // ÓÃÓÚslaveÏÈÆô¶¯£¬masterºóÆô¶¯Ê±
+                // ç”¨äºslaveå…ˆå¯åŠ¨ï¼Œmasteråå¯åŠ¨æ—¶
                 log.info("data changed in zk,path=" + dataPath);
                 SlaveZooKeeper.this.subscribeHandler.start();
             }
@@ -128,9 +128,9 @@ class SlaveZooKeeper {
         public void handleDataDeleted(final String dataPath) throws Exception {
             log.info("data deleted in zk,path=" + dataPath);
             if (dataPath.equals(SlaveZooKeeper.this.masterBrokerIdsPath)) {
-                // °´ÕÕRemotingClientWrapperµÄ»úÖÆ,closeµÄ´ÎÊıÒªµÈÓÚconnectµÄ´ÎÊı²ÅÄÜÕæÕı¹Ø±ÕµôÁ¬½Ó,
-                // ÒªÓÉÓÚÔÚ¶©ÔÄmasterÏûÏ¢Ç°Á¬½ÓÁËÒ»´Î,ËùÒÔÒªÔÚÕâÀï¹Ø±ÕÒ»´Î
-                // ÆäËûµÄÁ¬½ÓºÍ¹Ø±ÕÓĞ¸ºÔØ¾ùºâ¸ºÔğ
+                // æŒ‰ç…§RemotingClientWrapperçš„æœºåˆ¶,closeçš„æ¬¡æ•°è¦ç­‰äºconnectçš„æ¬¡æ•°æ‰èƒ½çœŸæ­£å…³é—­æ‰è¿æ¥,
+                // è¦ç”±äºåœ¨è®¢é˜…masteræ¶ˆæ¯å‰è¿æ¥äº†ä¸€æ¬¡,æ‰€ä»¥è¦åœ¨è¿™é‡Œå…³é—­ä¸€æ¬¡
+                // å…¶ä»–çš„è¿æ¥å’Œå…³é—­æœ‰è´Ÿè½½å‡è¡¡è´Ÿè´£
                 SlaveZooKeeper.this.subscribeHandler.closeConnectIfNeed();
             }
         }

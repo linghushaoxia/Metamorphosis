@@ -29,8 +29,8 @@ import com.taobao.metamorphosis.utils.ZkUtils.ZKConfig;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-6-27 ÏÂÎç06:44:48
+ * @author æ— èŠ±
+ * @since 2011-6-27 ä¸‹åˆ06:44:48
  */
 
 public class SlaveMetaMessageSessionFactory extends MetaMessageSessionFactory {

@@ -23,8 +23,8 @@ import com.taobao.metamorphosis.server.assembly.MetaMorphosisBroker;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-6-9 ÏÂÎç01:29:19
+ * @author éƒçŠºå§³
+ * @since 2011-6-9 æ¶“å¬ªå´01:29:19
  */
 
 interface BrokerPlugin {

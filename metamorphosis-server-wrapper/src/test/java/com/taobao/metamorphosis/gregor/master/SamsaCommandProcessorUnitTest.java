@@ -370,7 +370,7 @@ public class SamsaCommandProcessorUnitTest {
         EasyMock.expect(this.idWorker.nextId()).andReturn(msgId);
         final String testTopic = Constants.TEST_SLAVE_TOPIC;
         Message msg = new Message(testTopic, "test".getBytes());
-        // ·¢Íùslave
+        // å‘å¾€slave
         byte[] encodePayload = MessageUtils.encodePayload(msg);
         int flag = 0;
         int partition = 0;

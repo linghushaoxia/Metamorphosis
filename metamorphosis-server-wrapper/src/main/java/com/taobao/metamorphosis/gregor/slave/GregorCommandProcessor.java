@@ -38,7 +38,7 @@ import com.taobao.metamorphosis.utils.IdWorker;
 
 
 /**
- * Slave的协议处理器
+ * Slave鐨勫崗璁鐞嗗櫒
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-12-14
@@ -79,10 +79,10 @@ public class GregorCommandProcessor extends BrokerCommandProcessor implements Sy
                 return;
             }
 
-            // 使用master发过来的分区
+            // 浣跨敤master鍙戣繃鏉ョ殑鍒嗗尯
             final int partition = request.getPartition();
             final MessageStore store = this.storeManager.getOrCreateMessageStore(request.getTopic(), partition);
-            // 使用master发过来的id
+            // 浣跨敤master鍙戣繃鏉ョ殑id
             final long messageId = request.getMsgId();
             store.append(messageId, request,
                 new StoreAppendCallback(partition, partitionString, request, messageId, cb));

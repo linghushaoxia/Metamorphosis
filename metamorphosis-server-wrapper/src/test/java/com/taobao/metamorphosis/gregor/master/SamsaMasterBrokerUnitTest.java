@@ -150,12 +150,12 @@ public class SamsaMasterBrokerUnitTest {
 
         final IdWorker idWorker = metaBroker.getIdWorker();
         final byte[] data = new byte[1024];
-        // ½«Òª±»recoverµÄoffsetĞÅÏ¢
+        // å°†è¦è¢«recoverçš„offsetä¿¡æ¯
         final List<MessageInfo> allMsgs = new ArrayList<MessageInfo>();
         final Random random = new Random();
-        // ²åÈëÊı¾İ
+        // æ’å…¥æ•°æ®
         for (int i = 0; i < 20000; i++) {
-            // µÚ5¸ö·ÖÇøÊı¾İÎª¿Õ
+            // ç¬¬5ä¸ªåˆ†åŒºæ•°æ®ä¸ºç©º
             final int partition = i % 4;
             final int step = i;
             final MessageStore store = metaBroker.getStoreManager().getOrCreateMessageStore(topic, partition);
@@ -164,19 +164,19 @@ public class SamsaMasterBrokerUnitTest {
 
                 @Override
                 public void appendComplete(final Location location) {
-                    // ±ØĞë¼ÓÉÏ1044£¬ÒòÎªlocationµÄoffsetÊÇÕâÌõÏûÏ¢µÄÆğµã
+                    // å¿…é¡»åŠ ä¸Š1044ï¼Œå› ä¸ºlocationçš„offsetæ˜¯è¿™æ¡æ¶ˆæ¯çš„èµ·ç‚¹
                     allMsgs.add(new MessageInfo(msgId, location.getOffset() + 1044, partition));
                 }
             });
             store.flush();
         }
-        // ´ÓËùÓĞÏûÏ¢ÀïËæ»úÑ¡Ôñ20¸ö
+        // ä»æ‰€æœ‰æ¶ˆæ¯é‡Œéšæœºé€‰æ‹©20ä¸ª
         final List<MessageInfo> offsetInfos = new ArrayList<SamsaMasterBrokerUnitTest.MessageInfo>();
         for (int i = 0; i < 20; i++) {
             offsetInfos.add(allMsgs.get(random.nextInt(allMsgs.size())));
         }
 
-        // Ä£Äâ¶©ÔÄÕßÉèÖÃoffset£¬ÒÔ±ã¾ÀÆ«
+        // æ¨¡æ‹Ÿè®¢é˜…è€…è®¾ç½®offsetï¼Œä»¥ä¾¿çº å
         this.mockConsumersOffset(topic, metaBroker, offsetInfos);
         System.out.println("Add messages done");
         try {
@@ -186,18 +186,18 @@ public class SamsaMasterBrokerUnitTest {
             props.setProperty("recoverParallel", "false");
             assertTrue(metaBroker.getBrokerZooKeeper().getZkConfig().zkEnable);
             this.broker.init(metaBroker, props);
-            // recover£¬ÔİÊ±ÏÈ²»·¢²¼µ½zk
+            // recoverï¼Œæš‚æ—¶å…ˆä¸å‘å¸ƒåˆ°zk
             assertFalse(metaBroker.getBrokerZooKeeper().getZkConfig().zkEnable);
 
-            // ÏÈÆô¶¯meta broker
+            // å…ˆå¯åŠ¨meta broker
             metaBroker.start();
-            // ¿ªÊ¼recover
+            // å¼€å§‹recover
             this.broker.start();
 
-            // È·ÈÏÊÇ·ñÈ«²¿¾ÀÆ«³É¹¦
+            // ç¡®è®¤æ˜¯å¦å…¨éƒ¨çº åæˆåŠŸ
             final String consumerId = "SamsaMasterBrokerUnitTest";
             final int brokerId = metaBroker.getMetaConfig().getBrokerId();
-            // ÉèÖÃconsumer½ÚµãĞÅÏ¢£¬ÒÔ±ãrecover
+            // è®¾ç½®consumerèŠ‚ç‚¹ä¿¡æ¯ï¼Œä»¥ä¾¿recover
             final String consumersPath = metaBroker.getBrokerZooKeeper().getMetaZookeeper().consumersPath;
             final ZkClient zkClient = metaBroker.getBrokerZooKeeper().getZkClient();
             int consumerIdCounter = 0;
@@ -214,7 +214,7 @@ public class SamsaMasterBrokerUnitTest {
                 assertEquals(msgInfo.msgId, offsetInfo.msgId);
                 assertEquals(msgInfo.offset, offsetInfo.offset);
             }
-            // È·ÈÏµÚÎå·ÖÇø¾ÀÆ«µ½0
+            // ç¡®è®¤ç¬¬äº”åˆ†åŒºçº ååˆ°0
             final String offsetPath = consumersPath + "/" + consumerId + "/offsets/" + topic + "/" + brokerId + "-" + 4;
             assertTrue(zkClient.exists(offsetPath));
             final String dataStr = ZkUtils.readDataMaybeNull(zkClient, offsetPath);
@@ -238,7 +238,7 @@ public class SamsaMasterBrokerUnitTest {
             final List<MessageInfo> offsetInfos) throws Exception {
         final String consumerId = "SamsaMasterBrokerUnitTest";
         final int brokerId = metaBroker.getMetaConfig().getBrokerId();
-        // ÉèÖÃconsumer½ÚµãĞÅÏ¢£¬ÒÔ±ãrecover
+        // è®¾ç½®consumerèŠ‚ç‚¹ä¿¡æ¯ï¼Œä»¥ä¾¿recover
         final String consumersPath = metaBroker.getBrokerZooKeeper().getMetaZookeeper().consumersPath;
         final Random rand = new Random();
         final ZkClient zkClient = metaBroker.getBrokerZooKeeper().getZkClient();
@@ -251,7 +251,7 @@ public class SamsaMasterBrokerUnitTest {
                             + msgInfo.partition;
             System.out.println(offsetPath);
             ZkUtils.makeSurePersistentPathExists(zkClient, offsetPath);
-            // Ëæ»ú¸ü¸ÄmsgId»òÕßoffset
+            // éšæœºæ›´æ”¹msgIdæˆ–è€…offset
             if (rand.nextBoolean()) {
                 ZkUtils.updatePersistentPath(zkClient, offsetPath, msgInfo.msgId + 1 + "-" + msgInfo.offset);
             }
@@ -260,7 +260,7 @@ public class SamsaMasterBrokerUnitTest {
                     msgInfo.msgId + "-" + (msgInfo.offset + rand.nextInt(1000)));
             }
         }
-        // µÚ5¸ö·ÖÇøÒ²ÉèÖÃÆ«ÒÆÁ¿£¬¿´¿´»á²»»á¾ÀÆ«µ½0
+        // ç¬¬5ä¸ªåˆ†åŒºä¹Ÿè®¾ç½®åç§»é‡ï¼Œçœ‹çœ‹ä¼šä¸ä¼šçº ååˆ°0
         final String offsetPath = consumersPath + "/" + consumerId + "/offsets/" + topic + "/" + brokerId + "-" + 4;
         ZkUtils.makeSurePersistentPathExists(zkClient, offsetPath);
         ZkUtils.updatePersistentPath(zkClient, offsetPath, "999-999");

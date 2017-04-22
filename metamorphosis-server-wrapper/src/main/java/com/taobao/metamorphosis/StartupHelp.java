@@ -35,8 +35,8 @@ import com.taobao.metamorphosis.utils.Utils;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-6-9 ÏÂÎç03:45:45
+ * @author æ— èŠ±
+ * @since 2011-6-9 ä¸‹åˆ03:45:45
  */
 
 public class StartupHelp {

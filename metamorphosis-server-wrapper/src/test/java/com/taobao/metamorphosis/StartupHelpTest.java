@@ -25,8 +25,8 @@ import org.junit.Test;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-6-9 ÏÂÎç07:49:30
+ * @author æ— èŠ±
+ * @since 2011-6-9 ä¸‹åˆ07:49:30
  */
 
 public class StartupHelpTest {

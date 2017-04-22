@@ -45,10 +45,10 @@ import com.taobao.metamorphosis.utils.ZkUtils.ZKConfig;
 
 
 /**
- * Îªslave½ÓÊÕÏûÏ¢À©Õ¹µÄConsumerZooKeeper
+ * ä¸ºslaveæ¥æ”¶æ¶ˆæ¯æ‰©å±•çš„ConsumerZooKeeper
  * 
- * @author ÎŞ»¨
- * @since 2011-6-27 ÏÂÎç03:04:11
+ * @author æ— èŠ±
+ * @since 2011-6-27 ä¸‹åˆ03:04:11
  */
 
 public class SlaveConsumerZooKeeper extends ConsumerZooKeeper {
@@ -98,7 +98,7 @@ public class SlaveConsumerZooKeeper extends ConsumerZooKeeper {
 
     }
 
-    // slaveÖ»Ñ¡È¡masterÏà¹ØµÄpartition,²¢Á¬½Óµ½ËùÓĞÕâĞ©partition
+    // slaveåªé€‰å–masterç›¸å…³çš„partition,å¹¶è¿æ¥åˆ°æ‰€æœ‰è¿™äº›partition
     class SlaveZKLoadRebalanceListener extends ZKLoadRebalanceListener {
 
         public SlaveZKLoadRebalanceListener(final FetchManager fetchManager, final ZKGroupDirs dirs,
@@ -112,7 +112,7 @@ public class SlaveConsumerZooKeeper extends ConsumerZooKeeper {
 
         @Override
         protected Map<String, List<String>> getConsumersPerTopic(final String group) throws Exception {
-            // Ö»¼ÓÈëslave±¾Éí
+            // åªåŠ å…¥slaveæœ¬èº«
             final List<String> topics = this.getTopics(this.consumerIdString);
             final Map<String/* topic */, List<String>/* consumerId */> rt = new HashMap<String, List<String>>();
             List<String> list;
@@ -127,7 +127,7 @@ public class SlaveConsumerZooKeeper extends ConsumerZooKeeper {
 
         @Override
         protected Map<String, List<String>> getPartitionStringsForTopics(final Map<String, String> myConsumerPerTopicMap) {
-            // Ö»·µ»Ømaster¶ÔÓ¦µÄpartition
+            // åªè¿”å›masterå¯¹åº”çš„partition
             final Map<String, List<String>> ret =
                     SlaveConsumerZooKeeper.this.metaZookeeper.getPartitionStringsForSubTopicsFromMaster(
                         myConsumerPerTopicMap.keySet(), SlaveConsumerZooKeeper.this.brokerId);
@@ -147,7 +147,7 @@ public class SlaveConsumerZooKeeper extends ConsumerZooKeeper {
 
         @Override
         protected boolean checkClusterChange(final Cluster cluster) {
-            // È·¶¨¼¯ÈºÓĞ±ä»¯£¬²¢ÇÒ¼ì²é×Ô¼º¶ÔÓ¦µÄmaster,ÒÔÃâ²»Ïà¹ØµÄmaster¹ÒÁËµ¼ÖÂslaveÒ²ÖØÁ¬
+            // ç¡®å®šé›†ç¾¤æœ‰å˜åŒ–ï¼Œå¹¶ä¸”æ£€æŸ¥è‡ªå·±å¯¹åº”çš„master,ä»¥å…ä¸ç›¸å…³çš„masteræŒ‚äº†å¯¼è‡´slaveä¹Ÿé‡è¿
             return super.checkClusterChange(cluster)
                     && cluster.getMasterBroker(SlaveConsumerZooKeeper.this.brokerId) == null;
         }
@@ -156,7 +156,7 @@ public class SlaveConsumerZooKeeper extends ConsumerZooKeeper {
         @Override
         protected boolean ownPartition(final ZKGroupTopicDirs topicDirs, final String partition,
                 final String topic, final String consumerThreadId) throws Exception {
-            // ²»owner partition,ÒÔÃâÆäËûslave²»ÄÜ¶©ÔÄ
+            // ä¸owner partition,ä»¥å…å…¶ä»–slaveä¸èƒ½è®¢é˜…
 
             super.addPartitionTopicInfo(topicDirs, partition, topic, consumerThreadId);
             return true;

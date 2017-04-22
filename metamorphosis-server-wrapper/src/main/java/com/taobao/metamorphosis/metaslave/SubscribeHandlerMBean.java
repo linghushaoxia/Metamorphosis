@@ -19,14 +19,14 @@ package com.taobao.metamorphosis.metaslave;
 
 /**
  * 
- * @author 无花
- * @since 2011-11-10 下午5:55:28
+ * @author 鏃犺姳
+ * @since 2011-11-10 涓嬪崍5:55:28
  */
 
 public interface SubscribeHandlerMBean {
 
     /**
-     * 重启slave数据同步
+     * 閲嶅惎slave鏁版嵁鍚屾
      */
     public void restart();
 

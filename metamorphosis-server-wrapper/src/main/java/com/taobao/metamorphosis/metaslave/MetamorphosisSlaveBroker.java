@@ -28,10 +28,10 @@ import com.taobao.metamorphosis.server.utils.SlaveConfig;
 
 
 /**
- * ´ú±íÒ»¸öÏòmeta masterÍ¬²½ÏûÏ¢Êı¾İµÄslaver
+ * ä»£è¡¨ä¸€ä¸ªå‘meta masteråŒæ­¥æ¶ˆæ¯æ•°æ®çš„slaver
  * 
- * @author ÎŞ»¨
- * @since 2011-6-23 ÏÂÎç01:54:11
+ * @author æ— èŠ±
+ * @since 2011-6-23 ä¸‹åˆ01:54:11
  */
 
 public class MetamorphosisSlaveBroker extends AbstractBrokerPlugin {
@@ -77,7 +77,7 @@ public class MetamorphosisSlaveBroker extends AbstractBrokerPlugin {
         }
         broker.getMetaConfig().setSlaveConfig(slaveConfig);
 
-        // ÖØĞÂÉèÖÃBrokerIdPath£¬ÒÔ±ã×¢²áµ½slaveµÄÂ·¾¶
+        // é‡æ–°è®¾ç½®BrokerIdPathï¼Œä»¥ä¾¿æ³¨å†Œåˆ°slaveçš„è·¯å¾„
         broker.getBrokerZooKeeper().resetBrokerIdPath();
     }
 

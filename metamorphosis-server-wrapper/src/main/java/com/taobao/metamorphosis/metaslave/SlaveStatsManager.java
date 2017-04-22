@@ -23,14 +23,14 @@ import com.taobao.metamorphosis.utils.MetaStatLog;
 
 /**
  * 
- * @author 无花
- * @since 2011-11-9 上午10:35:17
+ * @author 鏃犺姳
+ * @since 2011-11-9 涓婂崍10:35:17
  */
 
 public class SlaveStatsManager {
 
     /**
-     * slave服务端put
+     * slave鏈嶅姟绔痯ut
      */
     public static final String SLAVE_CMD_PUT = "put_slave";
 

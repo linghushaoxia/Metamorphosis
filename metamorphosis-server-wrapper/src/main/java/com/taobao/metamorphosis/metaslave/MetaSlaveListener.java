@@ -39,8 +39,8 @@ import com.taobao.metamorphosis.utils.MessageUtils;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-6-23 ÏÂÎç03:59:21
+ * @author æ— èŠ±
+ * @since 2011-6-23 ä¸‹åˆ03:59:21
  */
 
 public class MetaSlaveListener implements MessageListener {

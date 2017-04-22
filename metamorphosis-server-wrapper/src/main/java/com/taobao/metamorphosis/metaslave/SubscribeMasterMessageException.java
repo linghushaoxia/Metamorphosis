@@ -18,10 +18,10 @@
 package com.taobao.metamorphosis.metaslave;
 
 /**
- * 代表一个启动订阅master消息时的错误
+ * 浠ｈ〃涓�涓惎鍔ㄨ闃卪aster娑堟伅鏃剁殑閿欒
  * 
- * @author 无花
- * @since 2011-6-28 下午03:35:30
+ * @author 鏃犺姳
+ * @since 2011-6-28 涓嬪崍03:35:30
  */
 
 public class SubscribeMasterMessageException extends RuntimeException {

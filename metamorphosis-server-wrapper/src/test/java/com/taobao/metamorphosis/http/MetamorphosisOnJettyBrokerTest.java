@@ -61,7 +61,7 @@ public class MetamorphosisOnJettyBrokerTest {
 
     @Test
     public void testPutMessage() {
-        logger.info("produceÏûÏ¢£º");
+        logger.info("produceæ¶ˆæ¯ï¼š");
         final WebConversation wc = new WebConversation();
         try {
             final WebRequest request =
@@ -79,7 +79,7 @@ public class MetamorphosisOnJettyBrokerTest {
 
     @Test
     public void testGetMessage() {
-        logger.info("consumeÏûÏ¢£º");
+        logger.info("consumeæ¶ˆæ¯ï¼š");
         final WebConversation wc = new WebConversation();
         try {
             final WebResponse wr = wc.getResponse("http://localhost:8080/get?topic=test&partition=1&offset=1");
@@ -94,7 +94,7 @@ public class MetamorphosisOnJettyBrokerTest {
 
     @Test
     public void testGetOffset() {
-        logger.info("»ñµÃÏûÏ¢µÄoffset£º");
+        logger.info("è·å¾—æ¶ˆæ¯çš„offsetï¼š");
         final WebConversation wc = new WebConversation();
         try {
             final WebResponse wr = wc.getResponse("http://localhost:8080/offset?topic=test&partition=1&offset=1");

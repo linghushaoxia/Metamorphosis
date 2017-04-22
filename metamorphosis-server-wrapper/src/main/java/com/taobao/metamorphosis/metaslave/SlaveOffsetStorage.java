@@ -39,10 +39,10 @@ import com.taobao.metamorphosis.server.store.MessageStoreManager;
 
 
 /**
- * ´ÓslaveÏûÏ¢ÎÄ¼şÖĞload offset,Ã»loadµ½Ê±´Ómaster²éÑ¯×îĞ¡offset
+ * ä»slaveæ¶ˆæ¯æ–‡ä»¶ä¸­load offset,æ²¡loadåˆ°æ—¶ä»masteræŸ¥è¯¢æœ€å°offset
  * 
- * @author ÎŞ»¨
- * @since 2011-6-27 ÉÏÎç10:09:38
+ * @author æ— èŠ±
+ * @since 2011-6-27 ä¸Šåˆ10:09:38
  */
 public class SlaveOffsetStorage implements OffsetStorage {
     private final static Log log = LogFactory.getLog(SlaveOffsetStorage.class);
@@ -89,7 +89,7 @@ public class SlaveOffsetStorage implements OffsetStorage {
 
     @Override
     public TopicPartitionRegInfo load(final String topic, final String group, final Partition partition) {
-        // ÏÈ´Ó±¾µØ²éÑ¯
+        // å…ˆä»æœ¬åœ°æŸ¥è¯¢
         final MessageStoreManager storeManager = this.broker.getStoreManager();
         final MessageStore messageStore = storeManager.getMessageStore(topic, partition.getPartition());
         if (messageStore != null) {
@@ -120,11 +120,11 @@ public class SlaveOffsetStorage implements OffsetStorage {
     }
 
 
-    /** ÕıÈ·²éµ½offsetÊ±·µ»Ø,·ñÔò¾ùÅ×³öÒì³£ */
+    /** æ­£ç¡®æŸ¥åˆ°offsetæ—¶è¿”å›,å¦åˆ™å‡æŠ›å‡ºå¼‚å¸¸ */
     long queryOffsetInMaster(final String masterServerUrl, final Partition partition, final String topic)
             throws NetworkException, InterruptedException {
 
-        // ÔÚ¿Í»§¶Ë¶©ÔÄÏûÏ¢Ç°¿ÉÄÜÃ»Á¬½Óµ½·şÎñÆ÷
+        // åœ¨å®¢æˆ·ç«¯è®¢é˜…æ¶ˆæ¯å‰å¯èƒ½æ²¡è¿æ¥åˆ°æœåŠ¡å™¨
         if (!this.remotingClient.isConnected(masterServerUrl)) {
             log.info("try connect to " + masterServerUrl);
             this.connectServer(masterServerUrl);
@@ -142,7 +142,7 @@ public class SlaveOffsetStorage implements OffsetStorage {
                 return Long.parseLong(resultStr);
             }
             case HttpStatus.NotFound: {
-                // ÔÚmaster»¹Ã»½ÓÊÕµ½Ò»ÌõÕâ¸ötopicµÄÏûÏ¢Ê±,Ä¿Â¼»¹Ã»´´½¨.ÕâÀïÄ¬ÈÏoffsetÎª0´¦Àí
+                // åœ¨masterè¿˜æ²¡æ¥æ”¶åˆ°ä¸€æ¡è¿™ä¸ªtopicçš„æ¶ˆæ¯æ—¶,ç›®å½•è¿˜æ²¡åˆ›å»º.è¿™é‡Œé»˜è®¤offsetä¸º0å¤„ç†
                 return 0;
             }
             default:
@@ -166,8 +166,8 @@ public class SlaveOffsetStorage implements OffsetStorage {
         try {
             this.remotingClient.connectWithRef(serverUrl, this);
             this.remotingClient.awaitReadyInterrupt(serverUrl, 5000);
-            // 5ÃëÖÓÁ¬½Ó²»ÉÏÔòÈÏÎª·şÎñ¶ËÃ»ÆğÀ´
-            // ,´ò¶Ï²éÑ¯
+            // 5ç§’é’Ÿè¿æ¥ä¸ä¸Šåˆ™è®¤ä¸ºæœåŠ¡ç«¯æ²¡èµ·æ¥
+            // ,æ‰“æ–­æŸ¥è¯¢
         }
         catch (final NotifyRemotingException e) {
             throw new NetworkException("Connect to " + serverUrl + " failed", e);

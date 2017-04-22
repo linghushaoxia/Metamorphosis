@@ -40,8 +40,8 @@ import com.taobao.metamorphosis.server.utils.SlaveConfig;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-7-1 ÏÂÎç01:59:16
+ * @author æ— èŠ±
+ * @since 2011-7-1 ä¸‹åˆ01:59:16
  */
 
 public class SlaveOffsetStorageTest {
