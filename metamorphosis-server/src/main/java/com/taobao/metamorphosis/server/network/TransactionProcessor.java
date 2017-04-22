@@ -35,7 +35,7 @@ import com.taobao.metamorphosis.transaction.TransactionId;
 
 
 /**
- * ÊÂÎñÃüÁî´¦ÀíÆ÷
+ * äº‹åŠ¡å‘½ä»¤å¤„ç†å™¨
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-17
@@ -75,11 +75,11 @@ public class TransactionProcessor implements RequestProcessor<TransactionCommand
                 break;
             case PREPARE:
                 final int rt = this.processor.prepareTransaction(context, xid);
-                // prepare½á¹ûĞè·µ»Ø
+                // prepareç»“æœéœ€è¿”å›
                 RemotingUtils.response(conn,
                     new BooleanCommand(HttpStatus.Success, String.valueOf(rt), request.getOpaque()));
                 break;
-                // Ìá½»ºÍ,forgetºÍrollbackµÄÊ±ºòÊÇÍ¬²½µ÷ÓÃ£¬Òò´ËĞèÒªÓ¦´ğ
+                // æäº¤å’Œ,forgetå’Œrollbackçš„æ—¶å€™æ˜¯åŒæ­¥è°ƒç”¨ï¼Œå› æ­¤éœ€è¦åº”ç­”
             case COMMIT_ONE_PHASE:
                 this.processor.commitTransaction(context, xid, true);
                 this.responseOK(request, conn);
@@ -122,7 +122,7 @@ public class TransactionProcessor implements RequestProcessor<TransactionCommand
         }
         catch (final XAException e) {
             log.error("Processing transaction command failed", e);
-            // xaÒì³£ÌØÊâ´¦Àí£¬ÈÃ¿Í»§¶Ë¿ÉÒÔÖ±½ÓÅ×³ö
+            // xaå¼‚å¸¸ç‰¹æ®Šå¤„ç†ï¼Œè®©å®¢æˆ·ç«¯å¯ä»¥ç›´æ¥æŠ›å‡º
             this.responseXAE(request, conn, e);
         }
         catch (final Exception e) {

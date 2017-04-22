@@ -1324,7 +1324,7 @@ public final class TransactionCommands {
      * <code>optional int32 data_length = 4;</code>
      *
      * <pre>
-     *¶îÍâÊı¾İµÄ³¤¶È
+     *é¢å¤–æ•°æ®çš„é•¿åº¦
      * </pre>
      */
     boolean hasDataLength();
@@ -1332,7 +1332,7 @@ public final class TransactionCommands {
      * <code>optional int32 data_length = 4;</code>
      *
      * <pre>
-     *¶îÍâÊı¾İµÄ³¤¶È
+     *é¢å¤–æ•°æ®çš„é•¿åº¦
      * </pre>
      */
     int getDataLength();
@@ -1536,7 +1536,7 @@ public final class TransactionCommands {
      * <code>optional int32 data_length = 4;</code>
      *
      * <pre>
-     *¶îÍâÊı¾İµÄ³¤¶È
+     *é¢å¤–æ•°æ®çš„é•¿åº¦
      * </pre>
      */
     public boolean hasDataLength() {
@@ -1546,7 +1546,7 @@ public final class TransactionCommands {
      * <code>optional int32 data_length = 4;</code>
      *
      * <pre>
-     *¶îÍâÊı¾İµÄ³¤¶È
+     *é¢å¤–æ•°æ®çš„é•¿åº¦
      * </pre>
      */
     public int getDataLength() {
@@ -2006,7 +2006,7 @@ public final class TransactionCommands {
        * <code>optional int32 data_length = 4;</code>
        *
        * <pre>
-       *¶îÍâÊı¾İµÄ³¤¶È
+       *é¢å¤–æ•°æ®çš„é•¿åº¦
        * </pre>
        */
       public boolean hasDataLength() {
@@ -2016,7 +2016,7 @@ public final class TransactionCommands {
        * <code>optional int32 data_length = 4;</code>
        *
        * <pre>
-       *¶îÍâÊı¾İµÄ³¤¶È
+       *é¢å¤–æ•°æ®çš„é•¿åº¦
        * </pre>
        */
       public int getDataLength() {
@@ -2026,7 +2026,7 @@ public final class TransactionCommands {
        * <code>optional int32 data_length = 4;</code>
        *
        * <pre>
-       *¶îÍâÊı¾İµÄ³¤¶È
+       *é¢å¤–æ•°æ®çš„é•¿åº¦
        * </pre>
        */
       public Builder setDataLength(int value) {
@@ -2039,7 +2039,7 @@ public final class TransactionCommands {
        * <code>optional int32 data_length = 4;</code>
        *
        * <pre>
-       *¶îÍâÊı¾İµÄ³¤¶È
+       *é¢å¤–æ•°æ®çš„é•¿åº¦
        * </pre>
        */
       public Builder clearDataLength() {

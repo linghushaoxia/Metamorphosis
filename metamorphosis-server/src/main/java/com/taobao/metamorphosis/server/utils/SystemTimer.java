@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- * 系统时间缓存
+ * 绯荤粺鏃堕棿缂撳瓨
  * 
  * @author boyan
  * @Date 2010-9-28

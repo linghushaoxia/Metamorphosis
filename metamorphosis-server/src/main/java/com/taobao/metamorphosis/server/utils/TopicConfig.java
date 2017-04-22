@@ -24,12 +24,12 @@ import com.taobao.metamorphosis.utils.Config;
 
 
 /**
- * Õë¶ÔÄ³¸ötopicµÄÌØÊâÅäÖÃ£¨²»Ê¹ÓÃÈ«¾ÖÅäÖÃ£©
+ * é’ˆå¯¹æŸä¸ªtopicçš„ç‰¹æ®Šé…ç½®ï¼ˆä¸ä½¿ç”¨å…¨å±€é…ç½®ï¼‰
  * 
- * @author ÎŞ»¨,dennis
- * @since 2011-8-18 ÏÂÎç2:30:35
+ * @author æ— èŠ±,dennis
+ * @since 2011-8-18 ä¸‹åˆ2:30:35
  */
-// TODO ½«ÆäËûÕë¶ÔÄ³¸ötopicµÄÌØÊâÅäÖÃÏîÒÆµ½ÕâÀï
+// TODO å°†å…¶ä»–é’ˆå¯¹æŸä¸ªtopicçš„ç‰¹æ®Šé…ç½®é¡¹ç§»åˆ°è¿™é‡Œ
 public class TopicConfig extends Config {
     private String topic;
     private int unflushThreshold;

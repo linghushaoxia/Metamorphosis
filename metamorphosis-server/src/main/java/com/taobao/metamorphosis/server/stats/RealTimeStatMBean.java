@@ -26,13 +26,13 @@ import java.util.List;
  * 
  * @author boyan
  * 
- * @since 1.0, 2009-9-16 ����12:00:27
+ * @since 1.0, 2009-9-16 下午12:00:27
  */
 
 public interface RealTimeStatMBean {
 
     /**
-     * �鿴ʵʱͳ�Ƶ�key��Ϣ
+     * 查看实时统计的key信息
      * 
      * @return
      */
@@ -40,13 +40,13 @@ public interface RealTimeStatMBean {
 
 
     /**
-     * ���¿�ʼʵʱͳ��
+     * 重新开始实时统计
      */
     public  void resetStat();
 
 
     /**
-     * ʵʱͳ�ƽ��е�ʱ�䣬��λ��
+     * 实时统计进行的时间，单位秒
      * 
      * @return
      */
@@ -54,7 +54,7 @@ public interface RealTimeStatMBean {
 
 
     /**
-     * ��ȡʵʱͳ�ƽ��
+     * 获取实时统计结果
      * 
      * @param key1
      * @param key2

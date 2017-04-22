@@ -67,7 +67,7 @@ import com.taobao.metamorphosis.utils.NamedThreadFactory;
 
 
 /**
- * ÊÂÎñÃüÁî´¦ÀíÆ÷
+ * äº‹åŠ¡å‘½ä»¤å¤„ç†å™¨
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-18
@@ -83,7 +83,7 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
     private final Map<TransactionId, XATransaction> xaTransactions = new LinkedHashMap<TransactionId, XATransaction>();
 
     /**
-     * ÊÖ¹¤Ìá½»»òÕß»Ø¹öµÄÊÂÎñ
+     * æ‰‹å·¥æäº¤æˆ–è€…å›æ»šçš„äº‹åŠ¡
      */
     private Map<TransactionId, XATransaction> xaHeuristicTransactions =
             new LinkedHashMap<TransactionId, XATransaction>();
@@ -164,7 +164,7 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
             }
         }
         synchronized (this.xaHeuristicTransactions) {
-            // ÊÖ¹¤´¦ÀíµÄÊÂÎñ£¬¶¼ÊÇprepare×´Ì¬µÄxaÊÂÎñ
+            // æ‰‹å·¥å¤„ç†çš„äº‹åŠ¡ï¼Œéƒ½æ˜¯prepareçŠ¶æ€çš„xaäº‹åŠ¡
             for (final Iterator<XATransaction> iter = this.xaHeuristicTransactions.values().iterator(); iter.hasNext();) {
                 final XATransaction tx = iter.next();
                 // Only tx that the unique qualifier is equals to the request
@@ -217,7 +217,7 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
             transactionMap.put(xid, transaction);
         }
         if (transaction != null) {
-            // ÉèÖÃÊÂÎñ³¬Ê±
+            // è®¾ç½®äº‹åŠ¡è¶…æ—¶
             this.setTxTimeout(context, transaction, seconds);
         }
     }
@@ -325,7 +325,7 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
             this.xaHeuristicTransactions = new LinkedHashMap<TransactionId, XATransaction>();
         }
         for (final XATransaction tx : this.xaHeuristicTransactions.values()) {
-            // ÉèÖÃtransient±äÁ¿
+            // è®¾ç½®transientå˜é‡
             tx.setBrokerProcessor(this);
             tx.setTransactionStore(this.transactionStore);
         }
@@ -342,7 +342,7 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
         if (transaction != null) {
             transaction.setTransactionInUse();
             if (context.isInRecoverMode()) {
-                // »Ö¸´Ä£Ê½£¬²»ĞèÒª´¦Àí
+                // æ¢å¤æ¨¡å¼ï¼Œä¸éœ€è¦å¤„ç†
                 if (cb != null) {
                     cb.putComplete(new BooleanCommand(HttpStatus.Forbidden, "The broker is in recover mode.", cmd
                         .getOpaque()));
@@ -386,7 +386,7 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
 
 
     /**
-     * ·µ»ØĞÎÈç"messageId partition offset"µÄ×Ö·ûºÅ£¬·µ»Ø¸ø¿Í»§¶Ë
+     * è¿”å›å½¢å¦‚"messageId partition offset"çš„å­—ç¬¦å·ï¼Œè¿”å›ç»™å®¢æˆ·ç«¯
      * 
      * @param partition
      * @param messageId
@@ -419,7 +419,7 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
             return transaction;
         }
 
-        // ÅĞ¶ÏÊÇ·ñÈË¹¤Ìá½»»òÕß»Ø¹ö¹ıÁË
+        // åˆ¤æ–­æ˜¯å¦äººå·¥æäº¤æˆ–è€…å›æ»šè¿‡äº†
         if (xid.isXATransaction()) {
             synchronized (this.xaHeuristicTransactions) {
                 transaction = this.xaHeuristicTransactions.get(xid);
@@ -440,7 +440,7 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
                     throw e;
                 default:
                     log.warn("Invalid transaction state in xaHeuristicTransactions:" + transaction.getState());
-                    // Ó¦¸Ã²»»á³öÏÖÕâÖÖÇé¿ö
+                    // åº”è¯¥ä¸ä¼šå‡ºç°è¿™ç§æƒ…å†µ
                     break;
                 }
             }
@@ -467,7 +467,7 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
 
 
     /**
-     * ÉèÖÃXAÊÂÎñ³¬Ê±
+     * è®¾ç½®XAäº‹åŠ¡è¶…æ—¶
      * 
      * @param ctx
      * @param xid
@@ -482,8 +482,8 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
         if (tx.getTimeoutRef() != null) {
             return;
         }
-        // 0Ôò±íÊ¾ÓÀ²»³¬Ê±
-        // TODO ÊÇ·ñ²ÉÓÃÄ¬ÈÏµÄ×î´ó³¬Ê±Ê±¼ä£¿
+        // 0åˆ™è¡¨ç¤ºæ°¸ä¸è¶…æ—¶
+        // TODO æ˜¯å¦é‡‡ç”¨é»˜è®¤çš„æœ€å¤§è¶…æ—¶æ—¶é—´ï¼Ÿ
         if (seconds <= 0) {
             return;
         }
@@ -494,8 +494,8 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
 
             @Override
             public void run(final Timeout timeout) throws Exception {
-                // Ã»ÓĞpreparedµÄµ½ÆÚÊÂÎñÒª»Ø¹ö
-                // ĞèÒªÓëXATransaction.prepare×öÍ¬²½¸ôÀë
+                // æ²¡æœ‰preparedçš„åˆ°æœŸäº‹åŠ¡è¦å›æ»š
+                // éœ€è¦ä¸XATransaction.prepareåšåŒæ­¥éš”ç¦»
                 synchronized (tx) {
                     if (!tx.isPrepared() && tx.getState() != Transaction.FINISHED_STATE) {
                         log.warn("XA transaction " + tx.getTransactionId() + " is timeout,it is rolled back.");
@@ -508,7 +508,7 @@ public class TransactionalCommandProcessor extends CommandProcessorFilter implem
 
 
     /**
-     * ÒÔÏÂÎª±©Â¶¸øJMX MBeanµÄ½Ó¿Ú·½·¨
+     * ä»¥ä¸‹ä¸ºæš´éœ²ç»™JMX MBeançš„æ¥å£æ–¹æ³•
      */
 
     @Override

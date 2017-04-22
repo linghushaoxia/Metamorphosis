@@ -63,14 +63,14 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         assertNotNull(commands);
         assertEquals(2, commands.length);
         store.flush();
-        // »¹Ã»ÓĞĞ´Èë
+        // è¿˜æ²¡æœ‰å†™å…¥
         assertEquals(0, store.getSizeInBytes());
 
         // rollback
         this.transactionStore.rollback(xid);
         assertNull(this.transactionStore.getInflyTx(xid));
         store.flush();
-        // »Ø¹ö£¬µ±È»Ã»ÓĞĞ´Èë
+        // å›æ»šï¼Œå½“ç„¶æ²¡æœ‰å†™å…¥
         assertEquals(0, store.getSizeInBytes());
 
         this.tearDown();
@@ -98,10 +98,10 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         assertTrue(this.journalStore.getCurrDataFile().getLength() > 0);
 
         store = this.messageStoreManager.getOrCreateMessageStore("topic1", 2);
-        // È·ÈÏÏûÏ¢Ã»ÓĞĞ´Èë
+        // ç¡®è®¤æ¶ˆæ¯æ²¡æœ‰å†™å…¥
         assertEquals(0, store.getSizeInBytes());
 
-        // È·ÈÏTX»¹´æÔÚ
+        // ç¡®è®¤TXè¿˜å­˜åœ¨
         final Tx tx1 = this.transactionStore.getInflyTx(xid1);
         assertNotNull(tx1);
         PutCommand[] commands = tx1.getRequests();
@@ -114,11 +114,11 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         assertNotNull(commands);
         assertEquals(1, commands.length);
 
-        // recoverºó£¬¶¼»Ø¹öÁË
+        // recoveråï¼Œéƒ½å›æ»šäº†
         this.transactionStore.recover(null);
         assertNull(this.transactionStore.getInflyTx(xid1));
         assertNull(this.transactionStore.getInflyTx(xid2));
-        // È·ÈÏÏûÏ¢»¹ÊÇÃ»ÓĞĞ´Èë
+        // ç¡®è®¤æ¶ˆæ¯è¿˜æ˜¯æ²¡æœ‰å†™å…¥
         assertEquals(0, store.getSizeInBytes());
     }
 
@@ -136,14 +136,14 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         assertNotNull(commands);
         assertEquals(2, commands.length);
         store.flush();
-        // »¹Ã»ÓĞĞ´Èë
+        // è¿˜æ²¡æœ‰å†™å…¥
         assertEquals(0, store.getSizeInBytes());
 
         // rollback
         this.transactionStore.commit(xid, false);
         assertNull(this.transactionStore.getInflyTx(xid));
         store.flush();
-        // Ğ´ÈëÏûÏ¢
+        // å†™å…¥æ¶ˆæ¯
         assertTrue(store.getSizeInBytes() > 0);
 
         this.tearDown();
@@ -151,7 +151,7 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         assertTrue(this.journalStore.getCurrDataFile().getLength() > 0);
         assertNull(this.transactionStore.getInflyTx(xid));
 
-        // ÖØĞÂ´ò¿ªstore
+        // é‡æ–°æ‰“å¼€store
         store = this.messageStoreManager.getOrCreateMessageStore("topic1", 2);
         this.assertMessages(store);
     }
@@ -196,7 +196,7 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         assertNull(this.transactionStore.getInflyTx(xid));
         assertNotNull(this.transactionStore.getPreparedTx(xid));
         store.flush();
-        // È·ÈÏ»¹Î´Ğ´Èë
+        // ç¡®è®¤è¿˜æœªå†™å…¥
         assertEquals(0, store.getSizeInBytes());
 
         // commit
@@ -231,7 +231,7 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         assertNull(this.transactionStore.getInflyTx(xid));
         assertNotNull(this.transactionStore.getPreparedTx(xid));
         store.flush();
-        // È·ÈÏ»¹Î´Ğ´Èë
+        // ç¡®è®¤è¿˜æœªå†™å…¥
         assertEquals(0, store.getSizeInBytes());
 
         // rollback
@@ -266,7 +266,7 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         assertNull(this.transactionStore.getInflyTx(xid));
         assertNotNull(this.transactionStore.getPreparedTx(xid));
         store.flush();
-        // È·ÈÏ»¹Î´Ğ´Èë
+        // ç¡®è®¤è¿˜æœªå†™å…¥
         assertEquals(0, store.getSizeInBytes());
 
         // close and reopen
@@ -275,9 +275,9 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         store = this.messageStoreManager.getOrCreateMessageStore("topic1", 2);
         assertEquals(0, store.getSizeInBytes());
         assertNull(this.transactionStore.getInflyTx(xid));
-        // ÈÔÈ»´¦ÓÚprepare×´Ì¬
+        // ä»ç„¶å¤„äºprepareçŠ¶æ€
         assertNotNull(this.transactionStore.getPreparedTx(xid));
-        // È·ÈÏ²Ù×÷´æÔÚ
+        // ç¡®è®¤æ“ä½œå­˜åœ¨
         final Tx tx = this.transactionStore.getPreparedTx(xid);
         assertNotNull(tx);
         final PutCommand[] commands = tx.getRequests();
@@ -302,26 +302,26 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
 
     @Test
     public void testCheckpoint() throws Exception {
-        // ÊÂÎñ1
+        // äº‹åŠ¡1
         final LocalTransactionId xid1 = new LocalTransactionId("session1", 1);
         final MessageStore store1 = this.messageStoreManager.getOrCreateMessageStore("topic1", 2);
         this.transactionStore.addMessage(store1, 1, new PutCommand("topic1", 2, ("msg" + 2).getBytes(), xid1, 0, 1),
             null);
 
-        // ÊÂÎñ2
+        // äº‹åŠ¡2
         final LocalTransactionId xid2 = new LocalTransactionId("session2", 1);
         final MessageStore store2 = this.messageStoreManager.getOrCreateMessageStore("topic1", 3);
         this.transactionStore.addMessage(store2, 1, new PutCommand("topic1", 3, ("msg" + 3).getBytes(), xid2, 0, 1),
             null);
 
-        // ÊÂÎñ3£¬ÒÑ¾­Ìá½»
+        // äº‹åŠ¡3ï¼Œå·²ç»æäº¤
         final LocalTransactionId xid3 = new LocalTransactionId("session3", 1);
         final MessageStore store3 = this.messageStoreManager.getOrCreateMessageStore("topic1", 0);
         this.transactionStore.addMessage(store3, 1, new PutCommand("topic1", 0, ("msg" + 0).getBytes(), xid3, 0, 1),
             null);
         this.transactionStore.commit(xid3, false);
 
-        // ²éÕÒcheckpoint£¬Ó¦µ±ÎªÊÂÎñ1
+        // æŸ¥æ‰¾checkpointï¼Œåº”å½“ä¸ºäº‹åŠ¡1
         final JournalLocation location = this.transactionStore.checkpoint();
         final Tx tx = this.transactionStore.getInflyTx(xid1);
         assertEquals(location, tx.getLocation());
@@ -357,7 +357,7 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
 
         testCase.start();
 
-        System.out.println("²âÊÔÊ±¼ä£º" + testCase.getDurationInMillis() + "ms");
+        System.out.println("æµ‹è¯•æ—¶é—´ï¼š" + testCase.getDurationInMillis() + "ms");
 
         for (int i = 0; i < 10; i++) {
             final MessageStore store = this.messageStoreManager.getOrCreateMessageStore("topic1", i);
@@ -365,11 +365,11 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         }
         assertEquals(0, this.transactionStore.getActiveTransactionCount());
 
-        // ¹Ø±Õ´ò¿ª
+        // å…³é—­æ‰“å¼€
         this.tearDown();
         final long start = System.currentTimeMillis();
         this.init(this.path);
-        System.out.println("»Ö¸´»°·ÑÊ±¼ä:" + (System.currentTimeMillis() - start) + "ms");
+        System.out.println("æ¢å¤è¯è´¹æ—¶é—´:" + (System.currentTimeMillis() - start) + "ms");
         for (int i = 0; i < 10; i++) {
             final MessageStore store = this.messageStoreManager.getOrCreateMessageStore("topic1", i);
             assertTrue(store.getSizeInBytes() > 0);
@@ -388,7 +388,7 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
             this.init(this.path);
             for (int i = 0; i < 10000; i++) {
                 final LocalTransactionId xid = new LocalTransactionId("test", i);
-                // Ëæ¼´Ìí¼Ó¼¸ÌõÏûÏ¢
+                // éšå³æ·»åŠ å‡ æ¡æ¶ˆæ¯
                 for (int j = 0; j < rand.nextInt(3) + 1; j++) {
                     final int partition = rand.nextInt(10);
                     final MessageStore store =
@@ -400,7 +400,7 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
                 this.transactionStore.commit(xid, false);
 
             }
-            // È·ÈÏÎÄ¼şrollÁË
+            // ç¡®è®¤æ–‡ä»¶rolläº†
             assertTrue(this.journalStore.getCurrDataFile().getNumber() > 1);
             assertEquals(1, this.journalStore.getDataFiles().size());
         }
@@ -417,7 +417,7 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         for (int i = 0; i < 10000; i++) {
             final LocalTransactionId xid = new LocalTransactionId("test", i);
 
-            // Ëæ¼´Ìí¼Ó¼¸ÌõÏûÏ¢
+            // éšå³æ·»åŠ å‡ æ¡æ¶ˆæ¯
             for (int j = 0; j < rand.nextInt(3) + 1; j++) {
                 final int partition = rand.nextInt(10);
                 final MessageStore store = this.messageStoreManager.getOrCreateMessageStore("topic1", partition % 10);
@@ -434,11 +434,11 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
             }
         }
 
-        // ¹Ø±Õ´ò¿ª
+        // å…³é—­æ‰“å¼€
         this.tearDown();
         final long start = System.currentTimeMillis();
         this.init(this.path);
-        System.out.println("»Ö¸´»°·ÑÊ±¼ä:" + (System.currentTimeMillis() - start));
+        System.out.println("æ¢å¤è¯è´¹æ—¶é—´:" + (System.currentTimeMillis() - start));
         for (int i = 0; i < 10; i++) {
             final MessageStore store = this.messageStoreManager.getOrCreateMessageStore("topic1", i);
             assertTrue(store.getSizeInBytes() > 0);
@@ -464,11 +464,11 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
 
         this.tearDown();
         // delete data
-        System.out.println("É¾³ıÄ¿Â¼:" + this.path + File.separator + store.getDescription());
+        System.out.println("åˆ é™¤ç›®å½•:" + this.path + File.separator + store.getDescription());
         FileUtils.deleteDirectory(new File(this.path + File.separator + store.getDescription()));
         this.init(this.path);
 
-        // Ó¦¸ÃÖØ·Å²åÈëÊı¾İÁË,È·ÈÏÊı¾İÕıÈ·
+        // åº”è¯¥é‡æ”¾æ’å…¥æ•°æ®äº†,ç¡®è®¤æ•°æ®æ­£ç¡®
         store = this.messageStoreManager.getOrCreateMessageStore("topic1", 2);
         store.flush();
         assertTrue(store.getSizeInBytes() > 0);
@@ -476,7 +476,7 @@ public class JournalTransactionStoreUnitTest extends BaseTransactionUnitTest {
         this.assertMessages(store);
         assertNull(this.transactionStore.getInflyTx(xid));
 
-        // ÔÙ´Î¹Ø±Õ´ò¿ª£¬×´Ì¬ÕıÈ·
+        // å†æ¬¡å…³é—­æ‰“å¼€ï¼ŒçŠ¶æ€æ­£ç¡®
         this.tearDown();
         this.init(this.path);
         store = this.messageStoreManager.getOrCreateMessageStore("topic1", 2);

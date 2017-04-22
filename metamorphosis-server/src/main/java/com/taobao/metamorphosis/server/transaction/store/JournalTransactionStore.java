@@ -58,7 +58,7 @@ import com.taobao.metamorphosis.utils.MessageUtils;
 
 
 /**
- * ÊÂÎñ´æ´¢ÒıÇæ
+ * äº‹åŠ¡å­˜å‚¨å¼•æ“
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-22
@@ -73,7 +73,7 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
     private boolean doingRecover;
 
     /**
-     * ÊÂÎñ²Ù×÷½Ó¿Ú
+     * äº‹åŠ¡æ“ä½œæ¥å£
      * 
      * @author boyan(boyan@taobao.com)
      * @date 2011-8-22
@@ -111,16 +111,16 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
     }
 
     /**
-     * Ìí¼ÓÏûÏ¢µ½storeµÄÎ»ÖÃºÍchecksum
+     * æ·»åŠ æ¶ˆæ¯åˆ°storeçš„ä½ç½®å’Œchecksum
      * 
      * @author boyan(boyan@taobao.com)
      * @date 2011-8-23
      * 
      */
     public static class AddMsgLocation extends Location {
-        public final int checksum; // Ğ£ÑéºÍ£¬Õû¸öÏûÏ¢µÄĞ£ÑéºÍ£¬×¢Òâ¸úmessageµÄĞ£ÑéºÍÇø·Ö
+        public final int checksum; // æ ¡éªŒå’Œï¼Œæ•´ä¸ªæ¶ˆæ¯çš„æ ¡éªŒå’Œï¼Œæ³¨æ„è·Ÿmessageçš„æ ¡éªŒå’ŒåŒºåˆ†
 
-        public final String storeDesc; // ·ÖÇøÃèÊö×Ö·û´®
+        public final String storeDesc; // åˆ†åŒºæè¿°å­—ç¬¦ä¸²
 
 
         public AddMsgLocation(final long offset, final int length, final int checksum, final String storeDesc) {
@@ -148,13 +148,13 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
 
 
         /**
-         * ÏûÏ¢Î»ÖÃĞòÁĞ»¯Îª:
+         * æ¶ˆæ¯ä½ç½®åºåˆ—åŒ–ä¸º:
          * <ul>
-         * <li>8¸ö×Ö½ÚµÄoffset</li>
-         * <li>4¸ö×Ö½ÚµÄ³¤¶È</li>
-         * <li>4¸ö×Ö½Úchecksum:ÕâÊÇÖ¸Õû¸öÏûÏ¢´æ´¢Êı¾İµÄchecksum£¬¸úmessageµÄchecksum²»Í¬</li>
-         * <li>4¸ö×Ö½Ú³¤¶È£¬´æ´¢µÄ·ÖÇøÃûµÄ³¤¶È</li>
-         * <li>´æ´¢µÄ·ÖÇøÃû</li>
+         * <li>8ä¸ªå­—èŠ‚çš„offset</li>
+         * <li>4ä¸ªå­—èŠ‚çš„é•¿åº¦</li>
+         * <li>4ä¸ªå­—èŠ‚checksum:è¿™æ˜¯æŒ‡æ•´ä¸ªæ¶ˆæ¯å­˜å‚¨æ•°æ®çš„checksumï¼Œè·Ÿmessageçš„checksumä¸åŒ</li>
+         * <li>4ä¸ªå­—èŠ‚é•¿åº¦ï¼Œå­˜å‚¨çš„åˆ†åŒºåçš„é•¿åº¦</li>
+         * <li>å­˜å‚¨çš„åˆ†åŒºå</li>
          * </ul>
          * 
          * @return
@@ -177,7 +177,7 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
     }
 
     /**
-     * ÊÂÎñÄÚ´æ¶ÔÏó£¬±£´æ²Ù×÷¹ì¼£
+     * äº‹åŠ¡å†…å­˜å¯¹è±¡ï¼Œä¿å­˜æ“ä½œè½¨è¿¹
      * 
      * @author boyan(boyan@taobao.com)
      * @date 2011-8-22
@@ -306,7 +306,7 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
         final TransactionOperation to =
                 TransactionOperation.newBuilder().setType(TransactionType.XA_PREPARE)
                 .setTransactionId(txid.getTransactionKey()).setWasPrepared(false).build();
-        // prepare,±ØĞëforce
+        // prepare,å¿…é¡»force
         final TxCommand msg =
                 TxCommand.newBuilder().setCmdType(TxCommandType.TX_OP).setCmdContent(to.toByteString()).setForce(true)
                 .build();
@@ -421,10 +421,10 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
                     synchronized (locations) {
                         locations.put(description, new AddMsgLocation(location.getOffset(), location.getLength(),
                             checkSum, description));
-                        // ´¦ÀíÍê³É
+                        // å¤„ç†å®Œæˆ
                         if (locations.size() == count) {
-                            // ½«Î»ÖÃĞÅÏ¢ĞòÁĞ»¯£¬²¢×÷Îªtx
-                            // commandµÄ¸½¼ÓÊı¾İ´æ´¢£¬Õâ²¿·ÖÊı¾İµÄ³¤¶ÈÊÇ¹Ì¶¨µÄ£¬Òò´Ë¿ÉÒÔÔÚreplayµÄÊ±ºò¸ü¸Ä
+                            // å°†ä½ç½®ä¿¡æ¯åºåˆ—åŒ–ï¼Œå¹¶ä½œä¸ºtx
+                            // commandçš„é™„åŠ æ•°æ®å­˜å‚¨ï¼Œè¿™éƒ¨åˆ†æ•°æ®çš„é•¿åº¦æ˜¯å›ºå®šçš„ï¼Œå› æ­¤å¯ä»¥åœ¨replayçš„æ—¶å€™æ›´æ”¹
                             final ByteBuffer localtionBytes = AddMsgLocationUtils.encodeLocation(locations);
 
                             TxCommand msg = null;
@@ -435,7 +435,7 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
                                         .setType(TransactionType.XA_COMMIT) //
                                         .setTransactionId(txid.getTransactionKey()) //
                                         .setWasPrepared(wasPrepared) //
-                                        .setDataLength(attachmentLen) // ÉèÖÃ¸½¼ÓÊı¾İ³¤¶È
+                                        .setDataLength(attachmentLen) // è®¾ç½®é™„åŠ æ•°æ®é•¿åº¦
                                         .build();
                                 msg =
                                         TxCommand.newBuilder().setCmdType(TxCommandType.TX_OP)
@@ -446,13 +446,13 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
                                         .setType(TransactionType.LOCAL_COMMIT) //
                                         .setTransactionId(txid.getTransactionKey()) //
                                         .setWasPrepared(wasPrepared) //
-                                        .setDataLength(attachmentLen)// ÉèÖÃ¸½¼ÓÊı¾İ³¤¶È
+                                        .setDataLength(attachmentLen)// è®¾ç½®é™„åŠ æ•°æ®é•¿åº¦
                                         .build();
                                 msg =
                                         TxCommand.newBuilder().setCmdType(TxCommandType.TX_OP)
                                         .setCmdContent(to.toByteString()).build();
                             }
-                            // ¼ÇÂ¼commitÈÕÖ¾£¬²¢¸½¼ÓÎ»ÖÃĞÅÏ¢
+                            // è®°å½•commitæ—¥å¿—ï¼Œå¹¶é™„åŠ ä½ç½®ä¿¡æ¯
                             try {
                                 JournalTransactionStore.this.journalStore.write(msg, localtionBytes, tx.location, true);
                             }
@@ -551,7 +551,7 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
 
     @Override
     public synchronized void recover(final TransactionRecoveryListener listener) throws IOException {
-        // ËùÓĞ±¾µØÊÂÎñ¶¼»Ø¹ö
+        // æ‰€æœ‰æœ¬åœ°äº‹åŠ¡éƒ½å›æ»š
         Map<Object, Tx> copyMap = null;
         synchronized (this.inflightTransactions) {
             copyMap = new HashMap<Object, JournalTransactionStore.Tx>(this.inflightTransactions);
@@ -563,7 +563,7 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
                 log.debug("Rollback inflight transaction:" + entry.getKey());
             }
         }
-        // »Ö¸´XAÖĞµÄpreparedÊÂÎñ
+        // æ¢å¤XAä¸­çš„preparedäº‹åŠ¡
         this.doingRecover = true;
         try {
             Map<TransactionId, Tx> txs = null;
@@ -584,13 +584,13 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
 
 
     /**
-     * Ìí¼ÓÏûÏ¢£¬ÎªÁË±£Ö¤Ìí¼ÓË³Ğò£¬ÕâÀï²»µÃ²»¼ÓËø
+     * æ·»åŠ æ¶ˆæ¯ï¼Œä¸ºäº†ä¿è¯æ·»åŠ é¡ºåºï¼Œè¿™é‡Œä¸å¾—ä¸åŠ é”
      */
     @Override
     public void addMessage(final MessageStore store, final long msgId, final PutCommand putCmd, JournalLocation location)
             throws IOException {
         if (location == null) {
-            // ·ÇÖØ·Å£¬Ìí¼ÓputÈÕÖ¾
+            // éé‡æ”¾ï¼Œæ·»åŠ putæ—¥å¿—
             final AppendMessageCommand appendCmd =
                     AppendMessageCommand.newBuilder().setMessageId(msgId)
                     .setPutCommand(ByteString.copyFrom(putCmd.encode().array())).build();
@@ -618,7 +618,7 @@ public class JournalTransactionStore implements TransactionStore, JournalTransac
 
 
     public JournalLocation checkpoint() throws IOException {
-        // ²éÕÒ´æ»îÊÂÎñÖĞ×îÔç¿ªÊ¼µÄÄÇ¸öµÄÎ»ÖÃ£¬×÷Îªcheckpoint±£´æÆğÀ´£¬ÏÂ´Î»Ö¸´Ö»Òª´ÓcheckpointÎ»ÖÃ¿ªÊ¼»Ö¸´¼´¿É
+        // æŸ¥æ‰¾å­˜æ´»äº‹åŠ¡ä¸­æœ€æ—©å¼€å§‹çš„é‚£ä¸ªçš„ä½ç½®ï¼Œä½œä¸ºcheckpointä¿å­˜èµ·æ¥ï¼Œä¸‹æ¬¡æ¢å¤åªè¦ä»checkpointä½ç½®å¼€å§‹æ¢å¤å³å¯
         JournalLocation rc = null;
         synchronized (this.inflightTransactions) {
             for (final Iterator<Tx> iter = this.inflightTransactions.values().iterator(); iter.hasNext();) {

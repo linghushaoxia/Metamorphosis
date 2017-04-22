@@ -28,7 +28,7 @@ import com.taobao.metamorphosis.server.transaction.Transaction;
 
 
 /**
- * Á¬½Ó¶Ï¿ªµÄÊ±ºò£¬Ó¦¸Ã»Ø¹ö¸ÃÁ¬½ÓÉÏËùÓÐµÄ±¾µØÊÂÎñ
+ * è¿žæŽ¥æ–­å¼€çš„æ—¶å€™ï¼Œåº”è¯¥å›žæ»šè¯¥è¿žæŽ¥ä¸Šæ‰€æœ‰çš„æœ¬åœ°äº‹åŠ¡
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-26
@@ -52,7 +52,7 @@ public class LocalTransactionRollbackListener implements ConnectionLifeCycleList
 
 
     /**
-     * Á¬½Ó¶Ï¿ªµÄÊ±ºò»Ø¹öËùÓÐ±¾µØÊÂÎñ
+     * è¿žæŽ¥æ–­å¼€çš„æ—¶å€™å›žæ»šæ‰€æœ‰æœ¬åœ°äº‹åŠ¡
      */
     @Override
     public void onConnectionClosed(final Connection conn) {
@@ -67,7 +67,7 @@ public class LocalTransactionRollbackListener implements ConnectionLifeCycleList
                             tx.rollback();
                         }
                         catch (final Exception e) {
-                            log.error("Á¬½Ó¶Ï¿ª£¬»Ø¹ö±¾µØÊÂÎñ³ö´í", e);
+                            log.error("è¿žæŽ¥æ–­å¼€ï¼Œå›žæ»šæœ¬åœ°äº‹åŠ¡å‡ºé”™", e);
                         }
                     }
                 }
@@ -75,7 +75,7 @@ public class LocalTransactionRollbackListener implements ConnectionLifeCycleList
             }
         }
         catch (final Throwable t) {
-            log.error("Á¬½Ó¶Ï¿ª£¬»Ø¹ö±¾µØÊÂÎñ³ö´í", t);
+            log.error("è¿žæŽ¥æ–­å¼€ï¼Œå›žæ»šæœ¬åœ°äº‹åŠ¡å‡ºé”™", t);
         }
 
     }

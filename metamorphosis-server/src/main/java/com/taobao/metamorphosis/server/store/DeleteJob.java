@@ -29,7 +29,7 @@ import org.quartz.JobExecutionException;
 
 
 /**
- * É¾³ýÈÎÎñµÄquartz job
+ * åˆ é™¤ä»»åŠ¡çš„quartz job
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-12-23

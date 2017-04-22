@@ -104,7 +104,7 @@ public class MessageStoreManagerUnitTest {
 
             }
         });
-        store1.flush();// flushÒ»´Î
+        store1.flush();// flushä¸€æ¬¡
         final long size = store1.getSegments().last().size();
         store1.append(idWorker.nextId(), cmd2, new AppendCallback() {
             @Override
@@ -231,7 +231,7 @@ public class MessageStoreManagerUnitTest {
 
             }
         });
-        store.flush();// flushÒ»´Î
+        store.flush();// flushä¸€æ¬¡
         store.append(idWorker.nextId(), cmd2, new AppendCallback() {
             @Override
             public void appendComplete(final Location location) {

@@ -14,14 +14,14 @@ import com.taobao.metamorphosis.utils.Config;
 public class SlaveConfig extends Config implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    // slave±àºÅ,´óÓÚµÈÓÚ0±íÊ¾×÷ÎªslaveÆô¶¯
+    // slaveç¼–å·,å¤§äºç­‰äº0è¡¨ç¤ºä½œä¸ºslaveå¯åŠ¨
     private int slaveId = -1;
-    // ×÷ÎªslaveÆô¶¯Ê±Ïòmaster¶©ÔÄÏûÏ¢µÄgroup,Èç¹ûÃ»ÅäÖÃÔòÄ¬ÈÏÎªmeta-slave-group
+    // ä½œä¸ºslaveå¯åŠ¨æ—¶å‘masterè®¢é˜…æ¶ˆæ¯çš„group,å¦‚æœæ²¡é…ç½®åˆ™é»˜è®¤ä¸ºmeta-slave-group
     private String slaveGroup = "meta-slave-group";
-    // slaveÊı¾İÍ¬²½µÄ×î´óÑÓÊ±,µ¥Î»ºÁÃë
+    // slaveæ•°æ®åŒæ­¥çš„æœ€å¤§å»¶æ—¶,å•ä½æ¯«ç§’
     private long slaveMaxDelayInMills = 500;
-    // ÊÇ·ñ×Ô¶¯´ÓmasterÍ¬²½server.ini
-    // µÚÒ»´ÎÈÔÈ»ĞèÒª×Ô¼º¿½±´server.ini£¬ºóĞø¿ÉÒÔÍ¨¹ıÉèÖÃ´ËÑ¡ÏîÎªtrueÀ´×Ô¶¯Í¬²½
+    // æ˜¯å¦è‡ªåŠ¨ä»masteråŒæ­¥server.ini
+    // ç¬¬ä¸€æ¬¡ä»ç„¶éœ€è¦è‡ªå·±æ‹·è´server.iniï¼Œåç»­å¯ä»¥é€šè¿‡è®¾ç½®æ­¤é€‰é¡¹ä¸ºtrueæ¥è‡ªåŠ¨åŒæ­¥
     private boolean autoSyncMasterConfig;
 
 

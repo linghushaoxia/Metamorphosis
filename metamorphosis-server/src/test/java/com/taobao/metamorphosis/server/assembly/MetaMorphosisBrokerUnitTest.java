@@ -67,7 +67,7 @@ public class MetaMorphosisBrokerUnitTest {
         // start twice,no problem
         this.broker.start();
 
-        // 首先确认zk设置正确
+        // 棣栧厛纭zk璁剧疆姝ｇ‘
         final BrokerZooKeeper brokerZooKeeper = this.broker.getBrokerZooKeeper();
         final ZkClient client = brokerZooKeeper.getZkClient();
         assertTrue(ZkUtils.pathExists(client, "/meta/brokers/ids/" + this.metaConfig.getBrokerId() + "/master"));
@@ -86,7 +86,7 @@ public class MetaMorphosisBrokerUnitTest {
         assertEquals("5",
             ZkUtils.readData(client, "/meta/brokers/topics/topic2/" + this.metaConfig.getBrokerId() + "-m"));
 
-        // 确认服务器能连接
+        // 纭鏈嶅姟鍣ㄨ兘杩炴帴
         final ClientConfig clientConfig = new ClientConfig();
         clientConfig.setWireFormatType(new MetamorphosisWireFormatType());
         final RemotingClient remotingClient = RemotingFactory.connect(clientConfig);
@@ -109,7 +109,7 @@ public class MetaMorphosisBrokerUnitTest {
         // start twice,no problem
         this.broker.start();
 
-        // 首先确认zk设置正确
+        // 棣栧厛纭zk璁剧疆姝ｇ‘
         final BrokerZooKeeper brokerZooKeeper = this.broker.getBrokerZooKeeper();
         final ZkClient client = brokerZooKeeper.getZkClient();
         assertTrue(ZkUtils.pathExists(client, "/meta/brokers/ids/" + this.metaConfig.getBrokerId() + "/slave0"));
@@ -123,7 +123,7 @@ public class MetaMorphosisBrokerUnitTest {
         assertEquals("5",
             ZkUtils.readData(client, "/meta/brokers/topics/topic2/" + this.metaConfig.getBrokerId() + "-s0"));
 
-        // 确认服务器能连接
+        // 纭鏈嶅姟鍣ㄨ兘杩炴帴
         final ClientConfig clientConfig = new ClientConfig();
         clientConfig.setWireFormatType(new MetamorphosisWireFormatType());
         final RemotingClient remotingClient = RemotingFactory.connect(clientConfig);

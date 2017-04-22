@@ -35,7 +35,7 @@ import com.taobao.metamorphosis.utils.MetaStatLog;
  * 
  * @author boyan
  * 
- * @since 1.0, 2009-9-16 ÏÂÎç12:51:19
+ * @since 1.0, 2009-9-16 ä¸‹åˆ12:51:19
  */
 
 public class RealTimeStatUnitTest {

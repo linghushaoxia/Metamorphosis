@@ -46,7 +46,7 @@ import com.taobao.metamorphosis.utils.StatConstants;
 
 
 /**
- * Í³¼Æ¹ÜÀíÆ÷
+ * ç»Ÿè®¡ç®¡ç†å™¨
  * 
  * @author boyan
  * @Date 2011-4-22
@@ -102,7 +102,7 @@ public class StatsManager implements Service {
             }
         });
 
-        // topicÃ»ÓĞ±ä»¯,Ö»ÓĞÍ³¼ÆÊôĞÔ·¢ÉúÁË±ä»¯Ê±,¶¯Ì¬¸Ä±äÍ³¼ÆÊôĞÔ
+        // topicæ²¡æœ‰å˜åŒ–,åªæœ‰ç»Ÿè®¡å±æ€§å‘ç”Ÿäº†å˜åŒ–æ—¶,åŠ¨æ€æ”¹å˜ç»Ÿè®¡å±æ€§
         this.metaConfig.addPropertyChangeListener("topics", new PropertyChangeListener() {
             @Override
             public void propertyChange(final PropertyChangeEvent evt) {
@@ -163,7 +163,7 @@ public class StatsManager implements Service {
             this.append(sb, "reset", "ok");
         }
         else {
-            // ¶¼ÈÏÎªÊÇtopic
+            // éƒ½è®¤ä¸ºæ˜¯topic
             this.appendTopic(item, sb);
         }
         sb.append("END\r\n");
@@ -188,7 +188,7 @@ public class StatsManager implements Service {
         long msgCount = 0;
         long bytes = 0;
         int partitionCount = 0;
-        int resultCode = 0;// 0:´æÔÚÕâ¸ötopic, 1:²»´æÔÚÕâ¸ötopic, 2:·¢²¼ÁËÕâ¸ötopicµ«»¹Ã»ÏûÏ¢Êı¾İ,
+        int resultCode = 0;// 0:å­˜åœ¨è¿™ä¸ªtopic, 1:ä¸å­˜åœ¨è¿™ä¸ªtopic, 2:å‘å¸ƒäº†è¿™ä¸ªtopicä½†è¿˜æ²¡æ¶ˆæ¯æ•°æ®,
         if (subMap != null) {
             partitionCount = subMap.size();
             for (final MessageStore msgStore : subMap.values()) {

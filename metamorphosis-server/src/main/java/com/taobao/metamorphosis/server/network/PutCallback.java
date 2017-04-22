@@ -20,7 +20,7 @@ package com.taobao.metamorphosis.server.network;
 import com.taobao.gecko.core.command.ResponseCommand;
 
 /**
- * PutÏûÏ¢µÄ»Øµ÷½Ó¿Ú
+ * Putæ¶ˆæ¯çš„å›è°ƒæ¥å£
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-11-29

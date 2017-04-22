@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.server.assembly;
 
 /**
- * ÊÂÎñ´¦ÀíÆ÷MBean½Ó¿Ú£¬Ìá¹©Ò»Ğ©²éÑ¯ºÍ¹ÜÀíµÄAPI
+ * äº‹åŠ¡å¤„ç†å™¨MBeanæ¥å£ï¼Œæä¾›ä¸€äº›æŸ¥è¯¢å’Œç®¡ç†çš„API
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-29
@@ -27,7 +27,7 @@ package com.taobao.metamorphosis.server.assembly;
 public interface TransactionalCommandProcessorMBean {
 
     /**
-     * ·µ»ØËùÓĞ´¦ÓÚprepare×´Ì¬µÄxaÊÂÎñ
+     * è¿”å›æ‰€æœ‰å¤„äºprepareçŠ¶æ€çš„xaäº‹åŠ¡
      * 
      * @return
      */
@@ -35,7 +35,7 @@ public interface TransactionalCommandProcessorMBean {
 
 
     /**
-     * ·µ»ØËùÓĞ´¦ÓÚprepare×´Ì¬µÄxaÊÂÎñÊıÄ¿
+     * è¿”å›æ‰€æœ‰å¤„äºprepareçŠ¶æ€çš„xaäº‹åŠ¡æ•°ç›®
      * 
      * @return
      */
@@ -43,7 +43,7 @@ public interface TransactionalCommandProcessorMBean {
 
 
     /**
-     * ÈË¹¤Ìá½»ÊÂÎñ
+     * äººå·¥æäº¤äº‹åŠ¡
      * 
      * @param txKey
      */
@@ -51,7 +51,7 @@ public interface TransactionalCommandProcessorMBean {
 
 
     /**
-     * ÈË¹¤»Ø¹öÊÂÎñ
+     * äººå·¥å›æ»šäº‹åŠ¡
      * 
      * @param txKey
      */
@@ -59,7 +59,7 @@ public interface TransactionalCommandProcessorMBean {
 
 
     /**
-     * ÈË¹¤Íê³ÉÊÂÎñ£¬²»Ìá½»Ò²²»»Ø¹ö£¬¼òµ¥É¾³ı
+     * äººå·¥å®Œæˆäº‹åŠ¡ï¼Œä¸æäº¤ä¹Ÿä¸å›æ»šï¼Œç®€å•åˆ é™¤
      * 
      * @param txKey
      * @throws Exception

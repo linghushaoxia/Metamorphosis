@@ -30,7 +30,7 @@ import org.apache.commons.logging.LogFactory;
 
 
 /**
- * 归档策略
+ * 褰掓。绛栫暐
  * 
  * @author boyan
  * @Date 2011-5-9
@@ -64,7 +64,7 @@ public class ArchiveDeletePolicy extends DiscardDeletePolicy {
 
 
     /**
-     * 归档数据文件
+     * 褰掓。鏁版嵁鏂囦欢
      */
     @Override
     public void process(File file) {

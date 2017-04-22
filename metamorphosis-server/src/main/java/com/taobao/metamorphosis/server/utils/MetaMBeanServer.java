@@ -24,7 +24,7 @@ import javax.management.ObjectName;
 
 
 /**
- * ע�ᵽƽ̨Mbean server
+ * 注册到平台Mbean server
  * 
  * @author boyan
  * @Date 2011-7-14

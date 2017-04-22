@@ -123,7 +123,7 @@ public class TransactionalCommandProcessorUnitTest extends BaseTransactionUnitTe
         final SessionContext context = new SessionContextImpl("test", this.conn);
         final TransactionId xid = XIDGenerator.createXID(100);
         assertNull(context.getTransactions().get(xid));
-        // 设置事务超时
+        // 璁剧疆浜嬪姟瓒呮椂
         // this.processor.setTransactionTimeout(context, xid, 3);
         this.replay();
         this.processor.beginTransaction(context, xid, 3);
@@ -297,7 +297,7 @@ public class TransactionalCommandProcessorUnitTest extends BaseTransactionUnitTe
         this.newProcessor();
         this.processor.recoverPreparedTransactions();
 
-        // 确认prepare为空
+        // 纭prepare涓虹┖
         store = this.messageStoreManager.getOrCreateMessageStore("topic1", 2);
         store.flush();
         assertEquals(0, store.getSizeInBytes());
@@ -325,7 +325,7 @@ public class TransactionalCommandProcessorUnitTest extends BaseTransactionUnitTe
         this.processor.prepareTransaction(context, xid);
         assertSame(tx, this.processor.getTransaction(context, xid));
 
-        // 手工提交
+        // 鎵嬪伐鎻愪氦
         this.processor.commitTransactionHeuristically(xid.getTransactionKey(), false);
         Map<TransactionId, XATransaction> heuristicTxMap = this.processor.getXAHeuristicTransactions();
         assertFalse(heuristicTxMap.isEmpty());
@@ -333,11 +333,11 @@ public class TransactionalCommandProcessorUnitTest extends BaseTransactionUnitTe
         assertSame(tx, heuristicTxMap.get(xid));
         assertEquals(Transaction.HEURISTIC_COMMIT_STATE, heuristicTxMap.get(xid).getState());
 
-        // 关闭，重新打开recover
+        // 鍏抽棴锛岄噸鏂版墦寮�recover
         this.processor.dispose();
         this.newProcessor();
         this.processor.recoverHeuristicTransactions();
-        // 确认正确recover
+        // 纭姝ｇ‘recover
         heuristicTxMap = this.processor.getXAHeuristicTransactions();
         assertFalse(heuristicTxMap.isEmpty());
         assertTrue(heuristicTxMap.containsKey(xid));

@@ -38,7 +38,7 @@ import com.taobao.metamorphosis.utils.MessageUtils;
 
 
 /**
- * »ùÓÚÎÄ¼şµÄÏûÏ¢¼¯ºÏ
+ * åŸºäºæ–‡ä»¶çš„æ¶ˆæ¯é›†åˆ
  * 
  * @author boyan
  * @Date 2011-4-21
@@ -49,9 +49,9 @@ public class FileMessageSet implements MessageSet, Closeable {
     private final FileChannel channel;
     private final AtomicLong messageCount;
     private final AtomicLong sizeInBytes;
-    private final AtomicLong highWaterMark; // ÒÑ¾­È·±£Ğ´Èë´ÅÅÌµÄË®Î»
-    private final long offset; // ¾µÏñoffset
-    private boolean mutable; // ÊÇ·ñ¿É±ä
+    private final AtomicLong highWaterMark; // å·²ç»ç¡®ä¿å†™å…¥ç£ç›˜çš„æ°´ä½
+    private final long offset; // é•œåƒoffset
+    private boolean mutable; // æ˜¯å¦å¯å˜
 
     static final Log log = LogFactory.getLog(FileMessageSet.class);
 
@@ -180,7 +180,7 @@ public class FileMessageSet implements MessageSet, Closeable {
 
 
     /**
-     * ·µ»ØÒ»¸öMessageSet¾µÏñ£¬Ö¸¶¨offsetºÍ³¤¶È
+     * è¿”å›ä¸€ä¸ªMessageSeté•œåƒï¼ŒæŒ‡å®šoffsetå’Œé•¿åº¦
      */
     @Override
     public MessageSet slice(final long offset, final long limit) throws IOException {
@@ -313,7 +313,7 @@ public class FileMessageSet implements MessageSet, Closeable {
 
 
     /**
-     * Ğ£ÑéÏûÏ¢md5ÊÇ·ñÕıÈ·
+     * æ ¡éªŒæ¶ˆæ¯md5æ˜¯å¦æ­£ç¡®
      * 
      * @param buf
      * @param start
@@ -335,7 +335,7 @@ public class FileMessageSet implements MessageSet, Closeable {
         }
         final int checksum = buf.getInt();
         if (messageLen < 0) {
-            // Êı¾İËğ»µ
+            // æ•°æ®æŸå
             return -1;
         }
 
@@ -344,7 +344,7 @@ public class FileMessageSet implements MessageSet, Closeable {
         while (messageBuffer.hasRemaining()) {
             read = this.channel.read(messageBuffer);
             if (read < 0) {
-                throw new IOException("ÎÄ¼şÔÚrecover¹ı³ÌÖĞ±»ĞŞ¸Ä");
+                throw new IOException("æ–‡ä»¶åœ¨recoverè¿‡ç¨‹ä¸­è¢«ä¿®æ”¹");
             }
             curr += read;
         }

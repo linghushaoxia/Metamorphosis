@@ -35,7 +35,7 @@ import com.taobao.metamorphosis.transaction.XATransactionId;
 
 
 /**
- * meta的协议处理接口，封装meta的核心逻辑
+ * meta鐨勫崗璁鐞嗘帴鍙ｏ紝灏佽meta鐨勬牳蹇冮�昏緫
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-18

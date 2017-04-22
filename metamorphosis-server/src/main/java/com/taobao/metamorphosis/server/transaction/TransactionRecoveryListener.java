@@ -22,7 +22,7 @@ import com.taobao.metamorphosis.transaction.XATransactionId;
 
 
 /**
- * ÊÂÎñ»Ö¸´¼àÌıÆ÷
+ * äº‹åŠ¡æ¢å¤ç›‘å¬å™¨
  * 
  * @author boyan
  * 

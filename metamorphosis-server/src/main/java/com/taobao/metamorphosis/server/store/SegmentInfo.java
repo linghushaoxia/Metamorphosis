@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.server.store;
 
 /**
- * 分区内各个文件的信息
+ * 鍒嗗尯鍐呭悇涓枃浠剁殑淇℃伅
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-12-15

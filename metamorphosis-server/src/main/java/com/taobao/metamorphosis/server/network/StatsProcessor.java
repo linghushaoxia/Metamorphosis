@@ -28,7 +28,7 @@ import com.taobao.metamorphosis.server.CommandProcessor;
 
 
 /**
- * Í³¼ÆĞÅÏ¢²éÑ¯´¦ÀíÆ÷
+ * ç»Ÿè®¡ä¿¡æ¯æŸ¥è¯¢å¤„ç†å™¨
  * 
  * @author boyan
  * @Date 2011-5-6

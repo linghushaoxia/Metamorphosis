@@ -187,11 +187,11 @@ public class BrokerZooKeeperUnitTest {
         this.brokerZooKeeper.close(true);
         this.brokerZooKeeper = null;
 
-        // master×¢²áĞÅÏ¢²»´æÔÚ
+        // masteræ³¨å†Œä¿¡æ¯ä¸å­˜åœ¨
         assertFalse(ZkUtils.pathExists(this.slaveBrokerZooKeeper.getZkClient(), masterBrokerPath));
         assertFalse(ZkUtils.pathExists(this.slaveBrokerZooKeeper.getZkClient(), masterTopicPath));
 
-        // slave×¢²áĞÅÏ¢»¹´æÔÚ
+        // slaveæ³¨å†Œä¿¡æ¯è¿˜å­˜åœ¨
         assertTrue(ZkUtils.pathExists(this.slaveBrokerZooKeeper.getZkClient(), slaveBrokerPath));
         assertEquals("meta://" + RemotingUtils.getLocalHost() + ":8123",
             ZkUtils.readData(this.slaveBrokerZooKeeper.getZkClient(), slaveBrokerPath));
@@ -213,11 +213,11 @@ public class BrokerZooKeeperUnitTest {
         this.slaveBrokerZooKeeper.close(true);
         this.slaveBrokerZooKeeper = null;
 
-        // slave×¢²áĞÅÏ¢²»´æÔÚ
+        // slaveæ³¨å†Œä¿¡æ¯ä¸å­˜åœ¨
         assertFalse(ZkUtils.pathExists(this.brokerZooKeeper.getZkClient(), slaveBrokerPath));
         assertFalse(ZkUtils.pathExists(this.brokerZooKeeper.getZkClient(), slaveTopicPath));
 
-        // master×¢²áĞÅÏ¢»¹´æÔÚ
+        // masteræ³¨å†Œä¿¡æ¯è¿˜å­˜åœ¨
         assertTrue(ZkUtils.pathExists(this.brokerZooKeeper.getZkClient(), masterBrokerPath));
         assertEquals("meta://" + RemotingUtils.getLocalHost() + ":8123",
             ZkUtils.readData(this.brokerZooKeeper.getZkClient(), masterBrokerPath));

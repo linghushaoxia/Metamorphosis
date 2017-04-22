@@ -72,14 +72,14 @@ import com.taobao.metamorphosis.utils.IdWorker;
 
 
 /**
- * meta·şÎñ¶ËºËĞÄ´¦ÀíÆ÷
+ * metaæœåŠ¡ç«¯æ ¸å¿ƒå¤„ç†å™¨
  * 
  * @author boyan
  * 
  */
 public class BrokerCommandProcessor implements CommandProcessor {
     /**
-     * appendµ½message storeµÄcallback
+     * appendåˆ°message storeçš„callback
      * 
      * @author boyan(boyan@taobao.com)
      * @date 2011-12-7
@@ -215,7 +215,7 @@ public class BrokerCommandProcessor implements CommandProcessor {
 
 
     /**
-     * ½öÓÃÓÚ²âÊÔ
+     * ä»…ç”¨äºæµ‹è¯•
      */
     public BrokerCommandProcessor() {
         super();
@@ -350,9 +350,9 @@ public class BrokerCommandProcessor implements CommandProcessor {
 
             partition = this.getPartition(request);
             final MessageStore store = this.storeManager.getOrCreateMessageStore(request.getTopic(), partition);
-            // Èç¹ûÊÇ¶¯Ì¬Ìí¼ÓµÄtopic£¬ĞèÒª×¢²áµ½zk
+            // å¦‚æœæ˜¯åŠ¨æ€æ·»åŠ çš„topicï¼Œéœ€è¦æ³¨å†Œåˆ°zk
             this.brokerZooKeeper.registerTopicInZk(request.getTopic(), false);
-            // ÉèÖÃÎ¨Ò»id
+            // è®¾ç½®å”¯ä¸€id
             final long messageId = this.idWorker.nextId();
             store.append(messageId, request,
                 new StoreAppendCallback(partition, partitionString, request, messageId, cb));
@@ -379,7 +379,7 @@ public class BrokerCommandProcessor implements CommandProcessor {
 
 
     /**
-     * ·µ»ØĞÎÈç"messageId partition offset"µÄ×Ö·ûºÅ£¬·µ»Ø¸ø¿Í»§¶Ë
+     * è¿”å›å½¢å¦‚"messageId partition offset"çš„å­—ç¬¦å·ï¼Œè¿”å›ç»™å®¢æˆ·ç«¯
      * 
      * @param partition
      * @param messageId
@@ -407,7 +407,7 @@ public class BrokerCommandProcessor implements CommandProcessor {
         final String topic = request.getTopic();
         this.statsManager.statsGet(topic, group, 1);
 
-        // Èç¹û·ÖÇø±»¹Ø±Õ,½ûÖ¹¶ÁÊı¾İ --wuhua
+        // å¦‚æœåˆ†åŒºè¢«å…³é—­,ç¦æ­¢è¯»æ•°æ® --wuhua
         if (this.metaConfig.isClosedPartition(topic, request.getPartition())) {
             log.warn("can not get message for topic=" + topic + " from partition " + request.getPartition()
                 + ",it closed,");
@@ -480,7 +480,7 @@ public class BrokerCommandProcessor implements CommandProcessor {
                 this.statsManager.statsGetMiss(topic, group, 1);
                 this.statsManager.statsGetFailed(topic, group, 1);
 
-                // µ±ÇëÇóµÄÆ«ÒÆÁ¿´óÓÚÊµ¼Ê×î´óÖµÊ±,·µ»Ø¸ø¿Í»§¶ËÊµ¼Ê×î´óµÄÆ«ÒÆÁ¿.
+                // å½“è¯·æ±‚çš„åç§»é‡å¤§äºå®é™…æœ€å¤§å€¼æ—¶,è¿”å›ç»™å®¢æˆ·ç«¯å®é™…æœ€å¤§çš„åç§»é‡.
                 final long maxOffset = store.getMaxOffset();
                 final long requestOffset = request.getOffset();
                 if (requestOffset > maxOffset
@@ -499,7 +499,7 @@ public class BrokerCommandProcessor implements CommandProcessor {
         catch (final ArrayIndexOutOfBoundsException e) {
             log.error("Could not get message from position " + request.getOffset() + ",it is out of bounds,topic="
                     + topic);
-            // ¸æÖª×î½ü¿ÉÓÃµÄoffset
+            // å‘ŠçŸ¥æœ€è¿‘å¯ç”¨çš„offset
             this.statsManager.statsGetMiss(topic, group, 1);
             this.statsManager.statsGetFailed(topic, group, 1);
             final long validOffset = store.getNearestOffset(request.getOffset());

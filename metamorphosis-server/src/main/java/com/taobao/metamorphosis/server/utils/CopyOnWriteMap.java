@@ -43,10 +43,10 @@ import java.util.Set;
 
 
 /**
- * 来自于mina项目<a href="http://mina.apache.org">Apache MINA Project</a>
+ * 鏉ヨ嚜浜巑ina椤圭洰<a href="http://mina.apache.org">Apache MINA Project</a>
  * 
- * @modification by 无花
- * @since 2011-8-11 下午3:08:09
+ * @modification by 鏃犺姳
+ * @since 2011-8-11 涓嬪崍3:08:09
  */
 
 public class CopyOnWriteMap<K, V> implements Map<K, V>, Cloneable, Serializable {

@@ -144,7 +144,7 @@ public class GetProcessorUnitTest extends BaseProcessorUnitTest {
 
     @Test
     public void testHandleRequestMaxOffset() throws Exception {
-        // ´ÓÊµ¼Ê×î´óµÄoffset¿ªÊ¼¶©ÔÄ
+        // ä»Žå®žé™…æœ€å¤§çš„offsetå¼€å§‹è®¢é˜…
         final int partition = 1;
         final int opaque = 0;
         final int maxSize = 1024;

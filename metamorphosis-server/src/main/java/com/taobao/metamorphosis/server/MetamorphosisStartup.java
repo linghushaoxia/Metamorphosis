@@ -33,7 +33,7 @@ import com.taobao.metamorphosis.server.utils.MetaConfig;
 
 
 /**
- * Metamorphosis·şÎñÆ÷Æô¶¯Æ÷
+ * MetamorphosisæœåŠ¡å™¨å¯åŠ¨å™¨
  * 
  * @author boyan
  * @Date 2011-4-21
@@ -56,8 +56,8 @@ public class MetamorphosisStartup {
         final MetaConfig metaConfig = new MetaConfig();
         metaConfig.loadFromFile(configFilePath);
         metaConfig.verify();
-        log.warn("·şÎñÆ÷ÅäÖÃÎª£º" + metaConfig);
-        System.out.println("×¼±¸Æô¶¯·şÎñÆ÷£¬ÅäÖÃÎª£º" + metaConfig);
+        log.warn("æœåŠ¡å™¨é…ç½®ä¸ºï¼š" + metaConfig);
+        System.out.println("å‡†å¤‡å¯åŠ¨æœåŠ¡å™¨ï¼Œé…ç½®ä¸ºï¼š" + metaConfig);
         return metaConfig;
     }
 

@@ -35,7 +35,7 @@ import com.taobao.metamorphosis.transaction.XATransactionId;
 
 
 /**
- * Processor¹ıÂËÆ÷ÊµÏÖ£¬¿É¼Ì³Ğ²¢×Ô¶¨ÒåÊµÏÖ
+ * Processorè¿‡æ»¤å™¨å®ç°ï¼Œå¯ç»§æ‰¿å¹¶è‡ªå®šä¹‰å®ç°
  * 
  * @author boyan
  * 

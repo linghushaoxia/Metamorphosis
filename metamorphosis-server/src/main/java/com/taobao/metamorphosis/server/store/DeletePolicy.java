@@ -21,7 +21,7 @@ import java.io.File;
 
 
 /**
- * ÎÄ¼şµÄÉ¾³ı²ßÂÔ
+ * æ–‡ä»¶çš„åˆ é™¤ç­–ç•¥
  * 
  * @author boyan
  * @Date 2011-4-29
@@ -29,7 +29,7 @@ import java.io.File;
  */
 public interface DeletePolicy {
     /**
-     * ÅĞ¶ÏÎÄ¼şÊÇ·ñ¿ÉÒÔÉ¾³ı
+     * åˆ¤æ–­æ–‡ä»¶æ˜¯å¦å¯ä»¥åˆ é™¤
      * 
      * @param file
      * @param checkTimestamp
@@ -39,7 +39,7 @@ public interface DeletePolicy {
 
 
     /**
-     * ´¦Àí¹ıÆÚÎÄ¼ş
+     * å¤„ç†è¿‡æœŸæ–‡ä»¶
      * 
      * @param file
      */
@@ -47,7 +47,7 @@ public interface DeletePolicy {
 
 
     /**
-     * ²ßÂÔÃû³Æ
+     * ç­–ç•¥åç§°
      * 
      * @return
      */
@@ -55,7 +55,7 @@ public interface DeletePolicy {
 
 
     /**
-     * ³õÊ¼»¯
+     * åˆå§‹åŒ–
      * 
      * @param values
      */

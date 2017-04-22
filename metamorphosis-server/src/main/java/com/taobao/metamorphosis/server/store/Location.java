@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.server.store;
 
 /**
- * Êı¾İ´æÈëµÄÎ»ÖÃ
+ * æ•°æ®å­˜å…¥çš„ä½ç½®
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-22

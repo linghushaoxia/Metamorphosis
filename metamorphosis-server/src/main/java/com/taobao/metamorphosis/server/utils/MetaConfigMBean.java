@@ -31,11 +31,11 @@ public interface MetaConfigMBean {
     public void reload();
 
 
-    /** ¹Ø±Õ·ÖÇø */
+    /** å…³é—­åˆ†åŒº */
     public void closePartitions(String topic, int start, int end);
 
 
-    /** ´ò¿ªÒ»¸ötopicµÄËùÓÐ·ÖÇø */
+    /** æ‰“å¼€ä¸€ä¸ªtopicçš„æ‰€æœ‰åˆ†åŒº */
     public void openPartitions(String topic);
 
 }

@@ -39,7 +39,7 @@ import com.taobao.metamorphosis.utils.JSONUtils;
 
 
 /**
- * checkpoint�ļ��洢
+ * checkpoint文件存储
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-24
@@ -81,7 +81,7 @@ public class Checkpoint implements Closeable {
                 return name.startsWith(FILE_PREFIX);
             }
         });
-        // ���������������
+        // 按照序号升序排序
         Arrays.sort(ls, new Comparator<File>() {
 
             @Override
@@ -141,7 +141,7 @@ public class Checkpoint implements Closeable {
 
 
     /**
-     * ���������checkpoint
+     * 返回最近的checkpoint
      * 
      * @return
      */
@@ -151,7 +151,7 @@ public class Checkpoint implements Closeable {
 
 
     /**
-     * ������checkpoint�����û�иı��򲻴�����̣��������һ���µ�checkpoint�ļ�
+     * 新设置checkpoint，如果没有改变则不存入磁盘，否则产生一个新的checkpoint文件
      * 
      * @param location
      */
@@ -160,7 +160,7 @@ public class Checkpoint implements Closeable {
             return;
         }
         if (this.lastLocation != null && this.lastLocation.compareTo(location) >= 0) {
-            // û�б仯���߱�ǰһ�����ϵ�ֱ�ӷ���
+            // 没有变化或者比前一个还老的直接返回
             return;
         }
         if (this.lastLocation != null) {
@@ -181,7 +181,7 @@ public class Checkpoint implements Closeable {
 
 
     private synchronized void addCheckpoint(final DataFile df) throws IOException {
-        // ��̭���ϵ�
+        // 淘汰最老的
         while (this.checkpoints.size() >= this.maxCheckpoints) {
             final DataFile old = this.checkpoints.poll();
             if (old != null) {

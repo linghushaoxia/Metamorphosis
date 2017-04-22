@@ -23,14 +23,14 @@ import java.util.Properties;
 
 
 /**
- * ¹¹½¨ÅäÖÃ
+ * æ„å»ºé…ç½®
  * 
  * @author boyan
  * @Date 2011-4-23
  * 
  */
 public class BuildProperties {
-    // ·şÎñÆ÷°æ±¾
+    // æœåŠ¡å™¨ç‰ˆæœ¬
     public static String VERSION = "0.1";
 
     static {

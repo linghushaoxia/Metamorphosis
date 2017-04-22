@@ -32,7 +32,7 @@ import com.taobao.metamorphosis.transaction.XATransactionId;
 
 
 /**
- * XAÊÂÎñ
+ * XAäº‹åŠ¡
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-24

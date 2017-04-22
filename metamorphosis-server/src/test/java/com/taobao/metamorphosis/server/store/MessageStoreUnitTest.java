@@ -72,7 +72,7 @@ public class MessageStoreUnitTest {
         this.metaConfig.setDataPath(tmpPath);
         final PutCommand cmd1 = new PutCommand(this.topic, this.partition, "hello".getBytes(), null, 0, 0);
         this.metaConfig.setUnflushThreshold(1);
-        // ÏŞÖÆ´æ10¸öÏûÏ¢¾ÍrollÎÄ¼ş
+        // é™åˆ¶å­˜10ä¸ªæ¶ˆæ¯å°±rollæ–‡ä»¶
         this.metaConfig.setMaxSegmentSize(MessageUtils.makeMessageBuffer(1, cmd1).capacity() * MSG_COUNT);
         this.idWorker = new IdWorker(0);
         this.clearTopicPartDir();
@@ -251,10 +251,10 @@ public class MessageStoreUnitTest {
 
 
     @Test
-    // ´´½¨Ò»¸öÖ¸¶¨offsetµÄMessageStore£¬²¢Ğ´ÏûÏ¢
+    // åˆ›å»ºä¸€ä¸ªæŒ‡å®šoffsetçš„MessageStoreï¼Œå¹¶å†™æ¶ˆæ¯
     public void testAppendMessages_toOffset() throws Exception {
 
-        // ÏÈÇå¿ÕÒ»ÏÂ
+        // å…ˆæ¸…ç©ºä¸€ä¸‹
         this.clearTopicPartDir();
 
         final int offset = 2048;

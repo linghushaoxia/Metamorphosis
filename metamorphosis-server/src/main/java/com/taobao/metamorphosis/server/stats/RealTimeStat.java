@@ -30,7 +30,7 @@ import com.taobao.metamorphosis.utils.MetaStatLog;
  * 
  * @author boyan
  * 
- * @since 1.0, 2009-9-16 上午11:56:00
+ * @since 1.0, 2009-9-16 涓婂崍11:56:00
  */
 
 public class RealTimeStat implements RealTimeStatMBean {
@@ -40,14 +40,14 @@ public class RealTimeStat implements RealTimeStatMBean {
 
 
     public RealTimeStat() {
-        // TODO 暴露JMX
+        // TODO 鏆撮湶JMX
     }
 
 
     public void start() {
         this.resetTask = new Thread(new MetaStatLog.RealTimeStatRestTask());
         this.resetTask.start();
-        log.warn("实时统计启动...");
+        log.warn("瀹炴椂缁熻鍚姩...");
     }
 
 
@@ -61,7 +61,7 @@ public class RealTimeStat implements RealTimeStatMBean {
 
             }
         }
-        log.warn("实时统计关闭...");
+        log.warn("瀹炴椂缁熻鍏抽棴...");
     }
 
 

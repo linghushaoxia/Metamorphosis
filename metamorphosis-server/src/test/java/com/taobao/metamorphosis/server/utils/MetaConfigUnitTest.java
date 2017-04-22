@@ -33,8 +33,8 @@ import com.taobao.metamorphosis.utils.ResourceUtils;
 
 /**
  * 
- * @author ÎŞ»¨,dennis
- * @since 2011-6-22 ÏÂÎç03:21:49
+ * @author æ— èŠ±,dennis
+ * @since 2011-6-22 ä¸‹åˆ03:21:49
  */
 
 public class MetaConfigUnitTest {

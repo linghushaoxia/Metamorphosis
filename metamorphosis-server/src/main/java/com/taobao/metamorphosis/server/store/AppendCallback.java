@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.server.store;
 
 /**
- * Append回调
+ * Append鍥炶皟
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-11-29
@@ -27,7 +27,7 @@ package com.taobao.metamorphosis.server.store;
 public interface AppendCallback {
 
     /**
-     * 在append成功后回调此方法，传入写入的location
+     * 鍦╝ppend鎴愬姛鍚庡洖璋冩鏂规硶锛屼紶鍏ュ啓鍏ョ殑location
      * 
      * @param location
      */

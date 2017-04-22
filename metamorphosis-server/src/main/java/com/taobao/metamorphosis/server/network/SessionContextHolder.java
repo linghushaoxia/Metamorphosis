@@ -23,7 +23,7 @@ import com.taobao.metamorphosis.transaction.TransactionId;
 
 
 /**
- * SessionContext¹ÜÀíÀà
+ * SessionContextç®¡ç†ç±»
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-18
@@ -40,7 +40,7 @@ public class SessionContextHolder {
     public static SessionContext getOrCreateSessionContext(final Connection conn, final TransactionId xid) {
         SessionContext context = null;
         if (xid != null && xid.isLocalTransaction()) {
-            // ±¾µØÊÂÎñ´øÓĞsession id£¬Òò´ËÓÃsessionId×ökey´æ´¢
+            // æœ¬åœ°äº‹åŠ¡å¸¦æœ‰session idï¼Œå› æ­¤ç”¨sessionIdåškeyå­˜å‚¨
             final LocalTransactionId id = (LocalTransactionId) xid;
             context = (SessionContext) conn.getAttribute(id.getSessionId());
             if (context == null) {
@@ -52,7 +52,7 @@ public class SessionContextHolder {
             }
         }
         else {
-            // XAÊÂÎñÃ»ÓĞsession id£¬Ê¹ÓÃ¹«¹²key£¬¼õÉÙÖØ¸´new
+            // XAäº‹åŠ¡æ²¡æœ‰session idï¼Œä½¿ç”¨å…¬å…±keyï¼Œå‡å°‘é‡å¤new
             context = (SessionContext) conn.getAttribute(GLOBAL_SESSION_KEY);
             if (context == null) {
                 context = new SessionContextImpl(null, conn);

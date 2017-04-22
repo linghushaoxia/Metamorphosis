@@ -21,7 +21,7 @@ import java.io.Serializable;
 
 
 /**
- * 事务日志索引位置
+ * 浜嬪姟鏃ュ織绱㈠紩浣嶇疆
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-22

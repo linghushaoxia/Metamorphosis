@@ -47,7 +47,7 @@ import static org.quartz.TriggerBuilder.newTrigger;
 
 
 /**
- * ÏûÏ¢´æ´¢¹ÜÀíÆ÷
+ * æ¶ˆæ¯å­˜å‚¨ç®¡ç†å™¨
  * 
  * @author boyan
  * @Date 2011-4-21
@@ -130,13 +130,13 @@ public class MessageStoreManager implements Service {
 
         this.initScheduler();
 
-        // ¶¨Ê±flush
+        // å®šæ—¶flush
         this.scheduleFlushTask();
 
     }
 
 
-    /** ¸ù¾İflushÊ±¼ä¼ä¸ô·ÖÀà£¬·Ö±ğÌá½»¶¨Ê±ÈÎÎñ */
+    /** æ ¹æ®flushæ—¶é—´é—´éš”åˆ†ç±»ï¼Œåˆ†åˆ«æäº¤å®šæ—¶ä»»åŠ¡ */
     private void scheduleFlushTask() {
         log.info("Begin schedule flush task...");
         final Set<Integer> newUnflushIntervals = new HashSet<Integer>();
@@ -144,12 +144,12 @@ public class MessageStoreManager implements Service {
             newUnflushIntervals.add(this.metaConfig.getTopicConfig(topic).getUnflushInterval());
         }
 
-        // µ÷ÕûÏß³Ì³Ø´óĞ¡
+        // è°ƒæ•´çº¿ç¨‹æ± å¤§å°
         if (newUnflushIntervals.size() != this.unflushIntervalMap.size()) {
             this.scheduledExecutorService.setCorePoolSize(newUnflushIntervals.size() + 1);
         }
 
-        // ĞÂµÄÓĞ£¬¾ÉµÄÃ»ÓĞ£¬Ìá½»ÈÎÎñ
+        // æ–°çš„æœ‰ï¼Œæ—§çš„æ²¡æœ‰ï¼Œæäº¤ä»»åŠ¡
         for (final Integer unflushInterval : newUnflushIntervals) {
             if (!this.unflushIntervalMap.containsKey(unflushInterval) && unflushInterval > 0) {
                 final ScheduledFuture<?> future =
@@ -160,7 +160,7 @@ public class MessageStoreManager implements Service {
             }
         }
 
-        // ĞÂµÄÃ»ÓĞ£¬¾ÉµÄÓĞ£¬Ïú»ÙÈÎÎñ
+        // æ–°çš„æ²¡æœ‰ï¼Œæ—§çš„æœ‰ï¼Œé”€æ¯ä»»åŠ¡
         final Set<Integer> set = new HashSet<Integer>(this.unflushIntervalMap.keySet());
         for (final Integer unflushInterval : set) {
             if (!newUnflushIntervals.contains(unflushInterval)) {
@@ -178,9 +178,9 @@ public class MessageStoreManager implements Service {
     }
 
 
-    /** ³õÊ¼»¯¶¨Ê±Ïß³Ì³Ø */
+    /** åˆå§‹åŒ–å®šæ—¶çº¿ç¨‹æ±  */
     private void initScheduler() {
-        // ¸ù¾İ¶¨Ê±flushÊ±¼ä¼ä¸ô·ÖÀà,¼ÆËã¶¨Ê±Ïß³Ì³Ø´óĞ¡,²¢³õÊ¼»¯
+        // æ ¹æ®å®šæ—¶flushæ—¶é—´é—´éš”åˆ†ç±»,è®¡ç®—å®šæ—¶çº¿ç¨‹æ± å¤§å°,å¹¶åˆå§‹åŒ–
         final Set<Integer> tmpSet = new HashSet<Integer>();
         for (final String topic : this.metaConfig.getTopics()) {
             final int unflushInterval = this.metaConfig.getTopicConfig(topic).getUnflushInterval();
@@ -455,7 +455,7 @@ public class MessageStoreManager implements Service {
 
     @Override
     public void init() {
-        // ¼ÓÔØÒÑÓĞÊı¾İ²¢Ğ£Ñé
+        // åŠ è½½å·²æœ‰æ•°æ®å¹¶æ ¡éªŒ
         try {
             this.loadMessageStores(this.metaConfig);
         }
@@ -487,7 +487,7 @@ public class MessageStoreManager implements Service {
 
     private void startScheduleDeleteJobs() {
         final Map<String/* deleteWhen */, JobInfo> jobs = new HashMap<String, MessageStoreManager.JobInfo>();
-        // Æô¶¯quartz job
+        // å¯åŠ¨quartz job
         for (final String topic : this.getAllTopics()) {
             final TopicConfig topicConfig = this.metaConfig.getTopicConfig(topic);
             final String deleteWhen =
@@ -501,7 +501,7 @@ public class MessageStoreManager implements Service {
                         jobInfo = new JobInfo(job, trigger);
                         jobs.put(deleteWhen, jobInfo);
                     }
-                    // Ìí¼Ó±¾topic
+                    // æ·»åŠ æœ¬topic
                     ((Set<String>) jobInfo.job.getJobDataMap().get(DeleteJob.TOPICS)).add(topic);
         }
 
@@ -596,7 +596,7 @@ public class MessageStoreManager implements Service {
             return messageStore;
         }
         else {
-            // ¶Ôstring¼ÓËø£¬ÌØÀı
+            // å¯¹stringåŠ é”ï¼Œç‰¹ä¾‹
             synchronized (topic.intern()) {
                 messageStore = map.get(partition);
                 // double check

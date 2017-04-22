@@ -62,7 +62,7 @@ import com.taobao.metamorphosis.utils.MessageUtils;
 
 
 /**
- * ÊÂÎñ´æ´¢ÒıÇæ
+ * äº‹åŠ¡å­˜å‚¨å¼•æ“
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-17
@@ -89,13 +89,13 @@ public class JournalStore implements Closeable {
 
     private final Checkpoint checkpoint;
 
-    // Ã¿¸öÈÕÖ¾ÎÄ¼ş×î´ó´óĞ¡Îª64M,,67108864
+    // æ¯ä¸ªæ—¥å¿—æ–‡ä»¶æœ€å¤§å¤§å°ä¸º64M,,67108864
     static int MAX_FILE_SIZE = Integer.parseInt(System.getProperty("meta.tx_journal_file_size", "67108864"));
 
-    // ÈÕÖ¾Ë¢ÅÌÉèÖÃ£¬0±íÊ¾ÈÃ²Ù×÷ÏµÍ³¾ö¶¨£¬1±íÊ¾Ã¿´Îcommit¶¼Ë¢ÅÌ£¬2±íÊ¾Ã¿¸ôÒ»ÃëË¢ÅÌÒ»´Î
+    // æ—¥å¿—åˆ·ç›˜è®¾ç½®ï¼Œ0è¡¨ç¤ºè®©æ“ä½œç³»ç»Ÿå†³å®šï¼Œ1è¡¨ç¤ºæ¯æ¬¡commitéƒ½åˆ·ç›˜ï¼Œ2è¡¨ç¤ºæ¯éš”ä¸€ç§’åˆ·ç›˜ä¸€æ¬¡
     private final int flushTxLogAtCommit;
 
-    // ĞŞ¸Ä¹ıµÄdatafileÁĞ±í
+    // ä¿®æ”¹è¿‡çš„datafileåˆ—è¡¨
     private final Set<DataFile> modifiedDataFiles = new HashSet<DataFile>();
 
 
@@ -126,7 +126,7 @@ public class JournalStore implements Closeable {
         this.flushTxLogAtCommit = flushTxLogAtCommit;
         this.recover();
         if (this.flushTxLogAtCommit == 2) {
-            // 2±íÊ¾Ã¿ÃëË¢ÅÌÒ»´Î
+            // 2è¡¨ç¤ºæ¯ç§’åˆ·ç›˜ä¸€æ¬¡
             this.scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
             this.scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
 
@@ -147,7 +147,7 @@ public class JournalStore implements Closeable {
 
 
     private boolean isNeedForce(final TxCommand txCmd, final boolean commitOrRollback) {
-        // µÈÓÚ1µÄÊ±ºò²ÅĞèÒªÃ¿´Îprepare/commit¶¼force
+        // ç­‰äº1çš„æ—¶å€™æ‰éœ€è¦æ¯æ¬¡prepare/commitéƒ½force
         return (commitOrRollback || txCmd.getForce()) && this.flushTxLogAtCommit == 1;
     }
 
@@ -171,16 +171,16 @@ public class JournalStore implements Closeable {
 
 
     /**
-     * Ğ´ÈëÃüÁîµ½ÊÂÎñÈÕÖ¾
+     * å†™å…¥å‘½ä»¤åˆ°äº‹åŠ¡æ—¥å¿—
      * 
      * @param msg
-     *            ÊÂÎñÃüÁî
+     *            äº‹åŠ¡å‘½ä»¤
      * @param attachment
-     *            ÊÂÎñÃüÁîµÄ¸½¼ÓÊı¾İ
+     *            äº‹åŠ¡å‘½ä»¤çš„é™„åŠ æ•°æ®
      * @param location
-     *            Ğ´ÈëµÄÎ»ÖÃ
+     *            å†™å…¥çš„ä½ç½®
      * @param committedOrRollback
-     *            ÊÇ·ñÊÇÌá½»»òÕß»Ø¹öÃüÁî
+     *            æ˜¯å¦æ˜¯æäº¤æˆ–è€…å›æ»šå‘½ä»¤
      * @return
      * @throws IOException
      */
@@ -200,10 +200,10 @@ public class JournalStore implements Closeable {
             dataFile = this.getDataFile(location);
             final long offset = dataFile.position();
             dataFile.write(buf);
-            // Ìá½»»òÕß»Ø¹ö£¬µİ¼õ¼ÆÊı
+            // æäº¤æˆ–è€…å›æ»šï¼Œé€’å‡è®¡æ•°
             if (committedOrRollback) {
                 dataFile.decrement();
-                // ¼ÓÈë±ä¸ü¶ÓÁĞ£¬µÈ´ıË¢ÅÌ
+                // åŠ å…¥å˜æ›´é˜Ÿåˆ—ï¼Œç­‰å¾…åˆ·ç›˜
                 if (this.flushTxLogAtCommit == 2) {
                     this.modifiedDataFiles.add(dataFile);
                 }
@@ -263,9 +263,9 @@ public class JournalStore implements Closeable {
 
 
     private void maybeRoll(final DataFile dataFile) throws IOException {
-        // ÎÄ¼ş³¬¹ı´óĞ¡²¢ÇÒ²»ÔÙ±»ÒıÓÃ£¬ÔòÉ¾³ıÖ®
+        // æ–‡ä»¶è¶…è¿‡å¤§å°å¹¶ä¸”ä¸å†è¢«å¼•ç”¨ï¼Œåˆ™åˆ é™¤ä¹‹
         if (dataFile.getLength() > MAX_FILE_SIZE && dataFile.isUnUsed()) {
-            // Èç¹ûÒªÉ¾³ıµÄÊÇµ±Ç°ÎÄ¼ş£¬ĞèÒªÉú³ÉÒ»¸öĞÂÎÄ¼ş
+            // å¦‚æœè¦åˆ é™¤çš„æ˜¯å½“å‰æ–‡ä»¶ï¼Œéœ€è¦ç”Ÿæˆä¸€ä¸ªæ–°æ–‡ä»¶
             if (dataFile == this.currDataFile) {
                 this.newDataFile();
             }
@@ -279,11 +279,11 @@ public class JournalStore implements Closeable {
         DataFile dataFile = null;
         if (location == null) {
             dataFile = this.currDataFile;
-            // Èç¹ûÎÄ¼ş³¬¹ı´óĞ¡£¬ÔòÉú³ÉÒ»¸öĞÂÎÄ¼ş
+            // å¦‚æœæ–‡ä»¶è¶…è¿‡å¤§å°ï¼Œåˆ™ç”Ÿæˆä¸€ä¸ªæ–°æ–‡ä»¶
             if (dataFile.getLength() > MAX_FILE_SIZE) {
                 dataFile = this.newDataFile();
             }
-            // µİÔö¼ÆÊı
+            // é€’å¢è®¡æ•°
             dataFile.increment();
         }
         else {
@@ -306,7 +306,7 @@ public class JournalStore implements Closeable {
             }
         });
 
-        // °´ÕÕĞòºÅÉıĞòÅÅĞò
+        // æŒ‰ç…§åºå·å‡åºæ’åº
         Arrays.sort(ls, new Comparator<File>() {
 
             @Override
@@ -317,13 +317,13 @@ public class JournalStore implements Closeable {
         });
 
         final JournalLocation cp = this.checkpoint.getRecentCheckpoint();
-        // 4¸ö×Ö½ÚµÄ³¤¶Èbuffer
+        // 4ä¸ªå­—èŠ‚çš„é•¿åº¦buffer
         final ByteBuffer lenBuf = ByteBuffer.allocate(4);
         DataFile dataFile = null;
         for (int i = 0; i < ls.length; i++) {
             final File file = ls[i];
             if (file.isFile() && file.canRead()) {
-                // ´Ócheckpoint¿ªÊ¼»Ø·Å
+                // ä»checkpointå¼€å§‹å›æ”¾
                 if (cp == null || this.getFileNumber(file) >= cp.number) {
                     dataFile = this.recoverFile(cp, ls, lenBuf, i, file);
                 }
@@ -345,7 +345,7 @@ public class JournalStore implements Closeable {
 
 
     /**
-     * ·µ»Ø×î½üµÄcheckpoint
+     * è¿”å›æœ€è¿‘çš„checkpoint
      * 
      * @return
      */
@@ -355,7 +355,7 @@ public class JournalStore implements Closeable {
 
 
     /**
-     * ÉèÖÃÒ»¸öcheckpoint£¬ÏÂ´Î»Ø·Å½«´Ó×î½üÉèÖÃµÄcheckpoint¿ªÊ¼
+     * è®¾ç½®ä¸€ä¸ªcheckpointï¼Œä¸‹æ¬¡å›æ”¾å°†ä»æœ€è¿‘è®¾ç½®çš„checkpointå¼€å§‹
      */
     public void checkpoint() throws Exception {
         this.checkpoint.check(this.transactionStore.checkpoint());
@@ -365,11 +365,11 @@ public class JournalStore implements Closeable {
     private DataFile recoverFile(final JournalLocation cp, final File[] ls, final ByteBuffer lenBuf, final int i,
             final File file) throws IOException {
         final int number = this.getFileNumber(file);
-        // ¶ÁÊı¾İµÄÆğµã
+        // è¯»æ•°æ®çš„èµ·ç‚¹
         long readOffset = 0;
         final DataFile dataFile = new DataFile(file, number);
 
-        // Èç¹ûµ±Ç°»Ö¸´µÄÎÄ¼şÊÇcheckpoint¶ÔÓ¦µÄÎÄ¼ş£¬Ôò´ÓcheckpointÖ¸¶¨µÄoffset¿ªÊ¼¶ÁÈ¡
+        // å¦‚æœå½“å‰æ¢å¤çš„æ–‡ä»¶æ˜¯checkpointå¯¹åº”çš„æ–‡ä»¶ï¼Œåˆ™ä»checkpointæŒ‡å®šçš„offsetå¼€å§‹è¯»å–
         if (cp != null && dataFile.getNumber() == cp.number) {
             readOffset = cp.offset;
         }
@@ -392,7 +392,7 @@ public class JournalStore implements Closeable {
                     }
                     catch (final Exception e) {
                         log.error("Process tx command failed", e);
-                        // »Ø·ÅÊ§°Ü£¬Ìø³öÑ­»·£¬ºóĞøµÄÊÂÎñÈÕÖ¾½«±»truncate
+                        // å›æ”¾å¤±è´¥ï¼Œè·³å‡ºå¾ªç¯ï¼Œåç»­çš„äº‹åŠ¡æ—¥å¿—å°†è¢«truncate
                         break;
                         // throw new IllegalStateException(e);
                     }
@@ -400,16 +400,16 @@ public class JournalStore implements Closeable {
                     readOffset += cmdBufLen + attachmentLen;
                 }
                 else {
-                    // Ã»¶ÁÂúcmdBuf£¬Ìø³öÑ­»·
+                    // æ²¡è¯»æ»¡cmdBufï¼Œè·³å‡ºå¾ªç¯
                     break;
                 }
             }
             else {
-                // Ã»¶ÁÂúlenBuf£¬Ìø³öÑ­»·
+                // æ²¡è¯»æ»¡lenBufï¼Œè·³å‡ºå¾ªç¯
                 break;
             }
         }
-        // ×îºóÒ»¸öÃüÁî²»ÍêÕû£¬truncateµô
+        // æœ€åä¸€ä¸ªå‘½ä»¤ä¸å®Œæ•´ï¼Œtruncateæ‰
         long truncated = 0;
         if (readOffset != dataFile.position()) {
             truncated = dataFile.position() - readOffset;
@@ -430,7 +430,7 @@ public class JournalStore implements Closeable {
 
 
     /**
-     * ÖØ·ÅÊÂÎñÈÕÖ¾£¬·µ»Ø¸½¼ÓÊı¾İ³¤¶È
+     * é‡æ”¾äº‹åŠ¡æ—¥å¿—ï¼Œè¿”å›é™„åŠ æ•°æ®é•¿åº¦
      * 
      * @param number
      * @param offset
@@ -461,7 +461,7 @@ public class JournalStore implements Closeable {
         final TransactionOperation command = TransactionOperation.parseFrom(txCmd.getCmdContent());
         final TransactionId xid = TransactionId.valueOf(command.getTransactionId());
         try {
-            // ÖØ·ÅÊÂÎñÈÕÖ¾
+            // é‡æ”¾äº‹åŠ¡æ—¥å¿—
             switch (command.getType()) {
             case XA_PREPARE:
                 this.transactionStore.replayPrepare(xid);
@@ -478,10 +478,10 @@ public class JournalStore implements Closeable {
 
                 final Map<MessageStore, List<Long>> ids = tx.getMsgIds();
                 final Map<MessageStore, List<PutCommand>> putCmds = tx.getPutCommands();
-                // »ñÈ¡¸½¼ÓÊı¾İ£¬Ìí¼ÓÏûÏ¢µÄÎ»ÖÃĞÅÏ¢
+                // è·å–é™„åŠ æ•°æ®ï¼Œæ·»åŠ æ¶ˆæ¯çš„ä½ç½®ä¿¡æ¯
                 final int attachmentLen = command.getDataLength();
                 final ByteBuffer buf = ByteBuffer.allocate(attachmentLen);
-                // ¸½¼ÓÊı¾İµÄË÷ÒıÎ»ÖÃ£¬Æğµã£«4¸ö×Ö½ÚµÄcmd³¤¶È£«cmd±¾Éí³¤¶È
+                // é™„åŠ æ•°æ®çš„ç´¢å¼•ä½ç½®ï¼Œèµ·ç‚¹ï¼‹4ä¸ªå­—èŠ‚çš„cmdé•¿åº¦ï¼‹cmdæœ¬èº«é•¿åº¦
                 final long dataOffset = 4 + offset + cmdBufLen;
                 dataFile.read(buf, dataOffset);
                 buf.flip();
@@ -493,7 +493,7 @@ public class JournalStore implements Closeable {
                     for (final Map.Entry<MessageStore, List<Long>> entry : ids.entrySet()) {
                         final MessageStore msgStore = entry.getKey();
                         final AddMsgLocation addedLocation = locations.get(msgStore.getDescription());
-                        // Ã»ÓĞÌí¼ÓÏûÏ¢£¬ĞèÒªÖØĞÂÌí¼Ó
+                        // æ²¡æœ‰æ·»åŠ æ¶ˆæ¯ï¼Œéœ€è¦é‡æ–°æ·»åŠ 
                         final List<Long> idList = entry.getValue();
                         final List<PutCommand> cmdList = putCmds.get(msgStore);
                         if (addedLocation == null) {
@@ -513,13 +513,13 @@ public class JournalStore implements Closeable {
 
                         }
                         else {
-                            // ³¢ÊÔÖØ·Å
+                            // å°è¯•é‡æ”¾
                             counter.incrementAndGet();
                             msgStore.replayAppend(addedLocation.getOffset(), addedLocation.getLength(),
                                 addedLocation.checksum, idList, cmdList, new AppendCallback() {
                                 @Override
                                 public void appendComplete(final Location newLocation) {
-                                    // Èç¹ûÖØ·ÅµÄÊ±ºò¸üĞÂÁËÎ»ÖÃ£¬ÔòĞèÒª¸üĞÂÎ»ÖÃĞÅÏ¢
+                                    // å¦‚æœé‡æ”¾çš„æ—¶å€™æ›´æ–°äº†ä½ç½®ï¼Œåˆ™éœ€è¦æ›´æ–°ä½ç½®ä¿¡æ¯
                                     if (newLocation != null) {
                                         replayed.set(true);
                                         locations.put(msgStore.getDescription(),
@@ -534,16 +534,16 @@ public class JournalStore implements Closeable {
                     }
                 }
 
-                // Èç¹ûÓĞÖØ·Å£¬¸²Ğ´Î»ÖÃĞÅÏ¢
+                // å¦‚æœæœ‰é‡æ”¾ï¼Œè¦†å†™ä½ç½®ä¿¡æ¯
                 if (replayed.get()) {
-                    // µÈ´ı»Øµ÷Íê³É
+                    // ç­‰å¾…å›è°ƒå®Œæˆ
                     while (counter.get() > 0) {
                         Thread.sleep(50);
                     }
                     dataFile.write(dataOffset, AddMsgLocationUtils.encodeLocation(locations));
                     dataFile.force();
                 }
-                // ·µ»Ø¸½¼ÓÊı¾İ´óĞ¡
+                // è¿”å›é™„åŠ æ•°æ®å¤§å°
                 dataFile.decrement();
                 return attachmentLen;
             case LOCAL_ROLLBACK:
@@ -582,7 +582,7 @@ public class JournalStore implements Closeable {
 
 
     /**
-     * Éú³ÉÒ»¸öĞÂµÄÊı¾İÎÄ¼ş
+     * ç”Ÿæˆä¸€ä¸ªæ–°çš„æ•°æ®æ–‡ä»¶
      * 
      * @throws FileNotFoundException
      */
@@ -591,7 +591,7 @@ public class JournalStore implements Closeable {
         this.currDataFile =
                 new DataFile(new File(this.transactionsDir + File.separator + this.FILE_PREFIX + n), n, false);
         this.dataFiles.put(Integer.valueOf(n), this.currDataFile);
-        log.info("Created a new redo log£º" + this.currDataFile);
+        log.info("Created a new redo logï¼š" + this.currDataFile);
         return this.currDataFile;
     }
 

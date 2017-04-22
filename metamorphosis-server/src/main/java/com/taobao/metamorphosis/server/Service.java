@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.server;
 
 /**
- * 服务接口
+ * 鏈嶅姟鎺ュ彛
  * 
  * @author boyan
  * @Date 2011-4-22

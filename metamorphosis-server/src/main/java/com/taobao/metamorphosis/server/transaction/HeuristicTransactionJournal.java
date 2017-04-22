@@ -30,7 +30,7 @@ import com.taobao.metamorphosis.utils.codec.impl.JavaSerializer;
 
 
 /**
- * ÊÖ¹¤´¦ÀíµÄÊÂÎñÈÕÖ¾
+ * æ‰‹å·¥å¤„ç†çš„äº‹åŠ¡æ—¥å¿—
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-11-24

@@ -25,7 +25,7 @@ import com.taobao.metamorphosis.transaction.TransactionId;
 
 
 /**
- * ╩А╩╟иообнд
+ * Д╪ Х╞²Д╦┼Д╦▀Ф√┤
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-18

@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.server.transaction.store;
 
 /**
- * ÊÂÎñÒıÇæMBean½Ó¿Ú
+ * äº‹åŠ¡å¼•æ“MBeanæ¥å£
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-25
@@ -26,7 +26,7 @@ package com.taobao.metamorphosis.server.transaction.store;
  */
 public interface JournalTransactionStoreMBean {
     /**
-     * Ö´ĞĞcheckpoint
+     * æ‰§è¡Œcheckpoint
      * 
      * @throws Exception
      */
@@ -34,7 +34,7 @@ public interface JournalTransactionStoreMBean {
 
 
     /**
-     * ·µ»Øµ±Ç°»îÔ¾ÊÂÎñÊı
+     * è¿”å›å½“å‰æ´»è·ƒäº‹åŠ¡æ•°
      * 
      * @return
      */

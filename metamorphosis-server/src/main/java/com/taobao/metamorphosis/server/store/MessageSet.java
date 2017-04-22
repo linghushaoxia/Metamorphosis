@@ -25,7 +25,7 @@ import com.taobao.metamorphosis.server.network.SessionContext;
 
 
 /**
- * 消息集合
+ * 娑堟伅闆嗗悎
  * 
  * @author boyan
  * @Date 2011-4-19

@@ -47,7 +47,7 @@ import com.taobao.metamorphosis.utils.ZkUtils.ZKConfig;
 
 
 /**
- * ·şÎñÆ÷¶ËÅäÖÃ
+ * æœåŠ¡å™¨ç«¯é…ç½®
  * 
  * @author boyan
  * @Date 2011-4-21
@@ -77,7 +77,7 @@ public class MetaConfig extends Config implements Serializable, MetaConfigMBean 
 
     private ZKConfig zkConfig;
 
-    // ÎÄ¼şÉ¾³ı²ßÂÔ:"²ßÂÔÃû³Æ,Éè¶¨ÖµÁĞ±í"£¬Ä¬ÈÏÎª±£´æ7Ìì
+    // æ–‡ä»¶åˆ é™¤ç­–ç•¥:"ç­–ç•¥åç§°,è®¾å®šå€¼åˆ—è¡¨"ï¼Œé»˜è®¤ä¸ºä¿å­˜7å¤©
     private String deletePolicy = "delete,168";
 
     private ConcurrentHashMap<String/* topic */, TopicConfig> topicConfigMap =
@@ -94,31 +94,31 @@ public class MetaConfig extends Config implements Serializable, MetaConfigMBean 
      */
     private String appClassPath;
 
-    // ÊÂÎñÏà¹ØÅäÖÃ
-    // ×î´ó±£´æµÄcheckpointÊıÄ¿£¬³¬¹ı½«ÌÔÌ­×îÀÏµÄ
+    // äº‹åŠ¡ç›¸å…³é…ç½®
+    // æœ€å¤§ä¿å­˜çš„checkpointæ•°ç›®ï¼Œè¶…è¿‡å°†æ·˜æ±°æœ€è€çš„
     private int maxCheckpoints = 3;
 
-    // ×Ô¶¯checkpoint¼ä¸ô£¬Ä¬ÈÏ1Ğ¡Ê±
+    // è‡ªåŠ¨checkpointé—´éš”ï¼Œé»˜è®¤1å°æ—¶
     private long checkpointInterval = 60 * 60 * 1000L;
 
-    // ×î´óÊÂÎñ³¬Ê±Ê±¼ä¸öÊı£¬Ä¬ÈÏ3Íò¸ö
+    // æœ€å¤§äº‹åŠ¡è¶…æ—¶æ—¶é—´ä¸ªæ•°ï¼Œé»˜è®¤3ä¸‡ä¸ª
     private int maxTxTimeoutTimerCapacity = 30000;
-    // ÊÂÎñÈÕÖ¾Ë¢ÅÌÉèÖÃ£¬0±íÊ¾ÈÃ²Ù×÷ÏµÍ³¾ö¶¨£¬1±íÊ¾Ã¿´Îcommit¶¼Ë¢ÅÌ£¬2±íÊ¾Ã¿¸ôÒ»ÃëË¢ÅÌÒ»´Î
+    // äº‹åŠ¡æ—¥å¿—åˆ·ç›˜è®¾ç½®ï¼Œ0è¡¨ç¤ºè®©æ“ä½œç³»ç»Ÿå†³å®šï¼Œ1è¡¨ç¤ºæ¯æ¬¡commitéƒ½åˆ·ç›˜ï¼Œ2è¡¨ç¤ºæ¯éš”ä¸€ç§’åˆ·ç›˜ä¸€æ¬¡
     private int flushTxLogAtCommit = 1;
 
-    // ÊÂÎñ×î´ó³¬Ê±Ê±¼ä£¬Ä¬ÈÏÒ»·ÖÖÓ
+    // äº‹åŠ¡æœ€å¤§è¶…æ—¶æ—¶é—´ï¼Œé»˜è®¤ä¸€åˆ†é’Ÿ
     private int maxTxTimeoutInSeconds = 60;
 
-    // ÈÕÖ¾´æ´¢Ä¿Â¼£¬Ä¬ÈÏÊ¹ÓÃdataPath
+    // æ—¥å¿—å­˜å‚¨ç›®å½•ï¼Œé»˜è®¤ä½¿ç”¨dataPath
     private String dataLogPath = this.dataPath;
 
     /**
-     * È«¾ÖµÄÉ¾³ıcrontab±í´ïÊ½£¬Ã¿ÌìÔçÉÏ6µãºÍÍíÉÏ6µãÖ´ĞĞ
+     * å…¨å±€çš„åˆ é™¤crontabè¡¨è¾¾å¼ï¼Œæ¯å¤©æ—©ä¸Š6ç‚¹å’Œæ™šä¸Š6ç‚¹æ‰§è¡Œ
      */
     private String deleteWhen = "0 0 6,18 * * ?";
 
     /**
-     * quartzÊ¹ÓÃµÄÏß³Ì³Ø´óĞ¡
+     * quartzä½¿ç”¨çš„çº¿ç¨‹æ± å¤§å°
      */
     private int quartzThreadCount = 5;
 
@@ -794,7 +794,7 @@ public class MetaConfig extends Config implements Serializable, MetaConfigMBean 
 
 
     /**
-     * Ğ£ÑéÅäÖÃÊÇ·ñÕıÈ·
+     * æ ¡éªŒé…ç½®æ˜¯å¦æ­£ç¡®
      */
     public void verify() {
         if (this.getTopics().isEmpty()) {
@@ -813,7 +813,7 @@ public class MetaConfig extends Config implements Serializable, MetaConfigMBean 
     public void setDataPath(final String dataPath) {
         final String oldDataPath = this.dataPath;
         this.dataPath = dataPath;
-        // Èç¹ûdataLogPathÃ»ÓĞ¸Ä±ä¹ı£¬ÄÇÃ´Ò²ĞèÒª½«dataLogPathÖ¸ÏòĞÂµÄdataPath
+        // å¦‚æœdataLogPathæ²¡æœ‰æ”¹å˜è¿‡ï¼Œé‚£ä¹ˆä¹Ÿéœ€è¦å°†dataLogPathæŒ‡å‘æ–°çš„dataPath
         if (oldDataPath.equals(this.dataLogPath)) {
             this.dataLogPath = this.dataPath;
         }
@@ -846,11 +846,11 @@ public class MetaConfig extends Config implements Serializable, MetaConfigMBean 
     @Override
     public void closePartitions(final String topic, final int start, final int end) {
         if (StringUtils.isBlank(topic) || !this.topics.contains(topic)) {
-            log.warn("topic=[" + topic + "]Îª¿Õ»òÎ´·¢²¼");
+            log.warn("topic=[" + topic + "]ä¸ºç©ºæˆ–æœªå‘å¸ƒ");
             return;
         }
         if (start < 0 || start > end) {
-            log.warn("ÆğÊ¼»ò½áÊøµÄ·ÖÇøºÅ·Ç·¨,start=" + start + ",end=" + end);
+            log.warn("èµ·å§‹æˆ–ç»“æŸçš„åˆ†åŒºå·éæ³•,start=" + start + ",end=" + end);
             return;
         }
 

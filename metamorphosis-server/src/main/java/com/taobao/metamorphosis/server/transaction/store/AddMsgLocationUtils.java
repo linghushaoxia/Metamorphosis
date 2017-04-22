@@ -25,7 +25,7 @@ import com.taobao.metamorphosis.server.transaction.store.JournalTransactionStore
 
 
 /**
- * Ìí¼ÓÏûÏ¢Î»ÖÃµÄĞòÁĞ»¯¹¤¾ßÀà
+ * æ·»åŠ æ¶ˆæ¯ä½ç½®çš„åºåˆ—åŒ–å·¥å…·ç±»
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-11-22

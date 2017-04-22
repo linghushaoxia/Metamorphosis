@@ -31,7 +31,7 @@ import com.taobao.metamorphosis.server.CommandProcessor;
 
 
 /**
- * offset²éÑ¯ÃüÁî´¦ÀíÆ÷
+ * offsetæŸ¥è¯¢å‘½ä»¤å¤„ç†å™¨
  * 
  * @author boyan
  * @Date 2011-4-21

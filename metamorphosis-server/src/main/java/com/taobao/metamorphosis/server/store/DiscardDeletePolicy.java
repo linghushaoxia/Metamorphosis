@@ -21,7 +21,7 @@ import java.io.File;
 
 
 /**
- * 超过一定时间的删除策略
+ * 瓒呰繃涓�瀹氭椂闂寸殑鍒犻櫎绛栫暐
  * 
  * @author boyan
  * @Date 2011-4-29
@@ -29,7 +29,7 @@ import java.io.File;
  */
 public class DiscardDeletePolicy implements DeletePolicy {
     public static final String NAME = "delete";
-    // 最长保存时间，单位毫秒
+    // 鏈�闀夸繚瀛樻椂闂达紝鍗曚綅姣
     protected long maxReservedTime;
 
 
@@ -44,7 +44,7 @@ public class DiscardDeletePolicy implements DeletePolicy {
 
 
     /**
-     * 删除文件
+     * 鍒犻櫎鏂囦欢
      */
     @Override
     public void process(final File file) {

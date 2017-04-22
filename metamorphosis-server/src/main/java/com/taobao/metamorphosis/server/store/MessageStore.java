@@ -47,7 +47,7 @@ import com.taobao.metamorphosis.utils.MessageUtils;
 
 
 /**
- * Ò»¸ötopicµÄÏûÏ¢´æ´¢£¬ÄÚ²¿¹ÜÀí¶à¸öÎÄ¼ş(segment)
+ * ä¸€ä¸ªtopicçš„æ¶ˆæ¯å­˜å‚¨ï¼Œå†…éƒ¨ç®¡ç†å¤šä¸ªæ–‡ä»¶(segment)
  * 
  * @author boyan
  * @Date 2011-4-20
@@ -61,13 +61,13 @@ public class MessageStore extends Thread implements Closeable {
     private volatile boolean closed = false;
     static final Log log = LogFactory.getLog(MessageStore.class);
 
-    // ±íÊ¾Ò»¸öÏûÏ¢ÎÄ¼ş
+    // è¡¨ç¤ºä¸€ä¸ªæ¶ˆæ¯æ–‡ä»¶
     static class Segment {
-        // ¸ÃÆ¬¶Î´ú±íµÄoffset
+        // è¯¥ç‰‡æ®µä»£è¡¨çš„offset
         final long start;
-        // ¶ÔÓ¦µÄÎÄ¼ş
+        // å¯¹åº”çš„æ–‡ä»¶
         final File file;
-        // ¸ÃÆ¬¶ÎµÄÏûÏ¢¼¯ºÏ
+        // è¯¥ç‰‡æ®µçš„æ¶ˆæ¯é›†åˆ
         FileMessageSet fileMessageSet;
 
 
@@ -84,13 +84,13 @@ public class MessageStore extends Thread implements Closeable {
             try {
                 final FileChannel channel = new RandomAccessFile(this.file, "rw").getChannel();
                 this.fileMessageSet = new FileMessageSet(channel, 0, channel.size(), mutable);
-                // // ²»¿É±äµÄ£¬ÕâÀï²»ÄÜÖ±½ÓÓÃFileMessageSet(channel, false)
+                // // ä¸å¯å˜çš„ï¼Œè¿™é‡Œä¸èƒ½ç›´æ¥ç”¨FileMessageSet(channel, false)
                 // if (mutable == true) {
                 // this.fileMessageSet.setMutable(true);
                 // }
             }
             catch (final IOException e) {
-                log.error("³õÊ¼»¯ÏûÏ¢¼¯ºÏÊ§°Ü", e);
+                log.error("åˆå§‹åŒ–æ¶ˆæ¯é›†åˆå¤±è´¥", e);
             }
         }
 
@@ -100,7 +100,7 @@ public class MessageStore extends Thread implements Closeable {
         }
 
 
-        // ÅĞ¶ÏoffsetÊÇ·ñÔÚ±¾ÎÄ¼şÄÚ
+        // åˆ¤æ–­offsetæ˜¯å¦åœ¨æœ¬æ–‡ä»¶å†…
         public boolean contains(final long offset) {
             if (this.size() == 0 && offset == this.start || this.size() > 0 && offset >= this.start
                     && offset <= this.start + this.size() - 1) {
@@ -113,7 +113,7 @@ public class MessageStore extends Thread implements Closeable {
     }
 
     /**
-     * ²»¿É±äµÄsegment list
+     * ä¸å¯å˜çš„segment list
      * 
      * @author boyan
      * @Date 2011-4-20
@@ -162,9 +162,9 @@ public class MessageStore extends Thread implements Closeable {
                     return;
                 }
                 final Segment[] update = new Segment[curr.length - 1];
-                // ¿½±´Ç°°ë¶Î
+                // æ‹·è´å‰åŠæ®µ
                 System.arraycopy(curr, 0, update, 0, index);
-                // ¿½±´ºó°ë¶Î
+                // æ‹·è´ååŠæ®µ
                 if (index + 1 < curr.length) {
                     System.arraycopy(curr, index + 1, update, index, curr.length - index - 1);
                 }
@@ -312,7 +312,7 @@ public class MessageStore extends Thread implements Closeable {
         final long start = System.currentTimeMillis();
         final Segment[] view = this.segments.view();
         for (final Segment segment : view) {
-            // ·Ç¿É±ä²¢ÇÒ¿ÉÉ¾³ı
+            // éå¯å˜å¹¶ä¸”å¯åˆ é™¤
             if (!segment.fileMessageSet.isMutable() && this.deletePolicy.canDelete(segment.file, start)) {
                 log.info("Deleting file " + segment.file.getAbsolutePath() + " with policy " + this.deletePolicy.name());
                 this.segments.delete(segment);
@@ -321,7 +321,7 @@ public class MessageStore extends Thread implements Closeable {
                     this.deletePolicy.process(segment.file);
                 }
                 catch (final IOException e) {
-                    log.error("¹Ø±Õ²¢É¾³ıfile message setÊ§°Ü", e);
+                    log.error("å…³é—­å¹¶åˆ é™¤file message setå¤±è´¥", e);
                 }
 
             }
@@ -331,7 +331,7 @@ public class MessageStore extends Thread implements Closeable {
 
 
     /**
-     * ¼ÓÔØ²¢Ğ£ÑéÎÄ¼ş
+     * åŠ è½½å¹¶æ ¡éªŒæ–‡ä»¶
      */
     private void loadSegments(final long offsetIfCreate) throws IOException {
         final List<Segment> accum = new ArrayList<Segment>();
@@ -345,19 +345,19 @@ public class MessageStore extends Thread implements Closeable {
                     }
                     final String filename = file.getName();
                     final long start = Long.parseLong(filename.substring(0, filename.length() - FILE_SUFFIX.length()));
-                    // ÏÈ×÷Îª²»¿É±äµÄ¼ÓÔØ½øÀ´
+                    // å…ˆä½œä¸ºä¸å¯å˜çš„åŠ è½½è¿›æ¥
                     accum.add(new Segment(start, file, false));
                 }
             }
         }
 
         if (accum.size() == 0) {
-            // Ã»ÓĞ¿ÉÓÃµÄÎÄ¼ş£¬´´½¨Ò»¸ö£¬Ë÷Òı´ÓoffsetIfCreate¿ªÊ¼
+            // æ²¡æœ‰å¯ç”¨çš„æ–‡ä»¶ï¼Œåˆ›å»ºä¸€ä¸ªï¼Œç´¢å¼•ä»offsetIfCreateå¼€å§‹
             final File newFile = new File(this.partitionDir, this.nameFromOffset(offsetIfCreate));
             accum.add(new Segment(offsetIfCreate, newFile));
         }
         else {
-            // ÖÁÉÙÓĞÒ»¸öÎÄ¼ş£¬Ğ£Ñé²¢°´ÕÕstartÉıĞòÅÅĞò
+            // è‡³å°‘æœ‰ä¸€ä¸ªæ–‡ä»¶ï¼Œæ ¡éªŒå¹¶æŒ‰ç…§startå‡åºæ’åº
             Collections.sort(accum, new Comparator<Segment>() {
                 @Override
                 public int compare(final Segment o1, final Segment o2) {
@@ -372,9 +372,9 @@ public class MessageStore extends Thread implements Closeable {
                     }
                 }
             });
-            // Ğ£ÑéÎÄ¼ş
+            // æ ¡éªŒæ–‡ä»¶
             this.validateSegments(accum);
-            // ×îºóÒ»¸öÎÄ¼şĞŞ¸ÄÎª¿É±ä
+            // æœ€åä¸€ä¸ªæ–‡ä»¶ä¿®æ”¹ä¸ºå¯å˜
             final Segment last = accum.remove(accum.size() - 1);
             last.fileMessageSet.close();
             log.info("Loading the last segment in mutable mode and running recover on " + last.file.getAbsolutePath());
@@ -420,7 +420,7 @@ public class MessageStore extends Thread implements Closeable {
 
 
     /**
-     * Appendµ¥¸öÏûÏ¢£¬·µ»ØĞ´ÈëµÄÎ»ÖÃ
+     * Appendå•ä¸ªæ¶ˆæ¯ï¼Œè¿”å›å†™å…¥çš„ä½ç½®
      * 
      * @param msgId
      * @param req
@@ -493,7 +493,7 @@ public class MessageStore extends Thread implements Closeable {
 
     @Override
     public void run() {
-        // µÈ´ıforceµÄ¶ÓÁĞ
+        // ç­‰å¾…forceçš„é˜Ÿåˆ—
         final LinkedList<WriteRequest> toFlush = new LinkedList<WriteRequest>();
         WriteRequest req = null;
         long lastFlushPos = 0;
@@ -511,17 +511,17 @@ public class MessageStore extends Thread implements Closeable {
                     else {
                         req = this.bufferQueue.poll();
                         if (req == null || last.fileMessageSet.getSizeInBytes() > lastFlushPos + this.maxTransferSize) {
-                            // Ç¿ÖÆforce
+                            // å¼ºåˆ¶force
                             last.fileMessageSet.flush();
                             lastFlushPos = last.fileMessageSet.highWaterMark();
-                            // Í¨Öª»Øµ÷
+                            // é€šçŸ¥å›è°ƒ
                             for (final WriteRequest request : toFlush) {
                                 request.cb.appendComplete(request.result);
                             }
                             toFlush.clear();
-                            // ÊÇ·ñĞèÒªroll
+                            // æ˜¯å¦éœ€è¦roll
                             this.mayBeRoll();
-                            // Èç¹ûÇĞ»»ÎÄ¼ş£¬ÖØĞÂ»ñÈ¡last
+                            // å¦‚æœåˆ‡æ¢æ–‡ä»¶ï¼Œé‡æ–°è·å–last
                             if (this.segments.last() != last) {
                                 last = null;
                             }
@@ -543,7 +543,7 @@ public class MessageStore extends Thread implements Closeable {
             }
             catch (final IOException e) {
                 log.error("Append message failed,*critical error*,the group commit thread would be terminated.", e);
-                // TODO ioÒì³£Ã»°ì·¨´¦ÀíÁË£¬¼òµ¥Ìø³ö?
+                // TODO ioå¼‚å¸¸æ²¡åŠæ³•å¤„ç†äº†ï¼Œç®€å•è·³å‡º?
                 break;
             }
             catch (final InterruptedException e) {
@@ -569,7 +569,7 @@ public class MessageStore extends Thread implements Closeable {
 
 
     /**
-     * Append¶à¸öÏûÏ¢£¬·µ»ØĞ´ÈëµÄÎ»ÖÃ
+     * Appendå¤šä¸ªæ¶ˆæ¯ï¼Œè¿”å›å†™å…¥çš„ä½ç½®
      * 
      * @param msgIds
      * @param reqs
@@ -582,7 +582,7 @@ public class MessageStore extends Thread implements Closeable {
 
 
     /**
-     * ÖØ·ÅÊÂÎñ²Ù×÷£¬Èç¹ûÏûÏ¢Ã»ÓĞ´æ´¢³É¹¦£¬ÔòÖØĞÂ´æ´¢£¬²¢·µ»ØĞÂµÄÎ»ÖÃ
+     * é‡æ”¾äº‹åŠ¡æ“ä½œï¼Œå¦‚æœæ¶ˆæ¯æ²¡æœ‰å­˜å‚¨æˆåŠŸï¼Œåˆ™é‡æ–°å­˜å‚¨ï¼Œå¹¶è¿”å›æ–°çš„ä½ç½®
      * 
      * @param to
      * @param msgIds
@@ -604,14 +604,14 @@ public class MessageStore extends Thread implements Closeable {
             buf.flip();
             final byte[] bytes = new byte[buf.remaining()];
             buf.get(bytes);
-            // Õâ¸öĞ£ÑéºÍÊÇÕû¸öÏûÏ¢µÄĞ£ÑéºÍ£¬Õâ¸úmessageµÄĞ£ÑéºÍ²»Ò»Ñù£¬×¢ÒâÇø·Ö
+            // è¿™ä¸ªæ ¡éªŒå’Œæ˜¯æ•´ä¸ªæ¶ˆæ¯çš„æ ¡éªŒå’Œï¼Œè¿™è·Ÿmessageçš„æ ¡éªŒå’Œä¸ä¸€æ ·ï¼Œæ³¨æ„åŒºåˆ†
             final int checkSumInDisk = CheckSum.crc32(bytes);
-            // Ã»ÓĞ´æÈë£¬ÔòÖØĞÂ´æ´¢
+            // æ²¡æœ‰å­˜å…¥ï¼Œåˆ™é‡æ–°å­˜å‚¨
             if (checksum != checkSumInDisk) {
                 this.append(msgIds, reqs, cb);
             }
             else {
-                // Õı³£´æ´¢ÁËÏûÏ¢£¬ÎŞĞè´¦Àí
+                // æ­£å¸¸å­˜å‚¨äº†æ¶ˆæ¯ï¼Œæ— éœ€å¤„ç†
                 if (cb != null) {
                     this.notifyCallback(cb, null);
                 }
@@ -702,7 +702,7 @@ public class MessageStore extends Thread implements Closeable {
 
 
     /**
-     * ·µ»Øµ±Ç°×î´ó¿É¶ÁµÄoffset
+     * è¿”å›å½“å‰æœ€å¤§å¯è¯»çš„offset
      * 
      * @return
      */
@@ -718,7 +718,7 @@ public class MessageStore extends Thread implements Closeable {
 
 
     /**
-     * ·µ»Øµ±Ç°×îĞ¡¿É¶ÁµÄoffset
+     * è¿”å›å½“å‰æœ€å°å¯è¯»çš„offset
      * 
      * @return
      */
@@ -734,8 +734,8 @@ public class MessageStore extends Thread implements Closeable {
 
 
     /**
-     * ¸ù¾İoffsetºÍmaxSize·µ»ØËùÔÚMessageSet, µ±offset³¬¹ı×î´óoffsetµÄÊ±ºò·µ»Ønull£¬
-     * µ±offsetĞ¡ÓÚ×îĞ¡offsetµÄÊ±ºòÅ×³öArrayIndexOutOfBoundsÒì³£
+     * æ ¹æ®offsetå’ŒmaxSizeè¿”å›æ‰€åœ¨MessageSet, å½“offsetè¶…è¿‡æœ€å¤§offsetçš„æ—¶å€™è¿”å›nullï¼Œ
+     * å½“offsetå°äºæœ€å°offsetçš„æ—¶å€™æŠ›å‡ºArrayIndexOutOfBoundså¼‚å¸¸
      * 
      * @param offset
      * 
@@ -755,7 +755,7 @@ public class MessageStore extends Thread implements Closeable {
 
 
     /**
-     * ·µ»ØÀëÖ¸¶¨offsetÍùÇ°×·Ëİ×î½üµÄ¿ÉÓÃoffset ,µ±´«ÈëµÄoffset³¬³ö·¶Î§µÄÊ±ºò·µ»Ø±ß½çoffset
+     * è¿”å›ç¦»æŒ‡å®šoffsetå¾€å‰è¿½æº¯æœ€è¿‘çš„å¯ç”¨offset ,å½“ä¼ å…¥çš„offsetè¶…å‡ºèŒƒå›´çš„æ—¶å€™è¿”å›è¾¹ç•Œoffset
      * 
      * @param offset
      * @return
@@ -783,28 +783,28 @@ public class MessageStore extends Thread implements Closeable {
 
 
     /**
-     * ¸ù¾İoffset²éÕÒÎÄ¼ş,Èç¹û³¬¹ıÎ²²¿£¬Ôò·µ»Ønull£¬Èç¹ûÔÚÍ·²¿Ö®Ç°£¬ÔòÅ×³öArrayIndexOutOfBoundsException
+     * æ ¹æ®offsetæŸ¥æ‰¾æ–‡ä»¶,å¦‚æœè¶…è¿‡å°¾éƒ¨ï¼Œåˆ™è¿”å›nullï¼Œå¦‚æœåœ¨å¤´éƒ¨ä¹‹å‰ï¼Œåˆ™æŠ›å‡ºArrayIndexOutOfBoundsException
      * 
      * @param segments
      * @param offset
-     * @return ·µ»ØÕÒµ½segment£¬Èç¹û³¬¹ıÎ²²¿£¬Ôò·µ»Ønull£¬Èç¹ûÔÚÍ·²¿Ö®Ç°£¬ÔòÅ×³öÒì³£
+     * @return è¿”å›æ‰¾åˆ°segmentï¼Œå¦‚æœè¶…è¿‡å°¾éƒ¨ï¼Œåˆ™è¿”å›nullï¼Œå¦‚æœåœ¨å¤´éƒ¨ä¹‹å‰ï¼Œåˆ™æŠ›å‡ºå¼‚å¸¸
      * @throws ArrayIndexOutOfBoundsException
      */
     Segment findSegment(final Segment[] segments, final long offset) {
         if (segments == null || segments.length < 1) {
             return null;
         }
-        // ÀÏµÄÊı¾İ²»´æÔÚ£¬·µ»Ø×î½ü×îÀÏµÄÊı¾İ
+        // è€çš„æ•°æ®ä¸å­˜åœ¨ï¼Œè¿”å›æœ€è¿‘æœ€è€çš„æ•°æ®
         final Segment last = segments[segments.length - 1];
-        // ÔÚÍ·²¿ÒÔÇ°£¬Å×³öÒì³£
+        // åœ¨å¤´éƒ¨ä»¥å‰ï¼ŒæŠ›å‡ºå¼‚å¸¸
         if (offset < segments[0].start) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        // ¸ÕºÃÔÚÎ²²¿»òÕß³¬³ö·¶Î§£¬·µ»Ønull
+        // åˆšå¥½åœ¨å°¾éƒ¨æˆ–è€…è¶…å‡ºèŒƒå›´ï¼Œè¿”å›null
         if (offset >= last.start + last.size()) {
             return null;
         }
-        // ¸ù¾İoffset¶ş·Ö²éÕÒ
+        // æ ¹æ®offsetäºŒåˆ†æŸ¥æ‰¾
         int low = 0;
         int high = segments.length - 1;
         while (low <= high) {

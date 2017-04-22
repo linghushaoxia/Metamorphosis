@@ -44,7 +44,7 @@ import com.taobao.metamorphosis.utils.ZkUtils.ZKConfig;
 
 
 /**
- * BrokerÓëZK½»»¥£¬×¢²ábrokerºÍtopicµÈ
+ * Brokerä¸ZKäº¤äº’ï¼Œæ³¨å†Œbrokerå’Œtopicç­‰
  * 
  * @author boyan
  * @Date 2011-4-25
@@ -119,7 +119,7 @@ public class BrokerZooKeeper implements PropertyChangeListener {
 
 
     /**
-     * ÔİÊ±´Ózk.propertiesÀï¼ÓÔØ.ÎªÁË·½±ãµ¥Ôª²âÊÔ
+     * æš‚æ—¶ä»zk.propertiesé‡ŒåŠ è½½.ä¸ºäº†æ–¹ä¾¿å•å…ƒæµ‹è¯•
      * 
      * @return
      */
@@ -147,10 +147,10 @@ public class BrokerZooKeeper implements PropertyChangeListener {
             return zkConfig;
         }
         catch (final IOException e) {
-            log.error("zkÅäÖÃÊ§°Ü", e);
+            log.error("zké…ç½®å¤±è´¥", e);
             return null;
         }
-        // ³¢ÊÔ´Ódiamond»ñÈ¡
+        // å°è¯•ä»diamondè·å–
         // this.diamondManager =
         // new DefaultDiamondManager(this.config.getDiamondZKGroup(),
         // this.config.getDiamondZKDataId(),
@@ -172,7 +172,7 @@ public class BrokerZooKeeper implements PropertyChangeListener {
         // log.info("Process new diamond zk config successfully");
         // }
         // catch (final Exception e) {
-        // log.error("´Ódiamond¼ÓÔØzkÅäÖÃÊ§°Ü", e);
+        // log.error("ä»diamondåŠ è½½zké…ç½®å¤±è´¥", e);
         // }
         //
         // }
@@ -198,7 +198,7 @@ public class BrokerZooKeeper implements PropertyChangeListener {
 
 
     /**
-     * ×¢²ábrokerµ½zk
+     * æ³¨å†Œbrokeråˆ°zk
      * 
      * @throws Exception
      */
@@ -212,7 +212,7 @@ public class BrokerZooKeeper implements PropertyChangeListener {
 
             ZkUtils.createEphemeralPath(this.zkClient, this.brokerIdPath, broker.getZKString());
 
-            // ¼æÈİÀÏ¿Í»§¶Ë£¬ÔİÊ±¼ÓÉÏ
+            // å…¼å®¹è€å®¢æˆ·ç«¯ï¼Œæš‚æ—¶åŠ ä¸Š
             if (!this.config.isSlave()) {
                 ZkUtils.updateEphemeralPath(this.zkClient,
                     this.metaZookeeper.brokerIdsPath + "/" + this.config.getBrokerId(), broker.getZKString());
@@ -225,7 +225,7 @@ public class BrokerZooKeeper implements PropertyChangeListener {
         }
         catch (final Exception e) {
             this.registerBrokerInZkFail = true;
-            log.error("×¢²ábrokerÊ§°Ü");
+            log.error("æ³¨å†Œbrokerå¤±è´¥");
             throw e;
         }
     }
@@ -282,7 +282,7 @@ public class BrokerZooKeeper implements PropertyChangeListener {
         }
         catch (final Exception e) {
             this.registerBrokerInZkFail = true;
-            log.error("×¢²ábrokerÊ§°Ü");
+            log.error("æ³¨å†Œbrokerå¤±è´¥");
             throw e;
         }
     }
@@ -290,20 +290,20 @@ public class BrokerZooKeeper implements PropertyChangeListener {
 
     private void unregisterBrokerInZk() throws Exception {
         if (this.registerBrokerInZkFail) {
-            log.warn("ÉÏ´Î×¢²ábrokerÎ´³É¹¦,²»ĞèÒªunregister");
+            log.warn("ä¸Šæ¬¡æ³¨å†ŒbrokeræœªæˆåŠŸ,ä¸éœ€è¦unregister");
             return;
         }
         ZkUtils.deletePath(this.zkClient, this.brokerIdPath);
         if (!this.config.isSlave()) {
             ZkUtils.deletePath(this.zkClient, this.masterConfigChecksumPath);
         }
-        // ¼æÈİÀÏ¿Í»§¶Ë£¬ÔİÊ±¼ÓÉÏ.
+        // å…¼å®¹è€å®¢æˆ·ç«¯ï¼Œæš‚æ—¶åŠ ä¸Š.
         if (!this.config.isSlave()) {
             try {
                 ZkUtils.deletePath(this.zkClient, this.metaZookeeper.brokerIdsPath + "/" + this.config.getBrokerId());
             }
             catch (final Exception e) {
-                // ÓĞslaveÊ±ÊÇÉ¾²»µôµÄ,Ğ´¸ö¿ÕÖµ½øÈ¥
+                // æœ‰slaveæ—¶æ˜¯åˆ ä¸æ‰çš„,å†™ä¸ªç©ºå€¼è¿›å»
                 ZkUtils.updateEphemeralPath(this.zkClient,
                     this.metaZookeeper.brokerIdsPath + "/" + this.config.getBrokerId(), "");
             }
@@ -355,7 +355,7 @@ public class BrokerZooKeeper implements PropertyChangeListener {
 
 
     /**
-     * ×¢²átopicºÍ·ÖÇøĞÅÏ¢µ½zk
+     * æ³¨å†Œtopicå’Œåˆ†åŒºä¿¡æ¯åˆ°zk
      * 
      * @param topic
      * @param force
@@ -503,7 +503,7 @@ public class BrokerZooKeeper implements PropertyChangeListener {
 
 
     /**
-     * ÖØĞÂ¼ÆËãbrokerIdPath
+     * é‡æ–°è®¡ç®—brokerIdPath
      */
     public void resetBrokerIdPath() {
         this.brokerIdPath = this.metaZookeeper.brokerIdsPathOf(this.config.getBrokerId(), this.config.getSlaveId());

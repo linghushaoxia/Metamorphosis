@@ -30,7 +30,7 @@ import com.taobao.metamorphosis.transaction.TransactionId;
 
 
 /**
- * 本地事务实现
+ * 鏈湴浜嬪姟瀹炵幇
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-23

@@ -59,7 +59,7 @@ import com.taobao.metamorphosis.utils.IdWorker;
 ;
 
 /**
- * 组装的meta server
+ * 缁勮鐨刴eta server
  * 
  * @author boyan
  * @Date 2011-4-29
@@ -247,7 +247,7 @@ public class MetaMorphosisBroker implements MetaMorphosisBrokerMBean {
 
 
     private void addTopicsChangeListener() {
-        // 监听topics列表变化并注册到zk
+        // 鐩戝惉topics鍒楄〃鍙樺寲骞舵敞鍐屽埌zk
         this.metaConfig.addPropertyChangeListener("topics", new PropertyChangeListener() {
 
             @Override
@@ -264,11 +264,11 @@ public class MetaMorphosisBroker implements MetaMorphosisBrokerMBean {
 
 
     private void registerTopicsInZk() throws Exception {
-        // 先注册配置的topic到zookeeper
+        // 鍏堟敞鍐岄厤缃殑topic鍒皕ookeeper
         for (final String topic : this.metaConfig.getTopics()) {
             this.brokerZooKeeper.registerTopicInZk(topic, true);
         }
-        // 注册加载的topic到zookeeper
+        // 娉ㄥ唽鍔犺浇鐨則opic鍒皕ookeeper
         for (final String topic : this.storeManager.getMessageStores().keySet()) {
             this.brokerZooKeeper.registerTopicInZk(topic, true);
         }

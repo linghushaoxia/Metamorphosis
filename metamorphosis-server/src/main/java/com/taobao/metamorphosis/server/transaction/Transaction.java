@@ -29,7 +29,7 @@ import com.taobao.metamorphosis.transaction.TransactionId;
 
 
 /**
- * ÊÂÎñ»ùÀà
+ * äº‹åŠ¡åŸºç±»
  * 
  * @author boyan(boyan@taobao.com)
  * @date 2011-8-23
@@ -71,7 +71,7 @@ public abstract class Transaction implements Serializable {
 
     public void setState(final byte state) {
         if (state == FINISHED_STATE) {
-            // ÖÕÖ¹³¬Ê±¼ì²â
+            // ç»ˆæ­¢è¶…æ—¶æ£€æµ‹
             if (this.timeoutRef != null) {
                 this.timeoutRef.cancel();
             }
@@ -81,7 +81,7 @@ public abstract class Transaction implements Serializable {
 
 
     /**
-     * ÉèÖÃÊÂÎñÕıÔÚ±»Ê¹ÓÃÖĞ
+     * è®¾ç½®äº‹åŠ¡æ­£åœ¨è¢«ä½¿ç”¨ä¸­
      */
     public void setTransactionInUse() {
         if (this.state == START_STATE) {
