@@ -37,7 +37,7 @@
 	<module>metamorphosis-server-wrapper</module>
   </modules>
     <properties>
-        <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
   <build>
 	<plugins>
@@ -48,7 +48,7 @@
 		<configuration>
 		  <source>1.6</source>
 		  <target>1.6</target>
-		  <encoding>GBK</encoding>
+		  <encoding>UTF-8</encoding>
 		  <showDeprecation>true</showDeprecation>
 		  <showWarnings>true</showWarnings>
 		</configuration>
@@ -71,7 +71,7 @@
 		<artifactId>maven-eclipse-plugin</artifactId>
 		<version>2.5.1</version>
 		<configuration>
-		  <encoding>GBK</encoding>
+		  <encoding>UTF-8</encoding>
 		  <downloadSources>true</downloadSources>
 		  <downloadJavadocs>false</downloadJavadocs>
 		</configuration>
@@ -106,8 +106,8 @@
 		<artifactId>maven-site-plugin</artifactId>
 		<configuration>
 		  <locales>zh_CN</locales>
-		  <outputEncoding>GBK</outputEncoding>
-		  <inputEncoding>GBK</inputEncoding>
+		  <outputEncoding>UTF-8</outputEncoding>
+		  <inputEncoding>UTF-8</inputEncoding>
 		</configuration>
 	  </plugin>
 
@@ -199,7 +199,8 @@
 	  <dependency>
 		<groupId>com.taobao.gecko</groupId>
 		<artifactId>gecko</artifactId>
-		<version>1.1.5-SNAPSHOT</version>
+		<version>1.1.4</version>
+		<!-- <version>1.1.5-SNAPSHOT</version> -->
 	  </dependency>
 	  <dependency>
 		<groupId>com.taobao.notify</groupId>
@@ -273,9 +274,9 @@
 		<artifactId>maven-javadoc-plugin</artifactId>
 		<version>2.9</version>
 		<configuration>
-		  <charset>GBK</charset>
-		  <docencoding>GBK&gt;</docencoding>
-		  <encoding>GBK</encoding>
+		  <charset>UTF-8</charset>
+		  <docencoding>UTF-8&gt;</docencoding>
+		  <encoding>UTF-8</encoding>
 		  <aggregate>true</aggregate>
 		</configuration>
 		<reportSets>
