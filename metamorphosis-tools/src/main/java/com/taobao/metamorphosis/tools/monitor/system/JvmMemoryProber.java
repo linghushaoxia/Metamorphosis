@@ -25,8 +25,8 @@ import com.taobao.metamorphosis.tools.utils.MonitorResult;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-9-28 ÏÂÎç5:33:00
+ * @author æ— èŠ±
+ * @since 2011-9-28 ä¸‹åˆ5:33:00
  */
 
 public class JvmMemoryProber extends SystemProber {
@@ -51,7 +51,7 @@ public class JvmMemoryProber extends SystemProber {
     @Override
     protected void processResult(MonitorResult monitorResult) {
         if (monitorResult.getValue() > 80) {
-            this.alert(monitorResult.getIp() + "JVM ÄÚ´æÊ¹ÓÃÒÑ¾­µ½´ï°Ù·ÖÖ® " + monitorResult.getValue());
+            this.alert(monitorResult.getIp() + "JVM å†…å­˜ä½¿ç”¨å·²ç»åˆ°è¾¾ç™¾åˆ†ä¹‹ " + monitorResult.getValue());
         }
     }
 

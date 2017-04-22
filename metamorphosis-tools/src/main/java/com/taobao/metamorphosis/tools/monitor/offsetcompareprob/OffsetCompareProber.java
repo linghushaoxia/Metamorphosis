@@ -48,8 +48,8 @@ public class OffsetCompareProber extends AbstractProber {
 	private Query query;
 	private final List<ScheduledFuture<?>> futures = new ArrayList<ScheduledFuture<?>>();
 //	private Map<String, Long> serverMaxOffsetMap = new HashMap<String, Long>();
-	private final static String serverBigerFormat = "group:[%s]ÉÏµÄtopic:[%S]µÄpartition[%S]ÔÚmetaServer:[%s]µÄoffset[%S]±ÈZKÉÏµÄoffset:[%S]´ó[%S]";
-	private final static String zkBigerFormat = "group:[%s]ÉÏµÄtopic:[%S]µÄpartition[%S]ÔÚZKÉÏµÄoffset:[%S]±ÈmetaServer:[%s]µÄoffset[%S]´ó[%s]";
+	private final static String serverBigerFormat = "group:[%s]ä¸Šçš„topic:[%S]çš„partition[%S]åœ¨metaServer:[%s]çš„offset[%S]æ¯”ZKä¸Šçš„offset:[%S]å¤§[%S]";
+	private final static String zkBigerFormat = "group:[%s]ä¸Šçš„topic:[%S]çš„partition[%S]åœ¨ZKä¸Šçš„offset:[%S]æ¯”metaServer:[%s]çš„offset[%S]å¤§[%s]";
 	
 	public OffsetCompareProber(CoreManager coreManager) {
 		super(coreManager);
@@ -105,13 +105,13 @@ public class OffsetCompareProber extends AbstractProber {
 				List<String> partitions = this.query.getPartitionsOf(group,
 						topic, QueryType.zk);
 				for (String partition : partitions) {
-					// brokeId+topic×é³ÉµÄkey
+					// brokeId+topicç»„æˆçš„key
 					String key = partition+"_"+topic;
 					String serverUrl = getServerUrl(partition);
 					long zkOffset = ZkOffsetStorageQuery.parseOffsetAsLong(this.query.queryOffset(new OffsetQueryDO(topic, group, partition, QueryType.zk.toString())));
 					long serverMaxOffset;
 //					if (null == serverMaxOffsetMap.get(key)) {
-//						´Óserver¶Ë»ñÈ¡offsetµÄÖµ
+//						ä»serverç«¯è·å–offsetçš„å€¼
 						
 //						serverMaxOffset = getServerMaxOffset(serverUrl,topic,partition,serverMaxOffsetMap);
 						serverMaxOffset = getServerMaxOffset(serverUrl,topic,partition);
@@ -119,7 +119,7 @@ public class OffsetCompareProber extends AbstractProber {
 //					} else {
 //						serverMaxOffset = serverMaxOffsetMap.get(key);
 //					}
-					// ¶Ô±Èoffset£¬²¢±¨¾¯
+					// å¯¹æ¯”offsetï¼Œå¹¶æŠ¥è­¦
 					int offsetMaxGap = getOffsetMaxGap(topic);
 					int zkMaxOverStep = this.getMonitorConfig().getZkMaxOverStep();
 					String serverInfo = getServerInfo(partition);
@@ -138,7 +138,7 @@ public class OffsetCompareProber extends AbstractProber {
 
 	private void alertMsg(String group, String topic, String msg) {
 		logger.warn(msg);
-		//ÊµÏÖtopicÔÚÄª¸ögroupÏÂ²»±¨¾¯µÄ¹¦ÄÜ£ºignoreTopic
+		//å®ç°topicåœ¨è«ä¸ªgroupä¸‹ä¸æŠ¥è­¦çš„åŠŸèƒ½ï¼šignoreTopic
 		List<String> wwList = new ArrayList<String>();
 		List<String> mobileList = new ArrayList<String>();
 		List<String> defaultWWList = this.getMonitorConfig()
@@ -214,7 +214,7 @@ public class OffsetCompareProber extends AbstractProber {
 				return metaServer.getHostIp() + ","+ metaServer.getHostName();
 			}
 		}
-		return "Î´ÖªbrokeId";
+		return "æœªçŸ¥brokeId";
 	}
 	
 	private String getServerUrl(String partition) {
@@ -227,7 +227,7 @@ public class OffsetCompareProber extends AbstractProber {
 				return metaServer.getUrl();
 			}
 		}
-		return "Î´ÖªbrokeId";
+		return "æœªçŸ¥brokeId";
 	}
 	
 

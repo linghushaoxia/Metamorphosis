@@ -23,8 +23,8 @@ import com.taobao.metamorphosis.client.producer.SendResult;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-5-25 ÉÏÎç11:57:30
+ * @author æ— èŠ±
+ * @since 2011-5-25 ä¸Šåˆ11:57:30
  */
 
 public class SendResultWrapper {

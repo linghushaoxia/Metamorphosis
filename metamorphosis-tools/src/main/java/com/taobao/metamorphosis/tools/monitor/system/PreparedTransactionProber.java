@@ -24,10 +24,10 @@ import com.taobao.metamorphosis.tools.utils.TransactionUtil;
 
 
 /**
- * ¼à¿ØÊÂÎñ¹ÒÆðµÄÊýÁ¿
+ * ç›‘æŽ§äº‹åŠ¡æŒ‚èµ·çš„æ•°é‡
  * 
- * @author ÎÞ»¨
- * @since 2011-9-30 ÉÏÎç10:30:35
+ * @author æ— èŠ±
+ * @since 2011-9-30 ä¸Šåˆ10:30:35
  */
 
 public class PreparedTransactionProber extends SystemProber {
@@ -41,7 +41,7 @@ public class PreparedTransactionProber extends SystemProber {
     protected MonitorResult getMonitorResult(MsgSender sender) throws Exception {
         int preparedTransactionCount =
                 TransactionUtil.getPreparedTransactionCount(sender.getHost(), this.getMonitorConfig().getJmxPort());
-        String msg = sender.getServerUrl() + " ÊÂÎñ¹ÒÆðµÄÊýÁ¿´ïµ½" + preparedTransactionCount;
+        String msg = sender.getServerUrl() + " äº‹åŠ¡æŒ‚èµ·çš„æ•°é‡è¾¾åˆ°" + preparedTransactionCount;
         this.logger.debug(msg);
         if (preparedTransactionCount >= this.getMonitorConfig().getPreparedTransactionCountThreshold()) {
             this.alert(msg);

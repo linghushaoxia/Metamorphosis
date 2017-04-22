@@ -37,8 +37,8 @@ import com.taobao.metamorphosis.tools.utils.JMXClient;
  *      TimetunnelPluginTool -start
  *      TimetunnelPluginTool -stop
  *      TimetunnelPluginTool -look
- * @author 无花
- * @since 2011-11-1 下午3:07:22
+ * @author 鏃犺姳
+ * @since 2011-11-1 涓嬪崍3:07:22
  * </pre>
  */
 
@@ -70,7 +70,7 @@ public class TimetunnelPluginTool extends ShellTool {
         this.println("connected to " + jmxClient.getAddressAsString());
         ObjectInstance ttInstance = jmxClient.queryMBeanForOne(TT_NAME);
         if (ttInstance == null) {
-            this.println("没有找到 " + TT_NAME);
+            this.println("娌℃湁鎵惧埌 " + TT_NAME);
             return;
         }
         if (commandLine.hasOption("start")) {

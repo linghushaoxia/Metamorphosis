@@ -18,9 +18,9 @@
 package com.taobao.metamorphosis.tools.monitor;
 
 /**
- * 代表监控系统启动初始化间段出现的异常
- * @author 无花
- * @since 2011-5-24 下午05:10:42
+ * 浠ｈ〃鐩戞帶绯荤粺鍚姩鍒濆鍖栭棿娈靛嚭鐜扮殑寮傚父
+ * @author 鏃犺姳
+ * @since 2011-5-24 涓嬪崍05:10:42
  */
 
 public class InitException extends Exception {

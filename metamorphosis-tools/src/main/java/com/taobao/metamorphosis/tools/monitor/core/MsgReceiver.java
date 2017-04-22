@@ -35,15 +35,15 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * ´ú±íÖ±Á¬Ò»Ì¨brokerµÄÏûÏ¢½ÓÊÕÕß
+ * ä»£è¡¨ç›´è¿ä¸€å°brokerçš„æ¶ˆæ¯æ¥æ”¶è€…
  * 
- * @author ÎŞ»¨
- * @since 2011-5-24 ÉÏÎç11:35:48
+ * @author æ— èŠ±
+ * @since 2011-5-24 ä¸Šåˆ11:35:48
  */
-// ×ÔÉíÎ¬»¤offset,·ÇÏß³Ì°²È«
+// è‡ªèº«ç»´æŠ¤offset,éçº¿ç¨‹å®‰å…¨
 public class MsgReceiver {
 
-    /** Ò»Ì¨brokerÉÏ²»Í¬·ÖÇøÉÏµÄ½ÓÊÕoffset */
+    /** ä¸€å°brokerä¸Šä¸åŒåˆ†åŒºä¸Šçš„æ¥æ”¶offset */
     private final Map<String/* partition */, Long/* offset */> offsetMap = new HashMap<String, Long>();
 
     final private MessageConsumer consumer;
@@ -64,9 +64,9 @@ public class MsgReceiver {
 
     /**
      * <pre>
-     * Í¬²½µÄ·½Ê½½ÓÊÕÏûÏ¢.
-     * ÆÚÍû´ÓpartitionÎ²²¿¿ªÊ¼½ÓÊÕ(ĞèÒª°Ñ½ÓÊÕµÄoffsetÉèÖÃÎªÉÏÒ»´Î³É¹¦·¢ËÍÏûÏ¢ºóµÄoffset)
-     * Òì³£´¦Àí:ÕâÀï²¶»ñËùÓĞÒì³£(Error³ıÍâ),×°ÈëresultµÄĞÎÊ½·µ»Ø
+     * åŒæ­¥çš„æ–¹å¼æ¥æ”¶æ¶ˆæ¯.
+     * æœŸæœ›ä»partitionå°¾éƒ¨å¼€å§‹æ¥æ”¶(éœ€è¦æŠŠæ¥æ”¶çš„offsetè®¾ç½®ä¸ºä¸Šä¸€æ¬¡æˆåŠŸå‘é€æ¶ˆæ¯åçš„offset)
+     * å¼‚å¸¸å¤„ç†:è¿™é‡Œæ•è·æ‰€æœ‰å¼‚å¸¸(Erroré™¤å¤–),è£…å…¥resultçš„å½¢å¼è¿”å›
      * </pre>
      */
     public ReveiceResult get(String topic, Partition partition) {
@@ -76,7 +76,7 @@ public class MsgReceiver {
         try {
             int i = 0;
             while ((it = this.consumer.get(topic, partition, offset, 1024 * 1024)) != null) {
-                // ·ÀÖ¹µÚÒ»´Î´Ó0-offset½ÓÊÕÌ«¶àµÄÊı¾İ.
+                // é˜²æ­¢ç¬¬ä¸€æ¬¡ä»0-offsetæ¥æ”¶å¤ªå¤šçš„æ•°æ®.
                 if (i++ >= 3) {
                     break;
                 }

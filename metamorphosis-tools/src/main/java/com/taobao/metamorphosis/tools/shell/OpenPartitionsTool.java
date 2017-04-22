@@ -32,7 +32,7 @@ import com.taobao.metamorphosis.tools.utils.JMXClient;
 
 /**
  * <pre>
- * Çå³ıÒ»¸ötopicµÄËùÓĞ·ÖÇø µÄ¹Ø±Õ±ê¼Ç
+ * æ¸…é™¤ä¸€ä¸ªtopicçš„æ‰€æœ‰åˆ†åŒº çš„å…³é—­æ ‡è®°
  * usage:
  *      OpenPartitionsTool -topic xxtopic
  *      OpenPartitionsTool -topic xxtopic -host 10.2.2.3
@@ -40,8 +40,8 @@ import com.taobao.metamorphosis.tools.utils.JMXClient;
  *      OpenPartitionsTool -topic xxtopic -host 10.2.2.3 -port 9999
  * </pre>
  * 
- * @author ÎŞ»¨
- * @since 2011-8-23 ÏÂÎç5:44:21
+ * @author æ— èŠ±
+ * @since 2011-8-23 ä¸‹åˆ5:44:21
  */
 
 public class OpenPartitionsTool extends ShellTool {
@@ -80,7 +80,7 @@ public class OpenPartitionsTool extends ShellTool {
             this.println("invoke " + metaConfigInstance.getClassName() + "#openPartitions success");
         }
         else {
-            this.println("Ã»ÓĞÕÒµ½ " + METACONFIG_NAME);
+            this.println("æ²¡æœ‰æ‰¾åˆ° " + METACONFIG_NAME);
         }
 
     }

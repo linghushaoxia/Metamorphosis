@@ -22,8 +22,8 @@ import java.util.Date;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-9-28 ÏÂÎç3:21:25
+ * @author æ— èŠ±
+ * @since 2011-9-28 ä¸‹åˆ3:21:25
  */
 
 public class DiskUsedUtil {

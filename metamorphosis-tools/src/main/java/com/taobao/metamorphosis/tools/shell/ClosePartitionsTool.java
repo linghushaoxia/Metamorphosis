@@ -32,7 +32,7 @@ import com.taobao.metamorphosis.tools.utils.JMXClient;
 
 /**
  * <pre>
- * ¹Ø±ÕÒ»¸ötopicµÄÖ¸¶¨·ÖÇø
+ * å…³é—­ä¸€ä¸ªtopicçš„æŒ‡å®šåˆ†åŒº
  * usage:
  *      ClosePartitionsTool -topic xxtopic -start 2 -end 5
  *      ClosePartitionsTool -topic xxtopic -start 2 -end 5 -host 10.2.2.3
@@ -40,8 +40,8 @@ import com.taobao.metamorphosis.tools.utils.JMXClient;
  *      ClosePartitionsTool -topic xxtopic -start 2 -end 5 -host 10.2.2.3 -port 9999
  * </pre>
  * 
- * @author ÎŞ»¨
- * @since 2011-8-23 ÏÂÎç3:42:38
+ * @author æ— èŠ±
+ * @since 2011-8-23 ä¸‹åˆ3:42:38
  */
 
 public class ClosePartitionsTool extends ShellTool {
@@ -82,7 +82,7 @@ public class ClosePartitionsTool extends ShellTool {
             this.println("invoke " + metaConfigInstance.getClassName() + "#closePartitions success");
         }
         else {
-            this.println("Ã»ÓĞÕÒµ½ " + METACONFIG_NAME);
+            this.println("æ²¡æœ‰æ‰¾åˆ° " + METACONFIG_NAME);
         }
     }
 

@@ -27,8 +27,8 @@ import com.taobao.metamorphosis.tools.utils.NetWorkUtil;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-9-28 ÏÂÎç4:22:27
+ * @author æ— èŠ±
+ * @since 2011-9-28 ä¸‹åˆ4:22:27
  */
 
 public class NetWorkUsedProber extends SystemProber {

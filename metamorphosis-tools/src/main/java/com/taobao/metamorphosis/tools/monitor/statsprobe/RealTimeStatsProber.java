@@ -38,8 +38,8 @@ import com.taobao.metamorphosis.utils.Utils.Action;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-5-27 ÏÂÎç03:18:53
+ * @author æ— èŠ±
+ * @since 2011-5-27 ä¸‹åˆ03:18:53
  */
 
 public class RealTimeStatsProber extends AbstractProber {
@@ -155,8 +155,8 @@ public class RealTimeStatsProber extends AbstractProber {
 
 
     static boolean isNeedAlert(String line, long threshold) {
-        // ÕâÀïÃ»×÷Ì«¶àµÄ×Ö·û´®ºÏ·¨ĞÔÅĞ¶Ï,Ò»°ã²»»á³öÏÖ·ÇÔ¼¶¨µÄÖµ¡£
-        // Èç¹û·şÎñÆ÷·µ»ØÁË·ÇÔ¼¶¨µÄ½á¹û,ÔÚÉÏ²ãµ÷ÓÃÖĞÍ³Ò»²¶»ñÒì³£
+        // è¿™é‡Œæ²¡ä½œå¤ªå¤šçš„å­—ç¬¦ä¸²åˆæ³•æ€§åˆ¤æ–­,ä¸€èˆ¬ä¸ä¼šå‡ºç°éçº¦å®šçš„å€¼ã€‚
+        // å¦‚æœæœåŠ¡å™¨è¿”å›äº†éçº¦å®šçš„ç»“æœ,åœ¨ä¸Šå±‚è°ƒç”¨ä¸­ç»Ÿä¸€æ•è·å¼‚å¸¸
 
         String realTimeValue = StringUtils.split(line, " ")[1];
         if (StringUtils.isBlank(realTimeValue) || realTimeValue.equalsIgnoreCase("null")) {

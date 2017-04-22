@@ -27,8 +27,8 @@ import org.apache.commons.logging.LogFactory;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-5-27 ÏÂÎç03:21:25
+ * @author æ— èŠ±
+ * @since 2011-5-27 ä¸‹åˆ03:21:25
  */
 
 abstract public class AbstractProber implements Prober {
@@ -44,13 +44,13 @@ abstract public class AbstractProber implements Prober {
 
 
     public void prob() throws InterruptedException {
-        // ±ÜÃâ±»Îóµ÷ÓÃ¶à´Î
+        // é¿å…è¢«è¯¯è°ƒç”¨å¤šæ¬¡
         if (this.isProbeStarted.get() == false) {
             this.doProb();
             this.isProbeStarted.set(true);
         }
         else {
-            this.logger.info("ÒÑ¾­ÔËĞĞÖĞ,²»±ØÆô¶¯");
+            this.logger.info("å·²ç»è¿è¡Œä¸­,ä¸å¿…å¯åŠ¨");
         }
     }
 
@@ -58,10 +58,10 @@ abstract public class AbstractProber implements Prober {
     public void stopProb() {
         if (this.isProbeStarted.compareAndSet(true, false)) {
             this.doStopProb();
-            this.logger.info("Í£Ö¹Ì½²â.");
+            this.logger.info("åœæ­¢æ¢æµ‹.");
         }
         else {
-            this.logger.info("Ã»ÓĞÆô¶¯,²»±ØÍ£Ö¹");
+            this.logger.info("æ²¡æœ‰å¯åŠ¨,ä¸å¿…åœæ­¢");
         }
     }
 

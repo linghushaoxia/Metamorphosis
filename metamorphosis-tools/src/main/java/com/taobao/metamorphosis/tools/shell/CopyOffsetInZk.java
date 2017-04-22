@@ -44,8 +44,8 @@ import com.taobao.metamorphosis.tools.utils.CommandLineUtils;
  *      CopyOffsetInZk -topic xxtopic -src 1 -target 2 -start 5 -end 10 -targetStart 2
  * </pre>
  * 
- * @author ÎŞ»¨
- * @since 2011-8-24 ÉÏÎç10:19:30
+ * @author æ— èŠ±
+ * @since 2011-8-24 ä¸Šåˆ10:19:30
  */
 
 public class CopyOffsetInZk extends ShellTool {
@@ -101,7 +101,7 @@ public class CopyOffsetInZk extends ShellTool {
                 if (!StringUtils.isBlank(srcOffset)) {
                     if (!StringUtils.isBlank(this.query.queryOffset(new OffsetQueryDO(topic, group, newPartition.toString(), "zk")))) {
                         this.println("topic=" + topic + ",group=" + group + ",partition[" + newPartition
-                                + "] offset ÒÑ¾­´æÔÚ");
+                                + "] offset å·²ç»å­˜åœ¨");
                         continue;
                     }
                     this.zkManager.setOffset(topic, group, newPartition, srcOffset);
@@ -110,7 +110,7 @@ public class CopyOffsetInZk extends ShellTool {
                 }
                 else {
                     this.println("topic=" + topic + ",group=" + group + ",partition[" + oldPartition
-                            + "] offset ²»´æÔÚ»ò²éÑ¯ÓĞÎó");
+                            + "] offset ä¸å­˜åœ¨æˆ–æŸ¥è¯¢æœ‰è¯¯");
                 }
             }
         }
@@ -160,7 +160,7 @@ public class CopyOffsetInZk extends ShellTool {
         startOption.setRequired(true);
         Option endOption = new Option("end", true, "end partition number");
         endOption.setRequired(true);
-        Option targetStartOption = new Option("targetStart", true, "Ä¿±ê·ÖÇøµÄÆğÊ¼±àºÅ");
+        Option targetStartOption = new Option("targetStart", true, "ç›®æ ‡åˆ†åŒºçš„èµ·å§‹ç¼–å·");
 
         return CommandLineUtils.parseCmdLine(args, new Options().addOption(topicOption).addOption(fromOption)
             .addOption(toOption).addOption(startOption).addOption(endOption).addOption(targetStartOption));

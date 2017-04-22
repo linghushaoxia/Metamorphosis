@@ -30,10 +30,10 @@ import com.taobao.metamorphosis.utils.Utils.Action;
 
 
 /**
- * ¼à¿ØÁ¬½Óµ½Meta·þÎñÆ÷µÄÍøÂçÁ¬½ÓÇé¿ö
+ * ç›‘æŽ§è¿žæŽ¥åˆ°MetaæœåŠ¡å™¨çš„ç½‘ç»œè¿žæŽ¥æƒ…å†µ
  * 
- * @author ÎÞ»¨
- * @since 2011-9-29 ÏÂÎç1:53:47
+ * @author æ— èŠ±
+ * @since 2011-9-29 ä¸‹åˆ1:53:47
  */
 
 public class MetaConnProber extends SystemProber {
@@ -49,8 +49,8 @@ public class MetaConnProber extends SystemProber {
                 ConnectionUtil.getConnectionInfo(sender.getHost(), sender.getPort(), this.getMonitorConfig()
                     .getLoginUser(), this.getMonitorConfig().getLoginPassword());
         if (StringUtils.isBlank(result)) {
-            // Ã»ÓÐÁ¬½Ó,±¨¾¯?
-            this.logger.warn("Ã»ÓÐ¿Í»§¶ËÁ¬½Ó,meta: " + sender.getServerUrl());
+            // æ²¡æœ‰è¿žæŽ¥,æŠ¥è­¦?
+            this.logger.warn("æ²¡æœ‰å®¢æˆ·ç«¯è¿žæŽ¥,meta: " + sender.getServerUrl());
             return null;
         }
 
@@ -64,14 +64,14 @@ public class MetaConnProber extends SystemProber {
                     int count = Integer.parseInt(tmp[0]);
                     connSum.addAndGet(count);
                     if (count >= MetaConnProber.this.getMonitorConfig().getMetaConnectionPerIpThreshold()) {
-                        MetaConnProber.this.alert("¿Í»§¶Ë[" + tmp[1] + "]ÓëMeta·þÎñÆ÷" + sender.getServerUrl() + "µÄÍøÂçÁ¬½ÓÊýµ½´ï["
-                                + count + "]¸ö.");
+                        MetaConnProber.this.alert("å®¢æˆ·ç«¯[" + tmp[1] + "]ä¸ŽMetaæœåŠ¡å™¨" + sender.getServerUrl() + "çš„ç½‘ç»œè¿žæŽ¥æ•°åˆ°è¾¾["
+                                + count + "]ä¸ª.");
                     }
                 }
             }
         });
 
-        String msg = "¿Í»§¶ËÁ¬½Óµ½Meta·þÎñÆ÷[" + sender.getServerUrl() + "]µÄÍøÂçÁ¬½Ó×ÜÊýµ½´ï[" + connSum.get() + "]¸ö.";
+        String msg = "å®¢æˆ·ç«¯è¿žæŽ¥åˆ°MetaæœåŠ¡å™¨[" + sender.getServerUrl() + "]çš„ç½‘ç»œè¿žæŽ¥æ€»æ•°åˆ°è¾¾[" + connSum.get() + "]ä¸ª.";
         this.logger.debug(msg);
         if (connSum.get() >= MetaConnProber.this.getMonitorConfig().getMetaConnectionThreshold()) {
             this.alert(msg);

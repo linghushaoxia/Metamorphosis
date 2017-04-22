@@ -31,8 +31,8 @@ import com.taobao.metamorphosis.tools.monitor.InitException;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-5-27 ÏÂÎç03:28:14
+ * @author æ— èŠ±
+ * @since 2011-5-27 ä¸‹åˆ03:28:14
  */
 
 public class CoreManager {
@@ -51,7 +51,7 @@ public class CoreManager {
         this.monitorConfig = monitorConfig;
         List<MetaServer> metaServerList = this.monitorConfig.getMetaServerList();
         if (metaServerList == null || metaServerList.isEmpty()) {
-            throw new InitException("serverUrls²»ÄÜÎª¿Õ");
+            throw new InitException("serverUrlsä¸èƒ½ä¸ºç©º");
         }
 
         this.proberExecutor = new ScheduledThreadPoolExecutor(coreSize);
@@ -61,14 +61,14 @@ public class CoreManager {
         monitorConfig.addPropertyChangeListener("serverUrlList", new PropertyChangeListener() {
 
             public void propertyChange(PropertyChangeEvent evt) {
-                logger.info("·şÎñÆ÷ÁĞ±í·¢Éú±ä»¯");
+                logger.info("æœåŠ¡å™¨åˆ—è¡¨å‘ç”Ÿå˜åŒ–");
                 CoreManager.this.proberExecutor.setCorePoolSize(monitorConfig.getMetaServerList().size() * 2);
                 try {
                     CoreManager.this.reInitSenderReceiver();
-                    logger.info("ÖØĞÂ³õÊ¼»¯¼à¿Ø¶ÔÏó³É¹¦");
+                    logger.info("é‡æ–°åˆå§‹åŒ–ç›‘æ§å¯¹è±¡æˆåŠŸ");
                 }
                 catch (Exception e) {
-                    logger.error("ÖØĞÂ³õÊ¼»¯¼à¿Ø¶ÔÏóÊ§°Ü!", e);
+                    logger.error("é‡æ–°åˆå§‹åŒ–ç›‘æ§å¯¹è±¡å¤±è´¥!", e);
                 }
 
             }
@@ -120,7 +120,7 @@ public class CoreManager {
 
 
     synchronized public static CoreManager getInstance(MonitorConfig monitorConfig, int coreSize) throws InitException {
-        /** ÕâÀï²»»áÆµ·±µ÷ÓÃ¶à´Î,¼ò»¯´¦Àí,Õû¸ö·½·¨Í¬²½µô **/
+        /** è¿™é‡Œä¸ä¼šé¢‘ç¹è°ƒç”¨å¤šæ¬¡,ç®€åŒ–å¤„ç†,æ•´ä¸ªæ–¹æ³•åŒæ­¥æ‰ **/
         return instance == null ? (instance = new CoreManager(monitorConfig, coreSize)) : instance;
     }
 

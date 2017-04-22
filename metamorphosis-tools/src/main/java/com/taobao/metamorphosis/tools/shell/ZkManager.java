@@ -24,8 +24,8 @@ import com.taobao.metamorphosis.utils.ZkUtils;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-8-24 ÏÂÎç2:00:29
+ * @author æ— èŠ±
+ * @since 2011-8-24 ä¸‹åˆ2:00:29
  */
 
 public class ZkManager {

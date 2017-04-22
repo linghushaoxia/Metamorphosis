@@ -25,16 +25,16 @@ import com.taobao.metamorphosis.cluster.Partition;
 
 /**
  *
- * @author ÎŞ»¨
- * @since 2011-5-25 ÉÏÎç11:56:10
+ * @author æ— èŠ±
+ * @since 2011-5-25 ä¸Šåˆ11:56:10
  */
 
-/** ´ú±íÒ»´Î½ÓÊÕÏûÏ¢µÄ½á¹û */
+/** ä»£è¡¨ä¸€æ¬¡æ¥æ”¶æ¶ˆæ¯çš„ç»“æœ */
 public class ReveiceResult {
-    private String topic; //½ÓÊÕµÄtopic
-    private Partition partition;//´ÓÄÄ¸öpartition½ÓÊÕ
-    private long offset;//´Óoffset¿ªÊ¼½ÓÊÕ
-    private String serverUrl;//´ÓÄÄ¸ö·şÎñÆ÷½ÓÊÕ
+    private String topic; //æ¥æ”¶çš„topic
+    private Partition partition;//ä»å“ªä¸ªpartitionæ¥æ”¶
+    private long offset;//ä»offsetå¼€å§‹æ¥æ”¶
+    private String serverUrl;//ä»å“ªä¸ªæœåŠ¡å™¨æ¥æ”¶
     private List<Message> messages;
     private Exception e;
 
@@ -64,7 +64,7 @@ public class ReveiceResult {
         this.e = e;
     }
 
-    /** ÊÇ·ñ½ÓÊÕ³É¹¦(½ÓÊÕµ½ÖÁÉÙÒ»ÌõÏûÏ¢,²¢ÇÒÃ»·¢ÉúÒì³£) **/
+    /** æ˜¯å¦æ¥æ”¶æˆåŠŸ(æ¥æ”¶åˆ°è‡³å°‘ä¸€æ¡æ¶ˆæ¯,å¹¶ä¸”æ²¡å‘ç”Ÿå¼‚å¸¸) **/
     public boolean isSuccess() {
         return messages != null && !messages.isEmpty() && e == null;
     }

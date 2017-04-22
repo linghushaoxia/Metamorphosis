@@ -18,7 +18,7 @@
 package com.taobao.metamorphosis.tools.query;
 
 /**
- * offset²éÑ¯²ÎÊı
+ * offsetæŸ¥è¯¢å‚æ•°
  * 
  * @author pingwei
  * @author wuhua

@@ -21,8 +21,8 @@ import com.taobao.metamorphosis.tools.monitor.InitException;
 
 
 /**
- * @author нч╩╗
- * @since 2011-5-27 ионГ11:59:22
+ * @author Ф≈═Х┼╠
+ * @since 2011-5-27 Д╦┼Е█┬11:59:22
  */
 
 public interface Prober {

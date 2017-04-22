@@ -32,10 +32,10 @@ import com.taobao.metamorphosis.tools.utils.MonitorResult;
 
 
 /**
- * ¶ÔÓÚcpu,ÄÚ´æ,´ÅÅÌµÈÏµÍ³¼à¿ØµÄ¹²Í¬µã³éÏó
+ * å¯¹äºcpu,å†…å­˜,ç£ç›˜ç­‰ç³»ç»Ÿç›‘æ§çš„å…±åŒç‚¹æŠ½è±¡
  * 
- * @author ÎŞ»¨
- * @since 2011-9-28 ÏÂÎç2:39:43
+ * @author æ— èŠ±
+ * @since 2011-9-28 ä¸‹åˆ2:39:43
  */
 
 public abstract class SystemProber extends AbstractProber {
@@ -96,11 +96,11 @@ public abstract class SystemProber extends AbstractProber {
     }
 
 
-    /** »ñÈ¡Ò»´Î¼à¿Ø½á¹û */
+    /** è·å–ä¸€æ¬¡ç›‘æ§ç»“æœ */
     protected abstract MonitorResult getMonitorResult(MsgSender sender) throws Exception;
 
 
-    /** Ò»´Î¼à¿Ø½á¹ûµÄ´¦Àí */
+    /** ä¸€æ¬¡ç›‘æ§ç»“æœçš„å¤„ç† */
     protected abstract void processResult(MonitorResult monitorResult);
 
 

@@ -36,8 +36,8 @@ import com.taobao.metamorphosis.tools.utils.JMXClient;
  *      StopBrokerTool -host 10.2.2.3 -port 9999
  * </pre>
  * 
- * @author 无花
- * @since 2011-8-23 下午3:42:38
+ * @author 鏃犺姳
+ * @since 2011-8-23 涓嬪崍3:42:38
  */
 
 public class StopBrokerTool extends ShellTool {
@@ -77,7 +77,7 @@ public class StopBrokerTool extends ShellTool {
             this.println("invoke " + brokerInstance.getClassName() + "#stop success");
         }
         else {
-            this.println("没有找到 " + METABROKER_NAME);
+            this.println("娌℃湁鎵惧埌 " + METABROKER_NAME);
         }
     }
 

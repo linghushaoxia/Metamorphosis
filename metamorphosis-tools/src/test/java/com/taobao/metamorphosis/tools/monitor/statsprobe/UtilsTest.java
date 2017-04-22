@@ -28,8 +28,8 @@ import com.taobao.metamorphosis.utils.Utils.Action;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-5-27 ÏÂÎç06:20:05
+ * @author æ— èŠ±
+ * @since 2011-5-27 ä¸‹åˆ06:20:05
  */
 
 public class UtilsTest {
@@ -114,6 +114,6 @@ public class UtilsTest {
     public void testGetResourceAsProperties() throws IOException {
         Properties properties = Utils.getResourceAsProperties("utilstest.props", "GBK");
         Assert.assertTrue(properties.get("ss").equals("sss"));
-        Assert.assertTrue(properties.get("bb").equals("²âÊÔ"));
+        Assert.assertTrue(properties.get("bb").equals("æµ‹è¯•"));
     }
 }

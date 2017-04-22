@@ -45,8 +45,8 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-8-23 ÏÂÎç1:44:37
+ * @author æ— èŠ±
+ * @since 2011-8-23 ä¸‹åˆ1:44:37
  */
 
 public class JMXClient {
@@ -177,9 +177,9 @@ public class JMXClient {
             return this.mbs.getAttribute(name, attribute);
         }
         catch (Exception e) {
-            // µ±Ê¹ÓÃÍ¨Åä·ûObjectNameÊ±,ËÑË÷³öÒ»¸ö
+            // å½“ä½¿ç”¨é€šé…ç¬¦ObjectNameæ—¶,æœç´¢å‡ºä¸€ä¸ª
             if (log.isDebugEnabled()) {
-                log.debug("Ã»ÓĞ¾«È·µÄÕÒµ½ObjectName = " + name + ",¿ªÊ¼ËÑË÷..");
+                log.debug("æ²¡æœ‰ç²¾ç¡®çš„æ‰¾åˆ°ObjectName = " + name + ",å¼€å§‹æœç´¢..");
             }
             try {
                 return this.mbs.getAttribute(this.queryMBeanForOne(name).getObjectName(), attribute);

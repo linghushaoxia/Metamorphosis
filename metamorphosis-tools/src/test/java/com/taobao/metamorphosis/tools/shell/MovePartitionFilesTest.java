@@ -32,8 +32,8 @@ import org.junit.Test;
 
 /**
  * 
- * @author Œﬁª®
- * @since 2011-8-25 œ¬ŒÁ2:20:38
+ * @author Êó†Ëä±
+ * @since 2011-8-25 ‰∏ãÂçà2:20:38
  */
 
 public class MovePartitionFilesTest {
@@ -104,7 +104,7 @@ public class MovePartitionFilesTest {
 
     @Test
     public void testMove_newFileExists() throws Exception {
-        // [4,5,6]-->[0,1,2]. 1“—æ≠¥Ê‘⁄
+        // [4,5,6]-->[0,1,2]. 1Â∑≤ÁªèÂ≠òÂú®
         FileUtils.forceMkdir(new File(this.testMetaDataDir + File.separator + "topicxx-1"));
         try {
             this.testMove_normal_forward();
@@ -114,7 +114,7 @@ public class MovePartitionFilesTest {
             System.out.println(e.getMessage());
         }
 
-        // √ª±‰ªØ
+        // Ê≤°ÂèòÂåñ
         assertTrue(new File(this.testMetaDataDir + File.separator + "topicxx-1").exists());
         assertTrue(new File(this.testMetaDataDir + File.separator + "topicxx-4").exists());
         assertTrue(new File(this.testMetaDataDir + File.separator + "topicxx-5").exists());
@@ -130,7 +130,7 @@ public class MovePartitionFilesTest {
 
     @Test
     public void testMove_oldFileNotExists() throws Exception {
-        // [4,5,6]-->[0,1,2] . 5≤ª¥Ê‘⁄
+        // [4,5,6]-->[0,1,2] . 5‰∏çÂ≠òÂú®
         final File partition4Dir = new File(this.testMetaDataDir + File.separator + "topicxx-4");
         final File partition6Dir = new File(this.testMetaDataDir + File.separator + "topicxx-6");
 
@@ -149,7 +149,7 @@ public class MovePartitionFilesTest {
             System.out.println(e.getMessage());
         }
 
-        // √ª±‰ªØ
+        // Ê≤°ÂèòÂåñ
         assertTrue(new File(this.testMetaDataDir + File.separator + "topicxx-4").exists());
         assertFalse(new File(this.testMetaDataDir + File.separator + "topicxx-5").exists());
         assertTrue(new File(this.testMetaDataDir + File.separator + "topicxx-6").exists());

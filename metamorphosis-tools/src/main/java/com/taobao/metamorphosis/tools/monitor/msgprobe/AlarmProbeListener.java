@@ -28,10 +28,10 @@ import com.taobao.metamorphosis.tools.monitor.msgprobe.MsgProber.ProbContext;
 
 
 /**
- * @author 无花
- * @since 2011-5-25 上午11:25:59
+ * @author 鏃犺姳
+ * @since 2011-5-25 涓婂崍11:25:59
  */
-// note:发旺旺消息字数有限制
+// note:鍙戞椇鏃烘秷鎭瓧鏁版湁闄愬埗
 public class AlarmProbeListener extends ProbeListener {
 
     private final MonitorConfig monitorConfig;

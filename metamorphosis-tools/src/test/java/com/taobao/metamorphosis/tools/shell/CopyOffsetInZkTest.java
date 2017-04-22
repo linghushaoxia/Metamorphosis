@@ -31,8 +31,8 @@ import com.taobao.metamorphosis.utils.ZkUtils;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-8-24 ÏÂÎç3:21:59
+ * @author æ— èŠ±
+ * @since 2011-8-24 ä¸‹åˆ3:21:59
  */
 
 public class CopyOffsetInZkTest {

@@ -18,10 +18,10 @@
 package com.taobao.metamorphosis.tools.utils;
 
 /**
- * 代表jmx相关异常
+ * 浠ｈ〃jmx鐩稿叧寮傚父
  * 
- * @author 无花
- * @since 2011-8-23 下午5:19:56
+ * @author 鏃犺姳
+ * @since 2011-8-23 涓嬪崍5:19:56
  */
 
 public class RemoteExecuteException extends RuntimeException {

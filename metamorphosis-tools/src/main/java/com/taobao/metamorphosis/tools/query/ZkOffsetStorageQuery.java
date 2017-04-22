@@ -30,7 +30,7 @@ import com.taobao.metamorphosis.utils.ZkUtils;
 
 
 /**
- * 从zk中查询client端的offset数据
+ * 浠巣k涓煡璇lient绔殑offset鏁版嵁
  * 
  * @author pingwei
  */

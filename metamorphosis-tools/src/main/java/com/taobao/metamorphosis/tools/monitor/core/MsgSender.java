@@ -37,7 +37,7 @@ import com.taobao.metamorphosis.network.StatsCommand;
 
 
 /**
- * @author ÎÞ»¨
+ * @author æ— èŠ±
  */
 
 public class MsgSender {

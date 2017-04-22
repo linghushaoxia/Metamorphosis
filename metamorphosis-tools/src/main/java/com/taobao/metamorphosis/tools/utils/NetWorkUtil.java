@@ -24,8 +24,8 @@ import java.util.Map;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-9-28 ÏÂÎç4:00:27
+ * @author æ— èŠ±
+ * @since 2011-9-28 ä¸‹åˆ4:00:27
  */
 
 public class NetWorkUtil {

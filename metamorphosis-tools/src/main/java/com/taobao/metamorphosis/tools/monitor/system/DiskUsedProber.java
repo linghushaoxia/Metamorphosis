@@ -25,8 +25,8 @@ import com.taobao.metamorphosis.tools.utils.MonitorResult;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-9-28 ÏÂÎç3:19:56
+ * @author æ— èŠ±
+ * @since 2011-9-28 ä¸‹åˆ3:19:56
  */
 
 public class DiskUsedProber extends SystemProber {
@@ -46,7 +46,7 @@ public class DiskUsedProber extends SystemProber {
     @Override
     protected void processResult(MonitorResult monitorResult) {
         if (monitorResult.getValue().intValue() > this.getMonitorConfig().getDiskUsedThreshold()) {
-            this.alert(monitorResult.getIp() + "´ÅÅÌÊ¹ÓÃÒÑ¾­µ½´ï°Ù·ÖÖ® " + monitorResult.getValue());
+            this.alert(monitorResult.getIp() + "ç£ç›˜ä½¿ç”¨å·²ç»åˆ°è¾¾ç™¾åˆ†ä¹‹ " + monitorResult.getValue());
         }
 
     }

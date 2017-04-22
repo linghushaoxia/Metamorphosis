@@ -24,8 +24,8 @@ import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-9-28 ÏÂÎç1:46:26
+ * @author æ— èŠ±
+ * @since 2011-9-28 ä¸‹åˆ1:46:26
  */
 
 public class MonitorResult {

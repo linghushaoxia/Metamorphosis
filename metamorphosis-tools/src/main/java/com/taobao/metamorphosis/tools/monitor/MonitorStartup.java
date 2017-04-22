@@ -23,10 +23,10 @@ import com.taobao.metamorphosis.tools.monitor.alert.Alarm;
 
 
 /**
- * ¼à¿ØÆô¶¯Æ÷
+ * ç›‘æ§å¯åŠ¨å™¨
  * 
- * @author ÎŞ»¨
- * @since 2011-5-30 ÉÏÎç11:21:08
+ * @author æ— èŠ±
+ * @since 2011-5-30 ä¸Šåˆ11:21:08
  */
 
 public class MonitorStartup {
@@ -49,8 +49,8 @@ public class MonitorStartup {
             proberManager.startProb();
         }
         catch (Throwable e) {
-            logger.error("¼à¿ØÏµÍ³ÒâÍâÖÕÖ¹", e);
-            Alarm.alert("¼à¿ØÏµÍ³ÒâÍâÖÕÖ¹", proberManager.getMonitorConfig());
+            logger.error("ç›‘æ§ç³»ç»Ÿæ„å¤–ç»ˆæ­¢", e);
+            Alarm.alert("ç›‘æ§ç³»ç»Ÿæ„å¤–ç»ˆæ­¢", proberManager.getMonitorConfig());
         }
     }
 

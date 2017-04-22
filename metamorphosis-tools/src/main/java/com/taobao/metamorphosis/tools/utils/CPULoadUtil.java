@@ -22,8 +22,8 @@ import java.util.Date;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-9-28 ÏÂÎç1:45:30
+ * @author æ— èŠ±
+ * @since 2011-9-28 ä¸‹åˆ1:45:30
  */
 
 public class CPULoadUtil {

@@ -19,8 +19,8 @@ package com.taobao.metamorphosis.tools.utils;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-9-28 ÏÂÎç1:47:30
+ * @author æ— èŠ±
+ * @since 2011-9-28 ä¸‹åˆ1:47:30
  */
 
 public class ConsoleConstant {
@@ -47,7 +47,7 @@ public class ConsoleConstant {
             "netstat -an| grep :%s | grep -v 0.0.0.0 |awk '{ print $5 }' | sort|awk -F: '{print $1}'| uniq -c|sort -r| awk '{print $1,$2}'";
 
 
-    /** »ñµÃÃüÁî×Ö·û´®:·Ö×éÍ³¼ÆÁ¬½Óµ½Ö¸¶¨¶Ë¿ÚµÄ¿Í»§¶ËipÁ¬½ÓÊı */
+    /** è·å¾—å‘½ä»¤å­—ç¬¦ä¸²:åˆ†ç»„ç»Ÿè®¡è¿æ¥åˆ°æŒ‡å®šç«¯å£çš„å®¢æˆ·ç«¯ipè¿æ¥æ•° */
     public static String getConnOfPortCMD(int port) {
         return String.format(CONN_FORMAT, port);
     }

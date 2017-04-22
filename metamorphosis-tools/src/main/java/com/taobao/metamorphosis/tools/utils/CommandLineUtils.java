@@ -26,8 +26,8 @@ import org.apache.commons.cli.PosixParser;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-8-23 ÉÏÎç11:01:10
+ * @author æ— èŠ±
+ * @since 2011-8-23 ä¸Šåˆ11:01:10
  */
 
 public class CommandLineUtils {

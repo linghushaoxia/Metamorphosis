@@ -32,13 +32,13 @@ import com.taobao.metamorphosis.tools.utils.CommandLineUtils;
 
 /**
  * <pre>
- * ·ÖÇø±àºÅ(Ä¿Â¼)ÏòÇ°»òÏòºóÆ«ÒÆ,Ò»°ãÓÃÓÚ·ÖÇøÇ¨ÒÆÊ±
+ * åˆ†åŒºç¼–å·(ç›®å½•)å‘å‰æˆ–å‘ååç§»,ä¸€èˆ¬ç”¨äºåˆ†åŒºè¿ç§»æ—¶
  * usage:
  *      MovePartitionFiles -dataDir /home/admin/metadata -topic xxtopic -start 5 -end 10 -offset -5
  * </pre>
  * 
- * @author ÎŞ»¨
- * @since 2011-8-25 ÏÂÎç12:59:24
+ * @author æ— èŠ±
+ * @since 2011-8-25 ä¸‹åˆ12:59:24
  */
 
 public class MovePartitionFiles extends ShellTool {
@@ -76,14 +76,14 @@ public class MovePartitionFiles extends ShellTool {
 
 
     private void rename(int offset, List<File> oldPartitionPaths, List<File> newPartitionPaths) {
-        // ÏòÇ°ÒÆ¶¯
+        // å‘å‰ç§»åŠ¨
         if (offset < 0) {
             for (int i = 0; i < oldPartitionPaths.size(); i++) {
                 oldPartitionPaths.get(i).renameTo(newPartitionPaths.get(i));
                 this.println(oldPartitionPaths.get(i).getAbsolutePath() + " rename to " + newPartitionPaths.get(i));
             }
         }
-        else {// ÏòºóÒÆ¶¯
+        else {// å‘åç§»åŠ¨
             for (int i = oldPartitionPaths.size() - 1; i >= 0; i--) {
                 if (oldPartitionPaths.get(i).renameTo(newPartitionPaths.get(i))) {
                     this.println(oldPartitionPaths.get(i).getAbsolutePath() + " rename to " + newPartitionPaths.get(i));
@@ -98,7 +98,7 @@ public class MovePartitionFiles extends ShellTool {
     }
 
 
-    /** ¼ì²éÒÆ¶¯ºóµÄÆÚÍûÄ¿Â¼ÊÇ·ñÒÑ¾­´æÔÚ,ÓĞÒ»¸ö´æÔÚ¾Í²»ÔÊĞí²Ù×÷,Å×³öÒì³£ */
+    /** æ£€æŸ¥ç§»åŠ¨åçš„æœŸæœ›ç›®å½•æ˜¯å¦å·²ç»å­˜åœ¨,æœ‰ä¸€ä¸ªå­˜åœ¨å°±ä¸å…è®¸æ“ä½œ,æŠ›å‡ºå¼‚å¸¸ */
     private void checkNewPartitionPaths(List<File> oldPartitionPaths, List<File> newPartitionPaths) {
         for (File file : newPartitionPaths) {
             if (!oldPartitionPaths.contains(file) && file.exists()) {
@@ -110,7 +110,7 @@ public class MovePartitionFiles extends ShellTool {
     }
 
 
-    /** ¼ì²éĞèÒªÒÆ¶¯µÄÄ¿Â¼ÊÇ·ñ´æÔÚ,ÓĞÒ»¸ö²»´æÔÚ¾Í²»ÔÊĞí²Ù×÷,Å×³öÒì³£ */
+    /** æ£€æŸ¥éœ€è¦ç§»åŠ¨çš„ç›®å½•æ˜¯å¦å­˜åœ¨,æœ‰ä¸€ä¸ªä¸å­˜åœ¨å°±ä¸å…è®¸æ“ä½œ,æŠ›å‡ºå¼‚å¸¸ */
     private void checkOldPartitionPaths(List<File> oldPartitionPaths) {
         for (File file : oldPartitionPaths) {
             if (!file.exists()) {
@@ -139,7 +139,7 @@ public class MovePartitionFiles extends ShellTool {
         startOption.setRequired(true);
         Option endOption = new Option("end", true, "end partition number");
         endOption.setRequired(true);
-        Option offsetOption = new Option("offset", true, "·ÖÇø±àºÅÏòÇ°»òÏòºóÆ«ÒÆÁ¿");
+        Option offsetOption = new Option("offset", true, "åˆ†åŒºç¼–å·å‘å‰æˆ–å‘ååç§»é‡");
         offsetOption.setRequired(true);
 
         return CommandLineUtils.parseCmdLine(args, new Options().addOption(dataDirOption).addOption(topicOption)
@@ -162,10 +162,10 @@ public class MovePartitionFiles extends ShellTool {
             throw new IllegalArgumentException("can not move,start less then end");
         }
         if (offset == 0) {
-            throw new IllegalArgumentException("can not move,offset == 0,don¡¯t move");
+            throw new IllegalArgumentException("can not move,offset == 0,donâ€™t move");
         }
         if ((start + offset) < 0) {
-            throw new IllegalArgumentException("can not move,ÒÆ¶¯ºó×îĞ¡µÄ·ÖÇø±àºÅ½«Ğ¡ÓÚ0");
+            throw new IllegalArgumentException("can not move,ç§»åŠ¨åæœ€å°çš„åˆ†åŒºç¼–å·å°†å°äº0");
         }
     }
 

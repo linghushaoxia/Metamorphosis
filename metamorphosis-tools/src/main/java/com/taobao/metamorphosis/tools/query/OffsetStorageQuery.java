@@ -20,14 +20,14 @@ package com.taobao.metamorphosis.tools.query;
 import java.util.List;
 
 /**
- * offsetµÄ²éÑ¯½Ó¿Ú
+ * offsetçš„æŸ¥è¯¢æ¥å£
  * 
  * @author pingwei
  */
 public interface OffsetStorageQuery {
 
     /**
-     * Ìá¹©offsetµÄ²éÑ¯£¬¾ßÌåÊµÏÖÈ·¶¨²»Í¬µÄ²éÑ¯Êı¾İÔ´
+     * æä¾›offsetçš„æŸ¥è¯¢ï¼Œå…·ä½“å®ç°ç¡®å®šä¸åŒçš„æŸ¥è¯¢æ•°æ®æº
      * 
      * @param queryDO
      * @return

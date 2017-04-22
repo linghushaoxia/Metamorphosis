@@ -20,15 +20,15 @@ package com.taobao.metamorphosis.tools.monitor.core;
 
 /**
  *
- * @author 无花
- * @since 2011-5-27 上午11:39:00
+ * @author 鏃犺姳
+ * @since 2011-5-27 涓婂崍11:39:00
  */
 
 public class StatsResult {
 
     private boolean success;
     private String statsInfo;
-    private final String serverUrl;//从哪个服务器接收
+    private final String serverUrl;//浠庡摢涓湇鍔″櫒鎺ユ敹
     private Exception e;
     public StatsResult(String serverUrl) {
         super();

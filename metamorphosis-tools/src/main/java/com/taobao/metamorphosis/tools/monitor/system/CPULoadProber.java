@@ -25,8 +25,8 @@ import com.taobao.metamorphosis.tools.utils.MonitorResult;
 
 /**
  * 
- * @author 无花
- * @since 2011-9-28 上午11:19:05
+ * @author 鏃犺姳
+ * @since 2011-9-28 涓婂崍11:19:05
  */
 
 public class CPULoadProber extends SystemProber {
@@ -39,7 +39,7 @@ public class CPULoadProber extends SystemProber {
     @Override
     protected void processResult(MonitorResult monitorResult) {
         if (monitorResult.getValue().intValue() > this.getMonitorConfig().getCpuLoadThreshold()) {
-            this.alert(monitorResult.getIp() + " load 已经到达 " + monitorResult.getValue());
+            this.alert(monitorResult.getIp() + " load 宸茬粡鍒拌揪 " + monitorResult.getValue());
         }
     }
 

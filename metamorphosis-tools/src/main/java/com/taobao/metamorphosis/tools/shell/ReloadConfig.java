@@ -31,7 +31,7 @@ import com.taobao.metamorphosis.tools.utils.JMXClient;
 
 /**
  * <pre>
- * 触发重载配置文件. 
+ * 瑙﹀彂閲嶈浇閰嶇疆鏂囦欢. 
  * usage:
  *      ReloadConfig
  *      ReloadConfig -host 10.2.2.3
@@ -39,8 +39,8 @@ import com.taobao.metamorphosis.tools.utils.JMXClient;
  *      ReloadConfig -host 10.2.2.3 -port 9999
  * </pre>
  * 
- * @author 无花
- * @since 2011-7-19 下午06:02:52
+ * @author 鏃犺姳
+ * @since 2011-7-19 涓嬪崍06:02:52
  */
 
 public class ReloadConfig extends ShellTool {
@@ -80,7 +80,7 @@ public class ReloadConfig extends ShellTool {
             this.println("invoke " + metaConfigInstance.getClassName() + "#reload success");
         }
         else {
-            this.println("没有找到 " + METACONFIG_NAME);
+            this.println("娌℃湁鎵惧埌 " + METACONFIG_NAME);
         }
     }
 }

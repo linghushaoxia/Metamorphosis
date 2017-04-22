@@ -23,8 +23,8 @@ import com.taobao.metamorphosis.tools.monitor.core.SendResultWrapper;
 import com.taobao.metamorphosis.tools.monitor.msgprobe.MsgProber.ProbContext;
 
 /**
- * @author Œﬁª®
- * @since 2011-5-25 …œŒÁ11:20:50
+ * @author Êó†Ëä±
+ * @since 2011-5-25 ‰∏äÂçà11:20:50
  */
 
 public class DefaultProbeListener extends ProbeListener {

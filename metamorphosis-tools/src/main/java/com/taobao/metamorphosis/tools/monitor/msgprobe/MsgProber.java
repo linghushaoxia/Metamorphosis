@@ -34,8 +34,8 @@ import com.taobao.metamorphosis.tools.monitor.core.SendResultWrapper;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-5-24 ÏÂÎç01:52:50
+ * @author æ— èŠ±
+ * @since 2011-5-24 ä¸‹åˆ01:52:50
  */
 
 public class MsgProber extends AbstractProber {
@@ -105,7 +105,7 @@ public class MsgProber extends AbstractProber {
 
     @Override
     public void doProb() throws InterruptedException {
-        // ±£Ö¤Ò»¶ÔsenderºÍreveicerÍ¬Ò»Ê±¼äÄÚÖ»ÄÜÔÚÒ»¸öÏß³ÌÖĞÊ¹ÓÃ
+        // ä¿è¯ä¸€å¯¹senderå’ŒreveiceråŒä¸€æ—¶é—´å†…åªèƒ½åœ¨ä¸€ä¸ªçº¿ç¨‹ä¸­ä½¿ç”¨
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < this.getSenders().length; i++) {
             this.futures.add(this.getProberExecutor().scheduleWithFixedDelay(
@@ -141,8 +141,8 @@ public class MsgProber extends AbstractProber {
 
         Thread.sleep(this.getMonitorConfig().getProbeInterval());
 
-        // receive²ÉÓÃÖ±Á¬½ÓÊÕ,.
-        // Ö±Á¬·¢ËÍÊ±·µ»ØµÄpatitionÎªbrokerId=-1,patition=ÕæÊµµÄpatition
+        // receiveé‡‡ç”¨ç›´è¿æ¥æ”¶,.
+        // ç›´è¿å‘é€æ—¶è¿”å›çš„patitionä¸ºbrokerId=-1,patition=çœŸå®çš„patition
         ReveiceResult reveiceResult = receiver.get(sender.getTopic(), sendResult.getSendResult().getPartition());
         probContext.lastRevTime = System.currentTimeMillis();
         probContext.reveiceResult = reveiceResult;
@@ -150,7 +150,7 @@ public class MsgProber extends AbstractProber {
             this.innerProbeListener.onReceiveFail(probContext);
         }
 
-        // ÏÂÒ»´Î½ÓÊÕÏûÏ¢µÄoffset´ÓÕâÒ»´Î·¢ËÍµÄoffsetÎ»ÖÃ¿ªÊ¼
+        // ä¸‹ä¸€æ¬¡æ¥æ”¶æ¶ˆæ¯çš„offsetä»è¿™ä¸€æ¬¡å‘é€çš„offsetä½ç½®å¼€å§‹
         receiver.setOffset(sendResult.getSendResult().getPartition(), sendResult.getSendResult().getOffset());
     }
 
@@ -170,7 +170,7 @@ public class MsgProber extends AbstractProber {
                     probeListener.onSendFail(sender, result);
                 }
                 catch (Exception e) {
-                    MsgProber.this.logger.error("´¦Àí·¢ËÍÊ§°ÜÊÂ¼şÊ±·¢Éú´íÎó," + probeListener.getClass(), e);
+                    MsgProber.this.logger.error("å¤„ç†å‘é€å¤±è´¥äº‹ä»¶æ—¶å‘ç”Ÿé”™è¯¯," + probeListener.getClass(), e);
                 }
             }
         }
@@ -183,7 +183,7 @@ public class MsgProber extends AbstractProber {
                     probeListener.onReceiveFail(probContext);
                 }
                 catch (Exception e) {
-                    MsgProber.this.logger.error("´¦Àí½ÓÊÕÊ§°ÜÊÂ¼şÊ±·¢Éú´íÎó," + probeListener.getClass(), e);
+                    MsgProber.this.logger.error("å¤„ç†æ¥æ”¶å¤±è´¥äº‹ä»¶æ—¶å‘ç”Ÿé”™è¯¯," + probeListener.getClass(), e);
                 }
             }
         }
@@ -193,8 +193,8 @@ public class MsgProber extends AbstractProber {
     static public class ProbContext {
         SendResultWrapper sendResult;
         ReveiceResult reveiceResult;
-        long lastSendTime;// ÉÏÒ»´Î·¢ËÍÏûÏ¢µÄÊ±¼ä,ºÁÃë
-        long lastRevTime; // ±¾´Î½ÓÊÕµ½ÏûÏ¢µÄÊ±¼ä,ºÁÃë
+        long lastSendTime;// ä¸Šä¸€æ¬¡å‘é€æ¶ˆæ¯çš„æ—¶é—´,æ¯«ç§’
+        long lastRevTime; // æœ¬æ¬¡æ¥æ”¶åˆ°æ¶ˆæ¯çš„æ—¶é—´,æ¯«ç§’
 
 
         public long getSendRevInterval() {

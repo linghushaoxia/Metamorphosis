@@ -24,17 +24,17 @@ import com.taobao.metamorphosis.tools.monitor.core.SendResultWrapper;
 import com.taobao.metamorphosis.tools.monitor.msgprobe.MsgProber.ProbContext;
 
 /**
- * @author ÎŞ»¨
- * @since 2011-5-25 ÉÏÎç11:53:10
+ * @author æ— èŠ±
+ * @since 2011-5-25 ä¸Šåˆ11:53:10
  */
 
 abstract public class ProbeListener {
     private static Logger listenerLogger = Logger.getLogger("probeListener");
 
-    /**·¢ËÍÏûÏ¢Ê§°ÜÊ±**/
+    /**å‘é€æ¶ˆæ¯å¤±è´¥æ—¶**/
     abstract protected void onSendFail(MsgSender sender, SendResultWrapper result);
 
-    /**½ÓÊÕÏûÏ¢Ê§°ÜÊ±**/
+    /**æ¥æ”¶æ¶ˆæ¯å¤±è´¥æ—¶**/
     abstract protected void onReceiveFail(ProbContext probContext);
 
     protected Logger getLogger() {

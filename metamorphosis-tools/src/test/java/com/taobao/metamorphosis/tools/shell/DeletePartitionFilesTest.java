@@ -32,8 +32,8 @@ import org.junit.Test;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-8-25 ÏÂÎç3:53:01
+ * @author æ— èŠ±
+ * @since 2011-8-25 ä¸‹åˆ3:53:01
  */
 
 public class DeletePartitionFilesTest {

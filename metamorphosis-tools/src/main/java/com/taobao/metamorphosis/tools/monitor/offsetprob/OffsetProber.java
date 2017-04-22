@@ -46,8 +46,8 @@ import com.taobao.metamorphosis.tools.query.ZkOffsetStorageQuery;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-5-31 ÉÏÎç11:06:05
+ * @author æ— èŠ±
+ * @since 2011-5-31 ä¸Šåˆ11:06:05
  */
 
 public class OffsetProber extends AbstractProber {
@@ -118,7 +118,7 @@ public class OffsetProber extends AbstractProber {
                     String key = this.makeKey(group, topic, partition);
                     InnerOffsetValue newValue = new InnerOffsetValue(newOffset, System.currentTimeMillis());
                     InnerOffsetValue oldVlaue = this.offsetMap.get(key);
-                    // ¾ÉµÄ¼ÇÂ¼²»´æÔÚ,»òÕßoffsetÒÆ¶¯¹ıµÄ²ÅĞèÒªput,·ñÔò±£Áô¾ÉÖµÒÔ±ãÈ¡µÃ×îºóÒ»´ÎoffsetÒÆ¶¯¹ıµÄÊ±¼ä
+                    // æ—§çš„è®°å½•ä¸å­˜åœ¨,æˆ–è€…offsetç§»åŠ¨è¿‡çš„æ‰éœ€è¦put,å¦åˆ™ä¿ç•™æ—§å€¼ä»¥ä¾¿å–å¾—æœ€åä¸€æ¬¡offsetç§»åŠ¨è¿‡çš„æ—¶é—´
                     if (oldVlaue == null || newValue.offset != oldVlaue.offset) {
                         this.offsetMap.put(key, newValue);
                     }
@@ -131,11 +131,11 @@ public class OffsetProber extends AbstractProber {
 
     }
 
-    private final static String altFormat = "consumer[%s] ×î½ü%sĞ¡Ê±ÒÔÀ´Ã»ÓĞ½ÓÊÕ¹ıÏûÏ¢,offsetÍ£ÁôÔÚ%s,ÉÏÒ»´ÎÌ½²âµ½¸ÃÆ«ÒÆÁ¿µÄÊ±¼äÊÇ%s";
+    private final static String altFormat = "consumer[%s] æœ€è¿‘%så°æ—¶ä»¥æ¥æ²¡æœ‰æ¥æ”¶è¿‡æ¶ˆæ¯,offsetåœç•™åœ¨%s,ä¸Šä¸€æ¬¡æ¢æµ‹åˆ°è¯¥åç§»é‡çš„æ—¶é—´æ˜¯%s";
     private final static String timeFormat = "yyyy-MM-dd HH:mm:ss";
 
 
-    /** ¼ì²éoffset£¬²¢±¨¾¯ Èç¹ûĞèÒª */
+    /** æ£€æŸ¥offsetï¼Œå¹¶æŠ¥è­¦ å¦‚æœéœ€è¦ */
     private void processOffset(InnerOffsetValue newOffset, InnerOffsetValue oldOffset, String key) {
         logger.info(new StringBuilder("prosscess offset of [").append(key).append("],last offset[")
             .append(oldOffset != null ? oldOffset.offset : 0).append("],new offset[").append(newOffset.offset)
@@ -156,7 +156,7 @@ public class OffsetProber extends AbstractProber {
             	if(this.getMonitorConfig().getFilterTopicList().contains(topic)){
             		return;
             	}
-                // ±¨¾¯¸øÏàÓ¦¶©ÔÄÕßµÄ¸ºÔğÈË,ÅäÖÃÔËĞĞÊ±¿É¸Ä±ä
+                // æŠ¥è­¦ç»™ç›¸åº”è®¢é˜…è€…çš„è´Ÿè´£äºº,é…ç½®è¿è¡Œæ—¶å¯æ”¹å˜
                 String[] tmp = StringUtils.split(key, ",");
                 GroupTopicPair pair1 = new GroupTopicPair(tmp[0], tmp[1]);
                 GroupTopicPair pair2 = new GroupTopicPair(tmp[0], null);
@@ -216,20 +216,20 @@ public class OffsetProber extends AbstractProber {
     }
 
 
-    /** ´¦ÀíÒÑ¾­²»´æÔÚµÄ¾É¼ÇÂ¼£¬²¢±¨¾¯ */
+    /** å¤„ç†å·²ç»ä¸å­˜åœ¨çš„æ—§è®°å½•ï¼Œå¹¶æŠ¥è­¦ */
     private void processCancelConsumer(Map<String, InnerOffsetValue> offsetMap, Set<String> newKeySet) {
         logger.info("start check all record");
         if (offsetMap.isEmpty()) {
             return;
         }
-        Set<String> oldSet = new HashSet<String>(offsetMap.keySet());// note:±ØĞënewÒ»¸öĞÂµÄ
+        Set<String> oldSet = new HashSet<String>(offsetMap.keySet());// note:å¿…é¡»newä¸€ä¸ªæ–°çš„
         for (String key : newKeySet) {
             oldSet.remove(key);
         }
 
         for (String key : oldSet) {
             offsetMap.remove(key);
-            String msg = "ÒÑ¾­²éÕÒ²»µ½" + key + "µÄ¶©ÔÄÆ«ÒÆÁ¿¼ÇÂ¼,¿ÉÄÜÒÑÈ¡Ïû¶©ÔÄ,Çë¼ì²é";
+            String msg = "å·²ç»æŸ¥æ‰¾ä¸åˆ°" + key + "çš„è®¢é˜…åç§»é‡è®°å½•,å¯èƒ½å·²å–æ¶ˆè®¢é˜…,è¯·æ£€æŸ¥";
             logger.warn(msg);
             String[] tmp = StringUtils.split(key, ",");
             GroupTopicPair pair = new GroupTopicPair(tmp[0], tmp[1]);

@@ -22,10 +22,10 @@ import java.io.PrintWriter;
 
 
 /**
- * ´ú±í¸÷ÖÖĞ¡¹¤¾ß
+ * ä»£è¡¨å„ç§å°å·¥å…·
  * 
- * @author ÎŞ»¨
- * @since 2011-8-23 ÏÂÎç3:44:25
+ * @author æ— èŠ±
+ * @since 2011-8-23 ä¸‹åˆ3:44:25
  */
 
 public abstract class ShellTool {
@@ -43,7 +43,7 @@ public abstract class ShellTool {
     }
 
 
-    /** Ö÷¹¦ÄÜÈë¿Ú */
+    /** ä¸»åŠŸèƒ½å…¥å£ */
     abstract public void doMain(String[] args) throws Exception;
 
 

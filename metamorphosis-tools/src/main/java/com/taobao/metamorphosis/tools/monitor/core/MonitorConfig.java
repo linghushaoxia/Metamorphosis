@@ -45,8 +45,8 @@ import com.taobao.metamorphosis.utils.Utils;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-5-24 ÉÏÎç11:19:13
+ * @author æ— èŠ±
+ * @since 2011-5-24 ä¸Šåˆ11:19:13
  */
 
 public class MonitorConfig {
@@ -88,7 +88,7 @@ public class MonitorConfig {
 
     private long statsProbCycleTime = 12 * 60 * 1000;
 
-    private int systemProbCycleTime = 2;// µ¥Î»Îª·ÖÖÓ
+    private int systemProbCycleTime = 2;// å•ä½ä¸ºåˆ†é’Ÿ
     private final Set<String> filterTopicList = new HashSet<String>();
 
     
@@ -113,10 +113,10 @@ public class MonitorConfig {
 
     private int jmxPort = 9999;
 
-    /** Ã¿¸ömeta¿Í»§¶ËIpÁ¬½ÓÊı·§Öµ */
+    /** æ¯ä¸ªmetaå®¢æˆ·ç«¯Ipè¿æ¥æ•°é˜€å€¼ */
     private int metaConnectionPerIpThreshold = 5;
 
-    /** meta·şÎñÆ÷Á¬½Ó×ÜÊı·§Öµ */
+    /** metaæœåŠ¡å™¨è¿æ¥æ€»æ•°é˜€å€¼ */
     private int metaConnectionThreshold = 150;
 
     private int preparedTransactionCountThreshold = 10;
@@ -132,7 +132,7 @@ public class MonitorConfig {
         this.isConfigFileChanged(true);
         File iniFile = Utils.getResourceAsFile(resource);
         final Ini iniConfig = new Ini();
-        //ini4j½âÎö¡°/¡±Ê±£¬°ÑÆäµ±×ö·Ö¸ô×Ö·û£¬±àÂë¸ü¸Ä·Ö¸ô×Ö·û
+        //ini4jè§£æâ€œ/â€æ—¶ï¼ŒæŠŠå…¶å½“åšåˆ†éš”å­—ç¬¦ï¼Œç¼–ç æ›´æ”¹åˆ†éš”å­—ç¬¦
         iniConfig.getConfig().setPathSeparator('+');
         iniConfig.getConfig().setFileEncoding(Charset.forName("GBK"));
 		iniConfig.load(iniFile);
@@ -204,7 +204,7 @@ public class MonitorConfig {
         if(!this.metaServerList.equals(newMetaServerList)){
         	this.metaServerList.clear();
         	this.metaServerList = newMetaServerList;
-        	//¹¹ÔìserverUrlList serverUrlList
+        	//æ„é€ serverUrlList serverUrlList
 //    		serverUrlList.clear();
 //    		serverUrlList = newServerUrlList;
         }
@@ -347,25 +347,25 @@ public class MonitorConfig {
                     tmpMap.put(groupTopicPair, wwList);
                 }
                 else {
-                    throw new IOException("½âÎö´íÎó:" + property);
+                    throw new IOException("è§£æé”™è¯¯:" + property);
                 }
             }
 
-            // µ±Ò»ÇĞ¶¼Ã»´íÎóµÄÊ±ºò,Çå¿Õ¾ÉÊı¾İ·ÅÈëĞÂÊı¾İ,·ñÔòÊ¹ÓÃ¾ÉÊı¾İ
+            // å½“ä¸€åˆ‡éƒ½æ²¡é”™è¯¯çš„æ—¶å€™,æ¸…ç©ºæ—§æ•°æ®æ”¾å…¥æ–°æ•°æ®,å¦åˆ™ä½¿ç”¨æ—§æ•°æ®
             if (!tmpMap.isEmpty()) {
                 map.clear();
                 map.putAll(tmpMap);
             }
         }
         catch (Exception e) {
-            throw new IOException("½âÎöÅäÖÃÏî³ö´í,maybe½«Ê¹ÓÃ¾ÉµÄÊı¾İ:" + property, e);
+            throw new IOException("è§£æé…ç½®é¡¹å‡ºé”™,maybeå°†ä½¿ç”¨æ—§çš„æ•°æ®:" + property, e);
         }
     }
 
 
     static List<String> parseWW(String property, String string) throws IOException {
         if (!string.startsWith("[") || !string.endsWith("]")) {
-            throw new IOException("½âÎö×Ö·û´®´íÎó:" + property);
+            throw new IOException("è§£æå­—ç¬¦ä¸²é”™è¯¯:" + property);
         }
         List<String> list = Arrays.asList(StringUtils.split(string.substring(1, string.length() - 1), "|"));
         return list;
@@ -543,7 +543,7 @@ public class MonitorConfig {
                 logger.info("Reload topics successfully");
             }
             else {
-                logger.info("ÅäÖÃÎÄ¼şÃ»·¢Éú¸Ä±ä,²»ĞèÒªreload");
+                logger.info("é…ç½®æ–‡ä»¶æ²¡å‘ç”Ÿæ”¹å˜,ä¸éœ€è¦reload");
             }
         }
         catch (final Exception e) {

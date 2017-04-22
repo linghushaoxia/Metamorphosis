@@ -31,7 +31,7 @@ import com.taobao.metamorphosis.tools.utils.JMXClient;
 
 /**
  * <pre>
- * 触发slave重启数据同步,在动态增加topic时用 
+ * 瑙﹀彂slave閲嶅惎鏁版嵁鍚屾,鍦ㄥ姩鎬佸鍔爐opic鏃剁敤 
  * usage:
  *      SlaveResubscribe
  *      SlaveResubscribe -host 10.2.2.3
@@ -39,8 +39,8 @@ import com.taobao.metamorphosis.tools.utils.JMXClient;
  *      SlaveResubscribe -host 10.2.2.3 -port 9999
  * </pre>
  * 
- * @author 无花
- * @since 2011-7-19 下午06:02:52
+ * @author 鏃犺姳
+ * @since 2011-7-19 涓嬪崍06:02:52
  */
 
 public class SlaveResubscribe extends ShellTool {
@@ -82,7 +82,7 @@ public class SlaveResubscribe extends ShellTool {
             this.println("invoke " + metaConfigInstance.getClassName() + "#restart success");
         }
         else {
-            this.println("没有找到 " + HANDLE_NANE);
+            this.println("娌℃湁鎵惧埌 " + HANDLE_NANE);
         }
     }
 }

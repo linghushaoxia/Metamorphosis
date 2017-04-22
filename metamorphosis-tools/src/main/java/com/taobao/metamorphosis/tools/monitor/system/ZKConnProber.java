@@ -31,10 +31,10 @@ import com.taobao.metamorphosis.utils.ZkUtils.ZKConfig;
 
 
 /**
- * ¼à¿ØmetaÊÇ·ñÕı³£Á¬½Óµ½zk
+ * ç›‘æ§metaæ˜¯å¦æ­£å¸¸è¿æ¥åˆ°zk
  * 
- * @author ÎŞ»¨
- * @since 2011-9-29 ÏÂÎç1:53:47
+ * @author æ— èŠ±
+ * @since 2011-9-29 ä¸‹åˆ1:53:47
  */
 
 public class ZKConnProber extends SystemProber {
@@ -54,7 +54,7 @@ public class ZKConnProber extends SystemProber {
             query.close();
         }
         catch (IOException e) {
-            throw new InitException("³õÊ¼»¯ZKConnProberÊ§°Ü", e);
+            throw new InitException("åˆå§‹åŒ–ZKConnProberå¤±è´¥", e);
         }
     }
 
@@ -69,7 +69,7 @@ public class ZKConnProber extends SystemProber {
                         ConnectionUtil.IsConnected(sender.getHost(), zk.trim(), this.getMonitorConfig().getLoginUser(),
                             this.getMonitorConfig().getLoginPassword());
                 if (isConnected) {
-                    this.logger.debug(sender.getServerUrl() + "ÒÑÁ¬½Óµ½zk:" + zk);
+                    this.logger.debug(sender.getServerUrl() + "å·²è¿æ¥åˆ°zk:" + zk);
                     break;
                 }
             }
@@ -79,13 +79,13 @@ public class ZKConnProber extends SystemProber {
             }
 
             if (i < 1) {
-            	logger.debug("Meta server[" + sender.getHost() + "]Óëzk·şÎñÆ÷[" + this.zkConfig.zkConnect + "]µÚÒ»´ÎÁ¬½ÓÊ§°Ü.");
+            	logger.debug("Meta server[" + sender.getHost() + "]ä¸zkæœåŠ¡å™¨[" + this.zkConfig.zkConnect + "]ç¬¬ä¸€æ¬¡è¿æ¥å¤±è´¥.");
                 Thread.sleep(2000);
             }
         }
 
         if (!isConnected) {
-            this.alert("Meta server[" + sender.getHost() + "]Óëzk·şÎñÆ÷[" + this.zkConfig.zkConnect + "]Ö®¼äÃ»ÓĞÍøÂçÁ¬½Ó.");
+            this.alert("Meta server[" + sender.getHost() + "]ä¸zkæœåŠ¡å™¨[" + this.zkConfig.zkConnect + "]ä¹‹é—´æ²¡æœ‰ç½‘ç»œè¿æ¥.");
         }
 
         return null;

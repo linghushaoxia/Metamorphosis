@@ -26,8 +26,8 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-9-29 ÉÏÎç9:56:05
+ * @author æ— èŠ±
+ * @since 2011-9-29 ä¸Šåˆ9:56:05
  */
 
 public class ConnectionUtil {
@@ -70,7 +70,7 @@ public class ConnectionUtil {
 
     /**
      * <pre>
-     * ·Ö×éÍ³¼ÆÁ¬½Óµ½Ö¸¶¨¶Ë¿ÚµÄ¿Í»§¶ËipÁ¬½ÓÊı
+     * åˆ†ç»„ç»Ÿè®¡è¿æ¥åˆ°æŒ‡å®šç«¯å£çš„å®¢æˆ·ç«¯ipè¿æ¥æ•°
      * @param ip
      * @param port
      * @param user

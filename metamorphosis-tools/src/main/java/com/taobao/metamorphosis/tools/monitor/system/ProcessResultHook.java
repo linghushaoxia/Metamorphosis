@@ -22,8 +22,8 @@ import com.taobao.metamorphosis.tools.utils.MonitorResult;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-9-28 ÏÂÎç2:33:40
+ * @author æ— èŠ±
+ * @since 2011-9-28 ä¸‹åˆ2:33:40
  */
 
 public abstract class ProcessResultHook {

@@ -87,17 +87,17 @@ public class MysqlOffsetStorageQuery implements OffsetStorageQuery {
 		return true;
 	}
 
-	//TODO 一下暂时未实现
+	//TODO 涓�涓嬫殏鏃舵湭瀹炵幇
     public List<String> getConsumerGroups() {
-        throw new UnsupportedOperationException("暂未实现");
+        throw new UnsupportedOperationException("鏆傛湭瀹炵幇");
     }
 
     public List<String> getPartitionsOf(String group, String topic) {
-        throw new UnsupportedOperationException("暂未实现");
+        throw new UnsupportedOperationException("鏆傛湭瀹炵幇");
     }
 
     public List<String> getTopicsExistOffset(String group) {
-        throw new UnsupportedOperationException("暂未实现");
+        throw new UnsupportedOperationException("鏆傛湭瀹炵幇");
     }
 
 }

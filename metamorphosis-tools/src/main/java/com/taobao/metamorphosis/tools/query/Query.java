@@ -40,7 +40,7 @@ import com.taobao.metamorphosis.utils.ZkUtils.ZKConfig;
 
 
 /**
- * offset²éÑ¯²ÎÊı
+ * offsetæŸ¥è¯¢å‚æ•°
  * 
  * @author pingwei
  */
@@ -104,7 +104,7 @@ public class Query {
                 this.zkQuery = new ZkOffsetStorageQuery(this.zkClient, metaZookeeper);
             }
             catch (final IOException e) {
-                throw new InitException("³õÊ¼»¯zk¿Í»§¶ËÊ§°Ü", e);
+                throw new InitException("åˆå§‹åŒ–zkå®¢æˆ·ç«¯å¤±è´¥", e);
             }
         }
         if (!StringUtil.empty(jdbcConf)) {

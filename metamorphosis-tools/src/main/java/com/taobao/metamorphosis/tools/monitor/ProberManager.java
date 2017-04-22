@@ -44,10 +44,10 @@ import com.taobao.metamorphosis.tools.monitor.system.ZKConnProber;
 
 
 /**
- * @author ÎŞ»¨
- * @since 2011-5-27 ÏÂÎç03:28:14
+ * @author æ— èŠ±
+ * @since 2011-5-27 ä¸‹åˆ03:28:14
  */
-// TODO ÏÈ¼òµ¥ÕâÑù´¦Àí.ÒÔºó¿ÉÒÔ½øÒ»²½·ÖÀë¸÷ÖÖproberÓëµ÷¶ÈÂß¼­
+// TODO å…ˆç®€å•è¿™æ ·å¤„ç†.ä»¥åå¯ä»¥è¿›ä¸€æ­¥åˆ†ç¦»å„ç§proberä¸è°ƒåº¦é€»è¾‘
 public class ProberManager {
 
     private static Logger logger = Logger.getLogger(ProberManager.class);

@@ -24,8 +24,8 @@ import com.taobao.metamorphosis.tools.monitor.statsprobe.RealTimeStatsProber;
 
 /**
  *
- * @author ÎŞ»¨
- * @since 2011-5-27 ÏÂÎç05:48:39
+ * @author æ— èŠ±
+ * @since 2011-5-27 ä¸‹åˆ05:48:39
  */
 
 public class RealTimeStatsProberTest {

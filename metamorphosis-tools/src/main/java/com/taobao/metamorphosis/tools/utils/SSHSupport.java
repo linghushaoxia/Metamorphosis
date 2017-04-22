@@ -88,7 +88,7 @@ public class SSHSupport {
             return result.toString();
         }
         catch (Throwable e) {
-            throw new RemoteExecuteException("Ö´ÐÐÃüÁî´íÎó", e);
+            throw new RemoteExecuteException("æ‰§è¡Œå‘½ä»¤é”™è¯¯", e);
         }
     }
 

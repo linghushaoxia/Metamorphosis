@@ -33,13 +33,13 @@ import com.taobao.metamorphosis.tools.utils.CommandLineUtils;
 
 /**
  * <pre>
- * Çå³ıÒ»¸ötopicµÄÄ³Ğ©·ÖÇøÊı¾İ
+ * æ¸…é™¤ä¸€ä¸ªtopicçš„æŸäº›åˆ†åŒºæ•°æ®
  * usage:
  *      DeletePartitionFiles -dataDir /home/admin/metadata -topic xxtopic -start 5 -end 10
  * </pre>
  * 
- * @author ÎŞ»¨
- * @since 2011-8-25 ÉÏÎç11:04:16
+ * @author æ— èŠ±
+ * @since 2011-8-25 ä¸Šåˆ11:04:16
  */
 
 public class DeletePartitionFiles extends ShellTool {

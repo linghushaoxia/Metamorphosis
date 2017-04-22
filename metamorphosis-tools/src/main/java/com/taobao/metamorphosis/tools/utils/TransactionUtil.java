@@ -23,8 +23,8 @@ import javax.management.ObjectName;
 
 /**
  * 
- * @author ÎÞ»¨
- * @since 2011-9-30 ÉÏÎç11:20:08
+ * @author æ— èŠ±
+ * @since 2011-9-30 ä¸Šåˆ11:20:08
  */
 
 public class TransactionUtil {
@@ -41,7 +41,7 @@ public class TransactionUtil {
 
 
     /**
-     * ·µ»ØËùÓÐ´¦ÓÚprepare×´Ì¬µÄxaÊÂÎñ
+     * è¿”å›žæ‰€æœ‰å¤„äºŽprepareçŠ¶æ€çš„xaäº‹åŠ¡
      * 
      * @return
      */
@@ -55,7 +55,7 @@ public class TransactionUtil {
 
 
     /**
-     * ·µ»ØËùÓÐ´¦ÓÚprepare×´Ì¬µÄxaÊÂÎñÊýÄ¿
+     * è¿”å›žæ‰€æœ‰å¤„äºŽprepareçŠ¶æ€çš„xaäº‹åŠ¡æ•°ç›®
      * 
      * @return
      */
@@ -69,7 +69,7 @@ public class TransactionUtil {
 
 
     /**
-     * Ìá½»ÊÂÎñ
+     * æäº¤äº‹åŠ¡
      * 
      * @param txKey
      */
@@ -83,7 +83,7 @@ public class TransactionUtil {
 
 
     /**
-     * »Ø¹öÊÂÎñ
+     * å›žæ»šäº‹åŠ¡
      * 
      * @param txKey
      */

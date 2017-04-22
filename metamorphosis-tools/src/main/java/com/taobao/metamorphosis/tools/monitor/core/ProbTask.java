@@ -22,10 +22,10 @@ import org.apache.commons.logging.LogFactory;
 
 
 /**
- * Ì½²âÏß³Ì×¨ÓÃtask,È·±£²»»áÅ×³öÒì³£,ÒÔÃâscheduleÍ£Ö¹ºóĞøÌ½²â
+ * æ¢æµ‹çº¿ç¨‹ä¸“ç”¨task,ç¡®ä¿ä¸ä¼šæŠ›å‡ºå¼‚å¸¸,ä»¥å…scheduleåœæ­¢åç»­æ¢æµ‹
  * 
- * @author ÎŞ»¨
- * @since 2011-5-30 ÏÂÎç01:56:49
+ * @author æ— èŠ±
+ * @since 2011-5-30 ä¸‹åˆ01:56:49
  */
 
 public abstract class ProbTask implements Runnable {
@@ -37,11 +37,11 @@ public abstract class ProbTask implements Runnable {
             this.doExecute();
         }
         catch (InterruptedException e) {
-            this.log.warn("Ì½²âÏß³Ì½ÓÊÕµ½ÖĞ¶ÏĞÅºÅ.");
+            this.log.warn("æ¢æµ‹çº¿ç¨‹æ¥æ”¶åˆ°ä¸­æ–­ä¿¡å·.");
             Thread.currentThread().interrupt();
         }
         catch (Throwable e) {
-            // ²¶»ñµôËùÓĞÒì³£,ÒÔÃâScheduledExecutorService²»ÄÜÖ´ĞĞºóĞøÌ½²âÈÎÎñ
+            // æ•è·æ‰æ‰€æœ‰å¼‚å¸¸,ä»¥å…ScheduledExecutorServiceä¸èƒ½æ‰§è¡Œåç»­æ¢æµ‹ä»»åŠ¡
             this.handleExceptionInner(e);
         }
     }

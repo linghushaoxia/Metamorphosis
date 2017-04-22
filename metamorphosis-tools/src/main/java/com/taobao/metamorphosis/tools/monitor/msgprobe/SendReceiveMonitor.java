@@ -25,7 +25,7 @@ import com.taobao.metamorphosis.tools.monitor.core.MonitorConfig;
 
 
 /**
- * @author 无花
+ * @author 鏃犺姳
  */
 
 @Deprecated
@@ -52,8 +52,8 @@ public class SendReceiveMonitor {
             prober.prob();
         }
         catch (Throwable e) {
-            logger.error("监控系统意外终止", e);
-            Alarm.alert("监控系统意外终止", monitorConfig);
+            logger.error("鐩戞帶绯荤粺鎰忓缁堟", e);
+            Alarm.alert("鐩戞帶绯荤粺鎰忓缁堟", monitorConfig);
         }
 
     }

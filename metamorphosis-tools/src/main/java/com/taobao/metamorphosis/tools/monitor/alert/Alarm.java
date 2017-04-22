@@ -24,8 +24,8 @@ import com.taobao.metamorphosis.tools.monitor.core.MonitorConfig;
 
 
 /**
- * @author 无花
- * @since 2011-5-25 下午04:07:28
+ * @author 鏃犺姳
+ * @since 2011-5-25 涓嬪崍04:07:28
  */
 
 public class Alarm {
@@ -87,14 +87,14 @@ public class Alarm {
                 if (this.wangwangList != null && !this.wangwangList.isEmpty()) {
                     for (final String wangwang : this.wangwangList) {
                         // PushMsg.alertByWW(wangwang, msg);
-                        // TODO:报警
+                        // TODO:鎶ヨ
                     }
                 }
 
                 if (this.mobileList != null && !this.mobileList.isEmpty() && this.isNeedMobileAlert) {
                     for (final String mobile : this.mobileList) {
                         // PushMsg.alertByMobile(mobile, msg);
-                        // TODO:报警
+                        // TODO:鎶ヨ
                     }
                 }
             }

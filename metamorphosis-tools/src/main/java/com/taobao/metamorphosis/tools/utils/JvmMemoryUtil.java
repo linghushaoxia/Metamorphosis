@@ -25,8 +25,8 @@ import javax.management.openmbean.CompositeData;
 
 /**
  * 
- * @author ÎŞ»¨
- * @since 2011-9-28 ÏÂÎç5:02:13
+ * @author æ— èŠ±
+ * @since 2011-9-28 ä¸‹åˆ5:02:13
  */
 
 public class JvmMemoryUtil {

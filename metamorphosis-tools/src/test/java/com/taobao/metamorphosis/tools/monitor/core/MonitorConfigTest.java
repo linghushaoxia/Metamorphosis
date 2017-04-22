@@ -30,7 +30,7 @@ public class MonitorConfigTest {
         final String resource = "monitor.ini";
         final MonitorConfig monitorConfig = new MonitorConfig();
         monitorConfig.loadInis(resource);
-        Assert.assertTrue(monitorConfig.getWangwangList().contains("ÎÞ»¨"));
+        Assert.assertTrue(monitorConfig.getWangwangList().contains("æ— èŠ±"));
 
     }
 }
