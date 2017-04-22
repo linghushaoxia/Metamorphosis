@@ -27,10 +27,10 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * Ò»¸öÀ©Õ¹µÄMeta»á»°¹¤³§,Ìá¹©Ò»Ğ©À©Õ¹¹¦ÄÜ.
+ * ä¸€ä¸ªæ‰©å±•çš„Metaä¼šè¯å·¥å‚,æä¾›ä¸€äº›æ‰©å±•åŠŸèƒ½.
  * 
- * @author ÎŞ»¨
- * @since 2011-11-7 ÏÂÎç4:09:56
+ * @author æ— èŠ±
+ * @since 2011-11-7 ä¸‹åˆ4:09:56
  */
 
 public class ExtMetaMessageSessionFactory extends MetaBroadcastMessageSessionFactory implements

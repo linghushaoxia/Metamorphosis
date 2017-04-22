@@ -31,7 +31,7 @@ import org.apache.log4j.helpers.LogLog;
 /**
  * 
  * @author wuxin
- * @since 1.0, 2009-10-20 ÏÂÎç03:49:32
+ * @since 1.0, 2009-10-20 ä¸‹åˆ03:49:32
  */
 public class FileStreamAppender extends StreamAppender {
 

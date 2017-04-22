@@ -41,7 +41,7 @@ import com.taobao.metamorphosis.utils.codec.CodecBuilder.Codec_Type;
  * 
  * @author wuxin,
  * @author boyan<boyan@taobao.com)
- * @since 1.0, 2009-10-20 ÏÂÎç03:29:12
+ * @since 1.0, 2009-10-20 ä¸‹åˆ03:29:12
  * @author wuhua
  */
 public class StreamAppender extends AppenderSkeleton {
@@ -86,12 +86,12 @@ public class StreamAppender extends AppenderSkeleton {
     protected AsyncMessageProducer producer;
 
     // /**
-    // * ´Ódiamond»ñÈ¡zkÅäÖÃµÄdataId£¬Ä¬ÈÏÎª"metamorphosis.zkConfig"
+    // * ä»ŽdiamondèŽ·å–zké…ç½®çš„dataIdï¼Œé»˜è®¤ä¸º"metamorphosis.zkConfig"
     // */
     // protected String diamondZKDataId = DiamondUtils.DEFAULT_ZK_DATAID;
     //
     // /**
-    // * ´Ódiamond»ñÈ¡zkÅäÖÃµÄgroup£¬Ä¬ÈÏÎªDEFAULT_GROUP
+    // * ä»ŽdiamondèŽ·å–zké…ç½®çš„groupï¼Œé»˜è®¤ä¸ºDEFAULT_GROUP
     // */
     // protected String diamondZKGroup = Constants.DEFAULT_GROUP;
 
@@ -314,12 +314,12 @@ public class StreamAppender extends AppenderSkeleton {
 
 
     /**
-     * ½«ObjectÐ´µ½LogÎÄ¼þÏµÍ³£¬ÕâÀïÎÒÃÇ½«¸Ã·½·¨ÉÏËøÀ´±£Ö¤µ¥¸öObjectÐ´µ½ÏµÍ³µÄÔ­×ÓÐÔ.
+     * å°†Objectå†™åˆ°Logæ–‡ä»¶ç³»ç»Ÿï¼Œè¿™é‡Œæˆ‘ä»¬å°†è¯¥æ–¹æ³•ä¸Šé”æ¥ä¿è¯å•ä¸ªObjectå†™åˆ°ç³»ç»Ÿçš„åŽŸå­æ€§.
      * 
-     * Ð­Òé¸ñÊ½£º
+     * åè®®æ ¼å¼ï¼š
      * 
-     * ¿ªÊ¼±êÊ¾(1¸ö×Ö½Ú) + ¶ÔÏó³¤¶È (4¸ö×Ö½Ú) + °æ±¾ÐÅÏ¢ (1¸ö×Ö½Ú£© + ÐòÁÐ»¯ÀàÐÍ (1¸ö×Ö½Ú) + ¶ÔÏóÄÚÈÝ (³¤¶È²»ÏÞ£© +
-     * ¶ÔÏó³¤¶È (4¸ö×Ö½Ú)
+     * å¼€å§‹æ ‡ç¤º(1ä¸ªå­—èŠ‚) + å¯¹è±¡é•¿åº¦ (4ä¸ªå­—èŠ‚) + ç‰ˆæœ¬ä¿¡æ¯ (1ä¸ªå­—èŠ‚ï¼‰ + åºåˆ—åŒ–ç±»åž‹ (1ä¸ªå­—èŠ‚) + å¯¹è±¡å†…å®¹ (é•¿åº¦ä¸é™ï¼‰ +
+     * å¯¹è±¡é•¿åº¦ (4ä¸ªå­—èŠ‚)
      */
     private synchronized void logObject(final byte[] content) throws IOException {
         this.initMeta();

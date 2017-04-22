@@ -22,16 +22,16 @@ import com.taobao.metamorphosis.client.consumer.RecoverManager;
 
 
 /**
- * 消费者消息处理失败时的recover方式
+ * 娑堣垂鑰呮秷鎭鐞嗗け璐ユ椂鐨剅ecover鏂瑰紡
  * 
- * @author 无花
- * @since 2011-11-7 下午5:20:06
+ * @author 鏃犺姳
+ * @since 2011-11-7 涓嬪崍5:20:06
  */
 
 public enum ConsumerRecoverType {
 
     /**
-     * 默认类型,需要recover的消息存储在本地
+     * 榛樿绫诲瀷,闇�瑕乺ecover鐨勬秷鎭瓨鍌ㄥ湪鏈湴
      * 
      */
     DEFAULT {
@@ -42,7 +42,7 @@ public enum ConsumerRecoverType {
     },
 
     /**
-     * 需要recover的消息存储在Notify.<br>
+     * 闇�瑕乺ecover鐨勬秷鎭瓨鍌ㄥ湪Notify.<br>
      * <b>unsupported,"notify" is not open source yet<b>
      * 
      */

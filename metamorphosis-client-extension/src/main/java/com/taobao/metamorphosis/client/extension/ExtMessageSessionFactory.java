@@ -24,39 +24,39 @@ import com.taobao.metamorphosis.client.extension.consumer.ConsumerRecoverType;
 
 
 /**
- * Ò»¸öÀ©Õ¹µÄMeta»á»°¹¤³§,Ìá¹©Ò»Ğ©À©Õ¹¹¦ÄÜ.
+ * ä¸€ä¸ªæ‰©å±•çš„Metaä¼šè¯å·¥å‚,æä¾›ä¸€äº›æ‰©å±•åŠŸèƒ½.
  * 
- * @author ÎŞ»¨
- * @since 2011-11-7 ÏÂÎç4:06:15
+ * @author æ— èŠ±
+ * @since 2011-11-7 ä¸‹åˆ4:06:15
  */
 
 public interface ExtMessageSessionFactory extends BroadcastMessageSessionFactory {
 
     /**
-     * ´´½¨Ïû·ÑÕß
+     * åˆ›å»ºæ¶ˆè´¹è€…
      * 
      * @param consumerConfig
-     *            Ïû·ÑÕßÅäÖÃ
+     *            æ¶ˆè´¹è€…é…ç½®
      * @param RecoverType
-     *            Ñ¡ÔñÏûÏ¢recover·½Ê½,
+     *            é€‰æ‹©æ¶ˆæ¯recoveræ–¹å¼,
      *            ConsumerRecoverType.DEFAULT,ConsumerRecoverType.NOTIFY<br>
-     *            Ä¿Ç°²»Ö§³ÖConsumerRecoverType.NOTIFY
+     *            ç›®å‰ä¸æ”¯æŒConsumerRecoverType.NOTIFY
      * @return
      */
     public MessageConsumer createConsumer(ConsumerConfig consumerConfig, ConsumerRecoverType RecoverType);
 
 
     /**
-     * ´´½¨Ïû·ÑÕß
+     * åˆ›å»ºæ¶ˆè´¹è€…
      * 
      * @param consumerConfig
-     *            Ïû·ÑÕßÅäÖÃ
+     *            æ¶ˆè´¹è€…é…ç½®
      * @param offsetStorage
-     *            offset´æ´¢Æ÷
+     *            offsetå­˜å‚¨å™¨
      * @param RecoverType
-     *            Ñ¡ÔñÏûÏ¢recover·½Ê½,
+     *            é€‰æ‹©æ¶ˆæ¯recoveræ–¹å¼,
      *            ConsumerRecoverType.DEFAULT,ConsumerRecoverType.NOTIFY<br>
-     *            Ä¿Ç°²»Ö§³ÖConsumerRecoverType.NOTIFY
+     *            ç›®å‰ä¸æ”¯æŒConsumerRecoverType.NOTIFY
      * @return
      */
     public MessageConsumer createConsumer(ConsumerConfig consumerConfig, OffsetStorage offsetStorage,
@@ -64,12 +64,12 @@ public interface ExtMessageSessionFactory extends BroadcastMessageSessionFactory
 
 
     /**
-     * ´´½¨¹ã²¥Ïû·ÑÕß
+     * åˆ›å»ºå¹¿æ’­æ¶ˆè´¹è€…
      * 
      * @param consumerConfig
-     * @param recoverTypeÑ¡ÔñÏûÏ¢recover·½Ê½
+     * @param recoverTypeé€‰æ‹©æ¶ˆæ¯recoveræ–¹å¼
      *            , ConsumerRecoverType.DEFAULT,ConsumerRecoverType.NOTIFY.<br>
-     *            Ä¿Ç°²»Ö§³ÖConsumerRecoverType.NOTIFY
+     *            ç›®å‰ä¸æ”¯æŒConsumerRecoverType.NOTIFY
      * @return
      */
     public MessageConsumer createBroadcastConsumer(ConsumerConfig consumerConfig, ConsumerRecoverType recoverType);

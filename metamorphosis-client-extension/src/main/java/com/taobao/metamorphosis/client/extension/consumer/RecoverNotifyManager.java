@@ -31,11 +31,11 @@ import com.taobao.metamorphosis.exception.MetaClientException;
 
 
 /**
- * Recover存储管理器，需要recover的消息存到notify. <br>
+ * Recover瀛樺偍绠＄悊鍣紝闇�瑕乺ecover鐨勬秷鎭瓨鍒皀otify. <br>
  * <b>unsupported,"notify" is not open source yet<b>
  * 
- * @author 无花
- * @since 2011-10-31 下午3:50:52
+ * @author 鏃犺姳
+ * @since 2011-10-31 涓嬪崍3:50:52
  */
 
 public class RecoverNotifyManager extends AbstractRecoverManager {

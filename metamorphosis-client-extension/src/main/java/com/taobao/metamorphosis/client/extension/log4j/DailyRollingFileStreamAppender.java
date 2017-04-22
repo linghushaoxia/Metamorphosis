@@ -34,7 +34,7 @@ import org.apache.log4j.spi.LoggingEvent;
 /**
  * 
  * @author wuxin
- * @since 1.0, 2009-10-20 ÏÂÎç03:49:58
+ * @since 1.0, 2009-10-20 ä¸‹åˆ03:49:58
  */
 public class DailyRollingFileStreamAppender extends FileStreamAppender {
 
